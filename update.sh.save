@@ -1,0 +1,7 @@
+	#!/bin/bash
+echo "جاري تشغيل نظام Smart Deals..."
+pkill cloudflared
+# الترتيب الصحيح: اسم النفق ثم الرابط
+cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 > /dev/null 2>&1 &
+echo "🚀 المتجر متصل الآن عالمياً"
+echo "🔗 الرابط المعتمد: https://smartdealsds.com.free"

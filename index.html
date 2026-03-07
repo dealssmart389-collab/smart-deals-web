@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Deals AI | التطور الفائق</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .ai-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-200">
+
+    <nav class="sticky top-0 z-50 glass p-4 flex justify-between items-center mx-4 mt-4 rounded-2xl">
+        <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-sm font-bold tracking-widest text-blue-400">GEMINI AI ACTIVE</span>
+        </div>
+        <div class="text-[10px] opacity-50">ID: 138834 | V 1.1.0</div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-12">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-black mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">شريكك الذكي في التسوق</h1>
+            <p class="text-slate-400">تحدث مع Gemini لاكتشاف العروض التي تناسب ميزانيتك</p>
+        </div>
+
+        <div class="glass p-8 rounded-[2rem] max-w-2xl mx-auto ai-glow">
+            <div id="ai-chat" class="h-64 overflow-y-auto mb-6 space-y-4 text-sm scrollbar-hide">
+                <div class="bg-blue-600/20 p-3 rounded-2xl rounded-tr-none ml-12 italic">
+                    مرحباً بك! أنا مساعدك الذكي. كيف يمكنني مساعدتك في العثور على أفضل عرض اليوم؟
+                </div>
+            </div>
+            
+            <div class="relative">
+                <input type="text" id="user-input" placeholder="مثال: أريد هاتفاً بخصم 50%..." 
+                class="w-full bg-black/40 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500 transition-all text-right pr-12">
+                <button onclick="askGemini()" class="absolute left-3 top-3 bg-blue-600 p-2 rounded-xl hover:scale-110 transition-transform">
+                    ⚡
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <section class="grid grid-cols-2 gap-4 px-6 pb-24" id="products">
+        </section>
+
+    <script>
+        // مصفوفة ذكاء المتجر (قاعدة بيانات العروض)
+const storeData = {
+    "هاتف": "لدينا خصم 30% على هواتف سامسونج وApple اليوم! هل تود رؤية المواصفات؟",
+    "ساعة": "الساعات الذكية تبدأ من 50$ فقط. موديلات 2026 متوفرة الآن.",
+    "خصم": "أنت في المكان الصحيح! استخدم كود SMART_AI للحصول على خصم إضافي.",
+    "توصيل": "التوصيل مجاني لجميع الطلبات فوق 200$.",
+    "مساعدة": "أنا هنا لمساعدتك، هل تبحث عن منتج معين أم تود الاستفسار عن عرض؟"
+};
+
+function askGemini() {
+    const inputField = document.getElementById('user-input');
+    const chatContainer = document.getElementById('ai-chat');
+    const userText = inputField.value.trim();
+
+    if (userText === "") return;
+
+    // إضافة رسالة الزبون للواجهة
+    chatContainer.innerHTML += `
+        <div class="flex justify-start mb-4">
+            <div class="bg-white/10 p-4 rounded-2xl rounded-bl-none max-w-[80%] text-sm">
+                ${userText}
+            </div>
+        </div>
+    `;
+
+    // محاكاة "تفكير" Gemini
+    inputField.value = "";
+    chatContainer.innerHTML += `<div id="typing" class="text-[10px] text-blue-400 animate-pulse italic">جاري تحليل طلبك...</div>`;
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    setTimeout(() => {
+        document.getElementById('typing').remove();
+        let aiResponse = "أنا أفهمك تماماً.. دعني أبحث لك عن أفضل خيار يناسب طلبك.";
+
+        // البحث في قاعدة البيانات الذكية
+        for (let key in storeData) {
+            if (userText.includes(key)) {
+                aiResponse = storeData[key];
+                break;
+            }
+        }
+
+        // إضافة رد الذكاء الاصطناعي
+        chatContainer.innerHTML += `
+            <div class="flex justify-end mb-4">
+                <div class="bg-blue-600/20 border border-blue-500/30 p-4 rounded-2xl rounded-br-none max-w-[80%] text-sm text-blue-100">
+                    <span class="block text-[10px] font-bold text-blue-400 mb-1">GEMINI AI:</span>
+                    ${aiResponse}
+                </div>
+            </div>
+        `;
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, 1500);
+}
+    </script>
+</body>
+</html>
