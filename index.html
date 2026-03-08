@@ -3,73 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Deals v6.1 GOLD</title>
+    <title>SMART DEALS AI 2026 | QUANTUM CORE</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .gold-text { color: #FFD700; }
-        .ai-engine-header { border-bottom: 2px solid #FFD700; padding: 20px; text-align: center; }
-        .gemini-box { background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; border-radius: 15px; padding: 20px; margin: 20px 0; }
-        .product-card { background: #111; border: 1px solid #333; transition: 0.3s; height: 100%; }
-        .product-card:hover { border-color: #FFD700; transform: translateY(-5px); }
-        .badge-status { background-color: #FFD700; color: #000; font-weight: bold; }
+        :root { --neon-gold: #ffcc00; --cyber-blue: #00f2ff; --dark-void: #050505; }
+        body { background: var(--dark-void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
+        
+        /* تأثير الخلفية المتحركة */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(255, 204, 0, 0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 204, 0, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px; z-index: -1; animation: grid-move 20s linear infinite;
+        }
+        @keyframes grid-move { from { transform: translateY(0); } to { transform: translateY(30px); } }
+
+        /* الهيدر الخيالي */
+        .scifi-header {
+            border-bottom: 2px solid var(--neon-gold); padding: 25px;
+            box-shadow: 0 0 20px var(--neon-gold); background: rgba(0,0,0,0.8);
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+        .status-light { width: 10px; height: 10px; background: #0f0; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #0f0; }
+
+        /* صندوق Gemini الذكي */
+        .gemini-core {
+            border: 1px solid var(--cyber-blue); background: rgba(0, 242, 255, 0.05);
+            border-radius: 0 30px 0 30px; padding: 25px; margin: 30px 0;
+            position: relative; overflow: hidden; backdrop-filter: blur(10px);
+        }
+        .gemini-core::after {
+            content: "AI NEURAL LINK ACTIVE"; position: absolute; top: 5px; right: 10px;
+            font-size: 8px; color: var(--cyber-blue); letter-spacing: 2px;
+        }
+
+        /* كروت المنتجات المستقبلية */
+        .scifi-card {
+            background: rgba(20, 20, 20, 0.9); border: 1px solid #333; transition: 0.4s;
+            position: relative; border-radius: 0; clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+        }
+        .scifi-card:hover {
+            border-color: var(--neon-gold); transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+        }
+        .btn-order {
+            background: transparent; border: 1px solid var(--neon-gold); color: var(--neon-gold);
+            font-weight: bold; transition: 0.3s; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+        .btn-order:hover { background: var(--neon-gold); color: #000; box-shadow: 0 0 15px var(--neon-gold); }
+
+        /* الأنيميشن */
+        .glitch { animation: glitch 1s linear infinite; }
+        @keyframes glitch { 
+            0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 
+            40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 
+            80% { transform: translate(2px, -2px); } 100% { transform: translate(0); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="ai-engine-header">
-        <h1 class="gold-text fw-bold">SMART DEALS</h1>
-        <p class="small">AI ENGINE ACTIVE v6.1 GOLD <span class="text-success">●</span></p>
+    <div class="scifi-header text-center">
+        <h1 class="glitch" style="color: var(--neon-gold); letter-spacing: 5px;">SMART DEALS AI</h1>
+        <p style="font-size: 10px; letter-spacing: 3px;">
+            <span class="status-light"></span> SYSTEM STATUS: OPTIMIZED | VERSION: 6.1 GOLD
+        </p>
     </div>
 
-    <div class="container">
-        <div class="gemini-box text-center">
-            <h5 class="gold-text">🌟 Gemini: "شريكي، أخبرني بميزانيتك وسأقوم بصنع عرض مستحيل لك الآن!"</h5>
+    <div class="container mt-4">
+        <div class="gemini-core">
+            <h4 style="color: var(--cyber-blue);">📡 واجهة الاتصال العصبية (Gemini Core)</h4>
+            <p class="small opacity-75">"أدخل ميزانيتك يا شريكي.. دعني أعيد كتابة قوانين التجارة لأجلك."</p>
             <div class="input-group mt-3">
-                <input type="text" id="userBudget" class="form-control bg-dark text-white border-warning" placeholder="مثلاً: أريد هاتف بـ 2000 درهم...">
-                <button class="btn btn-warning" onclick="askAI()">🚀</button>
+                <input type="text" id="aiInput" class="form-control bg-transparent text-white border-info" placeholder="الماسح مستعد للأوامر...">
+                <button class="btn btn-info text-dark fw-bold" onclick="processAI()">EXECUTE</button>
             </div>
         </div>
 
-        <h3 class="gold-text mb-4">أقوى العروض الحالية في المغرب</h3>
-        <div id="product-grid" class="row g-3">
+        <h2 class="text-center mb-5" style="border-left: 5px solid var(--neon-gold); padding-left: 15px;">المصفوفة التجارية (Deals Matrix)</h2>
+        <div id="product-matrix" class="row g-4">
             </div>
     </div>
 
     <script>
-        // مصفوفة المنتجات العالمية (يمكنك تعديل الأسعار والروابط هنا)
         const products = [
-            { name: "Xiaomi Redmi Note 13", price: "2100 DH", status: "الأكثر طلباً", img: "https://p-ma.expertreviews.co.uk/sites/expertreviews/files/2024/02/xiaomi_redmi_note_13_pro_5g_review_0.jpg" },
-            { name: "Smart Watch Ultra", price: "450 DH", status: "خصم 50%", img: "https://m.media-amazon.com/images/I/71u9S+7D8PL._AC_SL1500_.jpg" },
-            { name: "AirPods Pro 2", price: "300 DH", status: "هدية", img: "https://m.media-amazon.com/images/I/61SUj2W5yXL._AC_SL1500_.jpg" }
+            { id: 101, name: "X-PHONE QUANTUM", price: "2100 DH", img: "https://p-ma.expertreviews.co.uk/sites/expertreviews/files/2024/02/xiaomi_redmi_note_13_pro_5g_review_0.jpg", tag: "ULTRA" },
+            { id: 102, name: "NEURAL WATCH v8", price: "450 DH", img: "https://m.media-amazon.com/images/I/71u9S+7D8PL._AC_SL1500_.jpg", tag: "SYNCED" },
+            { id: 103, name: "CYBER PODS PRO", price: "300 DH", img: "https://m.media-amazon.com/images/I/61SUj2W5yXL._AC_SL1500_.jpg", tag: "LIVE" }
         ];
 
-        function displayProducts() {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = products.map(p => `
+        function renderMatrix() {
+            const container = document.getElementById('product-matrix');
+            container.innerHTML = products.map(p => `
                 <div class="col-6 col-md-4">
-                    <div class="card product-card text-white">
-                        <span class="badge badge-status position-absolute m-2">${p.status}</span>
-                        <img src="${p.img}" class="card-img p-3" style="height: 150px; object-fit: contain;">
-                        <div class="card-body p-2 text-center">
-                            <h6 class="small text-truncate">${p.name}</h6>
-                            <p class="gold-text fw-bold mb-2">${p.price}</p>
-                            <a href="https://wa.me/212632997956?text=أريد طلب ${p.name}" class="btn btn-sm btn-outline-warning w-100">اطلب الآن</a>
-                        </div>
+                    <div class="card scifi-card p-3 h-100">
+                        <div class="text-end small opacity-50">#ID_${p.id}</div>
+                        <img src="${p.img}" class="img-fluid my-3" style="filter: drop-shadow(0 0 5px var(--cyber-blue));">
+                        <h6 class="text-center small">${p.name}</h6>
+                        <h5 class="text-center text-warning my-2">${p.price}</h5>
+                        <a href="https://wa.me/212632997956" class="btn btn-order w-100 mt-auto">بدء الطلب</a>
                     </div>
                 </div>
             `).join('');
         }
 
-        function askAI() {
-            const budget = document.getElementById('userBudget').value;
-            if(budget) alert("جاري تحليل ميزانيتك: " + budget + "... سيقوم مستشارك الذكي بالرد عليك فوراً!");
+        function processAI() {
+            const cmd = document.getElementById('aiInput').value;
+            alert("جارٍ تحليل ميزانيتك عبر شبكة Gemini العصبية... ابقَ متصلاً.");
         }
 
-        displayProducts();
+        renderMatrix();
     </script>
-
 </body>
 </html>
-
-
