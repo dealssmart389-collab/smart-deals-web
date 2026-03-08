@@ -45,45 +45,36 @@
         </div>
 
     <script>
-        const inventory = [
-            { name: "Xiaomi Redmi Note 13", price: 2100, cat: "📱 هواتف", tag: "الأكثر طلباً" },
-            { name: "Smart Watch Ultra", price: 450, cat: "⌚ ساعات", tag: "خصم حصري" },
-            { name: "AirPods Pro 2", price: 300, cat: "🎧 صوتيات", tag: "هدية مجانية" }
-        ];
+        // 🔔 محرك الإشعارات اللحظي (FOMO Engine)
+const notifications = [
+    "📦 شخص من الدار البيضاء اشترى Xiaomi Note 13 للتو!",
+    "🔥 خصم سري تم تفعيله الآن لمستخدم من طنجة!",
+    "✅ تم تأكيد طلب Smart Watch Ultra في مراكش"
+];
 
-        function renderDeals(filterPrice = 99999) {
-            const wall = document.getElementById('deals-wall');
-            wall.innerHTML = inventory.filter(d => d.price <= filterPrice).map(d => `
-                <div class="glass-card p-5 rounded-[2rem] animate__animated animate__fadeInUp group">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="bg-white/5 text-[10px] px-3 py-1 rounded-full border border-white/10">${d.cat}</span>
-                        <span class="bg-yellow-500 text-black text-[9px] font-black px-2 py-1 rounded-md">${d.tag}</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">${d.name}</h3>
-                    <div class="flex justify-between items-end">
-                        <p class="text-2xl font-black text-yellow-500">${d.price} <span class="text-xs">DH</span></p>
-                        <button onclick="order('${d.name}')" class="bg-white text-black px-6 py-2 rounded-xl font-bold text-xs group-hover:bg-yellow-500 transition-colors">اطلب الآن</button>
-                    </div>
-                </div>
-            `).join('');
-        }
+function showLiveNotice() {
+    const notice = document.createElement('div');
+    notice.className = "fixed top-5 left-4 right-4 bg-yellow-500 text-black p-3 rounded-2xl text-[10px] font-bold shadow-2xl animate__animated animate__fadeInDown z-[100]";
+    notice.innerHTML = notifications[Math.floor(Math.random() * notifications.length)];
+    document.body.appendChild(notice);
+    setTimeout(() => { notice.classList.replace('animate__fadeInDown', 'animate__fadeOutUp'); setTimeout(() => notice.remove(), 1000); }, 4000);
+}
 
-        function aiLogic() {
-            const input = document.getElementById('user-ask').value;
-            const chat = document.getElementById('chat-box');
-            if(input.includes('2000')) {
-                chat.innerHTML += `<div class="text-green-400 text-xs mt-2 italic">🔄 Gemini: "وجدت لك هاتف Xiaomi بخصم سري.. تم تحديث القائمة!"</div>`;
-                renderDeals(2100);
-            } else {
-                chat.innerHTML += `<div class="text-blue-400 text-xs mt-2">🔄 Gemini: "جاري تحليل أفضل الصفقات لميزانيتك..."</div>`;
-            }
-        }
+// 📲 إصلاح رابط الواتساب العالمي
+function order(product) {
+    const myNumber = "212628469956"; // تأكد من رقمك هنا
+    const text = encodeURIComponent(`أهلاً Smart Deals، أريد طلب المنتج العالمي: ${product}`);
+    // استخدام البروتوكول العالمي لضمان الفتح في كل المتصفحات
+    const waUrl = `https://api.whatsapp.com/send?phone=${myNumber}&text=${text}`;
+    
+    window.location.href = waUrl; 
+}
 
-        function order(p) {
-            window.open('https://wa.me/212XXXXXXXXX?text=' + encodeURIComponent('طلب ذكي لـ: ' + p));
-        }
-
-        window.onload = () => renderDeals();
+// تشغيل المحرك
+window.onload = () => {
+    renderDeals();
+    setInterval(showLiveNotice, 15000); // إشعار كل 15 ثانية
+};
     </script>
 </body>
 </html>
