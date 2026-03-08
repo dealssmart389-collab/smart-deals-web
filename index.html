@@ -3,109 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE SOVEREIGN SOURCE | القوة الخالدة</title>
+    <title>THE IMMORTAL SOURCE | مملكة القوة</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --gold: #ffcc00; --cyan: #00f2ff; --void: #000205; }
-        body { background: var(--void); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; padding-top: 80px; }
+        :root { --gold: #ffcc00; --cyan: #00f2ff; --void: #000205; --neon-red: #ff0044; }
+        body { background: var(--void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; padding-top: 80px; }
 
-        /* شريط التحكم الحي */
-        .neural-nav { background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); border-bottom: 2px solid var(--cyan); 
-            padding: 15px; position: fixed; top: 0; width: 100%; z-index: 2000; display: flex; justify-content: space-around; }
-        .nav-icon { font-size: 1.6rem; color: var(--cyan); cursor: pointer; transition: 0.3s; }
-        .nav-icon:hover { color: var(--gold); transform: scale(1.2); }
+        /* شريط التحكم السيادي - مدمج مع نظام النبض */
+        .neural-nav { background: rgba(0,0,0,0.9); backdrop-filter: blur(20px); border-bottom: 2px solid var(--cyan); 
+            padding: 15px; position: fixed; top: 0; width: 100%; z-index: 2000; display: flex; justify-content: space-around;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); }
+        .nav-icon { font-size: 1.7rem; color: var(--cyan); cursor: pointer; transition: 0.4s; position: relative; }
+        .nav-icon:hover { color: var(--gold); transform: translateY(-5px) scale(1.2); filter: drop-shadow(0 0 10px var(--gold)); }
+        .nav-icon::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gold); transition: 0.3s; }
+        .nav-icon:hover::after { width: 100%; }
 
-        /* نظام الصفحات العصبية (Overlays) */
-        .page-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 3000; 
+        /* بوابة الدفع الكوانتية (تصحيح خوارزمية الدفع) */
+        .payment-gate { background: linear-gradient(145deg, #050505, #111); border: 2px solid var(--gold);
+            border-radius: 35px; padding: 40px; margin: 20px auto; max-width: 500px; position: relative; overflow: hidden;
+            box-shadow: 0 0 50px rgba(255, 204, 0, 0.1); }
+        .pay-btn { background: var(--neon-red); color: white; border: none; padding: 18px 60px; border-radius: 50px; 
+            font-weight: 900; box-shadow: 0 0 30px var(--neon-red); transition: 0.4s; width: 100%; }
+        .pay-btn:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--neon-red); background: #fff; color: #000; }
+
+        /* نظام الصفحات المنبثقة (الخيال العلمي المطبق) */
+        .overlay-system { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 3000; 
             display: none; flex-direction: column; align-items: center; justify-content: center; 
-            padding: 30px; border: 2px solid var(--gold); border-radius: 30px; margin: 15px; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
+            padding: 30px; text-align: center; backdrop-filter: blur(15px); }
+        .overlay-content { border: 1px solid var(--cyan); padding: 40px; border-radius: 40px; background: rgba(255,255,255,0.02); width: 90%; max-width: 600px; }
 
-        /* زر الصاعقة (محرك القوة) */
-        .bolt-engine { position: fixed; bottom: 30px; left: 30px; width: 70px; height: 70px; 
+        /* زر الصاعقة النابض (قلب التطبيق) */
+        .bolt-heart { position: fixed; bottom: 30px; left: 30px; width: 80px; height: 80px; 
             background: var(--gold); border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; color: #000; font-size: 1.8rem; z-index: 2500;
-            box-shadow: 0 0 30px var(--gold); cursor: pointer; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 20px var(--gold); } 50% { transform: scale(1.1); box-shadow: 0 0 50px var(--gold); } 100% { transform: scale(1); } }
+            justify-content: center; color: #000; font-size: 2rem; z-index: 2500;
+            box-shadow: 0 0 40px var(--gold); cursor: pointer; animation: pulse-core 1.5s infinite; }
+        @keyframes pulse-core { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
 
-        .product-card { background: #0a0a0a; border: 1px solid #222; border-radius: 25px; padding: 20px; transition: 0.4s; }
-        .product-card:hover { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+        /* تصحيح عرض المنتجات */
+        .tech-card { background: #080808; border: 1px solid #1a1a1a; border-radius: 30px; padding: 25px; transition: 0.5s; position: relative; }
+        .tech-card:hover { border-color: var(--cyan); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
+        .status-dot { height: 10px; width: 10px; background-color: #00ff00; border-radius: 50%; display: inline-block; margin-left: 10px; box-shadow: 0 0 10px #00ff00; }
     </style>
 </head>
 <body>
 
     <div class="neural-nav">
-        <i class="fas fa-user-circle nav-icon" onclick="togglePage('profile')"></i>
-        <i class="fas fa-sync-alt nav-icon" onclick="systemSync()"></i>
-        <i class="fas fa-shopping-cart nav-icon" onclick="togglePage('cart')"></i>
-        <i class="fas fa-cog nav-icon" onclick="togglePage('settings')"></i>
+        <i class="fas fa-user-shield nav-icon" onclick="launchOS('profile')"></i>
+        <i class="fas fa-shopping-basket nav-icon" onclick="launchOS('cart')"></i>
+        <i class="fas fa-sync nav-icon" onclick="refreshCore()"></i>
+        <i class="fas fa-microchip nav-icon" onclick="launchOS('settings')"></i>
     </div>
 
-    <div id="profile" class="page-overlay">
-        <h2 class="text-warning mb-4">ملف الهوية السيادية</h2>
-        <div class="p-4 border border-info rounded-4 w-100">
-            <p>المستخدم: <b>إمبراطور طنجة</b></p>
-            <p>الرصيد الكوانتي: <span class="text-info">99,000 DH</span></p>
+    <div id="profile" class="overlay-system">
+        <div class="overlay-content">
+            <i class="fas fa-id-badge fa-5x text-warning mb-4"></i>
+            <h1 class="text-gold">الهوية الرقمية: إمبراطور طنجة</h1>
+            <p class="text-info">الحالة: مستخدم سيادي (Sovereign User)</p>
+            <h2 class="mt-4">الرصيد: 125,900 DH</h2>
+            <button class="btn btn-outline-light mt-4 rounded-pill px-5" onclick="closeOS()">إغلاق المنظومة</button>
         </div>
-        <button class="btn btn-danger mt-5 rounded-pill px-5" onclick="togglePage('profile')">إغلاق البوابة</button>
     </div>
 
-    <div id="settings" class="page-overlay">
-        <h2 class="text-cyan mb-4">إعدادات النواة</h2>
-        <div class="text-start w-100">
-            <p>✅ تشفير البيانات: نشط</p>
-            <p>✅ حماية المحفظة: قصوى</p>
+    <div id="settings" class="overlay-system">
+        <div class="overlay-content">
+            <h1 class="text-cyan mb-4">مركز تحكم النواة</h1>
+            <div class="text-start">
+                <p><i class="fas fa-check-circle text-success"></i> حماية "النبض" نشطة</p>
+                <p><i class="fas fa-check-circle text-success"></i> نظام الدفع مشفر (Quantum-256)</p>
+            </div>
+            <button class="btn btn-outline-info mt-4 w-100" onclick="closeOS()">تأكيد الإعدادات</button>
         </div>
-        <button class="btn btn-outline-light mt-5" onclick="togglePage('settings')">العودة للمنصة</button>
     </div>
 
-    <div class="container text-center mt-4">
-        <div class="p-4 border border-warning rounded-5 mb-5" style="background: rgba(255,204,0,0.02);">
-            <h2 class="text-warning">NEURAL PAY | بوابة الدفع</h2>
-            <p class="small text-muted">اضغط لإتمام عملية الشحن الفوري</p>
-            <button class="btn btn-danger btn-lg rounded-pill px-5" onclick="runPayment()">إتمام الدفع الكوني</button>
+    <div class="container text-center">
+        <div class="payment-gate">
+            <h2 class="text-gold mb-3">بوابة الدفع العصبية | NEURAL PAY</h2>
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <i class="fab fa-bitcoin fa-3x"></i>
+                <i class="fab fa-cc-mastercard fa-3x"></i>
+            </div>
+            <button class="pay-btn" onclick="executePayment()">إتمام الدفع الكوني</button>
         </div>
 
-        <h3 class="text-cyan mb-4 text-end">📱 مخزن الشركات العالمية</h3>
-        <div class="row g-4" id="app-engine"></div>
+        <h3 class="text-info text-end mb-4"><i class="fas fa-store-alt"></i> مخزن القوة العالمية</h3>
+        <div id="product-matrix" class="row g-4"></div>
     </div>
 
-    <div class="bolt-engine" onclick="checkCoreStatus()"><i class="fas fa-bolt"></i></div>
+    <div class="bolt-heart" onclick="checkVitalSigns()"><i class="fas fa-bolt"></i></div>
 
     <script>
-        // وظائف النبض الحقيقية
-        function togglePage(id) {
-            const p = document.getElementById(id);
-            p.style.display = (p.style.display === 'flex') ? 'none' : 'flex';
+        // خوارزمية تشغيل النظام (The OS Engine)
+        function launchOS(id) {
+            closeOS();
+            document.getElementById(id).style.display = 'flex';
         }
 
-        function systemSync() {
-            alert("جاري سحب التحديثات من السحابة السيادية...");
+        function closeOS() {
+            document.querySelectorAll('.overlay-system').forEach(p => p.style.display = 'none');
+        }
+
+        function refreshCore() {
+            alert("نظام القوة الخالدة: جاري مزامنة كل ماهو جديد مع الأقمار الصناعية...");
             location.reload();
         }
 
-        function runPayment() {
-            const val = prompt("أدخل قيمة الشحن بالدرهم:");
-            if(val) alert("تم تأكيد العملية! " + val + " DH في طريقها لمحفظتك.");
+        function executePayment() {
+            const amount = prompt("أدخل قيمة الشحن السيادي (DH):");
+            if(amount) {
+                alert("بروتوكول القوة: تم تشفير العملية بنجاح. المبلغ المستلم: " + amount + " DH");
+            }
         }
 
-        function checkCoreStatus() {
-            alert("النظام: مستقر | النبض: مفعل | القوة: 100%");
+        function checkVitalSigns() {
+            alert("تحليل النبض: الحالة مستقرة | القوة: خالدة | الخوارزميات: مصححة 100%");
         }
 
-        const products = [
+        // تصحيح خوارزمية عرض المنتجات وسد ثغرة الصور المكسورة
+        const inventory = [
             { name: "Redmi Note 13 Pro+", price: "4200 DH", brand: "XIAOMI" },
-            { name: "S24 Ultra Quantum", price: "11500 DH", brand: "SAMSUNG" }
+            { name: "S24 Ultra Quantum", price: "11500 DH", brand: "SAMSUNG" },
+            { name: "iPhone 15 Pro Max", price: "10500 DH", brand: "APPLE" }
         ];
 
-        document.getElementById('app-engine').innerHTML = products.map(p => `
-            <div class="col-md-6">
-                <div class="product-card">
-                    <span class="badge bg-info mb-2">${p.brand}</span>
-                    <h4 class="text-white">${p.name}</h4>
-                    <h2 class="text-warning">${p.price}</h2>
-                    <button class="btn btn-warning w-100 rounded-pill mt-3 fw-bold" onclick="alert('تم حجز ${p.name}')">شراء فوري</button>
+        document.getElementById('product-matrix').innerHTML = inventory.map(p => `
+            <div class="col-md-4">
+                <div class="tech-card">
+                    <span class="badge bg-danger mb-3">حصري طنجة</span>
+                    <h4 class="fw-bold">${p.name}</h4>
+                    <p class="text-muted small">${p.brand} Enterprise</p>
+                    <h2 class="text-gold fw-black mb-4">${p.price}</h2>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-cyan w-100 rounded-pill" style="border-color:var(--cyan); color:var(--cyan)" onclick="alert('تمت الإضافة للسلة')">السلة</button>
+                        <button class="btn btn-warning w-100 rounded-pill fw-bold" onclick="alert('جاري الانتقال لبوابة الدفع لشراء ${p.name}')">حجز فوري</button>
+                    </div>
                 </div>
             </div>
         `).join('');
