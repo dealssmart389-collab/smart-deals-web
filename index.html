@@ -84,5 +84,52 @@
             </div>
         `).join('');
     </script>
+<script>
+    // وظيفة "نبض الأيقونات" - تجعل كل زر يؤدي مهمة
+    function activatePulse() {
+        // أيقونة الملف الشخصي
+        document.querySelector('.fa-user-circle').onclick = () => alert('جاري الاتصال بقاعدة بيانات المستخدم السيادية...');
+        
+        // أيقونة الإعدادات
+        document.querySelector('.fa-cog').onclick = () => {
+            const theme = confirm('هل تريد تفعيل وضع "الخلاء المظلم" (Void Mode)؟');
+            if(theme) document.body.style.filter = 'contrast(1.2) brightness(0.8)';
+        };
+
+        // أيقونة السلة
+        document.querySelector('.fa-shopping-cart').onclick = () => alert('سلة المشتريات فارغة.. بانتظار أوامر الشراء الكونية.');
+
+        // زر الصاعقة (القلب النابض)
+        document.querySelector('.fab-main').onclick = () => {
+            document.body.insertAdjacentHTML('afterbegin', '<div id="pulse-effect" style="position:fixed; inset:0; border:5px solid var(--gold); z-index:9999; pointer-events:none; animation: pulse-border 0.5s"></div>');
+            setTimeout(() => document.getElementById('pulse-effect').remove(), 500);
+            alert('نظام القوة الخالدة: الحالة مستقرة 100%');
+        };
+
+        // تفعيل أزرار الدفع
+        document.querySelector('.pay-btn').onclick = () => {
+            let amount = prompt('أدخل قيمة الشحن بالدرهم (DH):');
+            if(amount) alert('جاري تشفير عملية دفع بقيمة ' + amount + ' DH عبر بروتوكول Quantum Pay');
+        };
+    }
+
+    // تشغيل النبض فور تحميل الصفحة
+    window.onload = activatePulse;
+</script>
+
+<style>
+    /* تأثير بصري لنبض القلب البرمجي */
+    @keyframes pulse-border {
+        0% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(1.1); }
+    }
+    
+    /* جعل الأيقونات تبدو حية */
+    .nav-icon, .fab-main, .pay-btn {
+        cursor: pointer;
+        user-select: none;
+    }
+    .nav-icon:active { transform: scale(0.8); color: var(--gold); }
+</style>
 </body>
 </html>
