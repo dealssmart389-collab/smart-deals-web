@@ -1,164 +1,88 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE SOVEREIGN SOURCE | 2100 AI ERA</title>
+    <title>THE SOVEREIGN SOURCE | نظام القوة الخالدة</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --hyper-gold: #ffcc00; --neon-cyan: #00f2ff; --deep-void: #000103; }
-        body { background: var(--deep-void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
-        .grid-layers { position: fixed; width: 200%; height: 200%; background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px); background-size: 60px 60px; transform: rotateX(60deg) translateY(-50%); z-index: -1; animation: grid-move 20s linear infinite; }
-        @keyframes grid-move { from { transform: rotateX(60deg) translateY(-50%); } to { transform: translateY(0) rotateX(60deg); } }
-        .eternal-card { background: rgba(10,10,10,0.9); border: 1px solid #222; border-radius: 35px; padding: 25px; transition: 0.6s; height: 100%; position: relative; }
-        .eternal-card:hover { border-color: var(--hyper-gold); transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 204, 0, 0.2); }
-        .product-img { max-height: 200px; filter: drop-shadow(0 0 20px var(--neon-cyan)); animation: hover-float 4s infinite ease-in-out; }
-        @keyframes hover-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .btn-eternal { background: var(--hyper-gold); color: #000; font-weight: 900; border-radius: 100px; padding: 15px; border: none; box-shadow: 0 0 30px var(--hyper-gold); width: 100%; transition: 0.4s; }
-        .btn-eternal:hover { transform: scale(1.1); background: #fff; }
+        :root { --gold: #ffcc00; --cyan: #00f2ff; --void: #000205; --neon-red: #ff0044; }
+        body { background: var(--void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
+
+        /* شريط التحكم السيادي (Neural Navbar) */
+        .neural-nav {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--cyan); padding: 15px; position: fixed;
+            top: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-around;
+        }
+        .nav-icon { font-size: 1.5rem; color: var(--cyan); cursor: pointer; transition: 0.3s; }
+        .nav-icon:hover { color: var(--gold); transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 10px var(--gold)); }
+
+        /* بوابة الدفع الكونية (Quantum Payment) */
+        .payment-gate {
+            background: linear-gradient(145deg, #050505, #111); border: 1px solid var(--gold);
+            border-radius: 30px; padding: 25px; margin-top: 100px; position: relative; overflow: hidden;
+        }
+        .pay-btn { background: var(--neon-red); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 900; box-shadow: 0 0 30px var(--neon-red); transition: 0.4s; }
+        .pay-btn:hover { background: #fff; color: #000; box-shadow: 0 0 60px var(--neon-red); transform: scale(1.1); }
+
+        /* مصفوفة الإعدادات السريعة */
+        .settings-panel { position: fixed; bottom: 20px; left: 20px; z-index: 1001; }
+        .fab-main { width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.5rem; box-shadow: 0 0 20px var(--gold); cursor: pointer; }
+
+        /* بطاقات المنتجات المحدثة */
+        .tech-card { background: rgba(255,255,255,0.02); border: 1px solid #222; border-radius: 35px; padding: 20px; transition: 0.5s; }
+        .tech-card:hover { border-color: var(--cyan); box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); }
     </style>
+</head>
 <body>
-    <div class="grid-layers"></div>
-    <div class="container py-5">
-        <header class="text-center mb-5">
-            <h1 class="display-3 fw-bold" style="color: var(--hyper-gold); text-shadow: 0 0 40px var(--hyper-gold);">SMART SOURCE 2100</h1>
-            <p class="lead text-info" style="letter-spacing: 5px;">إمبراطورية الإكسسوارات العالمية - طنجة</p>
-        </header>
-        <div class="row g-4" id="global-matrix"></div>
+
+    <div class="neural-nav">
+        <i class="fas fa-user-circle nav-icon" title="الملف الشخصي"></i>
+        <i class="fas fa-sync-alt nav-icon" title="تحميل الجديد" onclick="location.reload()"></i>
+        <i class="fas fa-shopping-cart nav-icon" title="السلة"></i>
+        <i class="fas fa-cog nav-icon" title="الإعدادات"></i>
     </div>
+
+    <div class="container" style="margin-top: 120px;">
+        <div class="payment-gate text-center mb-5">
+            <h2 style="color: var(--gold);">بوابة الدفع العصبية | NEURAL PAY</h2>
+            <p class="small text-info">تشفير كوانتوم 256-بت مفعل</p>
+            <div class="d-flex justify-content-center gap-3 my-4">
+                <i class="fab fa-cc-visa fa-3x"></i>
+                <i class="fab fa-cc-mastercard fa-3x"></i>
+                <i class="fab fa-bitcoin fa-3x text-warning"></i>
+            </div>
+            <button class="pay-btn">إتمام الدفع الكوني</button>
+        </div>
+
+        <h3 class="mb-4 text-cyan">📱 مخزن الشركات العالمية</h3>
+        <div class="row g-4" id="matrix"></div>
+    </div>
+
+    <div class="settings-panel">
+        <div class="fab-main"><i class="fas fa-bolt"></i></div>
+    </div>
+
     <script>
-        const catalog = [
-            { name: "Redmi Note 13 Pro+", price: "4200 DH", img: "phone.jpg", brand: "XIAOMI" },
-            { name: "S24 Ultra Quantum", price: "11500 DH", img: "https://i.imgur.com/uRk0Zc7.png", brand: "SAMSUNG" },
-            { name: "iPhone 15 Pro Max", price: "10500 DH", img: "https://i.imgur.com/6XzW9vS.png", brand: "APPLE" },
-            { name: "Watch Ultra AI", price: "650 DH", img: "https://i.imgur.com/Wp7u7T3.png", brand: "SMART" },
-            { name: "Neural Buds Pro", price: "450 DH", img: "https://i.imgur.com/vH9v5Z7.png", brand: "AUDIO" },
-            { name: "Plasma Charger 120W", price: "290 DH", img: "https://i.imgur.com/9S5F3l6.png", brand: "POWER" }
+        const products = [
+            { name: "Redmi Note 13 Pro+", price: "4200 DH", brand: "XIAOMI" },
+            { name: "S24 Ultra AI", price: "11500 DH", brand: "SAMSUNG" },
+            { name: "iPhone 15 Pro", price: "10500 DH", brand: "APPLE" }
         ];
 
-        document.getElementById('global-matrix').innerHTML = catalog.map(item => `
+        document.getElementById('matrix').innerHTML = products.map(p => `
             <div class="col-md-4">
-                <div class="eternal-card text-center">
-                    <span class="badge bg-primary mb-3">${item.brand}</span>
-                    <div class="mb-4"><img src="${item.img}" class="product-img img-fluid" onerror="this.src='https://via.placeholder.com/300/000/ffcc00?text=TECH+SOURCE'"></div>
-                    <h3 class="fw-bold mb-3">${item.name}</h3>
-                    <h2 class="fw-bold text-white mb-4">${item.price}</h2>
-                    <a href="https://wa.me/212632997956?text=حجز: ${item.name}" class="btn btn-eternal">إحجز الآن</a>
+                <div class="tech-card text-center">
+                    <span class="badge bg-info mb-3">${p.brand}</span>
+                    <h3 class="fw-bold text-white mb-3">${p.name}</h3>
+                    <h2 class="fw-bold mb-4" style="color:var(--gold)">${p.price}</h2>
+                    <button class="btn btn-outline-info w-100 rounded-pill mb-2">إضافة للسلة</button>
+                    <button class="btn btn-warning w-100 rounded-pill fw-bold">شراء فوري</button>
                 </div>
             </div>
         `).join('');
-    </script>
-</body>
-</html>
-</head>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE SOVEREIGN SOURCE | 2100 AI ERA</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root { --hyper-gold: #ffcc00; --neon-cyan: #00f2ff; --deep-void: #000103; --plasma-purple: #7000ff; }
-        body { background: var(--deep-void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; perspective: 1000px; }
-
-        /* محرك الخلفية الحية - سديم طنجة الرقمي */
-        .nebula-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000 100%); }
-        .grid-layers { position: fixed; width: 200%; height: 200%; background-image: 
-            linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px; transform: rotateX(60deg) translateY(-50%); z-index: -1; animation: grid-move 20s linear infinite; }
-        @keyframes grid-move { from { transform: rotateX(60deg) translateY(-50%); } to { transform: translateY(0) rotateX(60deg); } }
-
-        /* كبسولة الذكاء الاصطناعي الفائقة */
-        .ai-core { background: rgba(255, 255, 255, 0.02); border: 2px solid var(--neon-cyan); border-radius: 40px;
-            padding: 30px; backdrop-filter: blur(25px); box-shadow: 0 0 50px rgba(0, 242, 255, 0.1); margin-bottom: 60px; }
-
-        /* مصفوفة المنتجات التي لا تفنى */
-        .eternal-card {
-            background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(5,5,5,1));
-            border: 1px solid #222; border-radius: 35px; padding: 25px; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative; overflow: hidden; height: 100%; transform-style: preserve-3d;
-        }
-        .eternal-card:hover { transform: scale(1.05) translateZ(20px); border-color: var(--hyper-gold); box-shadow: 0 0 70px rgba(255, 204, 0, 0.2); }
-
-        .product-portal { height: 220px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .product-img { max-height: 100%; filter: drop-shadow(0 0 20px var(--neon-cyan)); animation: hover-float 4s infinite ease-in-out; }
-        @keyframes hover-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        /* زر الحجز العابر للزمن */
-        .btn-eternal {
-            background: linear-gradient(90deg, var(--hyper-gold), #ff8800); color: #000;
-            font-weight: 900; border-radius: 100px; padding: 15px; border: none;
-            text-transform: uppercase; letter-spacing: 3px; box-shadow: 0 0 30px var(--hyper-gold);
-            transition: 0.4s; width: 100%; position: relative; z-index: 1;
-        }
-        .btn-eternal:hover { transform: scale(1.1); box-shadow: 0 0 60px var(--hyper-gold); background: #fff; }
-
-        .brand-seal { position: absolute; top: 20px; left: 20px; font-size: 10px; background: var(--plasma-purple);
-            color: #fff; padding: 5px 15px; border-radius: 50px; letter-spacing: 2px; box-shadow: 0 0 15px var(--plasma-purple); }
-    </style>
-</head>
-<body>
-    <div class="nebula-bg"></div>
-    <div class="grid-layers"></div>
-
-    <div class="container py-5">
-        <header class="text-center mb-5">
-            <h1 class="display-3 fw-bold" style="color: var(--hyper-gold); text-shadow: 0 0 40px var(--hyper-gold);">SMART SOURCE <span class="text-white">2100</span></h1>
-            <p class="lead text-info" style="letter-spacing: 10px;">THE IMMORTAL PROGRAMMING CODE</p>
-        </header>
-
-        <div class="ai-core text-center">
-            <h4 class="text-white mb-4">📡 مستشار الذكاء الاصطناعي العالمي</h4>
-            <div class="input-group mb-3">
-                <input type="text" id="aiQuery" class="form-control bg-transparent text-white border-info" placeholder="أدخل ميزانيتك أو نوع الإكسسوار المفضل...">
-                <button class="btn btn-info px-5 fw-bold" onclick="activateAI()">تحليل عصبـي</button>
-            </div>
-            <p id="aiResponse" class="small text-white-50">"الروبوت في حالة تأهب.. جاري مراقبة مخازن العالم."</p>
-        </div>
-
-        <div class="row g-5" id="global-matrix"></div>
-    </div>
-
-    <script>
-        const globalCatalog = [
-            { name: "Redmi Note 13 Pro+", price: "4200 DH", img: "phone.jpg", brand: "XIAOMI" },
-            { name: "S24 Ultra Quantum", price: "11500 DH", img: "https://i.imgur.com/uRk0Zc7.png", brand: "SAMSUNG" },
-            { name: "iPhone 15 Pro Max", price: "10500 DH", img: "https://i.imgur.com/6XzW9vS.png", brand: "APPLE" },
-            { name: "Watch Ultra AI", price: "650 DH", img: "https://i.imgur.com/Wp7u7T3.png", brand: "SMART" },
-            { name: "Neural Buds Pro", price: "450 DH", img: "https://i.imgur.com/vH9v5Z7.png", brand: "AUDIO" },
-            { name: "Plasma Charger 120W", price: "290 DH", img: "https://i.imgur.com/9S5F3l6.png", brand: "POWER" }
-        ];
-
-        function renderMatrix() {
-            const matrix = document.getElementById('global-matrix');
-            matrix.innerHTML = globalCatalog.map(item => `
-                <div class="col-md-4">
-                    <div class="eternal-card text-center">
-                        <span class="brand-seal">${item.brand}</span>
-                        <div class="product-portal mb-4">
-                            <img src="${item.img}" class="product-img img-fluid" onerror="this.src='https://via.placeholder.com/300/000/ffcc00?text=QUANTUM+TECH'">
-                        </div>
-                        <h3 class="fw-bold mb-3" style="color: var(--neon-cyan)">${item.name}</h3>
-                        <div class="d-flex justify-content-center gap-2 mb-4">
-                            <h2 class="fw-bold text-white">${item.price}</h2>
-                        </div>
-                        <a href="https://wa.me/212632997956?text=حجز قطعة من منبع العالم: ${item.name}" class="btn btn-eternal">إحجز الآن</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function activateAI() {
-            const res = document.getElementById('aiResponse');
-            res.innerHTML = "<span class='text-warning'>جاري فحص مخازن الشركات العالمية في طنجة...</span>";
-            setTimeout(() => {
-                res.innerHTML = "💡 تم التحليل: <span class='text-info'>هاتف Redmi Note 13 Pro+ هو الخيار الأكثر مبيعاً الآن!</span>";
-            }, 1500);
-        }
-
-        window.onload = renderMatrix;
     </script>
 </body>
 </html>
