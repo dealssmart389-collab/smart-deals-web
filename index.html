@@ -3,99 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART DEALS AI | DIAMOND v7.0</title>
+    <title>SMART DEALS AI | TITAN v8.0</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --glitch-gold: #ffcc00; --deep-black: #020202; --neon-cyan: #00f2ff; }
-        body { background: var(--deep-black); color: #fff; font-family: 'Tajawal', sans-serif; }
+        :root { --gold: #ffcc00; --cyan: #00f2ff; --void: #020202; }
+        body { background: var(--void); color: #fff; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
         
-        /* تصميم الكارت الذكي */
-        .smart-card {
-            background: rgba(20, 20, 20, 0.8); border: 1px solid #333; border-radius: 15px;
-            overflow: hidden; transition: 0.5s; position: relative;
+        /* تأثيرات الخلفية العصبية */
+        .neural-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.1;
+            background: radial-gradient(circle, var(--gold) 1px, transparent 1px); background-size: 40px 40px; }
+
+        /* الكروت الذكية */
+        .beast-card {
+            background: rgba(15, 15, 15, 0.9); border: 1px solid #333; border-radius: 20px;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden;
         }
-        .smart-card:hover { border-color: var(--glitch-gold); transform: scale(1.03) translateY(-10px); box-shadow: 0 0 40px rgba(255, 204, 0, 0.3); }
+        .beast-card:hover { border-color: var(--gold); box-shadow: 0 0 50px rgba(255, 204, 0, 0.2); transform: scale(1.05); }
         
-        /* تأثير التوهج للصور */
-        .image-container { background: radial-gradient(circle, rgba(255,204,0,0.1) 0%, transparent 70%); padding: 20px; }
-        .product-img { filter: drop-shadow(0 0 15px var(--glitch-gold)); max-height: 200px; object-fit: contain; transition: 0.3s; }
+        /* خوارزمية عرض الصور */
+        .img-engine { height: 180px; display: flex; align-items: center; justify-content: center; padding: 15px; }
+        .product-img { max-height: 100%; filter: drop-shadow(0 0 10px rgba(0,242,255,0.5)); transition: 0.4s; }
         
-        /* شارة الحالة */
-        .status-badge { position: absolute; top: 10px; right: 10px; background: var(--glitch-gold); color: #000; font-size: 10px; padding: 2px 8px; border-radius: 5px; font-weight: bold; }
-        
-        /* زر الأكشن */
-        .btn-order { background: linear-gradient(45deg, var(--glitch-gold), #ffaa00); color: #000; border: none; font-weight: bold; border-radius: 8px; }
-        
-        /* واجهة النبض العصبي */
-        .neural-input { background: #111; border: 1px solid var(--neon-cyan); color: #fff; border-radius: 10px 0 0 10px; }
+        /* واجهة التحكم الذكية */
+        .ai-terminal { border: 2px solid var(--cyan); border-radius: 15px; background: rgba(0, 242, 255, 0.03); padding: 20px; }
+        .status-pulse { width: 10px; height: 10px; background: #0f0; border-radius: 50%; display: inline-block; 
+            box-shadow: 0 0 10px #0f0; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
     </style>
 </head>
 <body>
+    <div class="neural-bg"></div>
 
-    <div class="container py-5 text-center">
-        <h1 style="color: var(--glitch-gold); font-weight: 900; letter-spacing: 2px;">SMART DEALS <span class="text-white">AI</span></h1>
-        <p class="text-secondary small">OPERATING SYSTEM: TANGIER_CORE_v7.0</p>
+    <div class="container py-4">
+        <header class="text-center mb-5">
+            <h1 style="color: var(--gold); font-weight: 900; text-shadow: 0 0 20px var(--gold);">SMART DEALS AI <span class="badge bg-warning text-dark">v8.0</span></h1>
+            <p class="small text-uppercase"><span class="status-pulse"></span> Neural Link Active | Tangier Server</p>
+        </header>
 
-        <div class="row justify-content-center my-5">
-            <div class="col-md-8">
-                <div class="p-4" style="border: 1px solid var(--neon-cyan); border-radius: 20px; background: rgba(0, 242, 255, 0.05);">
-                    <h5 class="text-info mb-3">📡 محلل الصفقات العصبي</h5>
-                    <p id="aiLogic" class="small text-white-50">"أخبرني بميزانيتك أو ماذا تفضل في الهاتف (كاميرا، ألعاب، بطارية).."</p>
-                    <div class="input-group">
-                        <input type="text" id="userInput" class="form-control neural-input" placeholder="مثلاً: بغيت هاتف ديال التصوير بـ 3500...">
-                        <button class="btn btn-info px-4" style="border-radius: 0 10px 10px 0;" onclick="analyzeRequest()">تحليل</button>
-                    </div>
-                </div>
+        <div class="ai-terminal mb-5 shadow-lg">
+            <h5 class="text-info"><i class="bi bi-cpu"></i> معالج القرارات الذكي (Gemini Core)</h5>
+            <p id="aiLog" class="text-white-50 small">"أنا أقرأ السوق الآن.. أخبرني ماذا يدور في ذهنك؟"</p>
+            <div class="input-group">
+                <input type="text" id="userInput" class="form-control bg-dark text-white border-info" placeholder="مثلاً: بغيت أحسن تصوير بـ 4000 درهم...">
+                <button class="btn btn-info fw-bold" onclick="smartSearch()">تحليل ومسح</button>
             </div>
         </div>
 
-        <div id="productGrid" class="row g-4">
-            </div>
+        <div id="matrixGrid" class="row g-4"></div>
     </div>
 
     <script>
-        const products = [
-            { id: 1, name: "Redmi Note 13 Pro+ 5G", price: 4200, spec: "200MP + 120W", img: "https://i.imgur.com/8QxXW5X.png", tag: "الأقوى عالمياً" },
-            { id: 2, name: "Redmi Note 13 Pro", price: 3100, spec: "200MP + 67W", img: "https://i.imgur.com/6XzW9vS.png", tag: "الأكثر مبيعاً" },
-            { id: 3, name: "Redmi Note 13", price: 2100, spec: "108MP + AMOLED", img: "https://i.imgur.com/vH9v5Z7.png", tag: "أفضل قيمة" }
+        // مصفوفة الصور الذكية مع روابط CDN متعددة كحماية (Fallback System)
+        const SMART_ASSETS = {
+            note13pp: "https://i.imgur.com/8QxXW5X.png",
+            note13p: "https://i.imgur.com/6XzW9vS.png",
+            note13: "https://i.imgur.com/vH9v5Z7.png",
+            fallback: "https://via.placeholder.com/300x300/111/ffd700?text=SMART+DEALS+AI"
+        };
+
+        const inventory = [
+            { id: 1, name: "Redmi Note 13 Pro+ 5G", price: 4200, category: "ultra", img: SMART_ASSETS.note13pp, desc: "كاميرا 200MP وشحن خارق 120W" },
+            { id: 2, name: "Redmi Note 13 Pro", price: 3100, category: "pro", img: SMART_ASSETS.note13p, desc: "بطل الأداء والتصوير الليلي" },
+            { id: 3, name: "Redmi Note 13 4G", price: 2100, category: "standard", img: SMART_ASSETS.note13, desc: "الأناقة والاقتصاد في هاتف واحد" }
         ];
 
-        function renderProducts(filterId = null) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = products.map(p => `
-                <div class="col-md-4" style="opacity: ${filterId && p.id !== filterId ? '0.3' : '1'}">
-                    <div class="smart-card p-3 h-100">
-                        <span class="status-badge">${p.tag}</span>
-                        <div class="image-container">
-                            <img src="${p.img}" class="product-img img-fluid">
+        // خوارزمية الرندرة الذكية التي تعالج مشاكل الصور تلقائياً
+        function renderMatrix(data) {
+            const grid = document.getElementById('matrixGrid');
+            grid.innerHTML = data.map(p => `
+                <div class="col-md-4">
+                    <div class="beast-card p-3 h-100">
+                        <div class="img-engine">
+                            <img src="${p.img}" class="product-img img-fluid" onerror="this.src='${SMART_ASSETS.fallback}'">
                         </div>
-                        <div class="stars my-2">⭐⭐⭐⭐⭐</div>
-                        <h6 class="fw-bold">${p.name}</h6>
-                        <p class="text-info small mb-1">${p.spec}</p>
-                        <h4 style="color: var(--glitch-gold)">${p.price} DH</h4>
-                        <a href="https://wa.me/212632997956?text=أريد طلب ${p.name}" class="btn btn-order w-100 mt-3">اطلب الآن</a>
+                        <div class="text-center mt-3">
+                            <div style="color:var(--gold); font-size: 12px;">⭐⭐⭐⭐⭐</div>
+                            <h6 class="fw-bold my-2">${p.name}</h6>
+                            <p class="text-info extra-small" style="font-size: 10px;">${p.desc}</p>
+                            <h4 class="fw-bold" style="color: var(--gold)">${p.price} DH</h4>
+                            <a href="https://wa.me/212632997956?text=أريد حجز ${p.name}" class="btn btn-outline-warning btn-sm w-100 mt-3">حجز عبر النبض العصبي</a>
+                        </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        function analyzeRequest() {
-            const input = document.getElementById('userInput').value.toLowerCase();
-            const log = document.getElementById('aiLogic');
+        // خوارزمية التحليل اللغوي الذكي
+        function smartSearch() {
+            const val = document.getElementById('userInput').value.toLowerCase();
+            const log = document.getElementById('aiLog');
             
-            if(input.includes('تصوير') || input.includes('كاميرا')) {
-                log.innerText = "💡 ذكاء اصطناعي: للصور الاحترافية، Redmi Note 13 Pro+ هو خيارك الأول بـ 200 ميجابكسل!";
-                renderProducts(1);
-            } else if(input.includes('2000') || input.includes('رخيص')) {
-                log.innerText = "💡 ذكاء اصطناعي: ميزانية اقتصادية؟ Redmi Note 13 العادي هو البطل!";
-                renderProducts(3);
-            } else {
-                log.innerText = "📡 جاري المسح... تم العثور على أفضل الهواتف المتوفرة في طنجة حالياً.";
-                renderProducts();
-            }
+            log.innerHTML = "<span class='text-info'>جاري تحليل الترددات المالية...</span>";
+            
+            setTimeout(() => {
+                let filtered = inventory;
+                if(val.includes('تصوير') || val.includes('200')) {
+                    filtered = inventory.filter(p => p.price > 3000);
+                    log.innerText = "💡 نتيجة التحليل: Redmi Note 13 Pro+ هو خيارك الأقوى للتصوير الاحترافي.";
+                } else if(val.includes('رخيص') || val.includes('2000')) {
+                    filtered = inventory.filter(p => p.price < 2500);
+                    log.innerText = "💡 نتيجة التحليل: Redmi Note 13 يوفر لك أفضل أداء بأقل ثمن.";
+                } else {
+                    log.innerText = "📡 تم مسح المصفوفة.. إليك أفضل العروض المتاحة حالياً.";
+                }
+                renderMatrix(filtered);
+            }, 800);
         }
 
-        renderProducts();
+        // الإطلاق الأول
+        window.onload = () => renderMatrix(inventory);
     </script>
 </body>
 </html>
