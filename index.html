@@ -10,126 +10,116 @@
         :root { --gold: #ffcc00; --cyan: #00f2ff; --void: #000205; --neon-red: #ff0044; }
         body { background: var(--void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
 
-        /* شريط التحكم السيادي (Neural Navbar) */
+        /* شريط التحكم السيادي */
         .neural-nav {
             background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--cyan); padding: 15px; position: fixed;
             top: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-around;
         }
-        .nav-icon { font-size: 1.5rem; color: var(--cyan); cursor: pointer; transition: 0.3s; }
-        .nav-icon:hover { color: var(--gold); transform: scale(1.2) rotate(10deg); filter: drop-shadow(0 0 10px var(--gold)); }
+        .nav-icon { font-size: 1.5rem; color: var(--cyan); cursor: pointer; transition: 0.3s; position: relative; }
+        .nav-icon:hover { color: var(--gold); transform: scale(1.2); filter: drop-shadow(0 0 10px var(--gold)); }
 
-        /* بوابة الدفع الكونية (Quantum Payment) */
-        .payment-gate {
-            background: linear-gradient(145deg, #050505, #111); border: 1px solid var(--gold);
-            border-radius: 30px; padding: 25px; margin-top: 100px; position: relative; overflow: hidden;
+        /* نافذة منبثقة (Overlay Pages) */
+        .neural-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            backdrop-filter: blur(20px); border: 2px solid var(--gold); margin: 20px; border-radius: 40px;
         }
-        .pay-btn { background: var(--neon-red); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 900; box-shadow: 0 0 30px var(--neon-red); transition: 0.4s; }
-        .pay-btn:hover { background: #fff; color: #000; box-shadow: 0 0 60px var(--neon-red); transform: scale(1.1); }
 
-        /* مصفوفة الإعدادات السريعة */
-        .settings-panel { position: fixed; bottom: 20px; left: 20px; z-index: 1001; }
-        .fab-main { width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.5rem; box-shadow: 0 0 20px var(--gold); cursor: pointer; }
+        /* زر الصاعقة النابض */
+        .fab-main { 
+            position: fixed; bottom: 30px; left: 30px; width: 70px; height: 70px; 
+            background: var(--gold); border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; color: #000; font-size: 1.8rem; z-index: 1001;
+            box-shadow: 0 0 30px var(--gold); cursor: pointer; animation: heartbeat 2s infinite;
+        }
+        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 60px var(--gold); } 100% { transform: scale(1); } }
 
-        /* بطاقات المنتجات المحدثة */
-        .tech-card { background: rgba(255,255,255,0.02); border: 1px solid #222; border-radius: 35px; padding: 20px; transition: 0.5s; }
-        .tech-card:hover { border-color: var(--cyan); box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); }
+        /* بوابة الدفع */
+        .payment-gate {
+            background: linear-gradient(145deg, #050505, #111); border: 2px solid var(--gold);
+            border-radius: 30px; padding: 40px; margin-top: 100px; box-shadow: 0 0 50px rgba(255, 204, 0, 0.1);
+        }
+        .pay-btn { background: var(--neon-red); color: white; border: none; padding: 18px 50px; border-radius: 50px; font-weight: 900; box-shadow: 0 0 30px var(--neon-red); transition: 0.4s; }
     </style>
 </head>
 <body>
 
     <div class="neural-nav">
-        <i class="fas fa-user-circle nav-icon" title="الملف الشخصي"></i>
-        <i class="fas fa-sync-alt nav-icon" title="تحميل الجديد" onclick="location.reload()"></i>
-        <i class="fas fa-shopping-cart nav-icon" title="السلة"></i>
-        <i class="fas fa-cog nav-icon" title="الإعدادات"></i>
+        <i class="fas fa-user-circle nav-icon" onclick="openPage('profile')"></i>
+        <i class="fas fa-sync-alt nav-icon" onclick="syncSystem()"></i>
+        <i class="fas fa-shopping-cart nav-icon" onclick="openPage('cart')"></i>
+        <i class="fas fa-cog nav-icon" onclick="openPage('settings')"></i>
     </div>
 
-    <div class="container" style="margin-top: 120px;">
-        <div class="payment-gate text-center mb-5">
-            <h2 style="color: var(--gold);">بوابة الدفع العصبية | NEURAL PAY</h2>
-            <p class="small text-info">تشفير كوانتوم 256-بت مفعل</p>
-            <div class="d-flex justify-content-center gap-3 my-4">
-                <i class="fab fa-cc-visa fa-3x"></i>
-                <i class="fab fa-cc-mastercard fa-3x"></i>
-                <i class="fab fa-bitcoin fa-3x text-warning"></i>
-            </div>
-            <button class="pay-btn">إتمام الدفع الكوني</button>
-        </div>
+    <div id="profile" class="neural-overlay">
+        <h1 style="color:var(--gold)">الملف الشخصي السيادي</h1>
+        <p>الرصيد الرقمي: 50,000 DH</p>
+        <button class="btn btn-outline-light" onclick="closePages()">إغلاق</button>
+    </div>
 
-        <h3 class="mb-4 text-cyan">📱 مخزن الشركات العالمية</h3>
+    <div id="settings" class="neural-overlay">
+        <h1 style="color:var(--cyan)">إعدادات النواة</h1>
+        <p>تشفير الكوانتوم: مفعل ✅</p>
+        <button class="btn btn-outline-light" onclick="closePages()">إغلاق</button>
+    </div>
+
+    <div class="container text-center" style="margin-top: 130px;">
+        <div class="payment-gate mb-5">
+            <h2 style="color: var(--gold); letter-spacing: 5px;">NEURAL PAY | بوابة الدفع</h2>
+            <div class="d-flex justify-content-center gap-4 my-4">
+                <i class="fab fa-bitcoin fa-3x text-warning"></i>
+                <i class="fab fa-cc-visa fa-3x"></i>
+            </div>
+            <button class="pay-btn" onclick="processPayment()">إتمام الدفع الكوني</button>
+        </div>
+        
+        <h3 class="mb-4 text-info">📱 مخزن الشركات العالمية</h3>
         <div class="row g-4" id="matrix"></div>
     </div>
 
-    <div class="settings-panel">
-        <div class="fab-main"><i class="fas fa-bolt"></i></div>
-    </div>
+    <div class="fab-main" onclick="triggerCore()"><i class="fas fa-bolt"></i></div>
 
     <script>
+        // محرك التشغيل
+        function openPage(id) {
+            closePages();
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closePages() {
+            document.querySelectorAll('.neural-overlay').forEach(p => p.style.display = 'none');
+        }
+
+        function syncSystem() {
+            alert("جاري تحميل كل ماهو جديد من خوادم طنجة العالمية...");
+            location.reload();
+        }
+
+        function processPayment() {
+            let val = prompt("أدخل المبلغ المراد شحنه في محفظتك:");
+            if(val) alert("تم تشفير العملية بقوة 256-بت. المبلغ المضاف: " + val + " DH");
+        }
+
+        function triggerCore() {
+            alert("نظام القوة الخالدة: المحرك يعمل بكفاءة 100%. كل الأيقونات مفعلة.");
+        }
+
         const products = [
-            { name: "Redmi Note 13 Pro+", price: "4200 DH", brand: "XIAOMI" },
-            { name: "S24 Ultra AI", price: "11500 DH", brand: "SAMSUNG" },
-            { name: "iPhone 15 Pro", price: "10500 DH", brand: "APPLE" }
+            { name: "+Redmi Note 13 Pro", price: "4200 DH", brand: "XIAOMI" },
+            { name: "S24 Ultra AI", price: "11500 DH", brand: "SAMSUNG" }
         ];
 
         document.getElementById('matrix').innerHTML = products.map(p => `
-            <div class="col-md-4">
-                <div class="tech-card text-center">
+            <div class="col-md-6">
+                <div class="p-4 border border-secondary rounded-5 bg-dark">
                     <span class="badge bg-info mb-3">${p.brand}</span>
-                    <h3 class="fw-bold text-white mb-3">${p.name}</h3>
-                    <h2 class="fw-bold mb-4" style="color:var(--gold)">${p.price}</h2>
-                    <button class="btn btn-outline-info w-100 rounded-pill mb-2">إضافة للسلة</button>
-                    <button class="btn btn-warning w-100 rounded-pill fw-bold">شراء فوري</button>
+                    <h3 class="fw-bold">${p.name}</h3>
+                    <h2 class="text-warning">${p.price}</h2>
+                    <button class="btn btn-gold w-100 mt-3" style="background:var(--gold); font-weight:bold;">شراء فوري</button>
                 </div>
             </div>
         `).join('');
     </script>
-<script>
-    // وظيفة "نبض الأيقونات" - تجعل كل زر يؤدي مهمة
-    function activatePulse() {
-        // أيقونة الملف الشخصي
-        document.querySelector('.fa-user-circle').onclick = () => alert('جاري الاتصال بقاعدة بيانات المستخدم السيادية...');
-        
-        // أيقونة الإعدادات
-        document.querySelector('.fa-cog').onclick = () => {
-            const theme = confirm('هل تريد تفعيل وضع "الخلاء المظلم" (Void Mode)؟');
-            if(theme) document.body.style.filter = 'contrast(1.2) brightness(0.8)';
-        };
-
-        // أيقونة السلة
-        document.querySelector('.fa-shopping-cart').onclick = () => alert('سلة المشتريات فارغة.. بانتظار أوامر الشراء الكونية.');
-
-        // زر الصاعقة (القلب النابض)
-        document.querySelector('.fab-main').onclick = () => {
-            document.body.insertAdjacentHTML('afterbegin', '<div id="pulse-effect" style="position:fixed; inset:0; border:5px solid var(--gold); z-index:9999; pointer-events:none; animation: pulse-border 0.5s"></div>');
-            setTimeout(() => document.getElementById('pulse-effect').remove(), 500);
-            alert('نظام القوة الخالدة: الحالة مستقرة 100%');
-        };
-
-        // تفعيل أزرار الدفع
-        document.querySelector('.pay-btn').onclick = () => {
-            let amount = prompt('أدخل قيمة الشحن بالدرهم (DH):');
-            if(amount) alert('جاري تشفير عملية دفع بقيمة ' + amount + ' DH عبر بروتوكول Quantum Pay');
-        };
-    }
-
-    // تشغيل النبض فور تحميل الصفحة
-    window.onload = activatePulse;
-</script>
-
-<style>
-    /* تأثير بصري لنبض القلب البرمجي */
-    @keyframes pulse-border {
-        0% { opacity: 1; transform: scale(1); }
-        100% { opacity: 0; transform: scale(1.1); }
-    }
-    
-    /* جعل الأيقونات تبدو حية */
-    .nav-icon, .fab-main, .pay-btn {
-        cursor: pointer;
-        user-select: none;
-    }
-    .nav-icon:active { transform: scale(0.8); color: var(--gold); }
-</style>
 </body>
 </html>
