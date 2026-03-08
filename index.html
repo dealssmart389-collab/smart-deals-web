@@ -49,59 +49,52 @@
         </section>
 
     <script>
-        // مصفوفة ذكاء المتجر (قاعدة بيانات العروض)
-const storeData = {
-    "هاتف": "لدينا خصم 30% على هواتف سامسونج وApple اليوم! هل تود رؤية المواصفات؟",
-    "ساعة": "الساعات الذكية تبدأ من 50$ فقط. موديلات 2026 متوفرة الآن.",
-    "خصم": "أنت في المكان الصحيح! استخدم كود SMART_AI للحصول على خصم إضافي.",
-    "توصيل": "التوصيل مجاني لجميع الطلبات فوق 200$.",
-    "مساعدة": "أنا هنا لمساعدتك، هل تبحث عن منتج معين أم تود الاستفسار عن عرض؟"
+     // 🧠 Smart Deals AI Core V2.0 - Developed for Gemini Integration
+window.onload = () => {
+    const chat = document.getElementById('ai-chat');
+    
+    // 🎨 نظام بناء الفقاعات التفاعلية
+    const createBubble = (text, type = 'ai') => {
+        const div = document.createElement('div');
+        div.className = type === 'ai' 
+            ? "bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 p-4 rounded-2xl rounded-tr-none ml-8 shadow-2xl border border-yellow-300/50 animate-bounce-in"
+            : "bg-gray-800 p-3 rounded-2xl rounded-tl-none mr-8 text-white self-end";
+        
+        div.innerHTML = `
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[10px] font-black uppercase tracking-widest text-black/70">Smart Deals AI</span>
+                <div class="h-1 w-1 bg-black rounded-full animate-pulse"></div>
+            </div>
+            <p class="font-bold text-sm text-black">${text}</p>
+        `;
+        return div;
+    };
+
+    // 🚀 تسلسل الترحيب الذكي
+    setTimeout(() => {
+        chat.appendChild(createBubble("🌟 أهلاً بك في عصر التسوق الذكي!"));
+        chat.scrollTop = chat.scrollHeight;
+        
+        setTimeout(() => {
+            chat.appendChild(createBubble("أنا مساعدك Gemini، قمت بتحليل أفضل العروض لك اليوم في المغرب 🇲🇦. هل تبحث عن هاتف جديد؟"));
+            chat.scrollTop = chat.scrollHeight;
+            
+            // إضافة أزرار تفاعلية سريعة
+            const actions = document.createElement('div');
+            actions.className = "flex gap-2 ml-8 mt-2 overflow-x-auto pb-2";
+            actions.innerHTML = `
+                <button onclick="askAI('أريد عروض الهواتف')" class="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs whitespace-nowrap">📱 عروض الهواتف</button>
+                <button onclick="askAI('كيف أحصل على خصم؟')" class="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs whitespace-nowrap">💰 طلب خصم</button>
+            `;
+            chat.appendChild(actions);
+        }, 1500);
+    }, 1000);
 };
 
-function askGemini() {
-    const inputField = document.getElementById('user-input');
-    const chatContainer = document.getElementById('ai-chat');
-    const userText = inputField.value.trim();
-
-    if (userText === "") return;
-
-    // إضافة رسالة الزبون للواجهة
-    chatContainer.innerHTML += `
-        <div class="flex justify-start mb-4">
-            <div class="bg-white/10 p-4 rounded-2xl rounded-bl-none max-w-[80%] text-sm">
-                ${userText}
-            </div>
-        </div>
-    `;
-
-    // محاكاة "تفكير" Gemini
-    inputField.value = "";
-    chatContainer.innerHTML += `<div id="typing" class="text-[10px] text-blue-400 animate-pulse italic">جاري تحليل طلبك...</div>`;
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-
-    setTimeout(() => {
-        document.getElementById('typing').remove();
-        let aiResponse = "أنا أفهمك تماماً.. دعني أبحث لك عن أفضل خيار يناسب طلبك.";
-
-        // البحث في قاعدة البيانات الذكية
-        for (let key in storeData) {
-            if (userText.includes(key)) {
-                aiResponse = storeData[key];
-                break;
-            }
-        }
-
-        // إضافة رد الذكاء الاصطناعي
-        chatContainer.innerHTML += `
-            <div class="flex justify-end mb-4">
-                <div class="bg-blue-600/20 border border-blue-500/30 p-4 rounded-2xl rounded-br-none max-w-[80%] text-sm text-blue-100">
-                    <span class="block text-[10px] font-bold text-blue-400 mb-1">GEMINI AI:</span>
-                    ${aiResponse}
-                </div>
-            </div>
-        `;
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }, 1500);
+// ⚡ دالة التفاعل المباشر
+function askAI(query) {
+    console.log("Gemini Thinking about: " + query);
+    // هنا يتم ربط الـ API الخاص بـ Gemini لاحقاً
 }
     </script>
 </body>
