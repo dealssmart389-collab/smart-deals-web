@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART DEALS AI | THE GIANT AWAKENS</title>
+    <title>SMART DEALS AI | THE FINAL BEAST</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --neon-gold: #ffcc00; --cyber-blue: #00f2ff; --dark-void: #050505; }
         body { background: var(--dark-void); color: #fff; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
         
-        /* تأثير الشبكة الكونية المتحركة */
+        /* الخلفية الكونية */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(255, 204, 0, 0.05) 1px, transparent 1px),
@@ -25,15 +25,15 @@
             clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
         }
 
-        /* واجهة الاتصال العصبية Gemini */
+        /* واجهة Gemini العصبية */
         .gemini-core {
             border: 1px solid var(--cyber-blue); background: rgba(0, 242, 255, 0.05);
             border-radius: 0 30px 0 30px; padding: 25px; margin: 20px 0;
-            backdrop-filter: blur(10px); position: relative;
+            backdrop-filter: blur(10px); position: relative; border-left: 5px solid var(--cyber-blue);
         }
-        .gemini-core::after { content: "CORE_v6.1_ACTIVE"; position: absolute; top: 5px; right: 15px; font-size: 8px; color: var(--cyber-blue); }
+        .gemini-core::after { content: "NEURAL_LINK_v6.1_GOLD"; position: absolute; top: 5px; right: 15px; font-size: 8px; color: var(--cyber-blue); }
 
-        /* نبض الحياة في المنتجات */
+        /* كروت المنتجات */
         .scifi-card {
             background: rgba(15, 15, 15, 0.95); border: 1px solid #333; transition: 0.4s;
             clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
@@ -41,43 +41,50 @@
         .scifi-card:hover { border-color: var(--neon-gold); box-shadow: 0 0 30px var(--neon-gold); transform: translateY(-10px); }
         
         .product-img {
-            filter: drop-shadow(0 0 8px var(--cyber-blue));
+            filter: drop-shadow(0 0 10px var(--cyber-blue));
             animation: pulse 2.5s infinite ease-in-out;
+            height: 150px; object-fit: contain;
         }
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.05); opacity: 1; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
+        /* نظام التقييم الذهبي */
+        .stars { color: var(--neon-gold); font-size: 14px; margin-bottom: 10px; text-shadow: 0 0 5px var(--neon-gold); }
+        
         .btn-execute {
             background: var(--neon-gold); color: #000; font-weight: bold;
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); border: none;
         }
+        .social-proof { font-size: 10px; color: #aaa; font-style: italic; margin-top: 5px; }
     </style>
 </head>
 <body>
 
     <div class="scifi-header text-center">
         <h1 class="fw-bold" style="color: var(--neon-gold); text-shadow: 0 0 10px var(--neon-gold);">SMART DEALS AI</h1>
-        <p class="small text-uppercase" style="letter-spacing: 3px;">The World's Most Powerful Commercial Engine</p>
+        <p class="small text-uppercase" style="letter-spacing: 3px;">System Status: Optimized | Version: 6.1 GOLD</p>
     </div>
 
     <div class="container">
         <div class="gemini-core shadow-lg">
-            <h4 class="text-info">📡 واجهة Gemini العصبية</h4>
-            <p id="aiResponse" class="small">"شريكي، أخبرني بميزانيتك وسأقوم بصنع عرض مستحيل لك الآن!"</p>
+            <h4 class="text-info">📡 Gemini Neural Core</h4>
+            <p id="aiResponse" class="small">"أدخل ميزانيتك يا شريكي.. سأقوم بفتح المصفوفة التجارية لأجلك الآن."</p>
             <div class="input-group mt-3">
-                <input type="text" id="aiInput" class="form-control bg-dark text-white border-info" placeholder="أدخل ميزانيتك هنا...">
+                <input type="text" id="aiInput" class="form-control bg-dark text-white border-info" placeholder="مثال: هاتف بـ 3000...">
                 <button class="btn btn-execute px-4" onclick="activateLogic()">EXECUTE</button>
             </div>
         </div>
 
-        <h3 class="mb-4 text-warning" style="border-right: 4px solid var(--neon-gold); padding-right: 15px;">المصفوفة التجارية الحية</h3>
-        <div id="matrix" class="row g-4 mb-5"></div>
+        <h3 class="mb-4 text-warning" style="border-right: 4px solid var(--neon-gold); padding-right: 15px;">المصفوفة التجارية الحية (Matrix)</h3>
+        <div id="matrix" class="row g-4 mb-5">
+            </div>
     </div>
 
     <script>
+        // قاعدة البيانات المتكاملة (الترسنة)
         const products = [
-            { id: 101, name: "Xiaomi Redmi Note 13", price: "2100 DH", img: "https://p-ma.expertreviews.co.uk/sites/expertreviews/files/2024/02/xiaomi_redmi_note_13_pro_5g_review_0.jpg" },
-            { id: 102, name: "Smart Watch Ultra", price: "450 DH", img: "https://m.media-amazon.com/images/I/71u9S+7D8PL._AC_SL1500_.jpg" },
-            { id: 103, name: "AirPods Pro 2", price: "300 DH", img: "https://m.media-amazon.com/images/I/61SUj2W5yXL._AC_SL1500_.jpg" }
+            { id: "RM13-P-P", name: "Redmi Note 13 Pro+ 5G", price: "4200 DH", img: "https://i02.appmifile.com/832_operator_sg/12/01/2024/7697486f05963f2a8757041595186f91.png", review: "سعد من طنجة: خيالي!" },
+            { id: "RM13-P", name: "Redmi Note 13 Pro", price: "3100 DH", img: "https://i02.appmifile.com/832_operator_sg/12/01/2024/f05963f2a8757041595186f917697486.png", review: "فاطمة: كاميرا واعرة بزااف" },
+            { id: "RM13-B", name: "Redmi Note 13", price: "2100 DH", img: "https://i02.appmifile.com/832_operator_sg/12/01/2024/95186f917697486f05963f2a87570415.png", review: "ياسين: أنيق واقتصادي" }
         ];
 
         function initGiant() {
@@ -85,10 +92,12 @@
             grid.innerHTML = products.map(p => `
                 <div class="col-6 col-md-4">
                     <div class="card scifi-card p-3 h-100 text-center text-white">
-                        <img src="${p.img}" class="product-img img-fluid mx-auto mb-3" style="height: 120px; object-fit: contain;">
-                        <h6 class="small">${p.name}</h6>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <img src="${p.img}" class="product-img img-fluid mx-auto mb-3">
+                        <h6 class="small fw-bold">${p.name}</h6>
                         <h5 class="text-warning fw-bold">${p.price}</h5>
-                        <a href="https://wa.me/212632997956?text=أريد طلب المنتج ${p.name}" class="btn btn-sm btn-outline-warning w-100 mt-2">اطلب عبر الواتساب</a>
+                        <p class="social-proof">"${p.review}"</p>
+                        <a href="https://wa.me/212632997956?text=أريد طلب ${p.name}" class="btn btn-sm btn-outline-warning w-100 mt-2">طلب عبر واتساب</a>
                     </div>
                 </div>
             `).join('');
@@ -98,10 +107,12 @@
             const val = document.getElementById('aiInput').value;
             const res = document.getElementById('aiResponse');
             res.style.color = "var(--neon-gold)";
-            if(val.includes('2000')) {
-                res.innerHTML = "💡 تحليل: ميزانية ممتازة! أرشح لك Xiaomi Redmi Note 13، هل أجهز لك طلب الخصم؟";
+            if(val.includes('3000')) {
+                res.innerHTML = "💡 تحليل: ميزانية Pro! أرشح لك Redmi Note 13 Pro بكاميرا 200MP. هل أرسل لك رابط الحجز؟";
+            } else if(val.includes('4000')) {
+                res.innerHTML = "🏆 تحليل: أنت تبحث عن القمة! Redmi Note 13 Pro+ هو خيارك الأمثل. شحن في 19 دقيقة فقط.";
             } else {
-                res.innerHTML = "📡 جاري البحث في المصفوفة... تم العثور على صفقات تتوافق مع ترددك المالي.";
+                res.innerHTML = "📡 جاري مسح المصفوفة... تم العثور على صفقات تتوافق مع ترددك المالي في طنجة.";
             }
         }
 
