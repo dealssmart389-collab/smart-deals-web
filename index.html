@@ -3,99 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Deals AI | التطور الفائق</title>
+    <title>Smart Deals | التسوق الذكي</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .ai-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        body { font-family: 'Tajawal', sans-serif; background-color: #0f172a; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .neon-border { border-color: #eab308; box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
     </style>
 </head>
-<body class="bg-[#030712] text-slate-200">
+<body class="p-4 pb-24">
 
-    <nav class="sticky top-0 z-50 glass p-4 flex justify-between items-center mx-4 mt-4 rounded-2xl">
-        <div class="flex items-center gap-2">
-            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span class="text-sm font-bold tracking-widest text-blue-400">GEMINI AI ACTIVE</span>
+    <header class="flex justify-between items-center mb-8 animate-fade-in">
+        <div>
+            <h1 class="text-3xl font-black text-yellow-500 tracking-tighter">SMART DEALS</h1>
+            <p class="text-[10px] text-gray-400 uppercase tracking-[0.2em]">Premium Tech Store</p>
         </div>
-        <div class="text-[10px] opacity-50">ID: 138834 | V 1.1.0</div>
+        <div class="glass p-3 rounded-2xl relative">
+            <i class="fa-solid fa-cart-shopping text-yellow-500"></i>
+            <span class="absolute -top-1 -right-1 bg-red-500 text-[8px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </div>
+    </header>
+
+    <section id="ai-interface" class="glass rounded-3xl p-5 mb-8 neon-border transition-all duration-500">
+        <div id="ai-chat" class="h-40 overflow-y-auto mb-4 space-y-3 text-sm custom-scrollbar">
+            </div>
+        <div class="flex gap-2">
+            <input type="text" id="user-input" placeholder="اسأل Gemini عن عرض اليوم..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-yellow-500">
+            <button onclick="askGemini()" class="bg-yellow-500 text-black px-4 rounded-xl hover:scale-95 transition-transform">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </section>
+
+    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+        <span class="w-2 h-6 bg-yellow-500 rounded-full"></span>
+        عروض حصرية لك
+    </h2>
+    <div id="deals-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        </div>
+
+    <nav class="fixed bottom-6 left-4 right-4 glass rounded-3xl p-4 flex justify-around items-center z-50 shadow-2xl border-t border-white/10">
+        <i class="fa-solid fa-house text-yellow-500 text-xl cursor-pointer"></i>
+        <i class="fa-solid fa-bolt text-gray-500 text-xl cursor-pointer"></i>
+        <i class="fa-solid fa-heart text-gray-500 text-xl cursor-pointer"></i>
+        <i class="fa-solid fa-user text-gray-500 text-xl cursor-pointer"></i>
     </nav>
 
-    <main class="container mx-auto px-6 py-12">
-        <div class="text-center mb-16">
-            <h1 class="text-5xl font-black mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">شريكك الذكي في التسوق</h1>
-            <p class="text-slate-400">تحدث مع Gemini لاكتشاف العروض التي تناسب ميزانيتك</p>
-        </div>
-
-        <div class="glass p-8 rounded-[2rem] max-w-2xl mx-auto ai-glow">
-            <div id="ai-chat" class="h-64 overflow-y-auto mb-6 space-y-4 text-sm scrollbar-hide">
-                <div class="bg-blue-600/20 p-3 rounded-2xl rounded-tr-none ml-12 italic">
-                    مرحباً بك! أنا مساعدك الذكي. كيف يمكنني مساعدتك في العثور على أفضل عرض اليوم؟
-                </div>
-            </div>
-            
-            <div class="relative">
-                <input type="text" id="user-input" placeholder="مثال: أريد هاتفاً بخصم 50%..." 
-                class="w-full bg-black/40 border border-white/10 p-5 rounded-2xl outline-none focus:border-blue-500 transition-all text-right pr-12">
-                <button onclick="askGemini()" class="absolute left-3 top-3 bg-blue-600 p-2 rounded-xl hover:scale-110 transition-transform">
-                    ⚡
-                </button>
-            </div>
-        </div>
-    </main>
-
-    <section class="grid grid-cols-2 gap-4 px-6 pb-24" id="products">
-        </section>
-
     <script>
-     // 🧠 Smart Deals AI Core V2.0 - Developed for Gemini Integration
-window.onload = () => {
-    const chat = document.getElementById('ai-chat');
-    
-    // 🎨 نظام بناء الفقاعات التفاعلية
-    const createBubble = (text, type = 'ai') => {
-        const div = document.createElement('div');
-        div.className = type === 'ai' 
-            ? "bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 p-4 rounded-2xl rounded-tr-none ml-8 shadow-2xl border border-yellow-300/50 animate-bounce-in"
-            : "bg-gray-800 p-3 rounded-2xl rounded-tl-none mr-8 text-white self-end";
-        
-        div.innerHTML = `
-            <div class="flex items-center gap-2 mb-1">
-                <span class="text-[10px] font-black uppercase tracking-widest text-black/70">Smart Deals AI</span>
-                <div class="h-1 w-1 bg-black rounded-full animate-pulse"></div>
-            </div>
-            <p class="font-bold text-sm text-black">${text}</p>
-        `;
-        return div;
-    };
+        // 📦 قاعدة بيانات المنتجات بمعايير عالمية
+        const inventory = [
+            { id: 1, name: "Xiaomi Redmi Note 13", cat: "هواتف", price: "2100 DH", badge: "أفضل قيمة", icon: "📱" },
+            { id: 2, name: "Smart Watch Ultra", cat: "إكسسوارات", price: "450 DH", badge: "وصل حديثاً", icon: "⌚" },
+            { id: 3, name: "AirPods Pro Gen 2", cat: "صوتيات", price: "300 DH", badge: "خصم 30%", icon: "🎧" }
+        ];
 
-    // 🚀 تسلسل الترحيب الذكي
-    setTimeout(() => {
-        chat.appendChild(createBubble("🌟 أهلاً بك في عصر التسوق الذكي!"));
-        chat.scrollTop = chat.scrollHeight;
-        
-        setTimeout(() => {
-            chat.appendChild(createBubble("أنا مساعدك Gemini، قمت بتحليل أفضل العروض لك اليوم في المغرب 🇲🇦. هل تبحث عن هاتف جديد؟"));
-            chat.scrollTop = chat.scrollHeight;
-            
-            // إضافة أزرار تفاعلية سريعة
-            const actions = document.createElement('div');
-            actions.className = "flex gap-2 ml-8 mt-2 overflow-x-auto pb-2";
-            actions.innerHTML = `
-                <button onclick="askAI('أريد عروض الهواتف')" class="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs whitespace-nowrap">📱 عروض الهواتف</button>
-                <button onclick="askAI('كيف أحصل على خصم؟')" class="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs whitespace-nowrap">💰 طلب خصم</button>
-            `;
-            chat.appendChild(actions);
-        }, 1500);
-    }, 1000);
-};
+        // 🧠 محرك العرض (The Rendering Engine)
+        function renderStore() {
+            const grid = document.getElementById('deals-grid');
+            grid.innerHTML = inventory.map(item => `
+                <div class="glass p-4 rounded-3xl border border-white/5 hover:neon-border transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-3xl">${item.icon}</span>
+                        <span class="bg-yellow-500/10 text-yellow-500 text-[10px] font-bold px-2 py-1 rounded-lg border border-yellow-500/20">${item.badge}</span>
+                    </div>
+                    <h3 class="font-bold text-white group-hover:text-yellow-500 transition-colors">${item.name}</h3>
+                    <p class="text-gray-400 text-[10px] mb-3">${item.cat}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-black">${item.price}</span>
+                        <button onclick="orderNow('${item.name}')" class="bg-white/10 p-2 px-4 rounded-xl text-xs font-bold hover:bg-yellow-500 hover:text-black transition-all">طلب سريع</button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-// ⚡ دالة التفاعل المباشر
-function askAI(query) {
-    console.log("Gemini Thinking about: " + query);
-    // هنا يتم ربط الـ API الخاص بـ Gemini لاحقاً
-}
+        // 🤖 منطق ذكاء Gemini الترحيبي
+        window.onload = () => {
+            renderStore();
+            const chat = document.getElementById('ai-chat');
+            setTimeout(() => {
+                chat.innerHTML += `<div class="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-2xl text-yellow-500 animate-pulse">🌟 مرحباً بك في النسخة المطورة من Smart Deals. أنا مساعدك Gemini، كيف أخدمك اليوم؟</div>`;
+            }, 1000);
+        };
+
+        function orderNow(product) {
+            const waLink = `https://wa.me/212XXXXXXXXX?text=${encodeURIComponent('أريد طلب المنتج العالمي: ' + product)}`;
+            window.open(waLink, '_blank');
+        }
     </script>
 </body>
 </html>
