@@ -76,5 +76,46 @@ window.onload = () => {
     setInterval(showLiveNotice, 15000); // إشعار كل 15 ثانية
 };
     </script>
+<div id="power-presentation" class="fixed inset-0 bg-black/95 z-[200] hidden items-center justify-center p-6 backdrop-blur-2xl">
+    <div class="glass-card w-full max-w-sm rounded-[3rem] p-8 text-center ai-glow animate__animated animate__zoomIn">
+        <div class="text-6xl mb-6">🦁</div>
+        <h2 class="text-3xl font-black text-yellow-500 mb-4 tracking-tighter">قوة v6.1 السيادية</h2>
+        
+        <div class="space-y-4 text-right mb-8">
+            <div class="flex items-start gap-3">
+                <span class="text-yellow-500 text-lg">⚡</span>
+                <p class="text-xs text-gray-300">**خوارزمية الفرز اللحظي**: عرض مخصص لميزانيتك في 0.2 ثانية.</p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-yellow-500 text-lg">🧠</span>
+                <p class="text-xs text-gray-300">**ذكاء Gemini التفاعلي**: مساعد يحلل رغباتك ويفاوضك على السعر.</p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-yellow-500 text-lg">🛡️</span>
+                <p class="text-xs text-gray-300">**أمان وتشفير عالمي**: اتصال مباشر وآمن مع الواتساب الرسمي.</p>
+            </div>
+        </div>
+
+        <button onclick="closePower()" class="w-full bg-yellow-500 text-black font-black py-4 rounded-2xl hover:scale-95 transition-all">إغلاق العرض</button>
+    </div>
+</div>
+
+<script>
+    // 🧠 دالة إظهار "عرض القوة"
+    function showPower() {
+        const modal = document.getElementById('power-presentation');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closePower() {
+        const modal = document.getElementById('power-presentation');
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
+
+    // ربط العرض بأيقونة الذكاء الاصطناعي الموجودة في الهيدر
+    document.querySelector('.fa-microchip').parentElement.onclick = showPower;
+</script>
 </body>
 </html>
