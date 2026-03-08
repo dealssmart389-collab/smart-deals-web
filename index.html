@@ -3,120 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE SOVEREIGN SOURCE | نظام القوة الخالدة</title>
+    <title>THE SOVEREIGN SOURCE | القوة الخالدة</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --gold: #ffcc00; --cyan: #00f2ff; --void: #000205; --neon-red: #ff0044; }
         body { background: var(--void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
 
-        /* شريط التحكم السيادي */
-        .neural-nav {
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--cyan); padding: 15px; position: fixed;
-            top: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-around;
-        }
-        .nav-icon { font-size: 1.5rem; color: var(--cyan); cursor: pointer; transition: 0.3s; position: relative; }
-        .nav-icon:hover { color: var(--gold); transform: scale(1.2); filter: drop-shadow(0 0 10px var(--gold)); }
+        /* شريط التحكم العلوي */
+        .neural-nav { background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--cyan); 
+            padding: 15px; position: fixed; top: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-around; }
+        .nav-icon { font-size: 1.5rem; color: var(--cyan); cursor: pointer; transition: 0.3s; }
+        .nav-icon:active { transform: scale(0.8); color: var(--gold); }
 
-        /* نافذة منبثقة (Overlay Pages) */
-        .neural-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            backdrop-filter: blur(20px); border: 2px solid var(--gold); margin: 20px; border-radius: 40px;
-        }
+        /* الصفحات المنبثقة (القلب النابض) */
+        .page-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 2000; 
+            display: none; flex-direction: column; align-items: center; justify-content: center; 
+            padding: 20px; text-align: center; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(1.1); } to { opacity: 1; transform: scale(1); } }
 
         /* زر الصاعقة النابض */
-        .fab-main { 
-            position: fixed; bottom: 30px; left: 30px; width: 70px; height: 70px; 
+        .bolt-btn { position: fixed; bottom: 30px; left: 30px; width: 70px; height: 70px; 
             background: var(--gold); border-radius: 50%; display: flex; align-items: center; 
             justify-content: center; color: #000; font-size: 1.8rem; z-index: 1001;
-            box-shadow: 0 0 30px var(--gold); cursor: pointer; animation: heartbeat 2s infinite;
-        }
-        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 60px var(--gold); } 100% { transform: scale(1); } }
+            box-shadow: 0 0 30px var(--gold); cursor: pointer; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 204, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); } }
 
-        /* بوابة الدفع */
-        .payment-gate {
-            background: linear-gradient(145deg, #050505, #111); border: 2px solid var(--gold);
-            border-radius: 30px; padding: 40px; margin-top: 100px; box-shadow: 0 0 50px rgba(255, 204, 0, 0.1);
-        }
-        .pay-btn { background: var(--neon-red); color: white; border: none; padding: 18px 50px; border-radius: 50px; font-weight: 900; box-shadow: 0 0 30px var(--neon-red); transition: 0.4s; }
+        .close-btn { margin-top: 30px; border-radius: 100px; padding: 10px 40px; }
     </style>
 </head>
 <body>
 
     <div class="neural-nav">
-        <i class="fas fa-user-circle nav-icon" onclick="openPage('profile')"></i>
-        <i class="fas fa-sync-alt nav-icon" onclick="syncSystem()"></i>
-        <i class="fas fa-shopping-cart nav-icon" onclick="openPage('cart')"></i>
-        <i class="fas fa-cog nav-icon" onclick="openPage('settings')"></i>
+        <i class="fas fa-cog nav-icon" onclick="showPage('settings-page')"></i>
+        <i class="fas fa-shopping-cart nav-icon" onclick="showPage('cart-page')"></i>
+        <i class="fas fa-sync-alt nav-icon" onclick="refreshSystem()"></i>
+        <i class="fas fa-user-circle nav-icon" onclick="showPage('profile-page')"></i>
     </div>
 
-    <div id="profile" class="neural-overlay">
-        <h1 style="color:var(--gold)">الملف الشخصي السيادي</h1>
-        <p>الرصيد الرقمي: 50,000 DH</p>
-        <button class="btn btn-outline-light" onclick="closePages()">إغلاق</button>
+    <div id="profile-page" class="page-overlay">
+        <i class="fas fa-user-astronaut fa-5x text-info mb-4"></i>
+        <h2 class="text-info">الملف الشخصي السيادي</h2>
+        <div class="card bg-dark border-info p-4 w-100 mb-3">
+            <p>المعرف الرقمي: #997956</p>
+            <p>الرصيد: <span class="text-warning">85,400 DH</span></p>
+        </div>
+        <button class="btn btn-outline-light close-btn" onclick="hidePages()">خروج</button>
     </div>
 
-    <div id="settings" class="neural-overlay">
-        <h1 style="color:var(--cyan)">إعدادات النواة</h1>
-        <p>تشفير الكوانتوم: مفعل ✅</p>
-        <button class="btn btn-outline-light" onclick="closePages()">إغلاق</button>
+    <div id="cart-page" class="page-overlay">
+        <i class="fas fa-box-open fa-5x text-warning mb-4"></i>
+        <h2>سلة المشتريات الذكية</h2>
+        <p class="text-muted">لا توجد طلبات معلقة في نظامك حالياً.</p>
+        <button class="btn btn-outline-light close-btn" onclick="hidePages()">إغلاق</button>
     </div>
 
-    <div class="container text-center" style="margin-top: 130px;">
-        <div class="payment-gate mb-5">
-            <h2 style="color: var(--gold); letter-spacing: 5px;">NEURAL PAY | بوابة الدفع</h2>
-            <div class="d-flex justify-content-center gap-4 my-4">
-                <i class="fab fa-bitcoin fa-3x text-warning"></i>
-                <i class="fab fa-cc-visa fa-3x"></i>
-            </div>
-            <button class="pay-btn" onclick="processPayment()">إتمام الدفع الكوني</button>
+    <div id="settings-page" class="page-overlay">
+        <i class="fas fa-microchip fa-5x text-success mb-4"></i>
+        <h2>إعدادات النظام</h2>
+        <div class="form-check form-switch text-start">
+            <input class="form-check-input" type="checkbox" checked> <label>تشفير الدفع التلقائي</label><br>
+            <input class="form-check-input" type="checkbox"> <label>إشعارات الأقمار الصناعية</label>
+        </div>
+        <button class="btn btn-outline-light close-btn" onclick="hidePages()">حفظ</button>
+    </div>
+
+    <div class="container text-center" style="margin-top: 120px;">
+        <div class="p-5 border border-warning rounded-5 mb-5" style="background: rgba(255,204,0,0.05);">
+            <h1 class="text-warning">بوابة الدفع العصبية</h1>
+            <button class="btn btn-danger btn-lg rounded-pill px-5 mt-4" onclick="initPay()">إتمام الدفع الكوني</button>
         </div>
         
-        <h3 class="mb-4 text-info">📱 مخزن الشركات العالمية</h3>
-        <div class="row g-4" id="matrix"></div>
+        <h3 class="text-info mb-4">مخزن الشركات العالمية</h3>
+        <div id="products-grid" class="row g-4"></div>
     </div>
 
-    <div class="fab-main" onclick="triggerCore()"><i class="fas fa-bolt"></i></div>
+    <div class="bolt-btn" onclick="triggerCore()"><i class="fas fa-bolt"></i></div>
 
     <script>
-        // محرك التشغيل
-        function openPage(id) {
-            closePages();
-            document.getElementById(id).style.display = 'flex';
-        }
-
-        function closePages() {
-            document.querySelectorAll('.neural-overlay').forEach(p => p.style.display = 'none');
-        }
-
-        function syncSystem() {
-            alert("جاري تحميل كل ماهو جديد من خوادم طنجة العالمية...");
+        function showPage(id) { document.getElementById(id).style.display = 'flex'; }
+        function hidePages() { document.querySelectorAll('.page-overlay').forEach(p => p.style.display = 'none'); }
+        
+        function refreshSystem() {
+            alert("جاري تحميل كل ما هو جديد من خوادم طنجة...");
             location.reload();
         }
 
-        function processPayment() {
-            let val = prompt("أدخل المبلغ المراد شحنه في محفظتك:");
-            if(val) alert("تم تشفير العملية بقوة 256-بت. المبلغ المضاف: " + val + " DH");
+        function initPay() {
+            const amount = prompt("أدخل المبلغ المراد شحنه:");
+            if(amount) alert("تم تشفير عملية الدفع بقيمة " + amount + " DH عبر بروتوكول NEURAL-PAY.");
         }
 
         function triggerCore() {
-            alert("نظام القوة الخالدة: المحرك يعمل بكفاءة 100%. كل الأيقونات مفعلة.");
+            alert("نظام القوة الخالدة: الحالة مستقرة. النبض مفعل 100%.");
         }
 
-        const products = [
-            { name: "+Redmi Note 13 Pro", price: "4200 DH", brand: "XIAOMI" },
+        const data = [
+            { name: "Redmi Note 13 Pro+", price: "4200 DH", brand: "XIAOMI" },
             { name: "S24 Ultra AI", price: "11500 DH", brand: "SAMSUNG" }
         ];
 
-        document.getElementById('matrix').innerHTML = products.map(p => `
+        document.getElementById('products-grid').innerHTML = data.map(p => `
             <div class="col-md-6">
-                <div class="p-4 border border-secondary rounded-5 bg-dark">
-                    <span class="badge bg-info mb-3">${p.brand}</span>
-                    <h3 class="fw-bold">${p.name}</h3>
+                <div class="p-4 bg-dark border border-secondary rounded-5">
+                    <span class="badge bg-primary mb-2">${p.brand}</span>
+                    <h4>${p.name}</h4>
                     <h2 class="text-warning">${p.price}</h2>
-                    <button class="btn btn-gold w-100 mt-3" style="background:var(--gold); font-weight:bold;">شراء فوري</button>
+                    <button class="btn btn-warning w-100 rounded-pill fw-bold" onclick="alert('تمت إضافة ${p.name} للسلة')">شراء فوري</button>
                 </div>
             </div>
         `).join('');
