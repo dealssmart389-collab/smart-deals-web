@@ -1,4 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SOVEREIGN SOURCE | 2100 AI ERA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --hyper-gold: #ffcc00; --neon-cyan: #00f2ff; --deep-void: #000103; }
+        body { background: var(--deep-void); color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
+        .grid-layers { position: fixed; width: 200%; height: 200%; background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px); background-size: 60px 60px; transform: rotateX(60deg) translateY(-50%); z-index: -1; animation: grid-move 20s linear infinite; }
+        @keyframes grid-move { from { transform: rotateX(60deg) translateY(-50%); } to { transform: translateY(0) rotateX(60deg); } }
+        .eternal-card { background: rgba(10,10,10,0.9); border: 1px solid #222; border-radius: 35px; padding: 25px; transition: 0.6s; height: 100%; position: relative; }
+        .eternal-card:hover { border-color: var(--hyper-gold); transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 204, 0, 0.2); }
+        .product-img { max-height: 200px; filter: drop-shadow(0 0 20px var(--neon-cyan)); animation: hover-float 4s infinite ease-in-out; }
+        @keyframes hover-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .btn-eternal { background: var(--hyper-gold); color: #000; font-weight: 900; border-radius: 100px; padding: 15px; border: none; box-shadow: 0 0 30px var(--hyper-gold); width: 100%; transition: 0.4s; }
+        .btn-eternal:hover { transform: scale(1.1); background: #fff; }
+    </style>
+<body>
+    <div class="grid-layers"></div>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-3 fw-bold" style="color: var(--hyper-gold); text-shadow: 0 0 40px var(--hyper-gold);">SMART SOURCE 2100</h1>
+            <p class="lead text-info" style="letter-spacing: 5px;">إمبراطورية الإكسسوارات العالمية - طنجة</p>
+        </header>
+        <div class="row g-4" id="global-matrix"></div>
+    </div>
+    <script>
+        const catalog = [
+            { name: "Redmi Note 13 Pro+", price: "4200 DH", img: "phone.jpg", brand: "XIAOMI" },
+            { name: "S24 Ultra Quantum", price: "11500 DH", img: "https://i.imgur.com/uRk0Zc7.png", brand: "SAMSUNG" },
+            { name: "iPhone 15 Pro Max", price: "10500 DH", img: "https://i.imgur.com/6XzW9vS.png", brand: "APPLE" },
+            { name: "Watch Ultra AI", price: "650 DH", img: "https://i.imgur.com/Wp7u7T3.png", brand: "SMART" },
+            { name: "Neural Buds Pro", price: "450 DH", img: "https://i.imgur.com/vH9v5Z7.png", brand: "AUDIO" },
+            { name: "Plasma Charger 120W", price: "290 DH", img: "https://i.imgur.com/9S5F3l6.png", brand: "POWER" }
+        ];
+
+        document.getElementById('global-matrix').innerHTML = catalog.map(item => `
+            <div class="col-md-4">
+                <div class="eternal-card text-center">
+                    <span class="badge bg-primary mb-3">${item.brand}</span>
+                    <div class="mb-4"><img src="${item.img}" class="product-img img-fluid" onerror="this.src='https://via.placeholder.com/300/000/ffcc00?text=TECH+SOURCE'"></div>
+                    <h3 class="fw-bold mb-3">${item.name}</h3>
+                    <h2 class="fw-bold text-white mb-4">${item.price}</h2>
+                    <a href="https://wa.me/212632997956?text=حجز: ${item.name}" class="btn btn-eternal">إحجز الآن</a>
+                </div>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
+</head>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
