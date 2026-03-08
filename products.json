@@ -1,38 +1,29 @@
 [
   {
-    "id": "RM13-ULTRA",
+    "id": "RM13-PRO-PLUS",
     "name": "Redmi Note 13 Pro+ 5G",
     "price": "4200 DH",
-    "tag": "الوحش الأسطوري 🏆",
-    "description": "هذا ماشي غير هاتف، هذا غول! كاميرا 200MP كتصور حتى النملة، وشحن 120W كيعمر في 19 دقيقة. ضد الماء والغبار (IP68) يعني ديرو في جيبك وكون هاني.",
-    "specs": ["200MP OIS Camera", "120W HyperCharge", "Curved AMOLED 1.5K"],
-    "image": "https://i01.appmifile.com/v1/MI_18455B3E4DA70622637B865671383F05/pms_1695111166.57761146.png"
+    "tag": "العملاق الأسطوري 🏆",
+    "description": "أقوى ما كاين في السوق: كاميرا 200MP وشحن خارق 120W كيعمر في 19 دقيقة. شاشة منحنية وتصميم من المستقبل.",
+    "specs": ["200MP OIS Camera", "120W HyperCharge", "IP68 Resistance"],
+    "image": "https://i02.appmifile.com/832_operator_sg/12/01/2024/7697486f05963f2a8757041595186f91.png"
   },
   {
     "id": "RM13-PRO",
     "name": "Redmi Note 13 Pro",
     "price": "3100 DH",
-    "tag": "بطل الفئة المتوسطة 🔥",
-    "description": "أفضل قيمة مقابل الثمن في المغرب. كاميرا 200MP وشاشة AMOLED خيالية بـ 120Hz. مثالي للألعاب والتصوير الاحترافي.",
-    "specs": ["200MP Ultra-Clear", "67W Turbo Charge", "Helio G99-Ultra"],
-    "image": "https://i01.appmifile.com/v1/MI_18455B3E4DA70622637B865671383F05/pms_1695280205.10185994.png"
+    "tag": "بطل الأداء 🔥",
+    "description": "توازن مثالي بين الثمن والمواصفات. كاميرا 200MP لتصوير احترافي وشاشة AMOLED بـ 120Hz كتسحر العين.",
+    "specs": ["200MP Camera", "67W Turbo Charge", "AMOLED 120Hz"],
+    "image": "https://i02.appmifile.com/832_operator_sg/12/01/2024/f05963f2a8757041595186f917697486.png"
   },
   {
-    "id": "RM13-BASE",
+    "id": "RM13-4G",
     "name": "Redmi Note 13",
     "price": "2100 DH",
     "tag": "الأناقة والاقتصاد ✨",
-    "description": "خفيف، رقيق، وشاشتو كتحمق. 108MP كتخلي تصاورك واعرين في إنستغرام. هاتف كلاسيكي لكل يوم.",
-    "specs": ["108MP Triple Camera", "33W Fast Charge", "AMOLED 120Hz"],
-    "image": "https://i01.appmifile.com/v1/MI_18455B3E4DA70622637B865671383F05/pms_1695280211.52837453.png"
-  },
-  {
-    "id": "WATCH-U",
-    "name": "Xiaomi Watch 2 Pro",
-    "price": "2400 DH",
-    "tag": "قمر القيادة في يدك ⌚",
-    "description": "ساعة ذكية بنظام Google Wear OS. أنيقة بزاف وكتعاونك في السبور وفي الخدمة. شريكة الـ Redmi Note 13 ديالك.",
-    "specs": ["Snapdragon W5+ Gen 1", "AMOLED 1.43\"", "L1+L5 Dual-Band GPS"],
-    "image": "https://i01.appmifile.com/v1/MI_18455B3E4DA70622637B865671383F05/pms_1695290354.55248873.png"
+    "description": "هاتف خفيف وأنيق بزاف. كاميرا 108MP كتصور كلشي بوضوح، وشاشة رائعة لكل يوم.",
+    "specs": ["108MP Triple Camera", "33W Fast Charge", "AMOLED Display"],
+    "image": "https://i02.appmifile.com/832_operator_sg/12/01/2024/95186f917697486f05963f2a87570415.png"
   }
 ]
