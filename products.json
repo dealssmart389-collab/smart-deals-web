@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Xiaomi Redmi Note 13",
+    "price": "2100 DH",
+    "category": "هواتف",
+    "status": "الأكثر طلباً",
+    "image": "https://p-ma.expertreviews.co.uk/sites/expertreviews/files/2024/02/xiaomi_redmi_note_13_pro_5g_review_0.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch Ultra",
+    "price": "450 DH",
+    "category": "ساعات",
+    "status": "خصم حصري",
+    "image": "https://m.media-amazon.com/images/I/71u9S+7D8PL._AC_SL1500_.jpg"
+  },
+  {
+    "id": 3,
+    "name": "AirPods Pro 2",
+    "price": "300 DH",
+    "category": "صوتيات",
+    "status": "هدية مجانية",
+    "image": "https://m.media-amazon.com/images/I/61SUj2W5yXL._AC_SL1500_.jpg"
+  }
+]
