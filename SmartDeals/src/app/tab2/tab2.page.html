@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title style="text-align: right;">سلة المشتريات الذكية</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list style="padding: 10px;">
+    <ion-item-sliding>
+      <ion-item lines="full">
+        <ion-thumbnail slot="start">
+          <img src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </ion-thumbnail>
+        <ion-label style="text-align: right;">
+          <h2>Galaxy S24 Ultra</h2>
+          <p>السعر: 9,999 DH</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">حذف</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div style="margin: 20px; padding: 20px; border-radius: 15px; background: #f4f4f4;">
+    <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2em;">
+      <span>9,999 DH</span>
+      <span>المجموع الإجمالي:</span>
+    </div>
+    <ion-button expand="block" color="success" style="margin-top: 20px; font-weight: bold;">
+      تأكيد الطلب عبر WhatsApp
+    </ion-button>
+  </div>
+</ion-content>

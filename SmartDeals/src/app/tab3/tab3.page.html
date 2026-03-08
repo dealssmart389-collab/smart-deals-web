@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title style="text-align: right;">إعدادات السيادة</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div style="text-align: center; margin-top: 20px;">
+    <ion-avatar style="margin: 0 auto; width: 100px; height: 100px; border: 3px solid #000;">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+    <h2 style="font-weight: bold;">Mounir Benalal</h2>
+    <p color="medium">مطور تطبيقات - المغرب</p>
+  </div>
+
+  <ion-list lines="inset" style="margin-top: 30px; border-radius: 15px;">
+    <ion-item button>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label style="text-align: right;">تعديل الملف الشخصي</ion-label>
+    </ion-item>
+    <ion-item button>
+      <ion-icon name="notifications-outline" slot="start"></ion-icon>
+      <ion-label style="text-align: right;">تنبيهات العروض</ion-label>
+    </ion-item>
+    <ion-item button color="danger">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      <ion-label style="text-align: right;">تسجيل الخروج</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
