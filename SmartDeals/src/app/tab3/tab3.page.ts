@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule, AlertController, ToastController } from '@ionic/angular';
+import { IonicModule, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -9,36 +9,28 @@ import { IonicModule, AlertController, ToastController } from '@ionic/angular';
   imports: [IonicModule]
 })
 export class Tab3Page implements OnInit {
-  quantumLevel: number = 99.99;
-
-  constructor(
-    private alertCtrl: AlertController,
-    private toastCtrl: ToastController
-  ) {}
+  systemUptime: string = '00:00:00';
+  
+  constructor(private alertCtrl: AlertController) {}
 
   ngOnInit() {
-    this.activateNeuralPath();
+    this.startSystemClock();
   }
 
-  async activateNeuralPath() {
-    const toast = await this.toastCtrl.create({
-      message: '⚡ تم تفعيل المسار العصبي للقائد منير بن علال',
-      duration: 3000,
-      color: 'dark',
-      position: 'bottom'
-    });
-    toast.present();
+  // خوارزمية حساب زمن السيادة
+  startSystemClock() {
+    setInterval(() => {
+      const now = new Date();
+      this.systemUptime = now.toLocaleTimeString();
+    }, 1000);
   }
 
-  async executeCommand(title: string) {
+  async launchProtocol(protocolName: string) {
     const alert = await this.alertCtrl.create({
-      header: '☣️ خوارزمية القيادة السيادية',
-      subHeader: title,
-      message: `تحليل المصفوفة: مستقر | الكفاءة: ${this.quantumLevel}%`,
-      cssClass: 'quantum-alert',
-      buttons: ['تأكيد السيادة']
+      header: '☣️ بروتوكول السيادة 2100',
+      message: `تم تفعيل نظام: ${protocolName} بنجاح كلي.`,
+      buttons: ['إدراك']
     });
     await alert.present();
   }
 }
-
