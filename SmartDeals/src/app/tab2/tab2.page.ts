@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -9,5 +9,14 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule]
 })
 export class Tab2Page {
-  constructor() {}
+  constructor(private alertController: AlertController) {}
+
+  async confirmPayment() {
+    const alert = await this.alertController.create({
+      header: 'تأكيد العملية الكونية',
+      message: 'تم تفعيل نظام Visa لعام 2100 بنجاح!',
+      buttons: ['إغلاق']
+    });
+    await alert.present();
+  }
 }

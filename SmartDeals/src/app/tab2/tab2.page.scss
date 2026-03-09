@@ -1,0 +1,7 @@
+ion-icon {
+  transition: transform 0.3s ease;
+}
+ion-icon:active {
+  transform: scale(1.5);
+  color: #00e5ff; /* لون كوني عند اللمس */
+}
