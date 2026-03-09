@@ -12,28 +12,30 @@ import { FormsModule } from '@angular/forms';
 })
 export class Tab1Page {
   searchQuery: string = '';
-  analysisResult: any = null;
+  radarActive: boolean = false;
+  foundItems: any[] = [];
 
   constructor(private loadingCtrl: LoadingController) {}
 
-  async startQuantumAnalysis() {
+  async activateRadar() {
+    if (!this.searchQuery) return;
+    
+    this.radarActive = true;
     const loading = await this.loadingCtrl.create({
-      message: 'جاري مسح قواعد البيانات العالمية...',
-      spinner: 'circles',
-      duration: 2000
+      message: '📡 جاري اختراق قواعد بيانات التجارة العالمية...',
+      spinner: 'bubbles',
+      duration: 1500
     });
     await loading.present();
 
-    // خوارزمية البحث الذكي (محاكاة علم 2100)
+    // محاكاة جلب ملايين البيانات في ثانية
     setTimeout(() => {
-      this.analysisResult = {
-        name: this.searchQuery,
-        bestPrice: (Math.random() * 1000).toFixed(2) + ' MAD',
-        reliability: '99.8%',
-        source: 'مصفوفة الشركات العالمية',
-        recommendation: 'هذا المنتج يتوافق مع معايير المستقبل.'
-      };
+      this.foundItems = [
+        { name: 'منتج فضائي من AliExpress', price: '120 DH', deal: 'خصم 40%' },
+        { name: 'خدمة كونية من Amazon', price: '250 DH', deal: 'شحن مجاني' },
+        { name: 'منتزه رقمي من Jumia', price: '45 DH', deal: 'عرض محدود' }
+      ];
       loading.dismiss();
-    }, 2000);
+    }, 1500);
   }
 }
