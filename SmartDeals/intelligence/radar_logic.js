@@ -1,0 +1,1 @@
+export const radarLogic = {   scan: 'بحث في ملايين السلع',   provider: 'Global Matrix APIs',   status: 'Active 2100' };
