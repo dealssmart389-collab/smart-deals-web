@@ -1,0 +1,28 @@
+ion-content {
+  --background: #000000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px;
+}
+
+ion-icon {
+  color: #00e5ff;
+  filter: drop-shadow(0 0 5px #00e5ff);
+}
+
+ion-item {
+  --background: transparent;
+  --color: #fff;
+  transition: 0.3s;
+}
+
+ion-item:active {
+  transform: scale(0.95);
+  --background: rgba(0, 229, 255, 0.1);
+}

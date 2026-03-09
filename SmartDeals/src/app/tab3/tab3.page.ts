@@ -1,16 +1,22 @@
-ion-item {
-  --transition: 0.4s ease-in-out;
-  margin-bottom: 10px;
-  --border-radius: 15px;
-}
+import { Component } from '@angular/core';
+import { IonicModule, AlertController } from '@ionic/angular';
 
-ion-item:active {
-  transform: scale(0.95);
-  --background: rgba(0, 229, 255, 0.1); /* توهج أزرق كوني عند اللمس */
-}
+@Component({
+  selector: 'app-tab3',
+  templateUrl: 'tab3.page.html',
+  styleUrls: ['tab3.page.scss'],
+  standalone: true,
+  imports: [IonicModule]
+})
+export class Tab3Page {
+  constructor(private alertController: AlertController) {}
 
-ion-avatar {
-  border: 2px solid #00e5ff;
-  box-shadow: 0 0 15px #00e5ff;
+  async commandAction(title: string) {
+    const alert = await this.alertController.create({
+      header: 'بروتوكول 2100',
+      message: `تم تفعيل أمر: ${title}`,
+      buttons: ['تأكيد السيادة']
+    });
+    await alert.present();
+  }
 }
-
