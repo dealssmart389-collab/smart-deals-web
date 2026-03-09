@@ -1,32 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { IonicModule, LoadingController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule, FormsModule]
 })
-export class Tab1Page implements OnInit {
-  // معرفك التسويقي العالمي
-  partnerID: string = "mounir_2100_affiliate";
-  
-  // مصفوفة المنتجات العالمية (قالب لمليارات السلع)
-  globalProducts = [
-    { id: 101, name: "مستكشف المجرات Pro", price: 1500, link: "https://s.click.aliexpress.com/e/example1" },
-    { id: 102, name: "رداء التخفي الرقمي", price: 850, link: "https://s.click.aliexpress.com/e/example2" }
-  ];
+export class Tab1Page {
+  searchQuery: string = '';
+  analysisResult: any = null;
 
-  ngOnInit() {
-    console.log("Profit Engine Active for: " + this.partnerID);
-  }
+  constructor(private loadingCtrl: LoadingController) {}
 
-  // خوارزمية البيع والربح
-  sellProduct(productLink: string) {
-    // دمج الرابط مع معرف الربح الخاص بك
-    const finalLink = `${productLink}?aff_id=${this.partnerID}`;
-    window.open(finalLink, '_blank');
+  async startQuantumAnalysis() {
+    const loading = await this.loadingCtrl.create({
+      message: 'جاري مسح قواعد البيانات العالمية...',
+      spinner: 'circles',
+      duration: 2000
+    });
+    await loading.present();
+
+    // خوارزمية البحث الذكي (محاكاة علم 2100)
+    setTimeout(() => {
+      this.analysisResult = {
+        name: this.searchQuery,
+        bestPrice: (Math.random() * 1000).toFixed(2) + ' MAD',
+        reliability: '99.8%',
+        source: 'مصفوفة الشركات العالمية',
+        recommendation: 'هذا المنتج يتوافق مع معايير المستقبل.'
+      };
+      loading.dismiss();
+    }, 2000);
   }
 }
