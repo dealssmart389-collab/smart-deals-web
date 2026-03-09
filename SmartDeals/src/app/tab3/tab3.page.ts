@@ -9,8 +9,7 @@ import { IonicModule, AlertController, ToastController } from '@ionic/angular';
   imports: [IonicModule]
 })
 export class Tab3Page implements OnInit {
-  systemStatus: string = 'نشط';
-  quantumLevel: number = 99.9;
+  quantumLevel: number = 99.99;
 
   constructor(
     private alertCtrl: AlertController,
@@ -18,26 +17,26 @@ export class Tab3Page implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.initCommandCenter();
+    this.activateNeuralPath();
   }
 
-  async initCommandCenter() {
+  async activateNeuralPath() {
     const toast = await this.toastCtrl.create({
-      message: 'تم تفعيل البروتوكول العصبي لمنير بن علال',
-      duration: 2000,
-      color: 'tertiary',
-      position: 'top'
+      message: '⚡ تم تفعيل المسار العصبي للقائد منير بن علال',
+      duration: 3000,
+      color: 'dark',
+      position: 'bottom'
     });
     toast.present();
   }
 
-  async executeQuantumAction(cmd: string) {
+  async executeCommand(title: string) {
     const alert = await this.alertCtrl.create({
       header: '☣️ خوارزمية القيادة السيادية',
-      subHeader: `الأمر: ${cmd}`,
-      message: `جاري تحليل المصفوفة الرياضية... الحالة: ${this.quantumLevel}% كفاءة.`,
+      subHeader: title,
+      message: `تحليل المصفوفة: مستقر | الكفاءة: ${this.quantumLevel}%`,
       cssClass: 'quantum-alert',
-      buttons: [{ text: 'تأكيد السيادة', handler: () => { console.log('Command Executed'); } }]
+      buttons: ['تأكيد السيادة']
     });
     await alert.present();
   }
