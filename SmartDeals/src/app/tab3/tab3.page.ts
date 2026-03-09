@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { IonicModule, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -8,29 +8,23 @@ import { IonicModule, AlertController } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule]
 })
-export class Tab3Page implements OnInit {
-  systemUptime: string = '00:00:00';
-  
-  constructor(private alertCtrl: AlertController) {}
+export class Tab3Page {
+  // معرف البوت الخاص بك MyDrivingAI_Bot
+  telegramBotToken: string = 'YOUR_BOT_TOKEN_HERE';
+  chatId: string = 'YOUR_CHAT_ID_HERE';
 
-  ngOnInit() {
-    this.startSystemClock();
-  }
+  constructor(private toastCtrl: ToastController) {}
 
-  // خوارزمية حساب زمن السيادة
-  startSystemClock() {
-    setInterval(() => {
-      const now = new Date();
-      this.systemUptime = now.toLocaleTimeString();
-    }, 1000);
-  }
-
-  async launchProtocol(protocolName: string) {
-    const alert = await this.alertCtrl.create({
-      header: '☣️ بروتوكول السيادة 2100',
-      message: `تم تفعيل نظام: ${protocolName} بنجاح كلي.`,
-      buttons: ['إدراك']
+  async sendIntelToCommander(message: string) {
+    const url = `https://api.telegram.org/bot${this.telegramBotToken}/sendMessage?chat_id=${this.chatId}&text=${encodeURIComponent(message)}`;
+    
+    fetch(url).then(async () => {
+      const toast = await this.toastCtrl.create({
+        message: '🚀 تم إرسال التقرير الاستخباراتي للقائد بن علال',
+        duration: 2000,
+        color: 'success'
+      });
+      toast.present();
     });
-    await alert.present();
   }
 }

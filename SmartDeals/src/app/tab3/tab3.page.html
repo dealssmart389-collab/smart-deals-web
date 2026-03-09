@@ -1,30 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title style="text-align: right; letter-spacing: 2px;">مركز القيادة الكوني</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div class="command-center">
-    <div class="avatar-glow">
-      <ion-avatar>
-        <img src="assets/profile.jpg" />
-      </ion-avatar>
-    </div>
-    
-    <h1 class="commander-name">منير بن علال</h1>
-    <p class="system-time">توقيت النظام: {{ systemUptime }}</p>
-
-    <ion-list lines="none" class="action-list">
-      <ion-item button (click)="launchProtocol('تعديل المصفوفة')" class="quantum-item">
-        <ion-label>تعديل الملف الشخصي</ion-label>
-        <ion-icon name="finger-print-outline" slot="start"></ion-icon>
-      </ion-item>
-
-      <ion-item button (click)="launchProtocol('توليد الجواهر')" class="quantum-item">
-        <ion-label>بنك الجواهر الرقمية</ion-label>
-        <ion-icon name="diamond-outline" slot="start"></ion-icon>
-      </ion-item>
-    </ion-list>
+<ion-content [fullscreen]="true" style="--background: #000;">
+  <div class="commander-header" style="text-align: center; padding: 30px;">
+    <h1 style="color: #00e5ff; font-weight: 800;">غرفة العمليات - 2100</h1>
+    <p style="color: #ccc;">القائد: منير بن علال</p>
   </div>
+
+  <ion-list lines="none" style="background: transparent;">
+    <ion-item class="stats-card">
+      <ion-label>
+        <h2 style="color: #fff;">عمليات البحث اليوم</h2>
+        <p style="color: #00ff00; font-size: 24px;">+ 1,240,500</p>
+      </ion-label>
+      <ion-icon name="analytics-outline" slot="end" color="primary"></ion-icon>
+    </ion-item>
+
+    <ion-button expand="block" (click)="sendIntelToCommander('تقرير الصباح: الرادار رصد 50 صفقة ذهبية')" style="margin: 20px;">
+      إرسال تقرير الأرباح إلى Telegram
+    </ion-button>
+  </ion-list>
 </ion-content>
