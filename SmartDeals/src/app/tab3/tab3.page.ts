@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
   standalone: true,
-  imports: [IonicModule]
+  imports: [IonicModule] // هذا يضمن عمل الأزرار والأيقونات
 })
 export class Tab3Page {
   constructor() {}
