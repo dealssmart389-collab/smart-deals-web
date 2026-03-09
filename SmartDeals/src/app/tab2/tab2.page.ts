@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [IonicModule]
+  imports: [IonicModule, CommonModule]
 })
 export class Tab2Page {
-  constructor(private alertController: AlertController) {}
+  // مصفوفة كونية مهيأة لاستقبال ملايين المنتجات
+  cosmicProducts = [
+    { id: 1, name: 'منتزه أندروميدا الرقمي', price: 500000, category: 'منتزهات' },
+    { id: 2, name: 'سحابة التخزين السديمية', price: 1200, category: 'بضائع' }
+  ];
 
-  async confirmPayment() {
-    const alert = await this.alertController.create({
-      header: 'تأكيد العملية الكونية',
-      message: 'تم تفعيل نظام Visa لعام 2100 بنجاح!',
-      buttons: ['إغلاق']
-    });
-    await alert.present();
+  constructor() {}
+
+  calculateTotal() {
+    return this.cosmicProducts.reduce((acc, prod) => acc + prod.price, 0);
   }
 }

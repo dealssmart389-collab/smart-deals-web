@@ -1,45 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="tertiary">
-    <ion-title style="text-align: right; font-family: 'Courier New', Courier, monospace;">
-      إمبراطورية 2100 - الذكاء الخالد
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" style="--background: #000;">
-  <div style="background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%); padding: 20px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;">
-    <h1 style="color: #fff; font-size: 28px; font-weight: 900; text-shadow: 0 0 10px #00e5ff;">نظام القوة الخالدة</h1>
-    <p style="color: #00e5ff; letter-spacing: 2px;">أفضل تقنيات المستقبل بين يديك الآن</p>
-  </div>
-
-  <ion-card style="background: #111; border: 1px solid #00e5ff; border-radius: 20px; margin-top: 20px;">
-    <img alt="Future Phone" src="https://ionicframework.com/docs/img/demos/card-media.png" style="filter: hue-rotate(180deg);" />
-    <ion-card-header>
-      <ion-card-title style="color: #fff; text-align: right;">جالاكسي 2100 ألترا</ion-card-title>
-      <ion-card-subtitle style="color: #00e5ff; text-align: right; font-size: 18px;">99,999 درهم كوني</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content style="color: #ccc; text-align: right;">
-      استمتع بأداء المعالجات العصبية وشاشة الهولوغرام المتطورة.
-    </ion-card-content>
-    <ion-button expand="block" fill="outline" color="secondary" style="margin: 15px; --border-width: 2px;">
-      تفعيل الاتصال الكوني
-    </ion-button>
-  </ion-card>
 <ion-content [fullscreen]="true">
-  <div class="quantum-container">
-    <ion-card class="dynamic-card">
-      <img src="assets/galaxy.jpg" class="product-img" />
-      <ion-card-header>
-        <ion-card-title>جالاكسي إس 24 ألترا - إصدار 2100</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <div class="price-engine">
-          <h2 class="mad-price">{{ dynamicPrice }} MAD</h2>
-          <h3 class="usd-price">$ {{ priceInUSD }} USD</h3>
-        </div>
-        <p class="math-status">الحالة: مصفوفة رياضية نشطة √</p>
-      </ion-card-content>
-    </ion-card>
-  </div>
-</ion-content>
+  <ion-searchbar placeholder="ابحث في ملايين السلع..." color="tertiary"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
+      <ion-thumbnail slot="start">
+        <img src="assets/universe_item.jpg" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>سلعة كونية رقم {{i}}</h2>
+        <p>متاح الآن في إمبراطورية منير بن علال</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="جاري استخراج البيانات من الثقب الأسود..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
