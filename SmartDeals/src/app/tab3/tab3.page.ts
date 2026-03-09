@@ -1,30 +1,27 @@
-import { Component } from '@angular/core';
-import { IonicModule, ToastController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
   standalone: true,
-  imports: [IonicModule]
+  imports: [IonicModule, CommonModule]
 })
-export class Tab3Page {
-  // معرف البوت الخاص بك MyDrivingAI_Bot
-  telegramBotToken: string = 'YOUR_BOT_TOKEN_HERE';
-  chatId: string = 'YOUR_CHAT_ID_HERE';
+export class Tab3Page implements OnInit {
+  latency: string = '0ms';
+  quantumStatus: string = 'In Orbit';
 
-  constructor(private toastCtrl: ToastController) {}
+  ngOnInit() {
+    this.measureQuantumPulse();
+  }
 
-  async sendIntelToCommander(message: string) {
-    const url = `https://api.telegram.org/bot${this.telegramBotToken}/sendMessage?chat_id=${this.chatId}&text=${encodeURIComponent(message)}`;
-    
-    fetch(url).then(async () => {
-      const toast = await this.toastCtrl.create({
-        message: '🚀 تم إرسال التقرير الاستخباراتي للقائد بن علال',
-        duration: 2000,
-        color: 'success'
-      });
-      toast.present();
-    });
+  measureQuantumPulse() {
+    setInterval(() => {
+      // محاكاة سرعة الاستجابة التي عجز عنها العلماء
+      const pulse = Math.floor(Math.random() * 5) + 1; 
+      this.latency = `${pulse}ms`;
+    }, 1000);
   }
 }
