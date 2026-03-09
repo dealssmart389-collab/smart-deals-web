@@ -1,0 +1,1 @@
+export const authSystem = {   method: 'Face Recognition',   status: 'Encrypted',   access_level: 'Commander Mounir' };
