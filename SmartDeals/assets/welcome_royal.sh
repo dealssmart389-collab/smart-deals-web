@@ -1,0 +1,1 @@
+termux-tts-speak 'Welcome, Commander Mounir. The system is at your command.'
