@@ -1,20 +1,17 @@
 <ion-content [fullscreen]="true" style="--background: #000;">
-  <div class="observer-eye" style="text-align: center; padding: 20px;">
-    <h1 style="color: #00e5ff; font-size: 2em; text-shadow: 0 0 20px #00e5ff;">رادار الامتصاص الجيني</h1>
+  <div class="star-map-viewer" style="padding: 20px; text-align: center;">
+    <h2 style="color: #00e5ff; text-shadow: 0 0 15px #00e5ff;">خريطة النجوم البرمجية</h2>
     
-    <div class="dna-spinner" style="margin: 30px auto;">
-      <ion-spinner name="bubbles" color="primary" style="transform: scale(3);"></ion-spinner>
+    <div class="radar-circle" style="width: 250px; height: 250px; border: 2px solid #00e5ff; border-radius: 50%; margin: 20px auto; position: relative; animation: pulse 2s infinite;">
+      <div class="scanning-line" style="width: 50%; height: 2px; background: #00ff00; position: absolute; top: 50%; left: 50%; transform-origin: left; animation: rotate 4s linear infinite;"></div>
+      <div class="star" style="position: absolute; top: 20%; left: 30%; color: #fff;">✦ GitHub</div>
+      <div class="star" style="position: absolute; bottom: 20%; right: 10%; color: #fff;">✦ Stack</div>
     </div>
 
-    <ion-card style="background: rgba(0, 229, 255, 0.1); border: 1px solid #00e5ff;">
-      <ion-card-header>
-        <ion-card-title style="color: #fff;">تحليل الموارد المكتشفة</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p style="color: #00ff00;">● تم العثور على: خوارزمية التشفير الكمي</p>
-        <p style="color: #00ff00;">● تم العثور على: منطق استنتاج الأنماط</p>
-        <p style="color: #ccc; font-style: italic;">جاري دمج البيانات في النواة...</p>
-      </ion-card-content>
+    <ion-card style="background: rgba(0,0,0,0.8); border-left: 5px solid #00ff00;">
+      <ion-item style="--background: transparent; color: #00ff00;">
+        <ion-label>الحالة: جاري سحب خوارزمية "الاستنتاج الاستباقي"</ion-label>
+      </ion-item>
     </ion-card>
   </div>
 </ion-content>
