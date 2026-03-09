@@ -25,4 +25,21 @@
       تفعيل الاتصال الكوني
     </ion-button>
   </ion-card>
+<ion-content [fullscreen]="true">
+  <div class="quantum-container">
+    <ion-card class="dynamic-card">
+      <img src="assets/galaxy.jpg" class="product-img" />
+      <ion-card-header>
+        <ion-card-title>جالاكسي إس 24 ألترا - إصدار 2100</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="price-engine">
+          <h2 class="mad-price">{{ dynamicPrice }} MAD</h2>
+          <h3 class="usd-price">$ {{ priceInUSD }} USD</h3>
+        </div>
+        <p class="math-status">الحالة: مصفوفة رياضية نشطة √</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
 </ion-content>
