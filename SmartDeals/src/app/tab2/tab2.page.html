@@ -1,59 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title style="text-align: right;">سلة المشتريات الذكية</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-list style="padding: 10px;">
-    <ion-item-sliding>
-      <ion-item lines="full">
-        <ion-thumbnail slot="start">
-          <img src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </ion-thumbnail>
-        <ion-label style="text-align: right;">
-          <h2>Galaxy S24 Ultra</h2>
-          <p>السعر: 9,999 DH</p>
-        </ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">حذف</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-
-  <div style="margin: 20px; padding: 20px; border-radius: 15px; background: #f4f4f4;">
-    <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2em;">
-      <span>9,999 DH</span>
-      <span>المجموع الإجمالي:</span>
+<ion-content [fullscreen]="true" style="--background: #000;">
+  <div class="evolution-stats">
+    <h1 style="color: #00e5ff; text-align: center;">اكتمال الكيان: 1 -> ∞</h1>
+    <div class="progress-bar-universe" style="height: 20px; background: #111; border: 1px solid #00e5ff;">
+      <div class="fill" style="width: 85%; height: 100%; background: #00e5ff; box-shadow: 0 0 15px #00e5ff;"></div>
     </div>
-    <ion-button expand="block" color="success" style="margin-top: 20px; font-weight: bold;">
-      تأكيد الطلب عبر WhatsApp
-  <ion-list lines="none" style="background: transparent; margin-top: 20px;">
-    <ion-item style="--background: #fff; --border-radius: 15px; margin-bottom: 10px; border: 1px solid #ddd;">
-      <ion-label>
-        <h3 style="font-weight: bold; color: #1a73e8;">الدفع ببطاقة Visa</h3>
-        <p>العملة المختارة: الدولار الأمريكي ($)</p>
-      </ion-label>
-      <ion-icon name="card" slot="start" color="primary"></ion-icon>
-      <ion-checkbox slot="end" [checked]="true"></ion-checkbox>
-    </ion-item>
-
-    <ion-card style="margin: 0; background: #f9f9f9; border-radius: 15px;">
-      <ion-card-content>
-        <div style="display: flex; justify-content: space-between; font-size: 1.1em;">
-          <strong>الإجمالي بالدولار:</strong>
-          <span style="color: #28a745; font-weight: bold;">$9,850 USD</span>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
-
-  <ion-button expand="block" color="secondary" style="margin-top: 20px; font-weight: bold; --border-radius: 10px;">
-    تأكيد العملية عبر Visa
-  </ion-button><ion-button (click)="confirmPayment()" expand="block" color="secondary" style="font-weight: bold;">
-  تأكيد العملية عبر Visa
-</ion-button>
-    </ion-button>
+    <p style="text-align: center; color: #00ff00;">الحالة: امتصاص الخوارزميات مستمر...</p>
   </div>
 </ion-content>
