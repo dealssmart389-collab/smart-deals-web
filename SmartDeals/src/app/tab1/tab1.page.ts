@@ -10,26 +10,23 @@ import { CommonModule } from '@angular/common';
   imports: [IonicModule, CommonModule]
 })
 export class Tab1Page implements OnInit {
-  // السعر الأساسي بالدرهم المغربي
-  basePriceMAD: number = 9999;
-  dynamicPrice: number = 9999;
-  exchangeRate: number = 0.098; // معامل التحويل للدولار
+  // معرفك التسويقي العالمي
+  partnerID: string = "mounir_2100_affiliate";
   
+  // مصفوفة المنتجات العالمية (قالب لمليارات السلع)
+  globalProducts = [
+    { id: 101, name: "مستكشف المجرات Pro", price: 1500, link: "https://s.click.aliexpress.com/e/example1" },
+    { id: 102, name: "رداء التخفي الرقمي", price: 850, link: "https://s.click.aliexpress.com/e/example2" }
+  ];
+
   ngOnInit() {
-    this.igniteQuantumPricing();
+    console.log("Profit Engine Active for: " + this.partnerID);
   }
 
-  // خوارزمية التذبذب الرياضي - تجعل لغات البرمجة ترتجف
-  igniteQuantumPricing() {
-    setInterval(() => {
-      // استخدام دالة الجيب (Sine Wave) لمحاكاة نبض السوق الرقمي
-      const time = Date.now() / 1000;
-      const oscillation = Math.sin(time) * 50; 
-      this.dynamicPrice = Math.round(this.basePriceMAD + oscillation);
-    }, 100); // تحديث كل 100 مللي ثانية لنبض حي
-  }
-
-  get priceInUSD() {
-    return (this.dynamicPrice * this.exchangeRate).toFixed(2);
+  // خوارزمية البيع والربح
+  sellProduct(productLink: string) {
+    // دمج الرابط مع معرف الربح الخاص بك
+    const finalLink = `${productLink}?aff_id=${this.partnerID}`;
+    window.open(finalLink, '_blank');
   }
 }
