@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-
-@Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss'],
-  standalone: true,
-  imports: [IonicModule] // هذا يضمن عمل الأزرار والأيقونات
-})
-export class Tab3Page {
-  constructor() {}
+ion-item {
+  --transition: 0.4s ease-in-out;
+  margin-bottom: 10px;
+  --border-radius: 15px;
 }
+
+ion-item:active {
+  transform: scale(0.95);
+  --background: rgba(0, 229, 255, 0.1); /* توهج أزرق كوني عند اللمس */
+}
+
+ion-avatar {
+  border: 2px solid #00e5ff;
+  box-shadow: 0 0 15px #00e5ff;
+}
+
