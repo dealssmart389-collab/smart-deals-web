@@ -1,27 +1,19 @@
 <ion-content [fullscreen]="true" style="--background: #000;">
-  <div class="radar-header">
-    <h1 style="color: #00e5ff; text-align: center; font-size: 2.5em; text-shadow: 0 0 15px #00e5ff;">رادار 2100</h1>
-    <p style="color: #fff; text-align: center; opacity: 0.7;">أنت تسأل.. والذكاء يحلل المجرة الرقمية</p>
-  </div>
+  <div class="observer-eye" style="text-align: center; padding: 20px;">
+    <h1 style="color: #00e5ff; font-size: 2em; text-shadow: 0 0 20px #00e5ff;">رادار الامتصاص الجيني</h1>
+    
+    <div class="dna-spinner" style="margin: 30px auto;">
+      <ion-spinner name="bubbles" color="primary" style="transform: scale(3);"></ion-spinner>
+    </div>
 
-  <div class="search-section" style="padding: 20px;">
-    <ion-item fill="outline" style="--border-color: #00e5ff; --border-radius: 20px;">
-      <ion-input [(ngModel)]="searchQuery" placeholder="عن ماذا تبحث في هذا الكون؟"></ion-input>
-      <ion-button slot="end" (click)="activateRadar()" fill="clear">
-        <ion-icon name="planet-outline" color="primary" style="font-size: 30px;"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </div>
-
-  <div *ngIf="radarActive" class="results-area">
-    <ion-card *ngFor="let item of foundItems" style="background: rgba(0, 229, 255, 0.05); border: 1px solid #00e5ff;">
+    <ion-card style="background: rgba(0, 229, 255, 0.1); border: 1px solid #00e5ff;">
       <ion-card-header>
-        <ion-card-subtitle color="secondary">{{ item.deal }}</ion-card-subtitle>
-        <ion-card-title style="color: #fff;">{{ item.name }}</ion-card-title>
+        <ion-card-title style="color: #fff;">تحليل الموارد المكتشفة</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <h2 style="color: #00ff00;">السعر المرصود: {{ item.price }}</h2>
-        <p style="color: #ccc;">المصدر: مصفوفة الشركات العالمية √</p>
+        <p style="color: #00ff00;">● تم العثور على: خوارزمية التشفير الكمي</p>
+        <p style="color: #00ff00;">● تم العثور على: منطق استنتاج الأنماط</p>
+        <p style="color: #ccc; font-style: italic;">جاري دمج البيانات في النواة...</p>
       </ion-card-content>
     </ion-card>
   </div>
