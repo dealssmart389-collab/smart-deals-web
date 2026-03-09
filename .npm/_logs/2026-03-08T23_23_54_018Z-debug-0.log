@@ -1,0 +1,211 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@11.11.0
+2 info using node@v25.3.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/.npmrc
+5 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+6 verbose title npm info native-run
+7 verbose argv "info" "native-run" "--json"
+8 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2026-03-08T23_23_54_018Z-
+9 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2026-03-08T23_23_54_018Z-debug-0.log
+10 silly logfile done cleaning log files
+11 http fetch GET 200 https://registry.npmjs.org/native-run 65269ms (cache revalidated)
+12 silly view {
+12 silly view   '2.0.3': {
+12 silly view     _id: 'native-run@2.0.3',
+12 silly view     _rev: '83-dbdd6f30aa02dad3fd6323d8bd997dc2',
+12 silly view     name: 'native-run',
+12 silly view     'dist-tags': { testing: '0.2.9-testing.2', latest: '2.0.3' },
+12 silly view     versions: [
+12 silly view       '0.0.1',           '0.0.2',          '0.0.3',
+12 silly view       '0.0.4',           '0.0.5',          '0.0.6',
+12 silly view       '0.0.7',           '0.0.10',         '0.0.11',
+12 silly view       '0.0.12',          '0.0.13',         '0.0.14',
+12 silly view       '0.0.15',          '0.0.16',         '0.0.17',
+12 silly view       '0.0.18',          '0.0.19',         '0.0.20',
+12 silly view       '0.0.21',          '0.1.0',          '0.1.1',
+12 silly view       '0.1.2',           '0.2.0',          '0.2.1',
+12 silly view       '0.2.2-testing.0', '0.2.2',          '0.2.3',
+12 silly view       '0.2.4',           '0.2.5',          '0.2.6',
+12 silly view       '0.2.7',           '0.2.8',          '0.2.9-testing',
+12 silly view       '0.2.9-testing.2', '0.2.9-testing1', '0.2.9',
+12 silly view       '0.3.0',           '1.0.0',          '1.1.0',
+12 silly view       '1.2.0',           '1.2.1',          '1.2.2',
+12 silly view       '1.3.0',           '1.3.1',          '1.4.0',
+12 silly view       '1.4.1',           '1.5.0',          '1.6.0',
+12 silly view       '1.7.0',           '1.7.1',          '1.7.2',
+12 silly view       '1.7.3',           '1.7.4',          '2.0.0',
+12 silly view       '2.0.1',           '2.0.2',          '2.0.3'
+12 silly view     ],
+12 silly view     time: {
+12 silly view       created: '2018-08-27T21:07:46.092Z',
+12 silly view       modified: '2026-01-08T12:28:28.657Z',
+12 silly view       '0.0.1': '2018-08-27T21:07:46.288Z',
+12 silly view       '0.0.2': '2018-09-10T20:46:47.576Z',
+12 silly view       '0.0.3': '2018-11-07T21:24:16.165Z',
+12 silly view       '0.0.4': '2018-11-08T19:17:18.058Z',
+12 silly view       '0.0.5': '2018-11-08T19:53:15.828Z',
+12 silly view       '0.0.6': '2018-11-14T01:06:48.756Z',
+12 silly view       '0.0.7': '2018-11-18T21:58:10.446Z',
+12 silly view       '0.0.10': '2018-11-27T18:33:27.043Z',
+12 silly view       '0.0.11': '2018-12-10T23:47:54.372Z',
+12 silly view       '0.0.12': '2019-01-04T00:57:57.364Z',
+12 silly view       '0.0.13': '2019-01-08T17:56:57.827Z',
+12 silly view       '0.0.14': '2019-01-23T23:24:58.352Z',
+12 silly view       '0.0.15': '2019-01-27T21:55:29.943Z',
+12 silly view       '0.0.16': '2019-02-06T16:35:50.457Z',
+12 silly view       '0.0.17': '2019-04-25T22:11:32.276Z',
+12 silly view       '0.0.18': '2019-05-07T18:27:36.900Z',
+12 silly view       '0.0.19': '2019-05-17T19:59:05.335Z',
+12 silly view       '0.0.20': '2019-05-17T21:53:52.703Z',
+12 silly view       '0.0.21': '2019-05-17T22:10:17.666Z',
+12 silly view       '0.1.0': '2019-05-29T18:32:49.660Z',
+12 silly view       '0.1.1': '2019-05-29T18:52:35.456Z',
+12 silly view       '0.1.2': '2019-05-29T21:48:56.692Z',
+12 silly view       '0.2.0': '2019-05-30T19:36:35.344Z',
+12 silly view       '0.2.1': '2019-05-30T21:07:02.396Z',
+12 silly view       '0.2.2-testing.0': '2019-05-31T18:44:19.892Z',
+12 silly view       '0.2.2': '2019-05-31T19:50:30.469Z',
+12 silly view       '0.2.3': '2019-06-05T23:36:39.199Z',
+12 silly view       '0.2.4': '2019-06-07T19:13:44.152Z',
+12 silly view       '0.2.5': '2019-06-10T18:56:34.497Z',
+12 silly view       '0.2.6': '2019-06-17T16:36:29.832Z',
+12 silly view       '0.2.7': '2019-06-25T21:27:55.357Z',
+12 silly view       '0.2.8': '2019-07-12T19:40:54.262Z',
+12 silly view       '0.2.9-testing': '2019-10-12T04:52:41.401Z',
+12 silly view       '0.2.9-testing1': '2019-10-12T04:54:40.778Z',
+12 silly view       '0.2.9-testing.2': '2019-10-12T05:48:29.210Z',
+12 silly view       '0.2.9': '2019-10-15T19:50:56.902Z',
+12 silly view       '0.3.0': '2019-12-04T17:21:27.900Z',
+12 silly view       '1.0.0': '2020-04-02T22:44:23.445Z',
+12 silly view       '1.1.0': '2020-09-10T19:01:30.278Z',
+12 silly view       '1.2.0': '2020-09-28T23:52:07.434Z',
+12 silly view       '1.2.1': '2020-09-29T15:52:11.096Z',
+12 silly view       '1.2.2': '2020-10-16T17:18:56.132Z',
+12 silly view       '1.3.0': '2020-12-07T19:12:21.476Z',
+12 silly view       '1.3.1': '2021-06-04T15:26:53.306Z',
+12 silly view       '1.4.0': '2021-06-08T09:38:27.824Z',
+12 silly view       '1.4.1': '2021-09-03T01:57:39.807Z',
+12 silly view       '1.5.0': '2021-10-11T16:57:37.741Z',
+12 silly view       '1.6.0': '2022-05-16T13:24:25.899Z',
+12 silly view       '1.7.0': '2022-09-01T16:14:15.662Z',
+12 silly view       '1.7.1': '2022-09-23T12:38:36.727Z',
+12 silly view       '1.7.2': '2023-03-02T15:40:27.659Z',
+12 silly view       '1.7.3': '2023-09-21T16:16:50.872Z',
+12 silly view       '1.7.4': '2023-10-24T11:40:39.950Z',
+12 silly view       '2.0.0': '2023-10-26T16:40:14.000Z',
+12 silly view       '2.0.1': '2024-01-25T13:36:12.838Z',
+12 silly view       '2.0.2': '2026-01-07T14:17:02.431Z',
+12 silly view       '2.0.3': '2026-01-08T12:28:28.048Z'
+12 silly view     },
+12 silly view     bugs: { url: 'https://github.com/ionic-team/native-run/issues' },
+12 silly view     author: {
+12 silly view       name: 'Ionic Team',
+12 silly view       email: 'hi@ionicframework.com',
+12 silly view       url: 'https://ionicframework.com'
+12 silly view     },
+12 silly view     license: 'MIT',
+12 silly view     homepage: 'https://github.com/ionic-team/native-run#readme',
+12 silly view     keywords: [
+12 silly view       'android', 'ios',
+12 silly view       'cli',     'mobile',
+12 silly view       'app',     'hybrid',
+12 silly view       'native'
+12 silly view     ],
+12 silly view     repository: {
+12 silly view       type: 'git',
+12 silly view       url: 'git+https://github.com/ionic-team/native-run.git'
+12 silly view     },
+12 silly view     description: 'A CLI for running apps on iOS/Android devices and simulators/emulators',
+12 silly view     maintainers: [
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object],
+12 silly view       [Object], [Object], [Object]
+12 silly view     ],
+12 silly view     readmeFilename: 'README.md',
+12 silly view     _contentLength: 221047,
+12 silly view     version: '2.0.3',
+12 silly view     bin: { 'native-run': 'bin/native-run' },
+12 silly view     scripts: {
+12 silly view       clean: 'rm -rf dist',
+12 silly view       build: 'npm run clean && tsc',
+12 silly view       watch: 'tsc -w',
+12 silly view       test: 'jest --maxWorkers=4',
+12 silly view       lint: 'npm run eslint && npm run prettier -- --check',
+12 silly view       fmt: 'npm run eslint -- --fix && npm run prettier -- --write',
+12 silly view       prettier: 'prettier "**/*.ts"',
+12 silly view       eslint: 'eslint . --ext .ts',
+12 silly view       'publish:ci': 'semantic-release',
+12 silly view       'publish:testing': 'npm version prerelease --preid=testing --no-git-tag-version && npm publish --tag=testing && git stash',
+12 silly view       prepublishOnly: 'npm run build'
+12 silly view     },
+12 silly view     main: 'dist/index.js',
+12 silly view     engines: { node: '>=16.0.0' },
+12 silly view     dependencies: {
+12 silly view       '@ionic/utils-fs': '^3.1.7',
+12 silly view       '@ionic/utils-terminal': '^2.3.4',
+12 silly view       'bplist-parser': '^0.3.2',
+12 silly view       debug: '^4.3.4',
+12 silly view       elementtree: '^0.1.7',
+12 silly view       ini: '^4.1.1',
+12 silly view       plist: '^3.1.0',
+12 silly view       split2: '^4.2.0',
+12 silly view       through2: '^4.0.2',
+12 silly view       tslib: '^2.6.2',
+12 silly view       yauzl: '^2.10.0'
+12 silly view     },
+12 silly view     devDependencies: {
+12 silly view       '@ionic/eslint-config': '^0.4.0',
+12 silly view       '@ionic/prettier-config': '^4.0.0',
+12 silly view       '@semantic-release/changelog': '^6.0.3',
+12 silly view       '@semantic-release/git': '^10.0.1',
+12 silly view       '@types/debug': '^4.1.10',
+12 silly view       '@types/elementtree': '^0.1.3',
+12 silly view       '@types/ini': '^1.3.32',
+12 silly view       '@types/jest': '^26.0.13',
+12 silly view       '@types/node': '^16.0.0',
+12 silly view       '@types/plist': '^3.0.4',
+12 silly view       '@types/split2': '^4.2.2',
+12 silly view       '@types/through2': '^2.0.40',
+12 silly view       '@types/yauzl': '^2.10.2',
+12 silly view       eslint: '^8.57.0',
+12 silly view       jest: '^26.4.2',
+12 silly view       prettier: '^3.0.3',
+12 silly view       'semantic-release': '^19.0.5',
+12 silly view       'ts-jest': '^26.3.0',
+12 silly view       typescript: '~4.9.5'
+12 silly view     },
+12 silly view     prettier: '@ionic/prettier-config',
+12 silly view     eslintConfig: { extends: '@ionic/eslint-config/recommended', rules: [Object] },
+12 silly view     release: { branches: 'stable', plugins: [Array] },
+12 silly view     gitHead: '2bd95f2ed0b7405aa7578d9b575eec7073b4a45b',
+12 silly view     _nodeVersion: '16.20.2',
+12 silly view     _npmVersion: '8.19.4',
+12 silly view     dist: {
+12 silly view       integrity: 'sha512-U1PllBuzW5d1gfan+88L+Hky2eZx+9gv3Pf6rNBxKbORxi7boHzqiA6QFGSnqMem4j0A9tZ08NMIs5+0m/VS1Q==',
+12 silly view       shasum: 'b1ceb39c8d24abf4916c07ae9aad5a9fbcd31a02',
+12 silly view       tarball: 'https://registry.npmjs.org/native-run/-/native-run-2.0.3.tgz',
+12 silly view       fileCount: 85,
+12 silly view       unpackedSize: 2152801,
+12 silly view       signatures: [Array]
+12 silly view     },
+12 silly view     _npmUser: { name: 'eric-ionic', email: 'horodyski@ionic.io' },
+12 silly view     directories: {},
+12 silly view     _npmOperationalInternal: {
+12 silly view       host: 's3://npm-registry-packages-npm-production',
+12 silly view       tmp: 'tmp/native-run_2.0.3_1767875307807_0.25922312481805787'
+12 silly view     },
+12 silly view     _hasShrinkwrap: false
+12 silly view   }
+12 silly view }
+13 verbose cwd /data/data/com.termux/files/home
+14 verbose os Linux 6.6.30-android15-8-gcd3677c66895-ab12721575-4k
+15 verbose node v25.3.0
+16 verbose npm  v11.11.0
+17 verbose exit 0
+18 info ok

@@ -1,0 +1,180 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@11.11.0
+2 info using node@v25.3.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/.npmrc
+5 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+6 verbose title npm info cordova-res
+7 verbose argv "info" "cordova-res" "--json"
+8 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2026-03-08T23_23_54_014Z-
+9 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2026-03-08T23_23_54_014Z-debug-0.log
+10 silly logfile done cleaning log files
+11 http fetch GET 200 https://registry.npmjs.org/cordova-res 65120ms (cache miss)
+12 silly view {
+12 silly view   '0.15.4': {
+12 silly view     _id: 'cordova-res@0.15.4',
+12 silly view     _rev: '36-b29b6ef99aab8ed4cbe6fdea348dd8d6',
+12 silly view     name: 'cordova-res',
+12 silly view     'dist-tags': { latest: '0.15.4', testing: '0.7.0-testing.0' },
+12 silly view     versions: [
+12 silly view       '0.0.1',  '0.0.2',
+12 silly view       '0.0.3',  '0.1.0',
+12 silly view       '0.2.0',  '0.3.0',
+12 silly view       '0.4.0',  '0.5.0',
+12 silly view       '0.5.1',  '0.5.2',
+12 silly view       '0.6.0',  '0.7.0-testing.0',
+12 silly view       '0.7.0',  '0.8.0',
+12 silly view       '0.8.1',  '0.9.0',
+12 silly view       '0.10.0', '0.11.0',
+12 silly view       '0.12.0', '0.12.1',
+12 silly view       '0.12.2', '0.13.0',
+12 silly view       '0.13.1', '0.14.0',
+12 silly view       '0.14.1', '0.15.0',
+12 silly view       '0.15.1', '0.15.2',
+12 silly view       '0.15.3', '0.15.4'
+12 silly view     ],
+12 silly view     time: {
+12 silly view       created: '2019-01-14T22:22:50.523Z',
+12 silly view       '0.0.1': '2019-01-14T22:22:50.629Z',
+12 silly view       modified: '2024-05-17T15:37:15.295Z',
+12 silly view       '0.0.2': '2019-01-15T00:41:18.913Z',
+12 silly view       '0.0.3': '2019-01-23T02:05:11.412Z',
+12 silly view       '0.1.0': '2019-03-10T22:34:54.374Z',
+12 silly view       '0.2.0': '2019-03-22T15:41:02.907Z',
+12 silly view       '0.3.0': '2019-05-15T23:49:35.258Z',
+12 silly view       '0.4.0': '2019-06-20T21:39:15.361Z',
+12 silly view       '0.5.0': '2019-06-24T17:43:08.240Z',
+12 silly view       '0.5.1': '2019-06-25T18:30:22.110Z',
+12 silly view       '0.5.2': '2019-07-03T19:19:39.919Z',
+12 silly view       '0.6.0': '2019-07-09T22:45:37.790Z',
+12 silly view       '0.7.0-testing.0': '2019-09-18T15:51:11.203Z',
+12 silly view       '0.7.0': '2019-10-02T16:10:18.790Z',
+12 silly view       '0.8.0': '2019-10-07T21:05:22.452Z',
+12 silly view       '0.8.1': '2019-10-24T21:27:37.224Z',
+12 silly view       '0.9.0': '2020-01-25T00:53:43.498Z',
+12 silly view       '0.10.0': '2020-03-09T21:45:12.746Z',
+12 silly view       '0.11.0': '2020-03-23T23:55:44.107Z',
+12 silly view       '0.12.0': '2020-04-15T06:46:00.833Z',
+12 silly view       '0.12.1': '2020-04-16T21:48:53.902Z',
+12 silly view       '0.12.2': '2020-04-21T19:33:03.517Z',
+12 silly view       '0.13.0': '2020-04-23T06:02:04.277Z',
+12 silly view       '0.13.1': '2020-04-27T22:06:22.945Z',
+12 silly view       '0.14.0': '2020-04-29T23:52:52.444Z',
+12 silly view       '0.14.1': '2020-06-12T23:34:05.898Z',
+12 silly view       '0.15.0': '2020-06-12T23:41:27.546Z',
+12 silly view       '0.15.1': '2020-06-23T19:12:11.787Z',
+12 silly view       '0.15.2': '2020-11-03T00:36:02.847Z',
+12 silly view       '0.15.3': '2021-01-30T00:30:13.666Z',
+12 silly view       '0.15.4': '2021-12-03T16:18:52.243Z'
+12 silly view     },
+12 silly view     maintainers: [ [Object], [Object], [Object] ],
+12 silly view     description: 'This tool will crop and resize PNG source images into appropriate sizes for modern iOS and Android devices.',
+12 silly view     homepage: 'https://ionicframework.com',
+12 silly view     keywords: [
+12 silly view       'ionic',
+12 silly view       'cordova',
+12 silly view       'phonegap',
+12 silly view       'resources',
+12 silly view       'mobile',
+12 silly view       'native',
+12 silly view       'icon',
+12 silly view       'splash screen'
+12 silly view     ],
+12 silly view     repository: {
+12 silly view       type: 'git',
+12 silly view       url: 'git+https://github.com/ionic-team/cordova-res.git'
+12 silly view     },
+12 silly view     author: { name: 'Ionic Team', email: 'hi@ionicframework.com' },
+12 silly view     bugs: { url: 'https://github.com/ionic-team/cordova-res/issues' },
+12 silly view     license: 'MIT',
+12 silly view     readmeFilename: 'README.md',
+12 silly view     version: '0.15.4',
+12 silly view     main: 'dist/index.js',
+12 silly view     types: 'dist/index.d.ts',
+12 silly view     engines: { node: '>=10.3.0' },
+12 silly view     bin: { 'cordova-res': 'bin/cordova-res' },
+12 silly view     scripts: {
+12 silly view       build: 'tsc',
+12 silly view       watch: 'tsc -w',
+12 silly view       test: 'jest --maxWorkers=4',
+12 silly view       lint: 'npm run eslint && npm run prettier -- --check',
+12 silly view       fmt: 'npm run eslint -- --fix && npm run prettier -- --write',
+12 silly view       eslint: 'eslint . --ext ts',
+12 silly view       prettier: "prettier 'src/**/*.ts'",
+12 silly view       release: 'np',
+12 silly view       prepublishOnly: 'npm run build'
+12 silly view     },
+12 silly view     husky: { hooks: [Object] },
+12 silly view     prettier: '@ionic/prettier-config',
+12 silly view     eslintConfig: { extends: '@ionic/eslint-config/recommended' },
+12 silly view     dependencies: {
+12 silly view       '@ionic/utils-array': '^2.1.5',
+12 silly view       '@ionic/utils-fs': '^3.1.5',
+12 silly view       debug: '^4.2.0',
+12 silly view       elementtree: '^0.1.7',
+12 silly view       sharp: '^0.29.2',
+12 silly view       tslib: '^2.0.3'
+12 silly view     },
+12 silly view     devDependencies: {
+12 silly view       '@ionic/eslint-config': '^0.3.0',
+12 silly view       '@ionic/prettier-config': '^1.0.1',
+12 silly view       '@types/debug': '^4.1.5',
+12 silly view       '@types/elementtree': '^0.1.0',
+12 silly view       '@types/fs-extra': '^8.0.0',
+12 silly view       '@types/jest': '^26.0.14',
+12 silly view       '@types/node': '~10.17.13',
+12 silly view       '@types/sharp': '^0.27.1',
+12 silly view       eslint: '^7.11.0',
+12 silly view       'eslint-plugin-import': '^2.22.0',
+12 silly view       husky: '^4.3.0',
+12 silly view       jest: '~25.5.0',
+12 silly view       np: '^7.0.0',
+12 silly view       prettier: '^2.1.2',
+12 silly view       'ts-jest': '~25.5.0',
+12 silly view       typescript: '~3.9.7'
+12 silly view     },
+12 silly view     gitHead: '870b3c51c12abdd8c182b9c64c542d38e9ad4876',
+12 silly view     _nodeVersion: '17.0.1',
+12 silly view     _npmVersion: '8.1.0',
+12 silly view     dist: {
+12 silly view       integrity: 'sha512-TjFZhjUtK8qq4DVrgR+KI7tKcUL704cnkTPRhHbKlCPzefHoz1tBOX93wc76dOMmOWKTsbJz83DIm6mqdp5Pmg==',
+12 silly view       shasum: 'a40af66905dd3edf6347be468c0cb0267ca0c593',
+12 silly view       tarball: 'https://registry.npmjs.org/cordova-res/-/cordova-res-0.15.4.tgz',
+12 silly view       fileCount: 28,
+12 silly view       unpackedSize: 150737,
+12 silly view       'npm-signature': '-----BEGIN PGP SIGNATURE-----\r\n' +
+12 silly view         'Version: OpenPGP.js v3.0.13\r\n' +
+12 silly view         'Comment: https://openpgpjs.org\r\n' +
+12 silly view         '\r\n' +
+12 silly view         'wsFcBAEBCAAQBQJhqkNsCRA9TVsSAnZWagAAeTwQAJh6j/OcFkzIdI4gZLjz\n' +
+12 silly view         '9CgwQszAKMoh9gyoEZQ6JsyHIsTmtSedCuhRFy1fu+JHQpgV8OxkAt/5VX+M\n' +
+12 silly view         'pTESXMHhWg8m+SXzMyPjA9lVgpr7FeMC1+vkg4YDy+l34unHGfTsBGzi4Pfm\n' +
+12 silly view         '9FyE3CxplZ6cKVWzp+sXxNjmrwL8hI60eSocv6MUrsp2MtMNmxZ2Rh7YU24D\n' +
+12 silly view         'iLkqOWSu4ypoMbvBy4tDbTzCfbw31yx4lt5PDyub5VCFIKVPpBSKkNmQAJZ1\n' +
+12 silly view         'DUZ+T6ycCU4OMM5G5UCuArCZ2tgw6RdEcTOuKl0/ZNBJPQMHH+0pXCgh79mc\n' +
+12 silly view         'AXO2JwegkLbc3ae2Oy078QPCYgspfBZiayiJQC8dEGQfLnpIqlML4OmjZiDX\n' +
+12 silly view         '5RZkJz4dlBezMMHsx4Yd5xc0aiTnoN0N4au4mjkT77QoSz3LMT8tvw4NRPQr\n' +
+12 silly view         '/SxC8/wJUvTPDv8d3qpKaJHFkVVdznJehcggzFkAMcQ+IZXBgTH9/dS8XlnT\n' +
+12 silly view         'AmSdg1zUuOmsHTjPv1aGPai9B0N0kqx9XET+5TxJfPzacc0L9rnaJkSmDtxW\n' +
+12 silly view         '/8VAdRJmPzVfWHDXdh31O5eDE+uRxXNzPIdSRViVq+sBQ2FOurVbQ7tqdFxU\n' +
+12 silly view         '4eKtrhSccxdsiPrsZ8iYTKuwt8VUH5ZQYWzr+iEOd6fEBLwVqw6yJSaC7gNy\n' +
+12 silly view         '/v7O\r\n' +
+12 silly view         '=32cQ\r\n' +
+12 silly view         '-----END PGP SIGNATURE-----\r\n',
+12 silly view       signatures: [Array]
+12 silly view     },
+12 silly view     _npmUser: { name: 'larsmikkelsen', email: 'lars@ionic.io' },
+12 silly view     directories: {},
+12 silly view     _npmOperationalInternal: {
+12 silly view       host: 's3://npm-registry-packages',
+12 silly view       tmp: 'tmp/cordova-res_0.15.4_1638548332129_0.2504775760684095'
+12 silly view     },
+12 silly view     _hasShrinkwrap: false
+12 silly view   }
+12 silly view }
+13 verbose cwd /data/data/com.termux/files/home
+14 verbose os Linux 6.6.30-android15-8-gcd3677c66895-ab12721575-4k
+15 verbose node v25.3.0
+16 verbose npm  v11.11.0
+17 verbose exit 0
+18 info ok

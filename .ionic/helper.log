@@ -1,0 +1,56 @@
+[[40mWARN[49m] Error loading @capacitor/ios package.json: Error: Cannot find module '@capacitor/ios/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/android package.json: Error: Cannot find module '@capacitor/android/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/ios package.json: Error: Cannot find module '@capacitor/ios/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/android package.json: Error: Cannot find module '@capacitor/android/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/ios package.json: Error: Cannot find module '@capacitor/ios/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/android package.json: Error: Cannot find module '@capacitor/android/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/ios package.json: Error: Cannot find module '@capacitor/ios/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
+[[40mWARN[49m] Error loading @capacitor/android package.json: Error: Cannot find module '@capacitor/android/package.json'
+       
+       Require stack:
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/project/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/lib/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/index.js
+       - /data/data/com.termux/files/usr/lib/node_modules/@ionic/cli/bin/ionic
