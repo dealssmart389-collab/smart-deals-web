@@ -1,17 +1,4 @@
-ion-content {
-  --background: url('https://www.transparenttextures.com/patterns/dark-matter.png') fixed;
-}
-
-ion-item {
-  --background: rgba(10, 10, 26, 0.8);
-  --color: #fff;
-  margin: 8px;
-  border-radius: 15px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(0, 229, 255, 0.1);
-}
-
-ion-searchbar {
-  --background: #111;
-  --color: #00e5ff;
-}
+.custom-background { --background: #0a0a0a; color: white; }
+.hero-section { text-align: center; margin-top: 50px; }
+.main-title { font-size: 2.5em; font-weight: bold; color: #00e5ff; }
+.wisdom-card { background: rgba(255,255,255,0.05); border: 1px solid #333; }

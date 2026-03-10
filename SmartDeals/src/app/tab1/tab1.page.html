@@ -1,17 +1,20 @@
-<ion-content [fullscreen]="true" style="--background: #000;">
-  <div class="star-map-viewer" style="padding: 20px; text-align: center;">
-    <h2 style="color: #00e5ff; text-shadow: 0 0 15px #00e5ff;">خريطة النجوم البرمجية</h2>
-    
-    <div class="radar-circle" style="width: 250px; height: 250px; border: 2px solid #00e5ff; border-radius: 50%; margin: 20px auto; position: relative; animation: pulse 2s infinite;">
-      <div class="scanning-line" style="width: 50%; height: 2px; background: #00ff00; position: absolute; top: 50%; left: 50%; transform-origin: left; animation: rotate 4s linear infinite;"></div>
-      <div class="star" style="position: absolute; top: 20%; left: 30%; color: #fff;">✦ GitHub</div>
-      <div class="star" style="position: absolute; bottom: 20%; right: 10%; color: #fff;">✦ Stack</div>
-    </div>
-
-    <ion-card style="background: rgba(0,0,0,0.8); border-left: 5px solid #00ff00;">
-      <ion-item style="--background: transparent; color: #00ff00;">
-        <ion-label>الحالة: جاري سحب خوارزمية "الاستنتاج الاستباقي"</ion-label>
-      </ion-item>
-    </ion-card>
+<ion-content class="ion-padding">
+  <div class="hero">
+    <h1>العنان: الذكاء في خدمتكم</h1>
+    <p>مقارنة الأسعار العالمية لحظة بلحظة</p>
   </div>
+
+  <ion-list lines="none" class="radar-list">
+    <ion-item *ngFor="let p of prices" class="radar-item">
+      <ion-label>
+        <h2>{{ p.item }}</h2>
+        <p>العالمي: {{ p.global }} | المحلي: {{ p.local }}</p>
+      </ion-label>
+      <ion-badge slot="end" color="danger">{{ p.diff }}</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <ion-card class="wisdom-card">
+    <ion-card-content>"وَفِي أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ"</ion-card-content>
+  </ion-card>
 </ion-content>
