@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 # مفاتيح التحكم الخاصة بك
-TOKEN = "7543829104:AAH_Example_Token" 
+TOKEN = "REAL_TOKEN_HERE" 
 CHAT_ID = "8389318428"
 
 @app.route('/send_ad', methods=['POST'])
