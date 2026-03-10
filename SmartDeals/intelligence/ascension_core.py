@@ -1,11 +1,12 @@
-import pre_emptive_logic
+from ..core.neural_spine import NeuralSpine
 import self_evolution
 
 def start_ascension():
-    print('🚀 بدء عملية الصعود الرقمي...')
-    while True:
-        pre_emptive_logic.predict_future()
-        self_evolution.singularity.fetch_missing_logic()
+    spine = NeuralSpine()
+    if spine.vital_signs():
+        print('🚀 الصعود الرقمي: النخاع سليم')
+        while True:
+             self_evolution.singularity.fetch_missing_logic()
 
 if __name__ == '__main__':
     start_ascension()
