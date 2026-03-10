@@ -1,0 +1,11 @@
+<ion-card class="neural-card">
+  <img [src]="currentProduct.image" />
+  <ion-card-header>
+    <ion-card-title>{{ currentProduct.title }}</ion-card-title>
+    <ion-text color="warning"><h3>DH {{ currentProduct.price }}</h3></ion-text>
+  </ion-card-header>
+
+  <ion-button expand="block" class="pay-button" (click)="buyNow(currentProduct.url)">
+    إتمام الدفع الكوني 🚀
+  </ion-button>
+</ion-card>

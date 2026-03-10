@@ -1,0 +1,25 @@
+@app.route('/fetch_ali_details', methods=['POST'])
+def fetch_ali_details():
+    try:
+        data = request.json
+        product_url = data.get('url')
+        # إضافة Headers تجعل الطلب يبدو كمتصفح حقيقي لتجنب النتائج الفارغة
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept-Language": "ar-MA,ar;q=0.9,en-US;q=0.8,en;q=0.7"
+        }
+        response = requests.get(product_url, headers=headers, timeout=15)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # البحث عن البيانات في أوسمة og:meta الأكثر ثباتاً في علي اكسبريس
+        title = soup.find("meta", property="og:title")
+        image = soup.find("meta", property="og:image")
+        
+        return jsonify({
+            "ok": True,
+            "title": title["content"] if title else "منتج مميز من AliExpress",
+            "image": image["content"] if image else "https://via.placeholder.com/300",
+            "url": product_url
+        })
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)})
