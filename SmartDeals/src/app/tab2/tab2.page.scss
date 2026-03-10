@@ -1,7 +1,36 @@
-ion-icon {
-  transition: transform 0.3s ease;
+ion-content {
+  --background: #000000; // خلفية سوداء ملكية
 }
-ion-icon:active {
-  transform: scale(1.5);
-  color: #00e5ff; /* لون كوني عند اللمس */
+
+.neural-card {
+  background: #121212;
+  border: 1px solid #333;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1); // توهج ذهبي خفيف
+
+  ion-card-title {
+    color: #ffd700; // نصوص ذهبية
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    color: #ffd700;
+    margin: 10px 0;
+  }
+}
+
+.pay-button {
+  --background: #e91e63; // اللون الوردي/الأحمر الجذاب في التصميم
+  --border-radius: 25px;
+  font-weight: bold;
+  height: 50px;
+  margin: 15px;
+}
+
+.section-title {
+  color: #00d2ff; // اللون الأزرق السماوي لعنوان "مخزن الشركات"
+  text-align: center;
+  margin: 20px 0;
 }

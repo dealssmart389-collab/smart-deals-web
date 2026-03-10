@@ -1,17 +1,40 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-@Component({ selector: 'app-tab2', templateUrl: 'tab2.page.html' })
+@Component({
+  selector: 'app-tab2',
+  templateUrl: 'tab2.page.html',
+  styleUrls: ['tab2.page.scss']
+})
 export class Tab2Page {
-  products = [
-    { name: 'Redmi Note 15 Pro+', price: '4500 DH', image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400', tag: 'New' },
-    { name: 'Apple Watch Ultra 3', price: '8200 DH', image: 'https://images.unsplash.com/photo-1544117518-2b476dd354d2?w=400', tag: 'Limited' }
- export class Tab2Page {
-  constructor() {}
+  currentProduct: any = {
+    title: 'ابحث عن منتجك المفضل',
+    price: '0.00',
+    image: 'assets/placeholder.png',
+    url: ''
+  };
 
-  openAliExpress(url: string) {
-    // هذا الكود يفتح المتصفح أو تطبيق علي اكسبريس مباشرة عند المشتري
-    window.open(url, '_system');
+  constructor(private http: HttpClient) {}
+
+  // دالة البحث وجلب البيانات بلمح البصر
+  fetchProduct(productUrl: string) {
+    const apiUrl = "http://127.0.0.1:5000/fetch_ali_details";
+    this.http.post(apiUrl, { url: productUrl }).subscribe((res: any) => {
+      if (res.ok) {
+        this.currentProduct = {
+          title: res.title,
+          image: res.image,
+          url: res.url,
+          price: "جاري التحديث..." // يمكنك إضافة منطق لجلب السعر لاحقاً
+        };
+      }
+    });
   }
-} ];
-  constructor() {}
+
+  // دالة إتمام الدفع الكوني
+  buyNow(url: string) {
+    if (url) {
+      window.open(url, '_system');
+    }
+  }
 }
