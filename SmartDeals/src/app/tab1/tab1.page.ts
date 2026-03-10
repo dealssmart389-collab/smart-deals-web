@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { InteractionService } from '../services/interaction.service';
+import { NeuralSpine } from '../services/neural-spine.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html'
 })
 export class Tab1Page {
-  constructor(public interaction: InteractionService) {}
+  constructor(private spine: NeuralSpine) {
+    this.spine.processInteraction('Main Hub');
+  }
 }
