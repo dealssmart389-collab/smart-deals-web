@@ -1,15 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { InteractionService } from '../services/interaction.service';
 
-@Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html'
-})
-export class Tab2Page implements OnInit {
-  universal_count: number = 1;
-
-  ngOnInit() {
-    setInterval(() => {
-      this.universal_count *= 1.000001; 
-    }, 10);
-  }
+@Component({ selector: 'app-tab2', templateUrl: 'tab2.page.html' })
+export class Tab2Page {
+  constructor(public blood: InteractionService) {}
 }
