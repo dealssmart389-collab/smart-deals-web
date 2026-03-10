@@ -5,32 +5,31 @@ import requests
 app = Flask(__name__)
 CORS(app)
 
-# 🔑 الإعدادات الأمنية - استبدل YOUR_TOKEN بتوكن بوتك الحقيقي
-TOKEN = "YOUR_API_TOKEN_HERE" 
+# 🔑 البيانات الحقيقية للربط
+TOKEN = "YOUR_BOT_TOKEN_HERE" 
 CHANNEL_ID = "@mSmartDeals_MA"
 
 @app.route('/send_ad', methods=['POST'])
 def send_ad():
-    data = request.json
-    msg = data.get('message', 'لا يوجد نص')
-    
-    # قالب إعلاني احترافي
-    formatted_msg = (
-        f"🔱 <b>Smart Deals Exclusive</b> 🔱\n\n"
-        f"📢 {msg}\n\n"
-        f"📍 طنجة، المغرب 🇲🇦\n"
-        f"🔗 تابعنا: {CHANNEL_ID}"
-    )
-    
-    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-    payload = {"chat_id": CHANNEL_ID, "text": formatted_msg, "parse_mode": "HTML"}
-    res = requests.post(url, data=payload)
-    return {"status": "success", "details": res.json()}
+    try:
+        data = request.json
+        msg = data.get('message', '')
+        
+        url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+        payload = {
+            "chat_id": CHANNEL_ID,
+            "text": msg,
+            "parse_mode": "HTML"
+        }
+        res = requests.post(url, data=payload)
+        return {"status": "success", "details": res.json()}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
 
 @app.route('/update_currency', methods=['GET'])
 def update_currency():
-    rate = 10.15 # سعر صرف تقريبي للدرهم 🇲🇦
-    msg = f"💰 <b>تحديث العملة</b>\n\n💵 1 دولار = {rate} درهم مغربي\n\n🔱 Smart Deals"
+    rate = 10.15 #
+    msg = f"💰 <b>تحديث العملة</b>\n💵 1 دولار = {rate} درهم مغربي 🇲🇦"
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     requests.post(url, data={"chat_id": CHANNEL_ID, "text": msg, "parse_mode": "HTML"})
     return {"status": "currency updated"}
