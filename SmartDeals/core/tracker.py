@@ -1,11 +1,14 @@
-import time
-import requests
-
-def track():
-    # هنا نضع منطق فحص الأسعار مستقبلاً
-    print("🚀 رادار العروض يعمل الآن في خلفية Termux...")
-    # إرسال تنبيه تجريبي
-    requests.post("http://127.0.0.1:5000/send_ad", json={"message": "📢 تنبيه: تم رصد عرض جديد في سوق كازابلانكا!"})
-
-if __name__ == "__main__":
-    track()
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>لوحة التحكم في العنان 🔱</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="floating">رسالة الإعلان</ion-label>
+      <ion-input [(ngModel)]="adMessage" placeholder="اكتب عرضك هنا..."></ion-input>
+    </ion-item>
+    <ion-button expand="full" (click)="sendTelegramAd()">
+      إرسال عبر البوت 🚀
+    </ion-button>
+  </ion-card-content>
+</ion-card>
