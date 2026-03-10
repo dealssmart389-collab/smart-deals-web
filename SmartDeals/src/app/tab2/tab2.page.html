@@ -1,9 +1,25 @@
-<ion-content [fullscreen]="true" style="--background: #000;">
-  <div class="evolution-stats">
-    <h1 style="color: #00e5ff; text-align: center;">اكتمال الكيان: 1 -> ∞</h1>
-    <div class="progress-bar-universe" style="height: 20px; background: #111; border: 1px solid #00e5ff;">
-      <div class="fill" style="width: 85%; height: 100%; background: #00e5ff; box-shadow: 0 0 15px #00e5ff;"></div>
-    </div>
-    <p style="text-align: center; color: #00ff00;">الحالة: امتصاص الخوارزميات مستمر...</p>
-  </div>
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>العنان: الإصدارات العالمية</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let p of products">
+        <ion-card mode="ios">
+          <img [src]="p.image" style="height: 200px; object-fit: cover; width: 100%;" />
+          <ion-card-header>
+            <ion-card-subtitle>{{ p.tag }}</ion-card-subtitle>
+            <ion-card-title>{{ p.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 color="success">{{ p.price }}</h2>
+            <ion-button expand="block" shape="round">اكتشف الآن</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
