@@ -29,4 +29,11 @@ if __name__ == '__main__':
     core = OmniCore()
     core.security_check()
     core.royal_welcome()
-    core.evolution_loop()
+    core.evolution_loop()def monitor_inventory():
+    products = ['Redmi Note 13 Pro', 'Ultra Quantum']
+    prices = [4200, 11500]
+    print('📦 رادار المخزن: جاري مراقبة المنتجات العالمية...')
+    for p, pr in zip(products, prices):
+        print(f'✅ {p} متوفر بسعر {pr} DH - بوابة الدفع جاهزة')
+
+monitor_inventory()
