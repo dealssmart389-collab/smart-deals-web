@@ -1,0 +1,5 @@
+[
+  {"id": 1, "name": "iPhone 17 Pro", "price": "13500 DH", "image": "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=500", "tag": "إصدار عالمي"},
+  {"id": 2, "name": "Redmi Note 15 Ultra", "price": "5200 DH", "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500", "tag": "الأكثر طلباً"},
+  {"id": 3, "name": "Smart Watch Pro 2026", "price": "1800 DH", "image": "https://images.unsplash.com/photo-1544117518-2b476dd354d2?w=500", "tag": "إكسسوار ذكي"}
+]
