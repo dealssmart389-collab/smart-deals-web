@@ -30,6 +30,21 @@
             <ion-button expand="block" shape="round">اكتشف الآن</ion-button>
           </ion-card-content>
         </ion-card>
+<ion-content class="ion-padding">
+  <ion-item class="search-box" lines="none" style="--background: #121212; border: 1px solid #ffd700; border-radius: 15px; margin-bottom: 20px;">
+    <ion-input #aliUrl placeholder="الصق رابط AliExpress هنا..." style="color: white;"></ion-input>
+    <ion-button slot="end" fill="clear" (click)="fetchProduct(aliUrl.value)">
+      <ion-icon name="search-outline" style="color: #ffd700;"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <div class="section-title">
+    <h2 style="color: #00d2ff;">مخزن الشركات العالمية</h2>
+  </div>
+
+  <ion-card class="neural-card">
+    </ion-card>
+</ion-content>
       </ion-col>
     </ion-row>
   </ion-grid>
