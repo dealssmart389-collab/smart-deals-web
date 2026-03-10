@@ -1,18 +1,23 @@
-<ion-content [fullscreen]="true" style="--background: radial-gradient(circle, #001d3d 0%, #000 100%);">
-  <div class="quantum-core">
-    <div class="orbit-container">
-      <div class="core-sun">M</div>
-      <div class="data-planet">Data</div>
-    </div>
-    
-    <div class="stats-panel">
-      <h2 style="color: #00e5ff;">تحليل الأبعاد الحية</h2>
-      <p style="color: #fff;">استجابة النواة: <span style="color: #00ff00;">{{ latency }}</span></p>
-      <p style="color: #fff;">حالة المدار: <span style="color: #00e5ff;">{{ quantumStatus }}</span></p>
-    </div>
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>إعدادات وسيرفرات العنان</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-button expand="block" color="tertiary" style="margin-top: 50px;">
-      تفعيل بروتوكول 2100
-    </ion-button>
-  </div>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-icon name="server-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>
+        <h2>خادم النواة الرئيسي</h2>
+        <p>الحالة: متصل (Online)</p>
+      </ion-label>
+      <ion-badge slot="end" color="success">نشط</ion-badge>
+    </ion-item>
+
+    <ion-item button (click)="clearCache()">
+      <ion-icon name="trash-outline" slot="start" color="danger"></ion-icon>
+      <ion-label>تطهير المخلفات (Clean System)</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

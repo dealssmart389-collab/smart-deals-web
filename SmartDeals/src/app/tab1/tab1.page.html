@@ -1,20 +1,10 @@
 <ion-content class="ion-padding">
   <div class="hero">
-    <h1>العنان: الذكاء في خدمتكم</h1>
-    <p>مقارنة الأسعار العالمية لحظة بلحظة</p>
+    <h1>مرحباً بك في العنان</h1>
+    <p>رادار الأسعار والذكاء التجاري بين يديك</p>
   </div>
 
-  <ion-list lines="none" class="radar-list">
-    <ion-item *ngFor="let p of prices" class="radar-item">
-      <ion-label>
-        <h2>{{ p.item }}</h2>
-        <p>العالمي: {{ p.global }} | المحلي: {{ p.local }}</p>
-      </ion-label>
-      <ion-badge slot="end" color="danger">{{ p.diff }}</ion-badge>
-    </ion-item>
-  </ion-list>
-
-  <ion-card class="wisdom-card">
-    <ion-card-content>"وَفِي أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ"</ion-card-content>
-  </ion-card>
+  <ion-button expand="block" color="success" (click)="triggerBot()">
+    🚀 إرسال إعلان المستقبل لتيليجرام
+  </ion-button>
 </ion-content>
