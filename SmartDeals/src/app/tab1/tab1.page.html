@@ -1,23 +1,21 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>🔱 Smart Deals Admin</ion-title>
+    <ion-title>إرسال عرض جديد 🚀</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>إرسال عرض جديد للقناة</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item lines="outline">
-        <ion-label position="stacked">نص الإعلان (يدعم HTML)</ion-label>
-        <ion-textarea [(ngModel)]="adMessage" rows="6" placeholder="اكتب تفاصيل العرض هنا..."></ion-textarea>
-      </ion-item>
-      <ion-button expand="block" color="success" class="ion-margin-top" (click)="sendTelegramAd()">
-        <ion-icon name="paper-plane-outline" slot="start"></ion-icon>
-        نشر العرض الآن
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-item lines="none" class="ion-margin-bottom">
+    <ion-textarea 
+      [(ngModel)]="dealMessage" 
+      placeholder="اكتب تفاصيل العرض هنا... يمكنك استخدام <b>Bold</b> أو روابط." 
+      rows="10" 
+      style="border: 1px solid #ccc; border-radius: 8px; --padding-start: 10px;">
+    </ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="sendDeal()" [disabled]="!dealMessage">
+    <ion-icon name="paper-plane-outline" slot="start"></ion-icon>
+    نشر العرض في القناة
+  </ion-button>
 </ion-content>
