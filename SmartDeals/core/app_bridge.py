@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-TOKEN = "8654310950:AAFqsBQdlt3lEUA3F-ULm2kFj1s_B56sfic"
+TOKEN = "8654310950:AAFdC6w93szpM-C5Vgtv5lM4D-u-zFkLyIM"
 CHANNEL_ID = "@mSmartDeals_MA"
 
 @app.route('/update_currency', methods=['GET'])
