@@ -1,10 +1,12 @@
-<ion-content class="ion-padding">
-  <div class="hero">
-    <h1>مرحباً بك في العنان</h1>
-    <p>رادار الأسعار والذكاء التجاري بين يديك</p>
-  </div>
-
-  <ion-button expand="block" color="success" (click)="triggerBot()">
-    🚀 إرسال إعلان المستقبل لتيليجرام
-  </ion-button>
-</ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>لوحة التحكم في العنان 🔱</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="floating">رسالة الإعلان</ion-label>
+      <ion-input [(ngModel)]="adMessage"></ion-input>
+    </ion-item>
+    <ion-button expand="full" (click)="sendTelegramAd()">إرسال عبر البوت</ion-button>
+  </ion-card-content>
+</ion-card>
