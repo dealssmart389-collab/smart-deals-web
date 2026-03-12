@@ -1,256 +1,500 @@
-cd ~/Driving_oto_AI/Driving_oto_AI
-cat << 'EOF' > politics_analysis.py
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
+  </ion-toolbar>
+</ion-header>
 
-def scrape():
-    try:
-        url = "https://www.reuters.com/world/"
-        response = requests.get(url, timeout=10)
-        with open("analysis_log.txt", "a") as f:
-            f.write(f"\n--- {datetime.now()} ---\nتحليل سياسي جديد تم جمعه\n")
-        print("✅ تم تحديث التحليلات!")
-    except:
-        print("❌ فشل الاتصال بالموقع")
+<ion-content [fullscreen]="true">
+  <div class="global-radar-header">
+    <ion-searchbar placeholder="ابحث عن هاتفك القادم..."></ion-searchbar>
+  </div>
 
-scrape()
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of products">
+        <ion-card class="product-card">
+          <img [src]="product.image" />
+          <ion-card-header>
+            <ion-card-subtitle>{{ product.tag }}</ion-card-subtitle>
+            <ion-card-title>{{ product.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="price-text">{{ product.price }}</h2>
+            <ion-button expand="block" fill="outline">اطلب الآن</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
 EOF
 
-cd ~/Driving_oto_AI/Driving_oto_AI
-cat << 'EOF' > politics_analysis.py
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
-
-def scrape():
-    try:
-        url = "https://www.reuters.com/world/"
-        response = requests.get(url, timeout=10)
-        with open("analysis_log.txt", "a") as f:
-            f.write(f"\n--- {datetime.now()} ---\nتحليل سياسي جديد تم جمعه\n")
-        print("✅ تم تحديث التحليلات!")
-    except:
-        print("❌ فشل الاتصال بالموقع")
-
-scrape()
+cd ~/SmartDeals/src/assets
+mkdir -p phones accessories brands
+cd ~/SmartDeals/core
+cat << 'EOF' > products.json
+[
+  {
+    "id": 1,
+    "name": "Redmi Note 15 Pro+",
+    "price": "4500 DH",
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=400",
+    "tag": "الأكثر مبيعاً"
+  },
+  {
+    "id": 2,
+    "name": "Apple Watch Ultra 3",
+    "price": "8200 DH",
+    "image": "https://images.unsplash.com/photo-1544117518-2b476dd354d2?q=80&w=400",
+    "tag": "إكسسوار ذكي"
+  },
+  {
+    "id": 3,
+    "name": "Samsung S26 Ultra",
+    "price": "12500 DH",
+    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=400",
+    "tag": "إصدار محدود"
+  }
+]
 EOF
 
-# إغلاق أي وكيل SSH يعمل حالياً لتصفير الذاكرة
-killall ssh-agent 2>/dev/null
-# إعادة تشغيل الوكيل من جديد
-eval "$(ssh-agent -s)"
-# إضافة المفتاح الخاص بك مرة أخرى
-ssh-add ~/.ssh/id_ed25519
-git remote set-url origin git@github.com:mounirbenalal-cmyk/Driving_oto_AI.git
-python politics_analysis.py
-git add .
-git commit -m "تحديث شامل للتحليلات والمشروع"
-git push -u origin main
-termux-setup-storage
-y
-# استبدل example.com برابط سيرفر التطبيق إذا كنت تعرفه
-ping smartdeals-official.com 
-#!/data/data/com.termux/files/usr/bin/bash
-echo "--- بدء عملية التحديث والربط ---"
-# تحديث المستودعات والحزم
-pkg update -y && pkg upgrade -y
-# التأكد من تثبيت الأدوات الأساسية للتعامل مع الشبكات والملفات
-pkg install curl wget git -y
-# فحص إذا كان مجلد التخزين مربوطاً
-if [ -d "$HOME/storage" ]; then     echo "[✓] التخزين مربوط بنجاح."; else     echo "[!] يرجى تفعيل إذن التخزين...";     termux-setup-storage; fi
-echo "--- تم التحديث بنجاح ---"
-nano update.sh
-curl -Is
-curl
-https://dealssmart.imperial/
-./update.sh
-cat ~/.ssh/id_ed25519.pub
-nano update.sh
-watch -n 60 curl -Is https://dealssmart.imperial/
-#!/data/data/com.termux/files/usr/bin/bash
-echo "--- لوحة تحكم Smart Deals ---"
-# 1. التأكد من اتصال الإنترنت للسيرفر
-curl -Is https://dealssmart.imperial/ | head -n 1
-# 2. تشغيل سكريبت معالجة البيانات الخاص بك
-python politics_analysis.py
-# 3. تنظيف الملفات المؤقتة في المجلد
-rm -rf *.tmp
-echo "--- تم التحديث والفحص ---"
-cp /data/app/com.dealssmart.imperial-*/base.apk ~/Driving_oto_AI/app_backup.apk
-nano update.sh
+cd ~/SmartDeals/src/app/tab2
+printf "import { Component } from '@angular/core';\n\n@Component({ selector: 'app-tab2', templateUrl: 'tab2.page.html' })\nexport class Tab2Page {\n  products = [\n    { name: 'Redmi Note 15 Pro+', price: '4500 DH', image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400', tag: 'New' },\n    { name: 'Apple Watch Ultra 3', price: '8200 DH', image: 'https://images.unsplash.com/photo-1544117518-2b476dd354d2?w=400', tag: 'Limited' }\n  ];\n  constructor() {}\n}" > tab2.page.ts
+cd ~/SmartDeals/core
+cat << 'EOF' > products.json
+[
+  {"id": 1, "name": "iPhone 17 Pro", "price": "13500 DH", "image": "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=500", "tag": "إصدار عالمي"},
+  {"id": 2, "name": "Redmi Note 15 Ultra", "price": "5200 DH", "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500", "tag": "الأكثر طلباً"},
+  {"id": 3, "name": "Smart Watch Pro 2026", "price": "1800 DH", "image": "https://images.unsplash.com/photo-1544117518-2b476dd354d2?w=500", "tag": "إكسسوار ذكي"}
+]
+EOF
+
+cd ~/SmartDeals/src/app/tab2
+cat << 'EOF' > tab2.page.html
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>العنان: الإصدارات العالمية</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let p of products">
+        <ion-card mode="ios">
+          <img [src]="p.image" style="height: 200px; object-fit: cover; width: 100%;" />
+          <ion-card-header>
+            <ion-card-subtitle>{{ p.tag }}</ion-card-subtitle>
+            <ion-card-title>{{ p.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 color="success">{{ p.price }}</h2>
+            <ion-button expand="block" shape="round">اكتشف الآن</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+EOF
+
+~/update.sh
+cd ~/SmartDeals/core
+cat << 'EOF' > alert_system.py
+import json
+
+def check_global_updates():
+    alerts = [
+        {"id": 101, "title": "إصدار جديد!", "body": "وصل الآن Redmi Note 15 Ultra إلى المخازن العالمية.", "type": "product"},
+        {"id": 102, "title": "تنبيه أمني", "body": "نظام المناعة نشط وقام بتطهير العروق بنجاح.", "type": "security"}
+    ]
+    return alerts
+
+if __name__ == "__main__":
+    print(json.dumps(check_global_updates()))
+EOF
+
+cd ~/SmartDeals/src/app/tab1
+printf ".custom-background { --background: #0a0a0a; color: white; }\n.hero-section { text-align: center; margin-top: 50px; }\n.main-title { font-size: 2.5em; font-weight: bold; color: #00e5ff; }\n.wisdom-card { background: rgba(255,255,255,0.05); border: 1px solid #333; }" > tab1.page.scss
+cd ~/SmartDeals/core
+cat << 'EOF' > price_radar.py
+import json
+
+def compare_prices():
+    prices = [
+        {"item": "iPhone 17 Pro", "global": "1100$", "local": "13500 DH", "diff": "+15%"},
+        {"item": "Redmi Note 15 Pro+", "global": "380$", "local": "4500 DH", "diff": "+10%"},
+        {"item": "Watch Ultra 3", "global": "799$", "local": "8200 DH", "diff": "+12%"}
+    ]
+    return prices
+
+if __name__ == "__main__":
+    print(json.dumps(compare_prices()))
+EOF
+
+cd ~/SmartDeals/src/app/tab1
+cat << 'EOF' > tab1.page.html
+<ion-content class="ion-padding">
+  <div class="hero">
+    <h1>العنان: الذكاء في خدمتكم</h1>
+    <p>مقارنة الأسعار العالمية لحظة بلحظة</p>
+  </div>
+
+  <ion-list lines="none" class="radar-list">
+    <ion-item *ngFor="let p of prices" class="radar-item">
+      <ion-label>
+        <h2>{{ p.item }}</h2>
+        <p>العالمي: {{ p.global }} | المحلي: {{ p.local }}</p>
+      </ion-label>
+      <ion-badge slot="end" color="danger">{{ p.diff }}</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <ion-card class="wisdom-card">
+    <ion-card-content>"وَفِي أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ"</ion-card-content>
+  </ion-card>
+</ion-content>
+EOF
+
+~/update.sh
+cd ~/SmartDeals/core
+cat << 'EOF' > telegram_notifier.py
+import requests
+import json
+
+def send_alert(message):
+    token = "YOUR_BOT_TOKEN" # ستحصل عليه من BotFather
+    chat_id = "YOUR_CHAT_ID"
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {"chat_id": chat_id, "text": message, "parse_mode": "HTML"}
+    return requests.post(url, data=payload)
+
+# سحب البيانات من رادار الأسعار
+with open('products.json', 'r') as f:
+    products = json.load(f)
+    report = "🚀 <b>تحديث العنان العالمي:</b>\n\n"
+    for p in products:
+        report += f"📱 {p['name']}\n💰 السعر: {p['price']}\n\n"
+
+# إرسال النبضة
+send_alert(report)
+print("✅ تم إرسال نبض الأسعار إلى تيليجرام!")
+EOF
+
+cd ~/SmartDeals/src/app/tab1
+cat << 'EOF' > tab1.page.html
+<ion-content class="ion-padding custom-dark">
+  <div class="header-status">
+    <ion-badge color="primary">الرادار نشط</ion-badge>
+    <ion-badge color="tertiary">بوت التنبيهات: متصل</ion-badge>
+  </div>
+
+  <div class="hero-text">
+    <h1>مرحباً منير</h1>
+    <p>النظام يراقب ملايين الهواتف الآن...</p>
+  </div>
+
+  <ion-button expand="block" color="secondary" (click)="triggerBot()">
+    إرسال تقرير الأسعار لهاتفي 📲
+  </ion-button>
+</ion-content>
+EOF
+
+cd ~/SmartDeals/src/assets
+mkdir -p icon
+# هذا المجلد سيحتوي على أيقونة تطبيقك التي ستظهر على ملايين الشاشات
+cd ~/SmartDeals/core
+cat << 'EOF' > telegram_notifier.py
+import requests
+import json
+
+def send_alert(message):
+    token = "7543829104:AAH_Example_Token" # استبدله بـ Token الخاص بك من BotFather
+    chat_id = "8389318428" # معرفك الخاص الظاهر في لقطة الشاشة
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {"chat_id": chat_id, "text": message, "parse_mode": "HTML"}
+    return requests.post(url, data=payload)
+
+with open('products.json', 'r') as f:
+    products = json.load(f)
+    report = "🚀 <b>تقرير العنان للأسعار العالمية:</b>\n\n"
+    for p in products:
+        report += f"📱 <b>{p['name']}</b>\n💰 السعر: {p['price']}\n🏷️ {p['tag']}\n\n"
+
+send_alert(report)
+print("✅ النبضة وصلت إلى تيليجرام!")
+EOF
+
+pkg install cronie -y
+crontab -l | { cat; echo "0 8 * * * python3 ~/SmartDeals/core/telegram_notifier.py"; } | crontab -
+pgrep crond || crond
+~/update.sh
 pkg install python -y
-pip install requests beautifulsoup4 colorama
+pip install flask requests
+cd ~/SmartDeals/core
+cat << 'EOF' > app_bridge.py
+from flask import Flask, request
 import requests
-from bs4 import BeautifulSoup
-import time
-from colorama import Fore, Style, init
-# تهيئة الألوان لإعطاء روح للواجهة
-init(autoreset=True)
-URL = "https://dealssmart.imperial/"
-APP_NAME = "Smart Deals Official"
-def heartbeat():
-if __name__ == "__main__":;     print(Fore.MAGENTA + "==============================")
-echo -e "\e[1;34m--- بدء عملية الإحياء (System Revive) ---\e[0m"
-# 1. فحص الحزم وتحديثها بصمت
-pkg update -y &> /dev/null
-# 2. تشغيل روح التطبيق (الذكاء الاصطناعي)
-python politics_analysis.py
-# 3. مراقبة مستمرة في الخلفية (اختياري)
-echo -e "\e[1;32m\n[✓] النظام يعمل الآن كقلب نابض للتطبيق.\e[0m"
-pip install requests beautifulsoup4 colorama schedule lxml
-pkg install libxml2 libxslt clang python-dev -y
+
+app = Flask(__name__)
+
+TOKEN = "7543829104:AAH_Example_Token" # ضع التوكن الخاص بك هنا
+CHAT_ID = "8389318428"
+
+@app.route('/send_ad', methods=['POST'])
+def send_ad():
+    data = request.json
+    message = data.get('message', 'إشعار من عالم آخر...')
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    payload = {"chat_id": CHAT_ID, "text": message, "parse_mode": "HTML"}
+    requests.post(url, data=payload)
+    return {"status": "success", "sent": message}
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+EOF
+
+python3 app_bridge.py &
+cd ~/SmartDeals/src/app/tab1
+cat << 'EOF' > tab1.page.ts
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-tab1',
+  templateUrl: 'tab1.page.html',
+  styleUrls: ['tab1.page.scss']
+})
+export class Tab1Page {
+  constructor(private http: HttpClient) {}
+
+  triggerBot() {
+    const adMessage = "🚀 إشعار متقدم: العنان يغزو الأسواق العالمية الآن!";
+    this.http.post('http://127.0.0.1:5000/send_ad', { message: adMessage })
+      .subscribe(
+        res => console.log('تم الإرسال بنجاح!'),
+        err => console.error('فشل الاتصال، تأكد من تشغيل app_bridge.py')
+      );
+  }
+}
+EOF
+
+pip install flask-cors
+sed -i "from flask import Flask, request/from flask import Flask, request\nfrom flask_cors import CORS/" ~/SmartDeals/core/app_bridge.py
+sed -i "app = Flask(__name__)/app = Flask(__name__)\nCORS(app)/" ~/SmartDeals/core/app_bridge.py
+pkill -f app_bridge.py
+python3 ~/SmartDeals/core/app_bridge.py &
+cd ~/SmartDeals/core
+cat << 'EOF' > app_bridge.py
+from flask import Flask, request
+from flask_cors import CORS
 import requests
+
+app = Flask(__name__)
+CORS(app)
+
+# مفاتيح التحكم الخاصة بك
+TOKEN = "7543829104:AAH_Example_Token" 
+CHAT_ID = "8389318428"
+
+@app.route('/send_ad', methods=['POST'])
+def send_ad():
+    try:
+        data = request.json
+        message = data.get('message', 'إشعار من عالم العنان المتقدم 🚀')
+        url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+        payload = {"chat_id": CHAT_ID, "text": message, "parse_mode": "HTML"}
+        
+        response = requests.post(url, data=payload)
+        return {"status": "success", "telegram_response": response.status_code}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}, 500
+
+if __name__ == '__main__':
+    # التشغيل على جميع الواجهات لضمان تخطي عقبة الـ VPN
+    app.run(host='0.0.0.0', port=5000)
+EOF
+
+pkill -f app_bridge.py
+python3 app_bridge.py &
+~/update.sh
+cd ~/SmartDeals/core && nano app_bridge.py
+python3 app_bridge.py &
+curl -X POST http://127.0.0.1:5000/send_ad -H "Content-Type: application/json" -d '{"message": "🚀 نداء من مركز التحكم: بوابة العنان مفتوحة والاتصال مستقر!"}'
+~/update.sh
+sed -i 's/7543829104:AAH_Example_Token/REAL_TOKEN_HERE/' ~/SmartDeals/core/app_bridge.py
+pkill -f app_bridge.py
+python3 ~/SmartDeals/core/app_bridge.py &
+cat << 'EOF' > ~/SmartDeals/src/app/tab1/tab1.page.html
+<ion-content class="ion-padding">
+  <div class="hero">
+    <h1>مرحباً بك في العنان</h1>
+    <p>رادار الأسعار والذكاء التجاري بين يديك</p>
+  </div>
+
+  <ion-button expand="block" color="success" (click)="triggerBot()">
+    🚀 إرسال إعلان المستقبل لتيليجرام
+  </ion-button>
+</ion-content>
+EOF
+
+git add .
+git commit -m "🚀 تفعيل الجسر الرسمي لـ Smart Deals"
+git push origin main
+pkg install nodejs -y
+npm install -g localtunnel
+# تشغيل النفق لفتح منفذ 5000 للعالم
+lt --port 5000
+sed -i "this.http.post('http://127.0.0.1:5000/send_ad'" "this.http.post('رابط_localtunnel_الجديد/send_ad'" ~/SmartDeals/src/app/tab1/tab1.page.ts
+git add .
+git commit -m "🚀 إيقاظ النظام: ربط النفق السحابي بالجسر المحلي"
+git push origin main
+rm ~/SmartDeals/core/app_bridge.py
+cat << 'EOF' > ~/SmartDeals/core/app_bridge.py
+from flask import Flask, request
+from flask_cors import CORS
+import requests
+
+app = Flask(__name__)
+CORS(app)
+
+TOKEN = "7543829104:AAH_Example_Token" # استبدل هذا بتوكن BotFather الحقيقي
+CHAT_ID = "8389318428"
+
+@app.route('/send_ad', methods=['POST'])
+def send_ad():
+    try:
+        data = request.json
+        msg = data.get('message', 'نبض من عالم العنان!')
+        url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+        res = requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+        return {"status": "success", "code": res.status_code}
+    except Exception as e:
+        return {"status": "error", "msg": str(e)}, 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+EOF
+
+pkill -f python3
+python3 ~/SmartDeals/core/app_bridge.py &
+sed -i 's/7543829104:AAH_Example_Token/ضع_التوكن_الحقيقي_هنا/' ~/SmartDeals/core/app_bridge.py
+# ثم أعد التشغيل لتفعيل التوكن الجديد
+pkill -f python3
+python3 ~/SmartDeals/core/app_bridge.py &
+curl -X POST http://127.0.0.1:5000/send_ad -H "Content-Type: application/json" -d '{"message": "🚀 <b>إعلان من عالم العنان:</b>\nتم تفعيل نظام الذكاء التجاري بنجاح! 🇲🇦"}'
+import requests
+from flask import Flask, request
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
+TOKEN = "7543829104:AAH_Example_Token" # ضع توكنك الحقيقي هنا
+CHAT_ID = "8389318428" # معرفك الخاص
+@app.route('/webhook', methods=['POST'])
+def webhook():
+if __name__ == '__main__':;     app.run(host='0.0.0.0', port=5000)
+cat << 'EOF' > ~/SmartDeals/core/tracker.py
 import time
-import os
-from bs4 import BeautifulSoup
-from colorama import Fore, Style, init
-init(autoreset=True)
-# إعدادات المحرك الفائق
-TARGET_URL = "https://dealssmart.imperial/"
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Termux) System-Core-AI'}
-def get_live_status():
-if __name__ == "__main__":;     while True:;         get_live_status()         print(f"\n{Fore.BLUE}🔄 جاري تحديث الروح بعد 30 ثانية... (CTRL+C للإغلاق)")
-pkg install clang libxml2 libxslt python-dev -y
-nano politics_analysis.py
-chmod +x update.sh
-./update.sh
-nano politics_analysis.py
-./update.sh
-nano politics_analysis.py
-./update.sh
-#!/bin/bash
-# tremux - Smart Deals Final Preparation
-echo "جاري فحص وتحديث بيئة العمل..."
-apt update && apt upgrade -y
-echo "النظام جاهز الآن بنسبة 100%!"
-# تشغيل هذا السكربت أسبوعياً يضمن بقاء نظامك محمياً ومحدثاً
-./update.sh
-# تثبيت خادم Nginx
-pkg install nginx -y
-# تشغيل الخادم
-nginx
-pkg install cloudflared -y
-cloudflared tunnel login
-# تثبيت خادم Nginx
-pkg install nginx -y
-# تشغيل الخادم
-nginx
-pkg install cloudflared -y
-cloudflared tunnel login
-smartdealsds.com
-cloudflared tunnel create smartdeals-tunnel
-cloudflared tunnel route dns smartdeals-tunnel smartdealsds.com
-echo "cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 &" >> update.sh
-termux-open-url https://smartdealsds.com
-termux-open-url http://localhost:8080
-ps aux | grep cloudflared
-DNS_PROBE_FINISHED_NXDOMAIN
-# تشغيل النفق وربطه بالخادم المحلي (Nginx)
-cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 &
-cat <<EOF > $PREFIX/share/nginx/html/index.html
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>Smart Deals | متجرك الذكي</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; background: #f4f4f4; color: #333; padding: 50px; }
-        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; }
-        h1 { color: #e67e22; }
-        .status { color: #27ae60; font-weight: bold; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>مرحباً بكم في Smart Deals</h1>
-        <p>نحن نعمل الآن "للأبد" بفضل نظام المعالجة الذكي.</p>
-        <p class="status">النظام جاهز ومستقر 100% ✅</p>
-    </div>
-</body>
-</html>
+import requests
+
+def track():
+    # هنا نضع منطق فحص الأسعار مستقبلاً
+    print("🚀 رادار العروض يعمل الآن في خلفية Termux...")
+    # إرسال تنبيه تجريبي
+    requests.post("http://127.0.0.1:5000/send_ad", json={"message": "📢 تنبيه: تم رصد عرض جديد في سوق كازابلانكا!"})
+
+if __name__ == "__main__":
+    track()
 EOF
 
-# تشغيل النفق وربطه بالخادم في الخلفية
-cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 &
-ps aux | grep cloudflared
-bash update.sh
-cloudflared tunnel run smartdeals-tunnel --url localhost:8080
-cloudflared tunnel run smartdeals-tunnel --url localhost:8080 &
-echo "cloudflared tunnel run smartdeals-tunnel --url localhost:8080 &" > update.sh
-cloudflared tunnel run --url localhost:8080 smartdeals-tunnel
-cloudflared tunnel route dns smartdeals-tunnel smartdealsds.com.free
-update.sh
-echo "cloudflared tunnel run --url localhost:8080 smartdeals-tunnel > /dev/null 2>&1 &" >> update.sh
-echo "echo 'الرابط المتصل حالياً: https://smartdealsds.com.free'" >> update.sh
-bash update.sh
-echo "cloudflared tunnel run --url localhost:8080 smartdeals-tunnel > /dev/null 2>&1 &" > update.sh
-echo "echo 'الرابط المتصل حالياً: https://smartdealsds.com.free'" >> update.sh
-bash update.sh
-pgrep cloudflared
-bash update.sh
-echo "cloudflared tunnel run --url http://localhost:8080 smartdeals-tunnel > /dev/null 2>&1 &" > update.sh
-echo "echo 'الرابط المتصل حالياً: https://smartdealsds.com.free'" >> update.sh
-bash update.sh
-pgrep cloudflared
-pkill cloudflared
-cloudflared tunnel run --url http://localhost:8080 smartdeals-tunnel
-echo "cloudflared tunnel run --url http://localhost:8080 smartdeals-tunnel > /dev/null 2>&1 &" > update.sh
-echo "echo 'الرابط المتصل حالياً: https://smartdealsds.com.free'" >> update.sh
-echo "cloudflared tunnel run --url http://localhost:8080 smartdeals-tunnel > /dev/null 2>&1 &" > update.sh
-echo "echo 'الرابط المتصل حالياً: https://smartdealsds.com.free'" >> update.sh
-bash update.sh
-pgrep cloudflared
-# تصحيح ملف update.sh بالكامل
-echo "pkill cloudflared" > update.sh
-echo "cloudflared tunnel run --url http://localhost:8080 smartdeals-tunnel > /dev/null 2>&1 &" >> update.sh
-echo "echo '🚀 المتجر متصل الآن: https://smartdealsds.com.free'" >> update.sh
-# تشغيل النظام المحدث
-bash update.sh
-pgrep cloudflared
-# 1. إيقاف أي عمليات قديمة عالقة
-pkill cloudflared
-# 2. إعادة كتابة سكربت التشغيل بالترتيب الصحيح
-echo "cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 > /dev/null 2>&1 &" > update.sh
-echo "echo '🚀 المتجر متصل الآن: https://smartdealsds.com.free'" >> update.sh
-# 3. تشغيل النظام المحدث
-bash update.sh
-pgrep cloudflared
-pkill cloudflared && rm update.sh
-cat <<EOF > update.sh
-#!/bin/bash
-echo "جاري تشغيل نظام Smart Deals..."
-pkill cloudflared
-# تشغيل النفق بالترتيب الصحيح (النفق ثم الرابط)
-cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 > /dev/null 2>&1 &
-echo "🚀 المتجر متصل الآن عالمياً"
-echo "🔗 الرابط: https://smartdealsds.com.free"
-EOF
-
-nginx
-bash update.sh
-pkill cloudflared && rm update.sh
-cat <<EOF > update.sh
-#!/bin/bash
-echo "جاري تشغيل نظام Smart Deals..."
-pkill cloudflared
-# الترتيب الصحيح: اسم النفق ثم الرابط
-cloudflared tunnel run smartdeals-tunnel --url http://localhost:8080 > /dev/null 2>&1 &
-echo "🚀 المتجر متصل الآن عالمياً"
-echo "🔗 الرابط المعتمد: https://smartdealsds.com.free"
-EOF
-
-bash update.sh
-<a href="https://wa.me/YOUR_PHONE_NUMBER">
-# الانتقال لمسار المتجر ووضع كود الإعلان
-cd $PREFIX/share/nginx/html
-echo "<html><body style='background:#000; color:#ffcc00; text-align:center; font-family:Arial;'><h1>🔥 Smart Deals Flash Sale 🔥</h1><p>خصومات تصل إلى 70%!</p><a href='https://wa.me/YOUR_PHONE' style='background:#25d366; color:white; padding:10px; text-decoration:none; border-radius:5px;'>اطلب الآن عبر واتساب</a></body></html>" > index.html
-bash update.sh
-bash ~/update.sh
-sed -i 's/YOUR_PHONE/201234567890/g' $PREFIX/share/nginx/html/index.html
-# استبدال الرابط برابط واتساب احترافي يتضمن رسالة تلقائية
-sed -i "s|https://wa.me/201234567890|https://wa.me/201234567890?text=مرحباً%20Smart%20Deals،%20أريد%20الاستفسار%20عن%20عرض%20الـ%20Flash%20Sale%2070%25|g" $PREFIX/share/nginx/html/index.html
-bash ~/update.sh
-sed -i "s|https://wa.me/201234567890|https://wa.me/201234567890?text=مرحباً%20Smart%20Deals،%20أريد%20الاستفسار%20عن%20عرض%20الـ%20Flash%20Sale%2070%25|g" $PREFIX/share/nginx/html/index.html
-update.sh
-nano update.sh
+cd ~/SmartDeals
+git add .
+git commit -m "🔥 إطلاق نسخة البوت التفاعلي ونظام الرادار"
+git push origin main # تذكر أن مفاتيح SSH جاهزة
+<ion-card>
+</ion-card>
+nano ~/SmartDeals/src/app/tab1/tab1.page.html
+nano ~/SmartDeals/core/tracker.py
+cd ~/SmartDeals
+git add src/app/tab1/tab1.page.html
+git commit -m "🎨 إضافة لوحة تحكم البوت للواجهة"
+git push origin main
+nano ~/SmartDeals/src/app/tab1/tab1.page.ts
+nano ~/SmartDeals/core/app_bridge.py
+cd ~/SmartDeals
+git add .
+git commit -m "🚀 تفعيل القالب الاحترافي وبوت الدعم الشخصي"
+git push origin main
+nano ~/SmartDeals/core/app_bridge.py
+cd ~/SmartDeals
+git add .
+git commit -m "🔱 نظام متكامل: واجهة، رادار، دعم فني، وعملات"
+git push origin main
+# تشغيل السيرفر والرادار وضمان بقائهما في الخلفية
+nohup python3 ~/SmartDeals/core/app_bridge.py > /dev/null 2>&1 &
+nohup python3 ~/SmartDeals/core/tracker.py > /dev/null 2>&1 &
+curl -X POST http://127.0.0.1:5000/send_ad -H "Content-Type: application/json" -d '{"message": "🔱 تجربة إرسال رسالة من التطبيق إلى القناة بنجاح!"}'
+nano ~/SmartDeals/core/app_bridge.py
+pkill -f python3
+python3 ~/SmartDeals/core/app_bridge.py &
+curl http://127.0.0.1:5000/update_currency
+cd ~/SmartDeals
+git add .
+git commit -m "🔱 تحديث النواة: إضافة نظام العملات والقالب الاحترافي"
+git push origin main
+crontab -e
+nano app_bridge.py
+pkill -f python3
+nohup python3 ~/SmartDeals/core/app_bridge.py > /dev/null 2>&1 &
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustc --version
+rustup default stable
+# 1. تحديث الأدوات الأساسية وإصلاح مكتبات الأمان
+pkg install openssl libandroid-support-static -y
+# 2. تثبيت Rust مباشرة من مستودع Termux (لتجنب أخطاء rustup)
+pkg install rust -y
+# 3. تثبيت مكتبة التشفير الجاهزة لنظام أندرويد (لتوفير وقت البناء)
+pkg install python-cryptography -y
+# 4. تفعيل مكتبة الذكاء الاصطناعي أخيراً
+pip install google-generativeai
+pkg install python -y
+pip install --upgrade pip
+pip install google-generativeai
+python -m pip install --upgrade pip
+python -m pip install google-generativeai
+python -c "import google.generativeai; print('The environment is ready for the future')"
+pkg install python-pip -y
+pip install google-generativeai
+pkg update && pkg upgrade -y
+pkg install binutils python-pip rust -y
+pip install --upgrade pip setuptools wheel
+pip install cryptography pydantic-core
+pip install google-generativeai
+# 1. تثبيت المتطلبات التقنية للبناء
+pkg install binutils rust python-pip -y
+# 2. تحديث أدوات البناء الأساسية (مهم جداً لـ Python 3.13)
+pip install --upgrade pip setuptools wheel
+# 3. تحديد متغير بيئة يخبر بايثون باستخدام Rust أثناء التثبيت
+export CARGO_BUILD_TARGET=$(rustc -vV | sed -n 's/host: //p')
+# 4. التثبيت الآن (سيستغرق دقيقتين لبناء الكود)
+pip install cryptography
+pip install google-generativeai
+import google.generativeai as genai
+# هذا مجرد اختبار للبيئة وليس الكود النهائي
+print("🚀 المستقبل بدأ الآن على هاتف منير بن علال!")
+print("الحالة: Rust + Python 3.13 + Gemini AI = جاهز للعمل")
+pip install pydantic google-generativeai
+python
+exit
+# تثبيت Maturin لإصلاح مشكلة Pydantic-core
+pip install maturin
+# تثبيت المكتبة التي كنت تريدها
+pip install pydantic-core google-generativeai
+pkg update && pkg upgrade -y
+pkg install binutils python-pip rust make clang -y
+pip install maturin
+pip install pydantic-core pydantic google-generativeai
+pkg update && pkg upgrade -y
+pkg install binutils rust clang make python-pip -y
+pip install --upgrade pip setuptools wheel
+pip install maturin
+rustup default stable
+pkg install rust -y
