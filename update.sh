@@ -1,3 +1,4 @@
+No command found
 #!/data/data/com.termux/files/usr/bin/bash
 
 # 🚀 Smart Deals - Auto Pilot Update System V2.1
