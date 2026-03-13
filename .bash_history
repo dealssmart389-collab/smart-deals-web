@@ -1,212 +1,3 @@
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <div class="global-radar-header">
-    <ion-searchbar placeholder="ابحث عن هاتفك القادم..."></ion-searchbar>
-  </div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let product of products">
-        <ion-card class="product-card">
-          <img [src]="product.image" />
-          <ion-card-header>
-            <ion-card-subtitle>{{ product.tag }}</ion-card-subtitle>
-            <ion-card-title>{{ product.name }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h2 class="price-text">{{ product.price }}</h2>
-            <ion-button expand="block" fill="outline">اطلب الآن</ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
-EOF
-
-cd ~/SmartDeals/src/assets
-mkdir -p phones accessories brands
-cd ~/SmartDeals/core
-cat << 'EOF' > products.json
-[
-  {
-    "id": 1,
-    "name": "Redmi Note 15 Pro+",
-    "price": "4500 DH",
-    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=400",
-    "tag": "الأكثر مبيعاً"
-  },
-  {
-    "id": 2,
-    "name": "Apple Watch Ultra 3",
-    "price": "8200 DH",
-    "image": "https://images.unsplash.com/photo-1544117518-2b476dd354d2?q=80&w=400",
-    "tag": "إكسسوار ذكي"
-  },
-  {
-    "id": 3,
-    "name": "Samsung S26 Ultra",
-    "price": "12500 DH",
-    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=400",
-    "tag": "إصدار محدود"
-  }
-]
-EOF
-
-cd ~/SmartDeals/src/app/tab2
-printf "import { Component } from '@angular/core';\n\n@Component({ selector: 'app-tab2', templateUrl: 'tab2.page.html' })\nexport class Tab2Page {\n  products = [\n    { name: 'Redmi Note 15 Pro+', price: '4500 DH', image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400', tag: 'New' },\n    { name: 'Apple Watch Ultra 3', price: '8200 DH', image: 'https://images.unsplash.com/photo-1544117518-2b476dd354d2?w=400', tag: 'Limited' }\n  ];\n  constructor() {}\n}" > tab2.page.ts
-cd ~/SmartDeals/core
-cat << 'EOF' > products.json
-[
-  {"id": 1, "name": "iPhone 17 Pro", "price": "13500 DH", "image": "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=500", "tag": "إصدار عالمي"},
-  {"id": 2, "name": "Redmi Note 15 Ultra", "price": "5200 DH", "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500", "tag": "الأكثر طلباً"},
-  {"id": 3, "name": "Smart Watch Pro 2026", "price": "1800 DH", "image": "https://images.unsplash.com/photo-1544117518-2b476dd354d2?w=500", "tag": "إكسسوار ذكي"}
-]
-EOF
-
-cd ~/SmartDeals/src/app/tab2
-cat << 'EOF' > tab2.page.html
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title>العنان: الإصدارات العالمية</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-md="6" *ngFor="let p of products">
-        <ion-card mode="ios">
-          <img [src]="p.image" style="height: 200px; object-fit: cover; width: 100%;" />
-          <ion-card-header>
-            <ion-card-subtitle>{{ p.tag }}</ion-card-subtitle>
-            <ion-card-title>{{ p.name }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h2 color="success">{{ p.price }}</h2>
-            <ion-button expand="block" shape="round">اكتشف الآن</ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
-EOF
-
-~/update.sh
-cd ~/SmartDeals/core
-cat << 'EOF' > alert_system.py
-import json
-
-def check_global_updates():
-    alerts = [
-        {"id": 101, "title": "إصدار جديد!", "body": "وصل الآن Redmi Note 15 Ultra إلى المخازن العالمية.", "type": "product"},
-        {"id": 102, "title": "تنبيه أمني", "body": "نظام المناعة نشط وقام بتطهير العروق بنجاح.", "type": "security"}
-    ]
-    return alerts
-
-if __name__ == "__main__":
-    print(json.dumps(check_global_updates()))
-EOF
-
-cd ~/SmartDeals/src/app/tab1
-printf ".custom-background { --background: #0a0a0a; color: white; }\n.hero-section { text-align: center; margin-top: 50px; }\n.main-title { font-size: 2.5em; font-weight: bold; color: #00e5ff; }\n.wisdom-card { background: rgba(255,255,255,0.05); border: 1px solid #333; }" > tab1.page.scss
-cd ~/SmartDeals/core
-cat << 'EOF' > price_radar.py
-import json
-
-def compare_prices():
-    prices = [
-        {"item": "iPhone 17 Pro", "global": "1100$", "local": "13500 DH", "diff": "+15%"},
-        {"item": "Redmi Note 15 Pro+", "global": "380$", "local": "4500 DH", "diff": "+10%"},
-        {"item": "Watch Ultra 3", "global": "799$", "local": "8200 DH", "diff": "+12%"}
-    ]
-    return prices
-
-if __name__ == "__main__":
-    print(json.dumps(compare_prices()))
-EOF
-
-cd ~/SmartDeals/src/app/tab1
-cat << 'EOF' > tab1.page.html
-<ion-content class="ion-padding">
-  <div class="hero">
-    <h1>العنان: الذكاء في خدمتكم</h1>
-    <p>مقارنة الأسعار العالمية لحظة بلحظة</p>
-  </div>
-
-  <ion-list lines="none" class="radar-list">
-    <ion-item *ngFor="let p of prices" class="radar-item">
-      <ion-label>
-        <h2>{{ p.item }}</h2>
-        <p>العالمي: {{ p.global }} | المحلي: {{ p.local }}</p>
-      </ion-label>
-      <ion-badge slot="end" color="danger">{{ p.diff }}</ion-badge>
-    </ion-item>
-  </ion-list>
-
-  <ion-card class="wisdom-card">
-    <ion-card-content>"وَفِي أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ"</ion-card-content>
-  </ion-card>
-</ion-content>
-EOF
-
-~/update.sh
-cd ~/SmartDeals/core
-cat << 'EOF' > telegram_notifier.py
-import requests
-import json
-
-def send_alert(message):
-    token = "YOUR_BOT_TOKEN" # ستحصل عليه من BotFather
-    chat_id = "YOUR_CHAT_ID"
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    payload = {"chat_id": chat_id, "text": message, "parse_mode": "HTML"}
-    return requests.post(url, data=payload)
-
-# سحب البيانات من رادار الأسعار
-with open('products.json', 'r') as f:
-    products = json.load(f)
-    report = "🚀 <b>تحديث العنان العالمي:</b>\n\n"
-    for p in products:
-        report += f"📱 {p['name']}\n💰 السعر: {p['price']}\n\n"
-
-# إرسال النبضة
-send_alert(report)
-print("✅ تم إرسال نبض الأسعار إلى تيليجرام!")
-EOF
-
-cd ~/SmartDeals/src/app/tab1
-cat << 'EOF' > tab1.page.html
-<ion-content class="ion-padding custom-dark">
-  <div class="header-status">
-    <ion-badge color="primary">الرادار نشط</ion-badge>
-    <ion-badge color="tertiary">بوت التنبيهات: متصل</ion-badge>
-  </div>
-
-  <div class="hero-text">
-    <h1>مرحباً منير</h1>
-    <p>النظام يراقب ملايين الهواتف الآن...</p>
-  </div>
-
-  <ion-button expand="block" color="secondary" (click)="triggerBot()">
-    إرسال تقرير الأسعار لهاتفي 📲
-  </ion-button>
-</ion-content>
-EOF
-
-cd ~/SmartDeals/src/assets
-mkdir -p icon
-# هذا المجلد سيحتوي على أيقونة تطبيقك التي ستظهر على ملايين الشاشات
-cd ~/SmartDeals/core
-cat << 'EOF' > telegram_notifier.py
-import requests
-import json
-
-def send_alert(message):
-    token = "7543829104:AAH_Example_Token" # استبدله بـ Token الخاص بك من BotFather
     chat_id = "8389318428" # معرفك الخاص الظاهر في لقطة الشاشة
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {"chat_id": chat_id, "text": message, "parse_mode": "HTML"}
@@ -498,3 +289,212 @@ pip install --upgrade pip setuptools wheel
 pip install maturin
 rustup default stable
 pkg install rust -y
+# 1. تحديث أدوات التثبيت
+pip install --upgrade pip setuptools wheel
+# 2. تثبيت الجسر (سيعمل الآن لأن clang و rust جاهزان)
+pip install maturin
+# 3. تثبيت المكتبة العنيدة
+pip install pydantic-core
+# 4. تثبيت مكتبة Gemini
+pip install google-generativeai
+pkg update && pkg upgrade -y
+pkg install binutils rust clang make python-pip -y
+export CC=clang
+export CXX=clang++
+pip install --upgrade pip setuptools wheel
+# سنحاول تثبيت نسخة جاهزة من maturin إذا توفرت، وإلا سيقوم rust ببنائها
+pip install maturin
+pip install pydantic-core
+pip install google-generativeai
+rustup default stable
+# تثبيت أدوات المطورين الأساسية بضغطة واحدة
+pkg install build-essential clang python-cryptography rust -y
+# تثبيت Maturin من مستودع pkg مباشرة وليس من pip (هذا هو سر الهكرز)
+pkg install maturin -y
+pkg install rust clang make binutils -y
+python -m ensurepip --upgrade
+pip install --upgrade pip setuptools wheel
+pkg install maturin -y
+pkg install tur-repo -y
+pkg update
+pkg install maturin -y
+pip install pydantic-core
+pip install google-generativeai
+rustup default stable
+pkg install clang make binutils -y
+pip install maturin
+pip install pydantic-core
+pip install google-generativeai
+rustup default stable
+pip cache purge
+export CC=clang
+export CXX=clang++
+pip install maturin
+python -m venv ai_env
+source ai_env/bin/activate
+pip install --upgrade pip
+pip install google-generativeai
+rustup default stable
+pkg install build-essential binutils python-cryptography pkg-config -y
+pip install --upgrade pip setuptools wheel
+export CC=clang
+export CXX=clang++
+# تثبيت Maturin أولاً لأنه الجسر لـ Pydantic
+pip install maturin
+# تثبيت Pydantic-core و Gemini AI
+pip install pydantic-core google-generativeai
+#!/bin/bash
+echo "tremux - Starting Neural Core Update..."
+# 1. ضبط البيئة
+rustup default stable
+export CC=clang
+export CXX=clang++
+# 2. تحديث المكتبات الأساسية
+pip install --upgrade pip
+pip install maturin pydantic-core google-generativeai
+# 3. التحقق من النجاح
+rustup default stable
+pkg install build-essential binutils pkg-config libffi openssl
+# 1. إنشاء البيئة
+python -m venv mounir_ai
+# 2. الدخول إليها (تفعيل)
+source mounir_ai/bin/activate
+# 3. تحديث أدوات التثبيت داخلها
+pip install --upgrade pip setuptools wheel
+export CC=clang
+export CXX=clang++
+pip install maturin pydantic-core google-generativeai
+#!/bin/bash
+echo "tremux - Starting Hyper-Speed Environment Setup..."
+# تفعيل Rust
+rustup default stable
+# الدخول للبيئة الافتراضية
+source ~/mounir_ai/bin/activate
+# تحديث سريع
+export CC=clang
+pip install --upgrade google-generativeai
+echo "🚀 Environment is optimized for Smart Deals AI."
+python -c "import google.generativeai; print('💎 The Wall is Broken! Gemini is Ready.')"
+pkg update && pkg upgrade -y
+pkg install build-essential rust clang make binutils pkg-config libffi openssl -y
+pkg update && pkg upgrade -y
+pkg install build-essential rust clang make binutils pkg-config libffi openssl -y
+rustup default stable
+# إنشاء مساحة عمل جديدة لـ "Smart Deals"
+python -m venv ~/mounir_core
+source ~/mounir_core/bin/activate
+# تحديث أدوات التثبيت داخل البيئة المعزولة
+pip install --upgrade pip setuptools wheel
+export CC=clang
+export CXX=clang++
+# تثبيت Maturin و Pydantic و Gemini AI
+echo "tremux - Starting Neural Recovery..."
+rustup default stable
+source ~/mounir_core/bin/activate
+export CC=clang
+pip install --upgrade google-generativeai
+echo "🚀 Your environment is now fully armed and operational."
+# تنظيف المستودعات وتحديثها
+pkg update && pkg upgrade -y
+# تثبيت أدوات "الحديد والنار" (المترجمات)
+pkg install clang rust make python-cryptography binutils pkg-config libffi openssl -y
+rustup default stable
+# إنشاء بيئة العمل الخاصة بك
+python -m venv ~/mounir_core
+source ~/mounir_core/bin/activate
+# تحديث أدوات الإدارة داخل البيئة
+pip install --upgrade pip setuptools wheel
+# تفعيل المترجم مع تخطي مشكلة rustls التي ظهرت في الصورة
+export RUSTFLAGS="-C link-arg=-s"
+rustup default stable
+# إخبار البيئة باستخدام مترجمات الهاتف مباشرة
+export CC=clang
+export CXX=clang++
+# تثبيت المكتبات التي "يأمر ولا يجدها" Termux
+pip install --no-build-isolation maturin
+pip install pydantic-core
+pip install google-generativeai
+nano deals_ai.py
+pip install google-generativeai
+nano deals_ai.py
+nano update.sh
+google-generativeai
+pydantic
+maturin
+cryptography
+def check_safety_rule(action):
+print("Driving AI 2026 Core: Online")
+print(check_safety_rule("السرعة"))
+source ~/mounir_core/bin/activate
+python test_ai.py
+pip list
+pkg install python-cryptography -y
+pip install google-generativeai --prefer-binary
+# اخرج من البيئة الافتراضية أولاً
+deactivate
+# تثبيت المكتبات الجاهزة للنظام
+pkg install python-cryptography python-pydantic -y
+# حذف البيئة القديمة المعطلة
+rm -rf ~/mounir_core
+# إنشاء بيئة جديدة ترتبط بمكتبات النظام
+python -m venv --system-site-packages ~/mounir_core
+source ~/mounir_core/bin/activate
+pip install google-generativeai
+# تأكد أنك داخل (mounir_core)
+export RUSTFLAGS="-C link-arg=-s"
+rustup toolchain install stable-aarch64-linux-android
+rustup default stable-aarch64-linux-android
+# تحديث pip لأحدث نسخة كما طلب منك النظام في الصورة
+pip install --upgrade pip
+# تثبيت المكتبات مع منع محاولة البناء اليدوي الفاشلة
+pip install maturin pydantic-core --only-binary=:all:
+pip install google-generativeai --no-build-isolation
+update.sh
+deactivate
+pkg install maturin -y
+deactivate
+rm -rf ~/mounir_core
+python -m venv ~/mounir_core
+source ~/mounir_core/bin/activate
+pip install --upgrade pip
+# هذا هو السطر الذهبي لتجاوز فشل maturion
+pip install google-generativeai --only-binary=:all:
+# تأكد أنك داخل (mounir_core)
+pip install google-generativeai --no-deps
+pip install google-auth google-api-core requests tqdm
+# تأكد أنك داخل (mounir_core)
+pip install google-generativeai --no-deps
+pip install google-auth google-api-core requests tqdm
+echo "📊 حجم الكود الحالي: $(du -sh . | cut -f1)"
+# إعجاز البرمجة: ربط الرقم بالأداة
+tools = {
+}
+print("🧪 فحص المنظومة الرقمية:")
+for num, name in tools.items():
+# استخدام Requests لتجاوز جدار grpcio
+import requests
+print("\n🌐 حالة الاتصال بالمركز العصبي: Online")
+nano core_final.py
+update.sh
+chmod +x update.sh
+./update.sh
+nano core_final.py
+update.sh
+nano update.sh
+update.sh
+# تشغيل فحص الإعجاز الرياضي قبل الرفع
+python core_final.py
+pip install requests
+chmod +x update.sh
+./update.sh
+chmod +x update.sh
+./update.sh
+pip install requests
+# تأكد أولاً من صلاحيات التنفيذ
+chmod +x update.sh
+# ثم التشغيل
+./update.sh
+Nano (4)
+pip install requests
+chmod +x update.sh
+./update.sh
