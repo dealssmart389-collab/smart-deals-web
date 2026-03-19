@@ -1,0 +1,10 @@
+{
+  "name": "Smart Deals Pro",
+  "short_name": "SmartDeals",
+  "description": "بوابة التسوق الذكي لعام 2100",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00d4ff",
+  "icons": [{"src": "icon.png", "sizes": "512x512", "type": "image/png"}]
+}
