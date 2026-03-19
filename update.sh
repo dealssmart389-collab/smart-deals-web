@@ -2,4 +2,4 @@
 ./evolve.sh
 git add .
 git commit -m "Update: $(date)"
-git push origin main
+git push -u origin main
