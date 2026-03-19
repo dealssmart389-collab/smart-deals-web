@@ -1,5 +1,5 @@
 #!/bin/bash
 ./evolve.sh
 git add .
-git commit -m "Update: $(date)"
+git commit -m "System Update: $(date)"
 git push -u origin main
