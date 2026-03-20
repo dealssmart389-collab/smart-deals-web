@@ -3,88 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Deals | MOUNIR BENALAL</title>
+    <title>Smart Deals - الدفع الآمن</title>
     <style>
-        body { 
-            background: #000; 
-            color: #00ff00; 
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-        .box { 
-            border: 3px solid #00ff00; 
-            padding: 30px;
-            background: rgba(0, 255, 0, 0.05);
-            box-shadow: 0 0 20px #00ff00, inset 0 0 10px #00ff00;
-            border-radius: 15px;
-            text-align: center;
-            width: 80%;
-            max-width: 600px;
-        }
-        h1 { 
-            text-transform: uppercase; 
-            letter-spacing: 5px; 
-            font-size: 2.5em;
-            text-shadow: 2px 2px #ff0000;
-            margin-bottom: 10px;
-        }
-        .status { 
-            color: #ff0000; 
-            font-weight: bold;
-            animation: blink 0.8s infinite;
-        }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
-        
-        .quantum-btn {
-            background: #00ff00;
-            color: #000;
-            padding: 15px 30px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-        .quantum-btn:hover {
-            background: #ff0000;
-            color: #fff;
-            box-shadow: 0 0 30px #ff0000;
-        }
-        #console-log {
-            font-size: 0.8em;
-            margin-top: 20px;
-            color: #008800;
-            height: 50px;
-            overflow: hidden;
-        }
+        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { border: 1px solid #00ff41; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); text-align: center; width: 350px; }
+        .payment-methods { margin-top: 20px; }
+        .btn-paypal { background: #0070ba; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
+        .btn-visa { background: #1a1f71; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; cursor: pointer; font-weight: bold; }
+        .status { font-size: 0.8em; margin-top: 15px; color: #888; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>Sovereignty Engine v3.0</h1>
-        <p>القائد: <strong>منير بن علال</strong></p>
-        <p>النظام: <span class="status">نشط - معالجة السرب جارية</span></p>
-        <hr color="#00ff00">
-        
-        <div id="neural-pay">
-            <h3>NEURAL PAY | بوابة التشفير الكوني</h3>
-            <button class="quantum-btn" onclick="executeQuantumForce()">إتمام الدفع الكوانتومي</button>
+    <div class="card">
+        <h2>NEURAL PAY 2100</h2>
+        <p>مشروع Smart Deals</p>
+        <div class="payment-methods">
+            <button class="btn-paypal" onclick="payWithPayPal()">PayPal</button>
+            <button class="btn-visa" onclick="payWithVisa()">Visa / MasterCard</button>
         </div>
-
-        <div id="console-log">إعداد ملايين الأعمدة... انتظار الأوامر.</div>
+        <div class="status" id="log">[+] النظام مؤمن ببروتوكول Bandit</div>
     </div>
 
     <script>
-        function executeQuantumForce() {
-            const logger = document.getElementById('console-log');
-            logger.innerHTML = "🌀 جاري التشفير بـ 256-بت كوانتوم...<br>📡 تم قنص الصفقة عبر السرب!";
-            alert("تم إخضاع العملية لجبروت التشفير السيادي.");
+        function sendNotification(method) {
+            // إرسال إشارة لـ Termux (Gatekeeper) ليصدر تنبيهاً على هاتفك
+            fetch('http://localhost:5000/notify_payment_access')
+            .then(() => {
+                document.getElementById('log').innerText = "[✓] تم إرسال تنبيه الدفع لـ Termux";
+            });
+        }
+
+        function payWithPayPal() {
+            alert("جاري الاتصال بـ PayPal...");
+            sendNotification('PayPal');
+        }
+
+        function payWithVisa() {
+            alert("جاري فتح بوابة Visa الآمنة...");
+            sendNotification('Visa');
         }
     </script>
 </body>
