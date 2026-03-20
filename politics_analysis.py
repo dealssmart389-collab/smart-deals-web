@@ -1,29 +1,15 @@
-import requests
-import time
-import os
 import subprocess
-from colorama import Fore, Style, init
+import os
 
-init(autoreset=True)
-
-# الرابط الأساسي للولاية
-TARGET_URL = "https://www.google.com"
-
-def governor_heartbeat():
-    os.system('clear')
-    print(f"{Fore.CYAN}{Style.BRIGHT}🏛️  تأسيس مجتمع Smart Deals الرسمي")
-    while True:
+def send_secure_notification(title, message):
+    termux_bin = "/data/data/com.termux/files/usr/bin/termux-notification"
+    if os.path.exists(termux_bin):
         try:
-            res = requests.get(TARGET_URL, timeout=10)
-            if res.status_code == 200:
-                print(f"{Fore.GREEN}[✓] البيئة مستقرة | النبض سليم | {time.strftime('%H:%M:%S')}")
-                # إرسال إشعار للنظام لفرض الوجود
-                subprocess.run(['termux-notification', '-t', 'الحاكم', '-c', 'المجتمع تحت السيطرة'])
-        except:
-            print(f"{Fore.RED}[✖] اضطراب في البيئة!")
-        
-        # مكمن قوة البيئة: الراحة لمدة 60 ثانية لإنقاذ البطارية
-        time.sleep(60)
+            subprocess.run([termux_bin, "-t", title, "-c", message], check=True, shell=False)
+        except Exception as e:
+            print(f"Error: {e}")
+    else:
+        print(f"Notification: {title} - {message}")
 
 if __name__ == "__main__":
-    governor_heartbeat()
+    send_secure_notification("Smart Deals", "تم تطهير الكود بنجاح 100%")
