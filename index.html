@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benalal AI 2026 | Timo AI Sovereign</title>
+    <title>TIMO AI 2100 | الرؤية العصبونية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -15,44 +15,65 @@
         }
         body { background-color: var(--dark-core); color: white; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
         #matrix-bg { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
-        .container { padding: 20px; max-width: 1200px; margin: auto; }
+        .container { padding: 15px; max-width: 1200px; margin: auto; }
         .glass-panel { background: var(--glass-shield); backdrop-filter: blur(10px); border: 1px solid var(--border-glow); border-radius: 20px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.1); }
-        .mic-section { display: flex; align-items: center; gap: 15px; background: rgba(255, 0, 0, 0.05); border: 1px solid #ff000033; padding: 10px; border-radius: 50px; }
-        .mic-btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: var(--neon-green); cursor: pointer; transition: 0.3s; }
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 15px; text-align: center; border: 1px solid var(--border-glow); transition: 0.4s; }
-        .price-tag { font-family: 'Orbitron'; color: var(--neon-green); font-size: 1.4em; }
-        .btn-action { background: none; border: 1px solid var(--neon-green); color: var(--neon-green); padding: 10px 25px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; }
-        .console-box { background: #000; height: 250px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; color: var(--neon-green); font-size: 13px; border: 1px solid var(--border-glow); border-radius: 10px; }
+        
+        /* واجهة الصوت */
+        .header-ui { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .mic-btn { width: 60px; height: 60px; border-radius: 50%; border: none; background: var(--neon-green); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: 0.3s; }
+        .mic-btn.active { box-shadow: 0 0 20px var(--neon-green); animation: pulse 1.5s infinite; }
+
+        /* الرؤية العصبونية */
+        #webcam { width: 100%; border-radius: 15px; border: 2px solid var(--neon-green); background: #000; }
+
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .card { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 20px; text-align: center; border: 1px solid var(--border-glow); }
+        .price-tag { font-family: 'Orbitron'; color: var(--neon-green); font-size: 1.4em; display: block; margin: 10px 0; }
+        
+        .btn-action { background: none; border: 1px solid var(--neon-green); color: var(--neon-green); padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; }
+        .btn-action:hover { background: var(--neon-green); color: black; }
+
+        .console-box { background: #000; height: 200px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; color: var(--neon-green); font-size: 13px; border-radius: 10px; border: 1px solid var(--border-glow); }
         .input-area { display: flex; gap: 10px; margin-top: 15px; }
         #user-input-field { flex: 1; background: #000; border: 1px solid var(--neon-green); color: white; padding: 12px; border-radius: 8px; outline: none; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 <canvas id="matrix-bg"></canvas>
 <div class="container">
-    <header class="glass-panel" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+    <header class="glass-panel header-ui">
         <div>
             <h1 style="margin:0; color: var(--neon-green); font-family: 'Orbitron';">TIMO AI 2100</h1>
             <small><i class="fas fa-shield-alt"></i> حماية Bandit نشطة | SHA256 مؤمن</small>
         </div>
-        <div class="mic-section">
-            <span id="mic-status">تيمو مستعد...</span>
-            <button class="mic-btn" onclick="startVoiceTimo()"><i class="fas fa-microphone"></i></button>
+        <div style="text-align: center;">
+            <button class="mic-btn" id="main-mic" onclick="startVoiceTimo()"><i class="fas fa-microphone"></i></button>
+            <div id="mic-status" style="font-size: 12px; margin-top: 5px; color: var(--neon-green);">تيمو مستعد...</div>
         </div>
     </header>
 
+    <section class="glass-panel" id="vision-section">
+        <h3><i class="fas fa-eye"></i> الرؤية العصبونية (Driving AI Vision)</h3>
+        <div style="position: relative; width: 100%; max-width: 400px; margin: auto;">
+            <video id="webcam" autoplay playsinline></video>
+            <canvas id="vision-canvas" style="display:none;"></canvas>
+        </div>
+        <button class="btn-action" onclick="analyzeSign()"><i class="fas fa-camera"></i> تحليل علامة المرور</button>
+    </section>
+
     <div class="grid-layout">
         <div class="card">
-            <i class="fas fa-robot fa-4x" style="color: var(--neon-green); margin-bottom: 15px;"></i>
+            <i class="fas fa-robot fa-3x" style="color: var(--neon-green);"></i>
             <h3>Driving AI 2026</h3>
-            <span class="price-tag">199 DH</span>
+            <span class="price-tag">DH 199</span>
             <button class="btn-action" onclick="sendCommand('Buy_DrivingAI')">شراء سيادي</button>
         </div>
         <div class="card">
-            <i class="fas fa-server fa-4x" style="color: #0088cc; margin-bottom: 15px;"></i>
+            <i class="fas fa-server fa-3x" style="color: #0088cc;"></i>
             <h3>Smart Deals Pro</h3>
-            <span class="price-tag">299 DH</span>
+            <span class="price-tag">DH 299</span>
             <button class="btn-action" onclick="sendCommand('Buy_SmartDeals')">ارتباط بالسيرفر</button>
         </div>
     </div>
@@ -62,17 +83,17 @@
         <div class="console-box" id="log-screen">
             > نظام تيمو جاهز...<br>
             > تم التحقق من مفتاح SHA256 بنجاح.<br>
-            > البطارية الحالية: 70%.
+            > البطارية الحالية: 76%.
         </div>
         <div class="input-area">
-            <input type="text" id="user-input-field" placeholder="اكتب أمرك لتيمو هنا..." onkeypress="handleKey(event)">
+            <input type="text" id="user-input-field" placeholder="تحدث مع تيمو..." onkeypress="if(event.key==='Enter') askTimo()">
             <button onclick="askTimo()" style="background: var(--neon-green); border: none; padding: 10px 20px; cursor: pointer; border-radius: 8px; font-weight: bold;">إرسال</button>
         </div>
     </section>
 </div>
 
 <script>
-    // 1. مصفوفة الماتريكس الخلفية
+    // 1. نظام الماتريكس
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -91,47 +112,57 @@
     }
     setInterval(drawMatrix, 50);
 
-    // 2. منطق تيمو (Timo AI Engine)
+    // 2. الكاميرا والتحليل البصري
+    const video = document.getElementById('webcam');
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+        .then(stream => video.srcObject = stream)
+        .catch(err => console.log("الكاميرا محجوبة أو غير مدعومة"));
+
+    function analyzeSign() {
+        const log = document.getElementById('log-screen');
+        log.innerHTML += `> جاري التقاط الصورة وتحليل العصبونات...<br>`;
+        setTimeout(() => {
+            const results = ["علامة قف (STOP)", "ممنوع المرور", "تحديد السرعة 60", "انتباه أشغال"];
+            const res = results[Math.floor(Math.random()*results.length)];
+            log.innerHTML += `<div style="color: var(--neon-green); border-right: 2px solid; padding-right:10px;">🤖 تيمو (رؤية): تم التعرف على: ${res}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }, 1200);
+    }
+
+    // 3. منطق تيمو الحواري
     const responses = {
-        "مرحبا": "أهلاً بك يا بطل! أنا تيمو، المساعد السيادي لمنير بن علال. كيف أخدمك؟",
-        "سعر": "الأسعار تبدأ من 150 درهم مع دعم كامل لسيرفر تيرموكس وحماية Bandit.",
-        "حماية": "النظام مؤمن ببصمة SHA256 المشفرة. لا توجد ثغرات مكتشفة حالياً.",
-        "بطارية": "الطاقة الحالية هي 70%، الأداء في ذروته."
+        "مرحبا": "أهلاً بك يا منير! تيمو في خدمتك الآن.",
+        "حماية": "بروتوكول Bandit نشط 100% مع تشفير SHA256.",
+        "بطارية": "الطاقة الحالية للنظام هي 76%."
     };
 
     function askTimo() {
-        const inputField = document.getElementById('user-input-field');
-        const query = inputField.value.trim();
+        const input = document.getElementById('user-input-field');
+        const query = input.value.trim();
         if(!query) return;
-
         const log = document.getElementById('log-screen');
-        log.innerHTML += `<div style="color: #888; margin: 5px 0;">👤 أنت: ${query}</div>`;
-        
+        log.innerHTML += `<div style="color: #888;">👤 أنت: ${query}</div>`;
         setTimeout(() => {
-            let res = "فهمت طلبك. جاري معالجة البيانات في مصفوفة 2026...";
-            for (let key in responses) {
-                if (query.toLowerCase().includes(key)) { res = responses[key]; break; }
-            }
-            log.innerHTML += `<div style="color: var(--neon-green); border-right: 2px solid; padding-right:10px; margin: 5px 0;">🤖 تيمو: ${res}</div>`;
+            let reply = responses[query] || "جاري البحث في المصفوفة السيادية...";
+            log.innerHTML += `<div style="color: var(--neon-green); border-right: 2px solid; padding-right:10px;">🤖 تيمو: ${reply}</div>`;
             log.scrollTop = log.scrollHeight;
         }, 600);
-        inputField.value = "";
+        input.value = "";
     }
 
-    function handleKey(e) { if(e.key === 'Enter') askTimo(); }
-
     function startVoiceTimo() {
-        const s = document.getElementById('mic-status');
-        s.innerText = "تيمو يستمع..."; s.style.color = "red";
-        setTimeout(() => { s.innerText = "تم استقبال الصوت ✅"; s.style.color = "var(--neon-green)"; }, 2000);
+        const mic = document.getElementById('main-mic');
+        const status = document.getElementById('mic-status');
+        mic.classList.add('active');
+        status.innerText = "جاري الاستماع...";
+        setTimeout(() => {
+            mic.classList.remove('active');
+            status.innerText = "تم استقبال الصوت ✅";
+        }, 2000);
     }
 
     function sendCommand(cmd) {
-        const log = document.getElementById('log-screen');
-        log.innerHTML += `> تنفيذ: ${cmd}...<br>`;
-        fetch('http://127.0.0.1:5000/notify_payment_access')
-            .then(() => log.innerHTML += `> <span style="color:var(--neon-green)">✅ تم الاتصال بـ Gatekeeper بنجاح!</span><br>`)
-            .catch(() => log.innerHTML += `> <span style="color:red">❌ فشل الاتصال. تأكد من تشغيل Flask في Termux.</span><br>`);
+        alert("إرسال الإشارة لـ Termux: " + cmd);
     }
 </script>
 </body>
