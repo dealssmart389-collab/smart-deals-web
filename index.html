@@ -69,6 +69,52 @@
         if(q.includes("من أنت")) return "أنا تيمو، الكيان الرقمي الأذكى، ولدت من مصفوفة Driving AI 2026 لأكون دليلك في عالم العلم والتكنولوجيا.";
         return "لقد استلمت إشارتك. جاري استحضار الحل العلمي الأمثل من المصفوفة السيادية... الحل جاهز ومنفذ.";
     }
+<script>
+// 1. مصفوفة قوانين السياقة المستخرجة من DrivingAI
+const InternationalDrivingMatrix = {
+    "المادة 1": "قانون السير المغربي: إلزامية احترام أضواء المرور لضمان السيادة الطرقية.",
+    "المادة 2": "تحليل تيمو: استخدام الهاتف أثناء السياقة يعتبر خرقاً أمنياً من الدرجة الأولى.",
+    "قانون 52.05": "نظام رخصة السياقة بالنقط - مراقبة رقمية شاملة."
+};
+
+// 2. دالة المزج الذكي بين تيمو وقاعدة البيانات
+function processNeuralQuery(userInput) {
+    let response = "🤖 تيمو: جاري البحث في المصفوفة السيادية...";
+    
+    // البحث عن الكلمات المفتاحية في تطبيق DrivingAI المثبت
+    if (userInput.includes("مادة") || userInput.includes("قانون")) {
+        for (let key in InternationalDrivingMatrix) {
+            if (userInput.includes(key)) {
+                return `🚀 تم استخراج البيانات من DrivingAI: ${InternationalDrivingMatrix[key]}`;
+            }
+        }
+    }
+    
+    // الرد الافتراضي لتيمو في حالة الحوار العام
+    return "أهلاً بك يا منير! تيمو في خدمتك الآن، النظام مستقر والارتباط بالسيرفر نشط.";
+}
+
+// 3. تحديث واجهة الحوار (Log Screen)
+function askTimo() {
+    const inputField = document.getElementById("user-input-field");
+    const val = inputField.value;
+    const log = document.getElementById("log-screen");
+
+    if (val.trim() !== "") {
+        // إضافة سؤال المستخدم
+        log.innerHTML += `<div style="color: #888;">👤 أنت: ${val}</div>`;
+        
+        // معالجة الرد بتأخير بسيط لمحاكاة التفكير العصبوني
+        setTimeout(() => {
+            const res = processNeuralQuery(val);
+            log.innerHTML += `<div style="color: var(--neon-green);">🤖 تيمو: ${res}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }, 500);
+        
+        inputField.value = "";
+    }
+}
+</script>
 </script>
 </body>
 </html>
