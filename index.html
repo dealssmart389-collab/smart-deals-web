@@ -3,46 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benalal AI 2026 | TIMO SUPREME CORE</title>
+    <title>Benalal AI 2026 | TIMO SUPREME</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00ff41; --dark: #050505; --panel: rgba(0, 255, 65, 0.05); --border: rgba(0, 255, 65, 0.2); }
+        :root { --neon: #00ff41; --dark: #050505; --border: rgba(0, 255, 65, 0.2); }
         body { background: var(--dark); color: white; font-family: 'Cairo', sans-serif; margin: 0; padding: 10px; overflow-x: hidden; }
         
-        /* شريط الحالة السيادي */
-        .status-header { display: flex; justify-content: space-between; padding: 10px; font-family: 'Orbitron'; font-size: 10px; color: var(--neon); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.6); }
+        .status-header { display: flex; justify-content: space-between; padding: 10px; font-family: 'Orbitron'; font-size: 10px; color: var(--neon); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.8); }
 
-        /* مصفوفة الرؤية (Vision Grid) */
-        .vision-matrix { position: relative; width: 100%; height: 210px; background: #000; border: 1px solid var(--neon); border-radius: 20px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); }
-        #video-feed { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: contrast(1.2); }
-        .scan-line { position: absolute; width: 100%; height: 2px; background: var(--neon); top: 0; animation: scanMove 4s infinite linear; box-shadow: 0 0 15px var(--neon); z-index: 2; }
+        .vision-matrix { position: relative; width: 100%; height: 210px; background: #000; border: 1px solid var(--neon); border-radius: 20px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); }
+        #video-feed { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+        .scan-line { position: absolute; width: 100%; height: 2px; background: var(--neon); top: 0; animation: scan 4s infinite linear; box-shadow: 0 0 10px var(--neon); z-index: 2; }
 
-        /* مصفوفة الحوار العصبوني */
-        .neural-chat { background: #000; border: 1px solid #222; border-radius: 20px; height: 380px; display: flex; flex-direction: column; overflow: hidden; margin-bottom: 15px; }
-        #log-screen { flex: 1; padding: 15px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 13px; line-height: 1.6; }
-        .timo-msg { color: var(--neon); border-right: 3px solid var(--neon); padding-right: 10px; margin-bottom: 15px; animation: fadeIn 0.3s; }
-        .user-msg { color: #fff; opacity: 0.6; margin-bottom: 12px; text-align: left; }
+        .neural-chat { background: #000; border: 1px solid #222; border-radius: 20px; height: 400px; display: flex; flex-direction: column; overflow: hidden; margin-bottom: 15px; border-right: 4px solid var(--neon); }
+        #log-screen { flex: 1; padding: 15px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 14px; line-height: 1.6; }
+        .timo-msg { color: var(--neon); margin-bottom: 15px; padding-right: 10px; border-right: 2px solid var(--neon); animation: slideIn 0.3s; }
+        .user-msg { color: #888; margin-bottom: 15px; text-align: left; padding-left: 10px; }
 
-        /* منطقة التحكم الذكي */
-        .control-hub { display: flex; gap: 8px; background: #000; padding: 10px; border-radius: 15px; border: 1px solid #222; }
-        input { flex: 1; background: #111; border: 1px solid #333; color: white; padding: 12px; border-radius: 10px; outline: none; font-family: 'Cairo'; }
-        button { border: none; padding: 12px 18px; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        .btn-mic { background: #1a1a1a; color: white; }
-        .btn-send { background: var(--neon); color: black; font-weight: bold; }
-        .listening-active { background: #ff3b30 !important; animation: pulse 1s infinite; }
+        .control-hub { display: flex; gap: 8px; background: #111; padding: 10px; border-radius: 15px; border: 1px solid #333; }
+        input { flex: 1; background: transparent; border: none; color: white; padding: 10px; outline: none; font-family: 'Cairo'; font-size: 16px; }
+        button { background: var(--neon); border: none; padding: 12px 20px; border-radius: 10px; color: black; font-weight: bold; cursor: pointer; }
+        .btn-mic { background: #222; color: white; }
 
-        @keyframes scanMove { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body>
 
 <div class="status-header">
-    <span><i class="fas fa-microchip"></i> TIMO_CORE: ACTIVE</span>
-    <span><i class="fas fa-shield-alt"></i> SOVEREIGNTY: ON</span>
-    <span><i class="fas fa-bolt"></i> 2026</span>
+    <span><i class="fas fa-microchip"></i> BENALAL_AI: ACTIVE</span>
+    <span><i class="fas fa-satellite"></i> TIMO_SENTINEL: ON</span>
+    <span><i class="fas fa-shield-alt"></i> 2026</span>
 </div>
 
 <div class="vision-matrix">
@@ -52,47 +45,49 @@
 
 <div class="neural-chat">
     <div id="log-screen">
-        <div class="timo-msg">> تم تحميل مصفوفة Benalal AI الموحدة...</div>
-        <div class="timo-msg">> حالة النظام: سيادة رقمية كاملة.</div>
+        <div class="timo-msg">> تم تفعيل مصفوفة Benalal AI الموحدة...</div>
+        <div class="timo-msg">> حالة النظام: ذكاء سيادي مستجيب.</div>
     </div>
 </div>
 
 <div class="control-hub">
     <button id="mic-btn" class="btn-mic" onclick="toggleSpeech()"><i class="fas fa-microphone"></i></button>
-    <input type="text" id="user-input" placeholder="اسأل تيمو عن القانون أو الصفقات...">
-    <button class="btn-send" onclick="executeTimoAction()"><i class="fas fa-paper-plane"></i></button>
+    <input type="text" id="user-input" placeholder="تحدث مع تيمو (مرحبا، قانون، عروض)...">
+    <button onclick="executeTimoAction()"><i class="fas fa-paper-plane"></i></button>
 </div>
 
 <script>
-    // 1. قاعدة البيانات السيادية (Hybrid Knowledge)
+    // 1. مصفوفة المعرفة والذكاء الاجتماعي (تم دمج الترحيب)
     const timoOmniData = {
-        "قانون": "المادة 1 و 2 من مدونة السير المغربية: تهدف لتنظيم السير وضمان سلامة المرتفقين وإلزامية الرخصة.",
-        "غرامة": "تتراوح غرامات NARSA بين 300 درهم و 700 درهم حسب نوع الدرجة والمخالفة.",
-        "هاتف": "غرامة استعمال الهاتف يدوياً أثناء السياقة هي 500 درهم مع سحب نقطتين من الرصيد.",
-        "سرعة": "تجاوز السرعة بأقل من 20 كلم/س غرامته 300 درهم. أكثر من ذلك تزداد العقوبة.",
-        "عروض": "تيمو يتصل بـ Smart Deals.. جاري جلب أحدث تخفيضات AliExpress و Jumia المغرب.",
-        "تيرموكس": "اتصال Termux مستقر. بوابة Gatekeeper مستعدة لتنفيذ الأوامر البرمجية.",
-        "مساعدة": "أنا تيمو، محركك الذكي لتحليل القوانين وإدارة الصفقات والأنظمة التقنية."
+        "مرحبا": "أهلاً بك يا سيد منير! معك تيمو، نظام الذكاء الاصطناعي لـ Benalal AI. كيف يمكنني خدمتك اليوم؟",
+        "السلام": "وعليكم السلام ورحمة الله! نظام Benalal AI في وضع الاستعداد الكامل للعمل.",
+        "شكون": "أنا تيمو (TIMO)، المحرك الذكي لمنظومة Benalal AI 2026، مبرمج لمساعدتك في القوانين والتقنية والأرباح.",
+        "قانون": "المادة 1 و 2 من مدونة السير: تهدف لتنظيم الطريق وضمان سلامة الجميع وإلزامية الرخصة.",
+        "غرامة": "تتراوح غرامات NARSA بين 300 و 700 درهم حسب نوع المخالفة ودرجتها.",
+        "هاتف": "استعمال الهاتف يدوياً غرامته 500 درهم وسحب نقطتين من رصيدك.",
+        "عروض": "تيمو يفحص الآن Smart Deals لجلب أقوى تخفيضات AliExpress و Jumia المغربية.",
+        "تيرموكس": "اتصال Termux مستقر. بوابة Sentinel مستعدة لتنفيذ أوامرك البرمجية."
     };
 
     const logScreen = document.getElementById('log-screen');
     const inputField = document.getElementById('user-input');
 
-    // 2. تفعيل الرؤية (Camera Stream)
+    // 2. تشغيل الكاميرا
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
         .then(s => document.getElementById('video-feed').srcObject = s)
-        .catch(() => console.log("Camera Blocked"));
+        .catch(() => console.log("Camera Offline"));
 
-    // 3. المحرك المنطقي (Timo Logic)
+    // 3. المحرك المنطقي المطور
     function executeTimoAction() {
         const query = inputField.value.trim();
         if (!query) return;
 
         addLog(`👤 أنت: ${query}`, "user-msg");
 
-        let response = "🤖 تيمو: جاري التحليل.. لم أجد تطابقاً في المصفوفة المحلية، سأبحث في الروابط العالمية.";
+        let response = "🤖 تيمو: جاري التحليل.. لم أجد تطابقاً محلياً، سأبحث لك في الروابط العالمية.";
         let found = false;
 
+        // البحث الذكي في المصفوفة الموحدة
         for (let key in timoOmniData) {
             if (query.includes(key)) {
                 response = `🤖 تيمو: ${timoOmniData[key]}`;
@@ -103,17 +98,17 @@
 
         setTimeout(() => {
             addLog(response, "timo-msg");
+            
+            // إذا لم يجد المعلومة محلياً، يفتح جوجل
             if (!found && query.length > 2) {
                 setTimeout(() => {
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(query + " المغرب")}`, '_blank');
                 }, 800);
             }
             
-            // الربط مع Termux (Gatekeeper)
-            if (query.toLowerCase().includes("buy") || query.includes("تحديث")) {
-                fetch('http://127.0.0.1:5000/notify_payment_access').catch(() => {});
-            }
-        }, 500);
+            // إرسال تنبيه للسيرفر (Sentinel)
+            reportToSentinel("طلب مستخدم", query);
+        }, 400);
 
         inputField.value = "";
     }
@@ -127,7 +122,16 @@
         if (className === "timo-msg") speak(text);
     }
 
-    // 4. الرد الصوتي (Audio Output)
+    // 4. نظام المراقبة (Sentinel Connector)
+    function reportToSentinel(event, details) {
+        fetch('http://127.0.0.1:5000/report', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event: event, details: details })
+        }).catch(() => {});
+    }
+
+    // 5. الصوت (Audio Logic)
     function speak(text) {
         window.speechSynthesis.cancel();
         const msg = new SpeechSynthesisUtterance(text.replace("🤖 تيمو:", ""));
@@ -135,25 +139,11 @@
         window.speechSynthesis.speak(msg);
     }
 
-    // 5. التعرف على الكلام (Speech Input)
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'ar-MA';
+    function toggleSpeech() { recognition.start(); }
+    recognition.onresult = (e) => { inputField.value = e.results[0][0].transcript; executeTimoAction(); };
 
-    function toggleSpeech() {
-        const micBtn = document.getElementById('mic-btn');
-        micBtn.classList.add('listening-active');
-        recognition.start();
-    }
-
-    recognition.onresult = (e) => {
-        document.getElementById('mic-btn').classList.remove('listening-active');
-        inputField.value = e.results[0][0].transcript;
-        executeTimoAction();
-    };
-
-    recognition.onerror = () => document.getElementById('mic-btn').classList.remove('listening-active');
-
-    // تفعيل مفتاح Enter
     inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') executeTimoAction(); });
 </script>
 </body>
