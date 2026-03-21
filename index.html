@@ -3,6 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMO AI V5 | NEURAL OCR & VOICE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --neon: #00ff41; --bg: #010101; --panel: #0d0d0d; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; }
+        
+        /* مؤشرات السيادة الرقمية */
+        .status-header { display: flex; justify-content: space-between; padding: 10px; border: 1px solid #222; border-radius: 10px; font-size: 10px; font-family: monospace; color: var(--neon); margin-bottom: 12px; }
+
+        /* وحدة الرؤية والماسح الضوئي */
+        .vision-matrix { position: relative; width: 100%; height: 220px; background: #000; border: 1px solid var(--neon); border-radius: 15px; overflow: hidden; margin-bottom: 15px; }
+        #video-feed { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5) contrast(1.2); }
+        .ocr-scanner { position: absolute; width: 100%; height: 3px; background: var(--neon); top: 0; animation: scanMove 3s infinite ease-in-out; box-shadow: 0 0 15px var(--neon); }
+        .target-box { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 100px; border: 2px dashed var(--neon); border-radius: 10px; opacity: 0.5; }
+
+        /* شبكة بيانات القيادة والتجارة */
+        .matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        .data-card { background: var(--panel); border: 1px solid #1a1a1a; padding: 12px; border-radius: 12px; text-align: center; }
+        .data-card i { color: var(--neon); font-size: 1.4rem; margin-bottom: 5px; }
+        .val { display: block; font-size: 13px; font-weight: bold; color: gold; }
+
+        /* مصفوفة المعالجة (Chat) */
+        .neural-box { background: #050505; border: 1px solid #333; border-radius: 15px; height: 320px; display: flex; flex-direction: column; }
+        #output-stream { flex: 1; padding: 15px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 12px; color: var(--neon); }
+        .user-line { color: #fff; border-right: 2px solid #fff; padding-right: 5px; margin-bottom: 8px; }
+
+        /* التحكم المزدوج (صوت + نص) */
+        .input-zone { display: flex; padding: 12px; gap: 10px; background: #000; border-top: 1px solid #222; }
+        #cmd-in { flex: 1; background: #111; border: 1px solid #333; color: white; padding: 12px; border-radius: 10px; outline: none; }
+        .btn { border: none; padding: 0 18px; border-radius: 10px; cursor: pointer; transition: 0.2s; }
+        .btn-voice { background: #222; color: #fff; }
+        .btn-run { background: var(--neon); color: #000; font-weight: bold; }
+        .listening-mode { background: #ff3b30 !important; }
+
+        @keyframes scanMove { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="status-header">
+    <span>[VERSION_5.0_FAC65DB]</span>
+    <span>BATT: 91%</span>
+    <span>SOVEREIGNTY: ONLINE</span>
+</div>
+
+<div class="vision-matrix">
+    <div class="ocr-scanner"></div>
+    <div class="target-box"></div>
+    <video id="video-feed" autoplay playsinline></video>
+</div>
+
+<div class="matrix-grid">
+    <div class="data-card">
+        <i class="fas fa-traffic-light"></i>
+        <span style="font-size: 9px; opacity: 0.6;">DrivingAI</span>
+        <span class="val">المادة 1</span>
+    </div>
+    <div class="data-card">
+        <i class="fas fa-barcode"></i>
+        <span style="font-size: 9px; opacity: 0.6;">Smart Deals</span>
+        <span class="val">299 DH</span>
+    </div>
+</div>
+
+<div class="neural-box">
+    <div id="output-stream">
+        > تم تفعيل ماسح الأكواد العصبوني...<br>
+        > تيمو جاهز لتحليل لغة العلم...
+    </div>
+    <div class="input-zone">
+        <button id="v-btn" class="btn btn-voice" onclick="startVoice()"><i class="fas fa-microphone"></i></button>
+        <input type="text" id="cmd-in" placeholder="أدخل أمراً أو حلل صورة...">
+        <button class="btn btn-run" onclick="processCmd()"><i class="fas fa-bolt"></i></button>
+    </div>
+</div>
+
+<script>
+    // تفعيل الكاميرا والتعرف الصوتي
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+        .then(s => document.getElementById('video-feed').srcObject = s);
+
+    function startVoice() {
+        const btn = document.getElementById('v-btn');
+        btn.classList.add('listening-mode');
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'ar-MA';
+        recognition.onresult = (e) => {
+            document.getElementById('cmd-in').value = e.results[0][0].transcript;
+            processCmd();
+            btn.classList.remove('listening-mode');
+        };
+        recognition.start();
+    }
+
+    function speak(text) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text.replace(/>/g, ''));
+        utterance.lang = 'ar-SA';
+        synth.speak(utterance);
+    }
+
+    function processCmd() {
+        const input = document.getElementById('cmd-in');
+        const output = document.getElementById('output-stream');
+        if (!input.value) return;
+
+        output.innerHTML += `<div class="user-line">👤: ${input.value}</div>`;
+        const response = `> جاري تحليل "${input.value}"... تم الربط مع قانون السير 52.05. النتيجة: سيادة تامة.`;
+        
+        let i = 0;
+        const div = document.createElement('div');
+        output.appendChild(div);
+
+        function typeEffect() {
+            if (i < response.length) {
+                div.innerHTML += response.charAt(i);
+                i++;
+                setTimeout(typeEffect, 15);
+                output.scrollTop = output.scrollHeight;
+            } else {
+                speak(response);
+            }
+        }
+        typeEffect();
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMO AI | VOICE, VISION & NEURAL SPEED</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
