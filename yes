@@ -1,0 +1,13 @@
+import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+def send_update(text):
+    url = f"https://api.telegram.org/bot{os.getenv('TELEGRAM_TOKEN')}/sendMessage"
+    payload = {"chat_id": os.getenv("TELEGRAM_CHAT_ID"), "text": text, "parse_mode": "Markdown"}
+    requests.post(url, data=payload)
+
+if __name__ == "__main__":
+    send_update("🚀 *تنبيه من SmartDeals*\nتمت العودة للمجلد الأصلي بنجاح والمزامنة مكتملة.")

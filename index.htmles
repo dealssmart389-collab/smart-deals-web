@@ -405,5 +405,6 @@ function cleanInput(text) {
 
 // تعديل بسيط في وظيفة البحث omniExecute
 const userQuery = cleanInput(document.getElementById('omni-search').value);
+
 </body>
 </html>
