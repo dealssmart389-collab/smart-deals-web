@@ -3,6 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMO NEURAL ENGINE v4 | VOICE & VISION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --neon: #00ff41; --bg: #050505; --card: #111; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma; margin: 0; padding: 10px; }
+        
+        /* شريط السيادة */
+        .status-header { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid var(--neon); font-size: 11px; font-family: monospace; }
+
+        /* وحدة الرؤية (Vision Hub) */
+        .vision-hub { position: relative; width: 100%; height: 210px; background: #000; border-radius: 15px; border: 1px solid #333; overflow: hidden; margin-top: 10px; }
+        #v-feed { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.2) contrast(1.1); }
+        .scan-line { position: absolute; width: 100%; height: 2px; background: var(--neon); top: 0; animation: scan 3s infinite linear; box-shadow: 0 0 15px var(--neon); }
+        .vision-status { position: absolute; top: 10px; left: 10px; background: rgba(255,0,0,0.7); padding: 2px 8px; border-radius: 5px; font-size: 10px; animation: blink 1s infinite; }
+
+        /* شبكة الخانات (The Matrix Grid) */
+        .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+        .card { background: var(--card); padding: 12px; border-radius: 10px; border: 1px solid #222; text-align: center; }
+        .card i { color: var(--neon); font-size: 1.3rem; margin-bottom: 5px; }
+        .card-val { display: block; font-size: 13px; font-weight: bold; color: gold; }
+
+        /* محرك الحوار السريع (Neural Chat) */
+        .chat-matrix { background: rgba(0, 15, 0, 0.95); border: 1px solid var(--neon); border-radius: 20px; height: 320px; display: flex; flex-direction: column; }
+        #log-stream { flex: 1; padding: 15px; overflow-y: auto; font-family: monospace; font-size: 12px; line-height: 1.6; }
+        .timo-msg { color: var(--neon); border-right: 2px solid var(--neon); padding-right: 8px; margin-bottom: 10px; }
+
+        /* منطقة التحكم الصوتي واليدوي */
+        .control-bar { display: flex; padding: 10px; gap: 8px; border-top: 1px solid #222; background: #0a0a0a; }
+        input { flex: 1; background: #1a1a1a; border: 1px solid #333; color: white; padding: 12px; border-radius: 10px; }
+        .btn { border: none; padding: 0 15px; border-radius: 10px; cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
+        .btn-send { background: var(--neon); color: #000; }
+        .btn-voice { background: #444; color: white; }
+        .listening { background: #ff3b30 !important; animation: pulse 1s infinite; }
+
+        @keyframes scan { from { top: 0; } to { top: 100%; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+<div class="status-header">
+    <span><i class="fas fa-microchip"></i> TIMO_CORE: ACTIVE</span>
+    <span><i class="fas fa-bolt"></i> BATT: 90%</span>
+</div>
+
+<div class="vision-hub">
+    <div class="vision-status">EYE_LINK: ONLINE</div>
+    <div class="scan-line"></div>
+    <video id="v-feed" autoplay playsinline></video>
+</div>
+
+<div class="data-grid">
+    <div class="card">
+        <i class="fas fa-shopping-cart"></i>
+        <span style="font-size: 10px; opacity: 0.6;">Smart Deals</span>
+        <span class="card-val">299 DH</span>
+    </div>
+    <div class="card">
+        <i class="fas fa-balance-scale"></i>
+        <span style="font-size: 10px; opacity: 0.6;">قانون السير</span>
+        <span class="card-val">المادة 1</span>
+    </div>
+    <div class="card">
+        <i class="fas fa-terminal"></i>
+        <span style="font-size: 10px; opacity: 0.6;">Termux Logs</span>
+        <span class="card-val">Active</span>
+    </div>
+    <div class="card">
+        <i class="fas fa-robot"></i>
+        <span style="font-size: 10px; opacity: 0.6;">تيمو AI</span>
+        <span class="card-val">عصبوني</span>
+    </div>
+</div>
+
+<div class="chat-matrix">
+    <div id="log-stream">
+        <div class="timo-msg">> تم تفعيل بروتوكول الرؤية والصوت...</div>
+    </div>
+    <div class="control-bar">
+        <button id="voice-btn" class="btn btn-voice" onclick="toggleVoice()"><i class="fas fa-microphone"></i></button>
+        <input type="text" id="user-in" placeholder="اسأل تيمو أو تحدث معه...">
+        <button class="btn btn-send" onclick="processNeural()"><i class="fas fa-bolt"></i></button>
+    </div>
+</div>
+
+<script>
+    // 1. تفعيل الكاميرا تلقائياً
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+        .then(s => document.getElementById('v-feed').srcObject = s);
+
+    // 2. نظام التعرف على الصوت (Web Speech API)
+    const voiceBtn = document.getElementById('voice-btn');
+    const userInput = document.getElementById('user-in');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    
+    if (SpeechRecognition) {
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'ar-SA';
+        
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            userInput.value = transcript;
+            processNeural();
+            voiceBtn.classList.remove('listening');
+        };
+
+        function toggleVoice() {
+            voiceBtn.classList.add('listening');
+            recognition.start();
+        }
+    }
+
+    // 3. محاكاة سرعة معالجة Gemini
+    function processNeural() {
+        const text = userInput.value;
+        if (!text) return;
+        
+        const log = document.getElementById('log-stream');
+        log.innerHTML += `<div style="color:#fff; margin-bottom:10px;">👤 أنت: ${text}</div>`;
+        userInput.value = "";
+
+        const response = `> تم تحليل الصوت/النص... جاري مطابقة البيانات مع المادة 2 من قانون السير المغربي. الرؤية العصبونية مستقرة.`;
+        
+        let i = 0;
+        const speed = 15;
+        const resDiv = document.createElement('div');
+        resDiv.className = 'timo-msg';
+        resDiv.innerHTML = '🤖 تيمو: ';
+        log.appendChild(resDiv);
+
+        function type() {
+            if (i < response.length) {
+                resDiv.innerHTML += response.charAt(i);
+                i++;
+                setTimeout(type, speed);
+                log.scrollTop = log.scrollHeight;
+            }
+        }
+        type();
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMO NEURAL ENGINE v3</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
