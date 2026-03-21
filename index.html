@@ -88,6 +88,26 @@
 </div>
 
 <script>
+// أضف هذا الجزء قبل وسم </script> مباشرة
+const drivingLaws = {
+    "المادة 1": "تحدد هذه المادة القواعد العامة للسير على الطرق العامة...",
+    "المادة 2": "يجب على كل سائق أن يكون حاصلاً على رخصة سياقة سارية المفعول..."
+};
+
+function processResponse() {
+    const inputField = document.querySelector('input'); // حقل الإدخال في مصفوفة الحوار
+    const outputBox = document.getElementById('output'); // صندوق المخرجات (Matrix)
+    const val = inputField.value;
+
+    if (val.includes("المادة 1")) {
+        outputBox.innerHTML += `<div style="color:#00ff41; margin-top:5px;">🤖 تيمو: ${drivingLaws["المادة 1"]}</div>`;
+    } else if (val.includes("المادة 2")) {
+        outputBox.innerHTML += `<div style="color:#00ff41; margin-top:5px;">🤖 تيمو: ${drivingLaws["المادة 2"]}</div>`;
+    }
+    
+    inputField.value = ""; // تفريغ الحقل بعد الإرسال
+    outputBox.scrollTop = outputBox.scrollHeight;
+}
     // 1. تشغيل الكاميرا (الخلفية للأجهزة المحمولة)
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
         .then(s => document.getElementById('video-feed').srcObject = s)
