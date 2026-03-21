@@ -88,6 +88,19 @@
 </div>
 
 <script>
+const timoDB = {
+    // قوانين السير (NARSA)
+    "سياقة": "المادة 1 و 2: تنظم حق استعمال الطريق وإلزامية الرخصة.",
+    "غرامة": "مخالفات الدرجة الأولى 700 درهم، الثانية 500 درهم، والثالثة 300 درهم.",
+    
+    // التجارة والخدمات (Smart Deals)
+    "جوميا": "تيمو يبحث لك الآن عن أفضل العروض في Jumia المغرب...",
+    "علي_اكسبريس": "جاري فحص تخفيضات AliExpress وربطها برابط الأفلييت الخاص بك...",
+    
+    // معلومات عامة وخدمات
+    "طقس": "جاري الاتصال بمصلحة الأرصاد الجوية لتحديث حالة الطقس في مدينتك...",
+    "صيدلية": "أقرب صيدلية حراسة متاحة الآن في منطقتك هي..."
+};
 <script>
 // قاعدة بيانات NARSA الحقيقية
 const narsaDB = {
@@ -156,7 +169,38 @@ function timoExecute() {
 document.getElementById('user-input').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') timoExecute();
 });
-</script>>
+</script>
+function humanSearch() {
+    const input = document.getElementById('user-input'); // حقل الإدخال
+    const output = document.getElementById('output'); // شاشة العرض
+    const query = input.value.toLowerCase();
+
+    if (!query) return;
+
+    output.innerHTML += `<div style="color:#fff; margin:10px 0;">🔍 بحث إنساني: ${query}</div>`;
+
+    let found = false;
+    for (let key in timoDB) {
+        if (query.includes(key)) {
+            setTimeout(() => {
+                output.innerHTML += `<div style="color:#00ff41;">🤖 تيمو: ${timoDB[key]}</div>`;
+                output.scrollTop = output.scrollHeight;
+            }, 600);
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        // إذا لم يجد المعلومة في القاعدة المحلية، يوجه المستخدم للبحث العالمي
+        setTimeout(() => {
+            output.innerHTML += `<div style="color:#ffae00;">🌐 تيمو: جاري البحث في الروابط العالمية عن "${query}"...</div>`;
+            window.open(`https://www.google.com/search?q=${query}`, '_blank');
+        }, 800);
+    }
+
+    input.value = "";
+}
 <script>
 // مصفوفة بيانات NARSA الأصلية
 const narsaData = {
