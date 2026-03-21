@@ -395,6 +395,32 @@ function omniExecute() {
     }, 500);
 }
 </script>
+<div id="app-container">
+    <video id="video-feed" autoplay playsinline></video> <div id="log-stream"></div> <div class="controls">
+        <input type="text" id="input-cmd" placeholder="اسأل تيمو عن مدونة السير...">
+        <button id="mic-btn" onclick="toggleSpeech()">🎤</button>
+        <button onclick="handleLogic()">إرسال</button>
+    </div>
+</div>
+
+<script>
+// دمج كافة القوانين في مصفوفة narsaLaw المحدثة تلقائياً
+const narsaLaw = {
+    "المادة 1": "قواعد الأسبقية والسير العامة...",
+    "المادة 2": "الغرامات التصالحية والجزافية..."
+};
+
+// المحرك المنطقي الموحد
+function handleLogic() {
+    const input = document.getElementById('input-cmd');
+    const query = input.value.trim();
+    if (!query) return;
+
+    // تنفيذ البحث الإنساني والذكاء الاصطناعي في آن واحد
+    processAIResponse(query);
+    input.value = "";
+}
+</script>
 // إضافة وظيفة تنظيف النص قبل البحث
 function cleanInput(text) {
     return text.trim()
@@ -405,5 +431,90 @@ function cleanInput(text) {
 
 // تعديل بسيط في وظيفة البحث omniExecute
 const userQuery = cleanInput(document.getElementById('omni-search').value);
+</script>
+<div id="output"></div>
+<input type="text" id="user-input" placeholder="اسأل تيمو...">
+<button onclick="humanSearch()">إرسال</button>
+
+<script>
+function humanSearch() {
+    const input = document.getElementById('user-input');
+    const output = document.getElementById('output');
+    const query = input.value.toLowerCase();
+    
+    if (!query) return;
+    
+    // منطق البحث المحسن
+    let found = false;
+    for (let key in drivingLaws) {
+        if (query.includes(key)) {
+            output.innerHTML += `<p>🤖 تيمو: ${drivingLaws[key]}</p>`;
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+        window.open(`https://www.google.com/search?q=${query}`, '_blank');
+    }
+    input.value = "";
+}
+</script>
+<div id="output"></div>
+<input type="text" id="user-input" placeholder="اسأل تيمو...">
+<button onclick="humanSearch()">إرسال</button>
+
+<script>
+function humanSearch() {
+    const input = document.getElementById('user-input');
+    const output = document.getElementById('output');
+    const query = input.value.toLowerCase();
+    
+    if (!query) return;
+    
+    // منطق البحث المحسن
+    let found = false;
+    for (let key in drivingLaws) {
+        if (query.includes(key)) {
+            output.innerHTML += `<p>🤖 تيمو: ${drivingLaws[key]}</p>`;
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+        window.open(`https://www.google.com/search?q=${query}`, '_blank');
+    }
+    input.value = "";
+}
+</script>
+<div id="output"></div>
+<input type="text" id="user-input" placeholder="اسأل تيمو...">
+<button onclick="humanSearch()">إرسال</button>
+
+<script>
+function humanSearch() {
+    const input = document.getElementById('user-input');
+    const output = document.getElementById('output');
+    const query = input.value.toLowerCase();
+    
+    if (!query) return;
+    
+    // منطق البحث المحسن
+    let found = false;
+    for (let key in drivingLaws) {
+        if (query.includes(key)) {
+            output.innerHTML += `<p>🤖 تيمو: ${drivingLaws[key]}</p>`;
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+        window.open(`https://www.google.com/search?q=${query}`, '_blank');
+    }
+    input.value = "";
+}
+</script>
 </body>
 </html>
