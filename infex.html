@@ -1,0 +1,44 @@
+<script>
+// مصفوفة المعرفة الشاملة لـ TIMO
+const timoOmniData = {
+    "قانون": "المادة 1 و 2 من مدونة السير: تنظم حقوق استعمال الطريق وضرورة رخصة السياقة.",
+    "غرامة": "تتراوح الغرامات بين 300 و 700 درهم حسب نوع المخالفة في قانون السير المغربي.",
+    "عروض": "تيمو يبحث الآن في Smart Deals لجلب أفضل التخفيضات من Jumia و AliExpress.",
+    "مساعدة": "أنا تيمو، محركك الذكي للبحث في القوانين، الأسواق، والتقنية."
+};
+
+// وظيفة التحكم الشامل في الأزرار
+function executeTimoAction() {
+    const inputField = document.getElementById('user-input'); // حقل الإدخال
+    const displayMatrix = document.getElementById('output'); // شاشة العرض
+    const query = inputField.value.trim();
+
+    if (!query) return;
+
+    // عرض طلب المستخدم
+    displayMatrix.innerHTML += `<div style="color: white; margin-bottom: 5px;">👤: ${query}</div>`;
+
+    let response = "🤖 تيمو: جاري البحث في الروابط العالمية والمحلية...";
+
+    // منطق البحث الذكي
+    Object.keys(timoOmniData).forEach(key => {
+        if (query.includes(key)) {
+            response = `🤖 تيمو: ${timoOmniData[key]}`;
+        }
+    });
+
+    // تحديث الشاشة بالرد
+    setTimeout(() => {
+        displayMatrix.innerHTML += `<div style="color: #00ff41; margin-bottom: 10px;">${response}</div>`;
+        displayMatrix.scrollTop = displayMatrix.scrollHeight;
+        
+        // إذا لم يجد المعلومة محلياً، يفتح بحث جوجل تلقائياً
+        if (response.includes("جاري البحث")) {
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+        }
+    }, 400);
+
+    inputField.value = ""; // تنظيف الحقل
+}
+</script>
+
