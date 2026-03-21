@@ -3,6 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMO AI | SOUVEREIGNTY SYSTEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --neon-green: #00ff41; --dark-bg: #0a0a0a; --glass: rgba(255, 255, 255, 0.05); }
+        body { background-color: var(--dark-bg); color: white; font-family: 'Courier New', monospace; margin: 0; overflow-x: hidden; }
+        
+        /* شريط الحالة العلوي */
+        .status-bar { display: flex; justify-content: space-between; padding: 5px 15px; background: #111; font-size: 10px; border-bottom: 1px solid var(--neon-green); }
+
+        /* الكاميرا - نظام الرؤية */
+        .vision-sector { position: relative; width: 100%; height: 220px; background: #000; border-bottom: 2px solid var(--neon-green); }
+        #camera-stream { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .overlay-text { position: absolute; top: 10px; right: 10px; color: red; font-size: 12px; animation: blink 1s infinite; }
+
+        /* مصفوفة التحكم (الخانات الكثيرة) */
+        .control-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+        .data-card { background: var(--glass); border: 1px solid #333; padding: 10px; border-radius: 8px; text-align: center; }
+        .data-card i { color: var(--neon-green); font-size: 20px; margin-bottom: 5px; }
+        .price-tag { color: var(--neon-green); font-weight: bold; font-size: 18px; }
+
+        /* سجل النظام (Matrix Chat) */
+        .system-logs { background: rgba(0, 20, 0, 0.9); border: 1px solid var(--neon-green); margin: 10px; height: 200px; border-radius: 10px; display: flex; flex-direction: column; }
+        #log-output { flex: 1; padding: 10px; overflow-y: auto; font-size: 12px; color: var(--neon-green); }
+        .input-area { display: flex; border-top: 1px solid #222; padding: 5px; }
+        input { flex: 1; background: transparent; border: none; color: white; padding: 8px; outline: none; }
+        
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="status-bar">
+    <span>SYSTEM: ONLINE</span>
+    <span>BATTERY: 89%</span>
+    <span>NETWORK: SHA256 SECURED</span>
+</div>
+
+<div class="vision-sector">
+    <div class="overlay-text"><i class="fas fa-video"></i> NEURAL FEED LIVE</div>
+    <video id="camera-stream" autoplay playsinline></video>
+</div>
+
+<div class="control-matrix">
+    <div class="data-card">
+        <i class="fas fa-shopping-cart"></i>
+        <div style="font-size: 10px;">Smart Deals Pro</div>
+        <div class="price-tag">299 DH</div>
+    </div>
+    <div class="data-card">
+        <i class="fas fa-car"></i>
+        <div style="font-size: 10px;">DrivingAI</div>
+        <div style="font-size: 11px;">المادة 1: احترام الأضواء</div>
+    </div>
+    <div class="data-card" style="grid-column: span 2;">
+        <i class="fas fa-shield-alt"></i>
+        <div style="font-size: 11px;">قانون 52.05: نظام النقط</div>
+    </div>
+</div>
+
+<div class="system-logs">
+    <div id="log-output">
+        > تم حقن الروح العصبونية بنجاح...<br>
+        > تيمو متصل بقاعدة بيانات DrivingAI...
+    </div>
+    <div class="input-area">
+        <input type="text" id="user-cmd" placeholder="أدخل أمر عصبوني...">
+        <button onclick="sendCommand()" style="background: var(--neon-green); border:none; border-radius:5px; padding: 0 15px;"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script>
+    // تفعيل الكاميرا تلقائياً
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+        .then(s => document.getElementById('camera-stream').srcObject = s);
+
+    function sendCommand() {
+        let cmd = document.getElementById('user-cmd').value;
+        let out = document.getElementById('log-output');
+        out.innerHTML += `<div style="color:white">> ${cmd}</div>`;
+        out.innerHTML += `<div>> جاري البحث في المصفوفة السيادية...</div>`;
+        document.getElementById('user-cmd').value = "";
+        out.scrollTop = out.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMO AI SUPREME PRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
