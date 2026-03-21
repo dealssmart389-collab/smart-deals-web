@@ -353,5 +353,48 @@ function timoSearch(query) {
     output.scrollTop = output.scrollHeight;
 }
 </script>
+<div class="control-panel">
+    <input type="text" id="omni-search" placeholder="ابحث عن أي شيء (قانون، تسوق، أخبار)...">
+    
+    <button onclick="omniExecute()" id="btn-send">إرسال</button>
+    
+    <button onclick="quickAccess('narsa')" id="btn-narsa">قانون السير</button>
+    
+    <button onclick="quickAccess('deals')" id="btn-deals">Smart Deals</button>
+</div>
+
+<script>
+// مصفوفة البيانات الشاملة (The Knowledge Matrix)
+const knowledgeBase = {
+    "narsa": "قاعدة بيانات NARSA: تشمل المواد 1 و 2، ونظام الغرامات الجديد (300-700 درهم).",
+    "deals": "عروض Smart Deals: جاري جلب أحدث التخفيضات من AliExpress و Jumia المغرب.",
+    "status": "حالة النظام: متصل بالقاعدة المركزية، الروح العصبية محقونة بنجاح."
+};
+
+// وظيفة الأزرار السريعة
+function quickAccess(type) {
+    const output = document.getElementById('output');
+    output.innerHTML += `<div class="timo-response">🤖 تيمو: ${knowledgeBase[type]}</div>`;
+    output.scrollTop = output.scrollHeight;
+}
+
+// محرك البحث الشامل
+function omniExecute() {
+    const input = document.getElementById('omni-search').value;
+    const output = document.getElementById('output');
+    
+    if(!input) return;
+
+    // محاكاة البحث العالمي والربط بين الروابط
+    output.innerHTML += `<div class="user-query">👤: ${input}</div>`;
+    
+    setTimeout(() => {
+        output.innerHTML += `<div class="timo-response">🤖 تيمو: جاري تحليل "${input}" وربطها بالنتائج العالمية والمحلية...</div>`;
+        // فتح نتائج البحث في نافذة جديدة لضمان شمولية المعلومات
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}+المغرب`, '_blank');
+        output.scrollTop = output.scrollHeight;
+    }, 500);
+}
+</script>
 </body>
 </html>
