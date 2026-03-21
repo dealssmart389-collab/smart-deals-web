@@ -169,6 +169,15 @@
         type();
     }
 </script>
+const drivingLaws = {
+    "المادة 1": "تحدد هذه المادة القواعد العامة للسير على الطرق العامة...",
+    "المادة 2": "يجب على كل سائق أن يكون حاصلاً على رخصة سياقة سارية المفعول..."
+};
 
+function showLaw(lawNumber) {
+    const output = document.getElementById('output');
+    output.innerHTML += `<div style="color:#00ff41; margin-top:10px;">📋 ${lawNumber}: ${drivingLaws[lawNumber]}</div>`;
+    output.scrollTop = output.scrollHeight;
+}
 </body>
 </html>
