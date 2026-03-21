@@ -32,7 +32,7 @@ def notify():
 
     # استدعاء المدقق (Auditor) لضمان استقرار الارتباط (NEURAL_LINK)
     # هذا الجزء هو الذي أظهرته الصور كـ "محصن مليار في مليار"
-    auditor.send_secure_notification(message="NEURAL_LINK_ACTIVE")
+    auditor.send_secure_notification("NEURAL_LINK_ACTIVE")
     
     return "Evolutionary Link Established", 200
 
