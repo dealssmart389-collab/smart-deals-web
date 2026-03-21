@@ -6,6 +6,99 @@
     <title>TIMO AI SUPREME PRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root { --neon: #00ff41; --bg: #050505; --card: #111; }
+        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', Tahoma; margin: 0; padding: 10px; }
+        
+        /* رأس الصفحة التفاعلي */
+        .header { text-align: center; border-bottom: 2px solid var(--neon); padding: 15px; margin-bottom: 15px; }
+        .header h1 { color: var(--neon); margin: 0; font-size: 1.5rem; text-shadow: 0 0 10px var(--neon); }
+
+        /* وحدة الكاميرا (إعادة الإبصار) */
+        .camera-container { width: 100%; height: 200px; background: #000; border: 1px solid var(--neon); border-radius: 15px; position: relative; overflow: hidden; margin-bottom: 15px; }
+        #webcam { width: 100%; height: 100%; object-fit: cover; }
+        .cam-label { position: absolute; top: 10px; left: 10px; background: red; padding: 2px 8px; border-radius: 5px; font-size: 10px; animation: pulse 1.5s infinite; }
+
+        /* شبكة الخانات والصور */
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .info-card { background: var(--card); padding: 15px; border-radius: 12px; border: 1px solid #222; text-align: center; transition: 0.3s; }
+        .info-card:hover { border-color: var(--neon); }
+        .info-card i { font-size: 1.8rem; color: var(--neon); margin-bottom: 10px; }
+        .info-card img { width: 100%; border-radius: 8px; margin-top: 5px; }
+
+        /* مصفوفة الحوار */
+        .chat-matrix { background: rgba(0,20,0,0.85); border: 1px solid var(--neon); border-radius: 15px; height: 300px; display: flex; flex-direction: column; }
+        #log-screen { flex: 1; padding: 15px; overflow-y: auto; font-family: monospace; font-size: 12px; color: var(--neon); }
+        .input-box { display: flex; padding: 10px; gap: 8px; border-top: 1px solid #222; }
+        input { flex: 1; background: transparent; border: 1px solid #333; color: #fff; padding: 10px; border-radius: 8px; }
+        button { background: var(--neon); color: #000; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>TIMO AI SUPREME</h1>
+        <div style="font-size: 10px; opacity: 0.6;">قاعدة البيانات: مدونة السير | البطارية: 89%</div>
+    </div>
+
+    <div class="camera-container">
+        <div class="cam-label">LIVE FEED</div>
+        <video id="webcam" autoplay playsinline></video>
+        <div style="position: absolute; bottom: 10px; width: 100%; text-align: center;">
+             <button onclick="initCam()" style="font-size: 10px; padding: 5px 10px;">تنشيط العدسة العصبونية</button>
+        </div>
+    </div>
+
+    <div class="grid-layout">
+        <div class="info-card">
+            <i class="fas fa-balance-scale"></i>
+            <div style="font-size: 12px;">المادة 1</div>
+            <p style="font-size: 9px; opacity: 0.7;">احترام أضواء المرور</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-tag"></i>
+            <div style="font-size: 12px;">Smart Deals</div>
+            <div style="color: gold; font-weight: bold;">299 DH</div>
+        </div>
+        <div class="info-card" style="grid-column: span 2;">
+            <div style="font-size: 12px; margin-bottom: 5px;">أصول DrivingAI</div>
+            <img src="7964.jpg" alt="Traffic Laws">
+        </div>
+    </div>
+
+    <div class="chat-matrix">
+        <div id="log-screen">> تم تفعيل بروتوكول السيادة...<br>> تيمو جاهز للمادة 2...</div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="اكتب أمرك هنا...">
+            <button onclick="talk()">إرسال</button>
+        </div>
+    </div>
+
+    <script>
+        async function initCam() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            document.getElementById('webcam').srcObject = stream;
+        }
+        function talk() {
+            let input = document.getElementById('user-input');
+            let log = document.getElementById('log-screen');
+            log.innerHTML += `<div style="color: #888;">أنت: ${input.value}</div>`;
+            log.innerHTML += `<div>تيمو: جاري معالجة البيانات العصبونية...</div>`;
+            log.scrollTop = log.scrollHeight;
+            input.value = "";
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMO AI SUPREME PRO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
         :root { --neon-green: #00ff41; --dark-bg: #050505; --card-bg: #111; }
         body { background: var(--dark-bg); color: white; font-family: sans-serif; margin: 0; padding: 10px; }
         
