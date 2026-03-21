@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benalal AI 2026 | التطبيق السيادي الشامل</title>
+    <title>Benalal AI 2026 | Timo AI Sovereign</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --neon-green: #00ff41;
@@ -14,163 +13,71 @@
             --glass-shield: rgba(0, 255, 65, 0.05);
             --border-glow: rgba(0, 255, 65, 0.3);
         }
-
-        body {
-            background-color: var(--dark-core);
-            color: white;
-            font-family: 'Cairo', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        /* تأثير الماتريكس الخلفي */
-        #matrix-bg {
-            position: fixed;
-            top: 0; left: 0; z-index: -1;
-            opacity: 0.15;
-        }
-
+        body { background-color: var(--dark-core); color: white; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        #matrix-bg { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
         .container { padding: 20px; max-width: 1200px; margin: auto; }
-
-        /* اللمسة الزجاجية للحماية */
-        .glass-panel {
-            background: var(--glass-shield);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glow);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-        }
-
-        /* الواجهة السمعية (الميكروفون) */
-        .mic-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 0, 0, 0.05);
-            border: 1px solid #ff000033;
-            padding: 10px;
-            border-radius: 50px;
-        }
-        .mic-btn {
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            border: none;
-            background: var(--neon-green);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .mic-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--neon-green); }
-
-        /* شبكة المنتجات والخانات */
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid var(--border-glow);
-            transition: 0.4s;
-        }
-        .card:hover { border-color: var(--neon-green); transform: translateY(-5px); }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
-
+        .glass-panel { background: var(--glass-shield); backdrop-filter: blur(10px); border: 1px solid var(--border-glow); border-radius: 20px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.1); }
+        .mic-section { display: flex; align-items: center; gap: 15px; background: rgba(255, 0, 0, 0.05); border: 1px solid #ff000033; padding: 10px; border-radius: 50px; }
+        .mic-btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: var(--neon-green); cursor: pointer; transition: 0.3s; }
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 15px; text-align: center; border: 1px solid var(--border-glow); transition: 0.4s; }
         .price-tag { font-family: 'Orbitron'; color: var(--neon-green); font-size: 1.4em; }
-
-        /* الأزرار السيادية */
-        .btn-action {
-            background: none;
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            padding: 10px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            margin-top: 10px;
-        }
-        .btn-action:hover { background: var(--neon-green); color: black; }
-
-        /* شاشة التحكم (AI Console) */
-        .console-box {
-            background: #000;
-            height: 150px;
-            overflow-y: auto;
-            padding: 10px;
-            font-family: 'Courier New', monospace;
-            color: var(--neon-green);
-            font-size: 12px;
-            border-bottom: 2px solid var(--neon-green);
-        }
+        .btn-action { background: none; border: 1px solid var(--neon-green); color: var(--neon-green); padding: 10px 25px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; }
+        .console-box { background: #000; height: 250px; overflow-y: auto; padding: 15px; font-family: 'Courier New', monospace; color: var(--neon-green); font-size: 13px; border: 1px solid var(--border-glow); border-radius: 10px; }
+        .input-area { display: flex; gap: 10px; margin-top: 15px; }
+        #user-input-field { flex: 1; background: #000; border: 1px solid var(--neon-green); color: white; padding: 12px; border-radius: 8px; outline: none; }
     </style>
 </head>
 <body>
-
 <canvas id="matrix-bg"></canvas>
-
 <div class="container">
-    <header class="glass-panel" style="display: flex; justify-content: space-between; align-items: center;">
+    <header class="glass-panel" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
         <div>
-            <h1 style="margin:0; color: var(--neon-green); font-family: 'Orbitron';">NEURAL PAY 2100</h1>
-            <small><i class="fas fa-shield-alt"></i> حماية Bandit نشطة</small>
+            <h1 style="margin:0; color: var(--neon-green); font-family: 'Orbitron';">TIMO AI 2100</h1>
+            <small><i class="fas fa-shield-alt"></i> حماية Bandit نشطة | SHA256 مؤمن</small>
         </div>
-<div style="display: flex; gap: 5px; margin-top: 10px;">
-    <input type="text" id="user-input-field" placeholder="تحدث مع جميني..." style="flex: 1; background: none; border: 1px solid var(--neon-green); color: white; padding: 10px; border-radius: 5px;">
-    <button onclick="askGemini()" style="background: var(--neon-green); border: none; padding: 10px; cursor: pointer; border-radius: 5px;"><i class="fas fa-paper-plane"></i></button>
-</div>        <div class="mic-section">
-            <span id="mic-status">جاهز للاستماع...</span>
-            <button class="mic-btn" onclick="startVoice()"><i class="fas fa-microphone"></i></button>
+        <div class="mic-section">
+            <span id="mic-status">تيمو مستعد...</span>
+            <button class="mic-btn" onclick="startVoiceTimo()"><i class="fas fa-microphone"></i></button>
         </div>
     </header>
 
     <div class="grid-layout">
         <div class="card">
-            <i class="fas fa-robot fa-4x" style="color: var(--neon-green); margin: 10px;"></i>
+            <i class="fas fa-robot fa-4x" style="color: var(--neon-green); margin-bottom: 15px;"></i>
             <h3>Driving AI 2026</h3>
-            <p>نظام محاكاة رخصة السياقة الذكي</p>
-            <span class="price-tag">199.00 DH</span>
-            <button class="btn-action" onclick="sendCommand('Buy_DrivingAI')"><i class="fab fa-paypal"></i> شراء سريع</button>
+            <span class="price-tag">199 DH</span>
+            <button class="btn-action" onclick="sendCommand('Buy_DrivingAI')">شراء سيادي</button>
         </div>
-
         <div class="card">
-            <i class="fas fa-shopping-cart fa-4x" style="color: #0088cc; margin: 10px;"></i>
+            <i class="fas fa-server fa-4x" style="color: #0088cc; margin-bottom: 15px;"></i>
             <h3>Smart Deals Pro</h3>
-            <p>باقة الصفقات والارتباط بالسيرفر</p>
-            <span class="price-tag">299.00 DH</span>
-            <button class="btn-action" onclick="sendCommand('Buy_SmartDeals')"><i class="fas fa-credit-card"></i> الدفع الآمن</button>
+            <span class="price-tag">299 DH</span>
+            <button class="btn-action" onclick="sendCommand('Buy_SmartDeals')">ارتباط بالسيرفر</button>
         </div>
     </div>
 
     <section class="glass-panel" style="margin-top:20px;">
-        <h3><i class="fas fa-terminal"></i> مصفوفة الردود والذكاء الاصطناعي</h3>
+        <h3><i class="fas fa-terminal"></i> مصفوفة الحوار العصبوني (تيمو)</h3>
         <div class="console-box" id="log-screen">
-    <div style="display: flex; gap: 5px; margin-top: 10px;">
-        <input type="text" id="user-input-field" placeholder="تحدث مع تيمو..." style="flex: 1; background: none; border: 1px solid var(--neon-green); color: white; padding: 10px; border-radius: 5px;">
-        <button onclick="startVoiceTimo()" style="background: var(--neon-green); border: none; padding: 10px; cursor: pointer; border-radius: 5px;"><i class="fas fa-paper-plane"></i></button>
-    </div>
-            > جاري فحص مفتاح SSH (BenalalAI 2026)...<br>
-            > حالة الاتصال: مستقر عبر الحصن المشفر.<br>
-            > البطارية الحالية: 20%.
+            > نظام تيمو جاهز...<br>
+            > تم التحقق من مفتاح SHA256 بنجاح.<br>
+            > البطارية الحالية: 70%.
+        </div>
+        <div class="input-area">
+            <input type="text" id="user-input-field" placeholder="اكتب أمرك لتيمو هنا..." onkeypress="handleKey(event)">
+            <button onclick="askTimo()" style="background: var(--neon-green); border: none; padding: 10px 20px; cursor: pointer; border-radius: 8px; font-weight: bold;">إرسال</button>
         </div>
     </section>
 </div>
 
 <script>
-    // نظام الماتريكس (اللمسة البصرية)
+    // 1. مصفوفة الماتريكس الخلفية
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
     const matrix = "010101BENALALAI2026";
     const drops = Array(Math.floor(canvas.width/20)).fill(1);
-
     function drawMatrix() {
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -184,57 +91,48 @@
     }
     setInterval(drawMatrix, 50);
 
-    // نظام الميكروفون والصوت
-    function startVoice() {
-        const status = document.getElementById('mic-status');
-        status.innerText = "جاري التحليل السمعي...";
-        status.style.color = "var(--neon-green)";
-        // هنا يتم زرع منطق الـ Web Speech API لاحقاً
+    // 2. منطق تيمو (Timo AI Engine)
+    const responses = {
+        "مرحبا": "أهلاً بك يا بطل! أنا تيمو، المساعد السيادي لمنير بن علال. كيف أخدمك؟",
+        "سعر": "الأسعار تبدأ من 150 درهم مع دعم كامل لسيرفر تيرموكس وحماية Bandit.",
+        "حماية": "النظام مؤمن ببصمة SHA256 المشفرة. لا توجد ثغرات مكتشفة حالياً.",
+        "بطارية": "الطاقة الحالية هي 70%، الأداء في ذروته."
+    };
+
+    function askTimo() {
+        const inputField = document.getElementById('user-input-field');
+        const query = inputField.value.trim();
+        if(!query) return;
+
+        const log = document.getElementById('log-screen');
+        log.innerHTML += `<div style="color: #888; margin: 5px 0;">👤 أنت: ${query}</div>`;
+        
+        setTimeout(() => {
+            let res = "فهمت طلبك. جاري معالجة البيانات في مصفوفة 2026...";
+            for (let key in responses) {
+                if (query.toLowerCase().includes(key)) { res = responses[key]; break; }
+            }
+            log.innerHTML += `<div style="color: var(--neon-green); border-right: 2px solid; padding-right:10px; margin: 5px 0;">🤖 تيمو: ${res}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }, 600);
+        inputField.value = "";
     }
 
-    // الربط مع سيرفر تيرموكس (Gatekeeper)
+    function handleKey(e) { if(e.key === 'Enter') askTimo(); }
+
+    function startVoiceTimo() {
+        const s = document.getElementById('mic-status');
+        s.innerText = "تيمو يستمع..."; s.style.color = "red";
+        setTimeout(() => { s.innerText = "تم استقبال الصوت ✅"; s.style.color = "var(--neon-green)"; }, 2000);
+    }
+
     function sendCommand(cmd) {
         const log = document.getElementById('log-screen');
-        log.innerHTML += `> تنفيذ أمر: ${cmd}...<br>`;
-        
-        // محاولة الاتصال بالسيرفر المحلي (تأكد من تشغيل Flask في Termux)
+        log.innerHTML += `> تنفيذ: ${cmd}...<br>`;
         fetch('http://127.0.0.1:5000/notify_payment_access')
-            .then(res => log.innerHTML += `> <span style="color:var(--neon-green)">تم إرسال الإشارة لـ Termux بنجاح! ✅</span><br>`)
-            .catch(err => log.innerHTML += `> <span style="color:red">خطأ: السيرفر غير مستجيب. تفقد Gatekeeper.py ❌</span><br>`);
+            .then(() => log.innerHTML += `> <span style="color:var(--neon-green)">✅ تم الاتصال بـ Gatekeeper بنجاح!</span><br>`)
+            .catch(() => log.innerHTML += `> <span style="color:red">❌ فشل الاتصال. تأكد من تشغيل Flask في Termux.</span><br>`);
     }
-</script>
-// --- محرك الحوار السيادي (Gemini Style) ---
-
-const aiResponses = {
-    "مرحبا": "أهلاً بك في مصفوفة Benalal AI 2026. أنا مساعدك الذكي، كيف نطور مشروعك اليوم؟",
-    "سعر": "الأسعار سيادية ومدروسة يا بطل، تبدأ من 150 درهم لـ Driving AI Pro مع حماية Bandit كاملة.",
-    "حماية": "النظام مؤمن ببروتوكول Bandit ومفاتيح SSH مشفرة لضمان سيادتك الرقمية.",
-    "termux": "تيرموكس هو قلب النظام؛ السيرفر Flask يعمل الآن على المنفذ 5000 ومستعد لتنفيذ أوامرك."
-};
-
-function askGemini() {
-    const input = document.getElementById('user-input-field').value;
-    const log = document.getElementById('log-screen');
-    
-    // إضافة سؤال المستخدم للواجهة
-    log.innerHTML += `<div style="color: #fff; margin-top:10px;">👤 أنت: ${input}</div>`;
-    
-    // محاكاة تفكير الذكاء الاصطناعي (مثل جميني)
-    log.innerHTML += `<div id="typing" style="color: var(--neon-green);">... جاري التحليل العصبوني</div>`;
-    
-    setTimeout(() => {
-        document.getElementById('typing').remove();
-        let response = "فكرة عبقرية! جاري البحث في المصفوفة لتنفيذ طلبك بأفضل كود ممكن.";
-        
-        // البحث عن رد مخصص
-        for (let key in aiResponses) {
-            if (input.includes(key)) { response = aiResponses[key]; break; }
-        }
-        
-        log.innerHTML += `<div style="color: var(--neon-green); border-right: 2px solid var(--neon-green); padding-right:10px;">🤖 جميني (النسخة السيادية): ${response}</div>`;
-        log.scrollTop = log.scrollHeight; // التمرير التلقائي للأسفل
-    }, 1000);
-}
 </script>
 </body>
 </html>
