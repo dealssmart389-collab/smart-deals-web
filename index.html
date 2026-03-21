@@ -3,6 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMO NEURAL ENGINE v3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --neon-green: #00ff41; --bg-black: #020202; --card-gray: #0f0f0f; --accent-blue: #00d4ff; }
+        body { background: var(--bg-black); color: #fff; font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 10px; line-height: 1.4; }
+        
+        /* شريط الحالة الفني */
+        .status-header { display: flex; justify-content: space-between; padding: 8px 12px; background: #111; border: 1px solid #222; border-radius: 8px; font-size: 10px; margin-bottom: 10px; color: var(--neon-green); font-family: monospace; }
+
+        /* وحدة الرؤية (Camera Feed) */
+        .vision-container { position: relative; width: 100%; height: 200px; background: #000; border: 1px solid var(--neon-green); border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.1); }
+        #v-feed { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: contrast(1.1) brightness(1.1); }
+        .vision-overlay { position: absolute; top: 10px; right: 10px; background: rgba(255, 0, 0, 0.8); color: white; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; animation: pulse 1s infinite; }
+        .scan-bar { position: absolute; width: 100%; height: 1px; background: var(--neon-green); top: 0; animation: scanning 4s infinite linear; box-shadow: 0 0 10px var(--neon-green); }
+
+        /* شبكة البيانات (App-like Cards) */
+        .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        .card { background: var(--card-gray); border: 1px solid #222; padding: 12px; border-radius: 10px; text-align: center; transition: 0.3s; }
+        .card:active { transform: scale(0.95); border-color: var(--neon-green); }
+        .card i { font-size: 1.4rem; color: var(--neon-green); margin-bottom: 6px; }
+        .card-title { display: block; font-size: 10px; color: #888; text-transform: uppercase; }
+        .card-value { display: block; font-size: 14px; font-weight: bold; color: gold; margin-top: 2px; }
+
+        /* محرك المحاكاة العصبوني (Chat Engine) */
+        .neural-engine { background: #050505; border: 1px solid #333; border-radius: 15px; height: 350px; display: flex; flex-direction: column; overflow: hidden; }
+        #output-stream { flex: 1; padding: 15px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 12px; border-bottom: 1px solid #222; }
+        .timo-msg { color: var(--neon-green); margin-bottom: 10px; border-left: 2px solid var(--neon-green); padding-left: 8px; }
+        .user-msg { color: #fff; margin-bottom: 10px; opacity: 0.8; }
+
+        .control-input { display: flex; padding: 10px; gap: 8px; background: #0a0a0a; }
+        input { flex: 1; background: #151515; border: 1px solid #222; color: white; padding: 12px; border-radius: 8px; font-size: 14px; outline: none; }
+        input:focus { border-color: var(--neon-green); }
+        .btn-send { background: var(--neon-green); color: black; border: none; padding: 0 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        @keyframes scanning { from { top: 0; } to { top: 100%; } }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="status-header">
+    <span>CORE: ACTIVE</span>
+    <span>BATT: 89%</span>
+    <span>MEM: ENCRYPTED</span>
+</div>
+
+<div class="vision-container">
+    <div class="vision-overlay">LIVE NEURAL FEED</div>
+    <div class="scan-bar"></div>
+    <video id="v-feed" autoplay playsinline></video>
+</div>
+
+<div class="data-grid">
+    <div class="card">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="card-title">Smart Deals</span>
+        <span class="card-value">299 DH</span>
+    </div>
+    <div class="card">
+        <i class="fas fa-balance-scale"></i>
+        <span class="card-title">قانون السير</span>
+        <span class="card-value">المادة 1 & 2</span>
+    </div>
+    <div class="card">
+        <i class="fas fa-id-card"></i>
+        <span class="card-title">رخصة السياقة</span>
+        <span class="card-value">نظام النقط</span>
+    </div>
+    <div class="card">
+        <i class="fas fa-code-branch"></i>
+        <span class="card-title">التحديث الأخير</span>
+        <span class="card-value">v927c659</span>
+    </div>
+</div>
+
+<div class="neural-engine">
+    <div id="output-stream">
+        <div class="timo-msg">> تم تحميل "الروح العصبونية" بنجاح...</div>
+        <div class="timo-msg">> تيمو متصل بقاعدة بيانات DrivingAI...</div>
+    </div>
+    <div class="control-input">
+        <input type="text" id="user-query" placeholder="أدخل استعلام عصبوني سريع...">
+        <button class="btn-send" onclick="runNeuralLogic()"><i class="fas fa-bolt"></i></button>
+    </div>
+</div>
+
+<script>
+    // تهيئة نظام الإبصار
+    async function startVision() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+            document.getElementById('v-feed').srcObject = stream;
+        } catch (e) {
+            console.log("رؤية تيمو بانتظار التصريح...");
+        }
+    }
+    startVision();
+
+    // منطق المعالجة العصبونية (سرعة فائقة)
+    function runNeuralLogic() {
+        const input = document.getElementById('user-query');
+        const output = document.getElementById('output-stream');
+        if (!input.value) return;
+
+        // إضافة رسالة المستخدم
+        output.innerHTML += `<div class="user-msg">👤 أنت: ${input.value}</div>`;
+        
+        // الرد المحاكي للذكاء الاصطناعي السريع
+        const responseText = `> جاري معالجة "${input.value}" عبر مصفوفة السيادة... تم الربط مع المادة 2 من قانون السير المغربي. النتيجة: جاهز للتحليل البصري عبر الكاميرا.`;
+        
+        let i = 0;
+        const speed = 15; // سرعة الكتابة لمحاكاة جميني
+        const responseDiv = document.createElement('div');
+        responseDiv.className = 'timo-msg';
+        responseDiv.innerHTML = '🤖 تيمو: ';
+        output.appendChild(responseDiv);
+
+        function type() {
+            if (i < responseText.length) {
+                responseDiv.innerHTML += responseText.charAt(i);
+                i++;
+                setTimeout(type, speed);
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+        type();
+        input.value = '';
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMO NEURAL ENGINE | GEMINI SPEED</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
