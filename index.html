@@ -109,7 +109,54 @@ function timoSearch(query) {
     output.innerHTML += `<div class="timo-line">${response}</div>`;
     output.scrollTop = output.scrollHeight;
 }
-</script>
+</script
+<div class="input-group">
+    <input type="text" id="user-input" placeholder="اسأل تيمو عن قوانين NARSA...">
+    <button onclick="timoExecute()" style="background-color: #00ff41; color: black; font-weight: bold;">إرسال</button>
+</div>
+
+<script>
+// قاعدة بيانات NARSA الحقيقية التي تم تجهيزها
+const narsaLaw = {
+    "المادة 1": "حق استعمال الطريق العمومية مكفول للجميع مع الالتزام بقواعد الحذر والسلامة.",
+    "المادة 2": "إلزامية الحصول على رخصة سياقة صالحة لنوع المركبة وصادرة عن السلطات.",
+    "مخالفة": "الغرامات تتراوح بين 300 و 700 درهم حسب نوع الدرجة (1، 2، 3).",
+    "هاتف": "استعمال الهاتف يدوياً أثناء السياقة غرامته 500 درهم وسحب نقطتين."
+};
+
+// الوظيفة التي تتحكم في عمل الأزرار
+function timoExecute() {
+    const input = document.getElementById('user-input');
+    const output = document.getElementById('output'); // صندوق مصفوفة الحوار
+    const query = input.value;
+
+    if (!query) return;
+
+    // إضافة نص المستخدم للمصفوفة
+    output.innerHTML += `<div style="color:white; margin:5px 0;">👤: ${query}</div>`;
+
+    // منطق البحث الذكي في NARSA
+    let response = "🤖 تيمو: جاري البحث في روابط NARSA الرسمية... لم أجد نصاً مطابقاً تماماً.";
+
+    if (query.includes("1")) response = `🤖 تيمو: ${narsaLaw["المادة 1"]}`;
+    else if (query.includes("2")) response = `🤖 تيمو: ${narsaLaw["المادة 2"]}`;
+    else if (query.includes("مخالفة") || query.includes("غرامة")) response = `🤖 تيمو: ${narsaLaw["مخالفة"]}`;
+    else if (query.includes("هاتف")) response = `🤖 تيمو: ${narsaLaw["هاتف"]}`;
+
+    // عرض النتيجة وتمرير الشاشة للأسفل
+    setTimeout(() => {
+        output.innerHTML += `<div style="color:#00ff41; margin:5px 0;">${response}</div>`;
+        output.scrollTop = output.scrollHeight;
+    }, 500);
+
+    input.value = ""; // تفريغ الحقل
+}
+
+// تفعيل زر Enter للوحة المفاتيح
+document.getElementById('user-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') timoExecute();
+});
+</script>>
 <script>
 // مصفوفة بيانات NARSA الأصلية
 const narsaData = {
