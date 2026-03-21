@@ -196,6 +196,37 @@
             .catch(err => log.innerHTML += `> <span style="color:red">خطأ: السيرفر غير مستجيب. تفقد Gatekeeper.py ❌</span><br>`);
     }
 </script>
+// --- محرك الحوار السيادي (Gemini Style) ---
 
+const aiResponses = {
+    "مرحبا": "أهلاً بك في مصفوفة Benalal AI 2026. أنا مساعدك الذكي، كيف نطور مشروعك اليوم؟",
+    "سعر": "الأسعار سيادية ومدروسة يا بطل، تبدأ من 150 درهم لـ Driving AI Pro مع حماية Bandit كاملة.",
+    "حماية": "النظام مؤمن ببروتوكول Bandit ومفاتيح SSH مشفرة لضمان سيادتك الرقمية.",
+    "termux": "تيرموكس هو قلب النظام؛ السيرفر Flask يعمل الآن على المنفذ 5000 ومستعد لتنفيذ أوامرك."
+};
+
+function askGemini() {
+    const input = document.getElementById('user-input-field').value;
+    const log = document.getElementById('log-screen');
+    
+    // إضافة سؤال المستخدم للواجهة
+    log.innerHTML += `<div style="color: #fff; margin-top:10px;">👤 أنت: ${input}</div>`;
+    
+    // محاكاة تفكير الذكاء الاصطناعي (مثل جميني)
+    log.innerHTML += `<div id="typing" style="color: var(--neon-green);">... جاري التحليل العصبوني</div>`;
+    
+    setTimeout(() => {
+        document.getElementById('typing').remove();
+        let response = "فكرة عبقرية! جاري البحث في المصفوفة لتنفيذ طلبك بأفضل كود ممكن.";
+        
+        // البحث عن رد مخصص
+        for (let key in aiResponses) {
+            if (input.includes(key)) { response = aiResponses[key]; break; }
+        }
+        
+        log.innerHTML += `<div style="color: var(--neon-green); border-right: 2px solid var(--neon-green); padding-right:10px;">🤖 جميني (النسخة السيادية): ${response}</div>`;
+        log.scrollTop = log.scrollHeight; // التمرير التلقائي للأسفل
+    }, 1000);
+}
 </body>
 </html>
