@@ -1,0 +1,400 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+                i++;
+                log.scrollTop = log.scrollHeight;
+                output.innerHTML += `<div style="color:#00ff41;">🤖 تيمو: ${timoDB[key]}</div>`;
+                output.scrollTop = output.scrollHeight;
+                resDiv.innerHTML += response.charAt(i);
+                setTimeout(type, 15);
+                speak(response);
+            .then(s => document.getElementById('video-feed').srcObject = s);
+            break;
+            found = true;
+            if (i < response.length) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            output.innerHTML += `<div style="color:#ffae00;">🌐 تيمو: جاري البحث في الروابط العالمية عن "${query}"...</div>`;
+            response = "> تم تحليل النص: 'قانون السير'. المادة 1 تنص على قواعد الأسبقية، والمادة 2 تتعلق بالغرامات التصالحية في DrivingAI.";
+            response = `> تم تحليل الاستعلام عصبونياً. النتيجة: معالجة "${query}" عبر مصفوفة السيادة ناجحة. الربط مع Smart Deals مستقر.`;
+            setTimeout(() => {
+            transBox.style.display = "block";
+            transBox.style.display = "none";
+            transText.innerText = "ترجمة: مدونة السير المغربية";
+            window.open(`https://www.google.com/search?q=${query}`, '_blank');
+            }
+            } else {
+            }, 600);
+        #input-cmd { flex: 1; background: #111; border: 1px solid #333; color: white; padding: 12px; border-radius: 12px; outline: none; }
+        #log-stream { flex: 1; padding: 15px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 12px; line-height: 1.6; }
+        #video-feed { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) contrast(1.1); }
+        .btn-action { border: none; padding: 0 18px; border-radius: 12px; cursor: pointer; transition: 0.2s; font-size: 1.1rem; }
+        .btn-mic { background: #222; color: #fff; }
+        .btn-send { background: var(--neon); color: #000; font-weight: bold; }
+        .catch(() => {
+        .control-hub { display: flex; padding: 12px; gap: 10px; background: #000; border-top: 1px solid #222; }
+        .data-card i { color: var(--neon); font-size: 1.4rem; margin-bottom: 6px; }
+        .data-card { background: var(--panel); border: 1px solid #1a1a1a; padding: 12px; border-radius: 15px; text-align: center; transition: 0.3s; }
+        .data-card:active { transform: scale(0.95); border-color: var(--neon); }
+        .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        .listening-active { background: var(--alert) !important; animation: pulse 1s infinite; }
+        .neural-chat { background: #050505; border: 1px solid #333; border-radius: 20px; height: 350px; display: flex; flex-direction: column; overflow: hidden; }
+        .ocr-target { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 110px; border: 2px dashed rgba(0, 255, 65, 0.4); border-radius: 15px; pointer-events: none; }
+        .scan-bar { position: absolute; width: 100%; height: 2px; background: var(--neon); top: 0; animation: scanMove 4s infinite linear; box-shadow: 0 0 15px var(--neon); z-index: 2; }
+        .status-header { display: flex; justify-content: space-between; padding: 10px; border: 1px solid #222; border-radius: 12px; font-size: 10px; font-family: monospace; color: var(--neon); margin-bottom: 15px; background: rgba(255,255,255,0.03); }
+        .then(s => document.getElementById('video-feed').srcObject = s)
+        .timo-msg { color: var(--neon); border-right: 3px solid var(--neon); padding-right: 10px; margin-bottom: 12px; animation: fadeIn 0.3s; }
+        .trans-overlay { position: absolute; bottom: 15px; left: 15px; right: 15px; background: rgba(0, 0, 0, 0.8); border: 1px solid var(--neon); padding: 10px; border-radius: 10px; font-size: 11px; backdrop-filter: blur(5px); display: none; }
+        .user-msg { color: #fff; margin-bottom: 12px; opacity: 0.8; text-align: left; }
+        .val { display: block; font-size: 14px; font-weight: bold; color: gold; }
+        .vision-matrix { position: relative; width: 100%; height: 230px; background: #000; border: 1px solid var(--neon); border-radius: 20px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); }
+        /* شبكة البيانات (Matrix Grid) */
+        /* شريط الحالة السيادي */
+        /* مصفوفة الحوار العصبوني */
+        /* منطقة التحكم الذكي */
+        /* وحدة الرؤية العصبونية المزدوجة */
+        // إذا لم يجد المعلومة في القاعدة المحلية، يوجه المستخدم للبحث العالمي
+        // ذكاء اصطناعي محاكي للترجمة والبيانات
+        // فتح نتائج البحث في نافذة جديدة لضمان شمولية المعلومات
+        :root { --neon: #00ff41; --bg: #010101; --panel: #0d0d0d; --alert: #ff3b30; }
+        <button class="btn-action btn-send" onclick="handleLogic()"><i class="fas fa-bolt"></i></button>
+        <button id="mic-btn" class="btn-action btn-mic" onclick="toggleSpeech()"><i class="fas fa-microphone"></i></button>
+        <div class="timo-msg">> تم دمج وتصحيح كافة الأنظمة بنجاح...</div>
+        <div class="timo-msg">> محرك الترجمة والرد الصوتي والماسح البصري في وضع الاستعداد.</div>
+        <i class="fas fa-car-side"></i>
+        <i class="fas fa-language"></i> <span id="trans-text">جاري تحليل النص...</span>
+        <i class="fas fa-shopping-bag"></i>
+        <input type="text" id="input-cmd" placeholder="تحدث، ترجم فرنسي، أو اسأل تيمو...">
+        <span class="val">299 DH</span>
+        <span class="val">المادة 1 & 2</span>
+        <span style="font-size: 9px; opacity: 0.6;">DrivingAI</span>
+        <span style="font-size: 9px; opacity: 0.6;">Smart Deals</span>
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes scanMove { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', system-ui; margin: 0; padding: 10px; overflow-x: hidden; }
+        const log = document.getElementById('log-stream');
+        const msg = new SpeechSynthesisUtterance(text.replace(/>/g, ''));
+        const query = inputField.value.trim();
+        const resDiv = document.createElement('div');
+        const transBox = document.getElementById('trans-box');
+        const transText = document.getElementById('trans-text');
+        function type() {
+        handleLogic();
+        if (!query) return;
+        if (query.includes(key)) {
+        if (query.toLowerCase().includes("code de la route") || query.includes("قانون السير")) {
+        inputField.value = "";
+        inputField.value = e.results[0][0].transcript;
+        let i = 0;
+        let response = "";
+        log.appendChild(resDiv);
+        log.innerHTML += `<div class="user-msg">👤 أنت: ${query}</div>`;
+        micBtn.classList.add('listening-active');
+        micBtn.classList.remove('listening-active');
+        msg.lang = 'ar-SA';
+        msg.rate = 1.0;
+        output.innerHTML += `<div class="timo-response">🤖 تيمو: جاري تحليل "${input}" وربطها بالنتائج العالمية والمحلية...</div>`;
+        output.innerHTML += `<div style="color:#00ff41; margin:5px 0;">${response}</div>`;
+        output.scrollTop = output.scrollHeight;
+        output.scrollTop = output.scrollHeight;
+        outputBox.innerHTML += `<div style="color:#00ff41; margin-top:5px;">🤖 تيمو: ${drivingLaws["المادة 1"]}</div>`;
+        outputBox.innerHTML += `<div style="color:#00ff41; margin-top:5px;">🤖 تيمو: ${drivingLaws["المادة 2"]}</div>`;
+        recognition.start();
+        resDiv.className = 'timo-msg';
+        resDiv.innerHTML = '🤖 تيمو: ';
+        setTimeout(() => {
+        type();
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}+المغرب`, '_blank');
+        window.speechSynthesis.cancel(); // إيقاف أي صوت سابق
+        window.speechSynthesis.speak(msg);
+        }
+        }
+        }
+        } else {
+        });
+        }, 800);
+    "deals": "عروض Smart Deals: جاري جلب أحدث التخفيضات من AliExpress و Jumia المغرب.",
+    "narsa": "قاعدة بيانات NARSA: تشمل المواد 1 و 2، ونظام الغرامات الجديد (300-700 درهم).",
+    "status": "حالة النظام: متصل بالقاعدة المركزية، الروح العصبية محقونة بنجاح."
+    "المادة 1": "تحدد هذه المادة القواعد العامة للسير على الطرق العامة...",
+    "المادة 1": "تحدد هذه المادة القواعد العامة للسير على الطرق العامة...",
+    "المادة 1": "حق استعمال الطريق العمومية مكفول للجميع مع الالتزام بقواعد الحذر والسلامة.",
+    "المادة 2": "إلزامية الحصول على رخصة سياقة صالحة لنوع المركبة وصادرة عن السلطات.",
+    "المادة 2": "يجب على كل سائق أن يكون حاصلاً على رخصة سياقة سارية المفعول..."
+    "المادة 2": "يجب على كل سائق أن يكون حاصلاً على رخصة سياقة سارية المفعول..."
+    "الهاتف": "استخدام الهاتف باليد أثناء السياقة: غرامة 500 درهم وسحب نقطتين."
+    "الهاتف": "استخدام الهاتف باليد أثناء السياقة: غرامة 500 درهم وسحب نقطتين."
+    "جوميا": "تيمو يبحث لك الآن عن أفضل العروض في Jumia المغرب...",
+    "سياقة": "المادة 1 و 2: تنظم حق استعمال الطريق وإلزامية الرخصة.",
+    "صيدلية": "أقرب صيدلية حراسة متاحة الآن في منطقتك هي..."
+    "طقس": "جاري الاتصال بمصلحة الأرصاد الجوية لتحديث حالة الطقس في مدينتك...",
+    "علي_اكسبريس": "جاري فحص تخفيضات AliExpress وربطها برابط الأفلييت الخاص بك...",
+    "غرامة": "مخالفات الدرجة الأولى 700 درهم، الثانية 500 درهم، والثالثة 300 درهم.",
+    "غرامة_الهاتف": "استعمال الهاتف يدوياً أثناء السياقة: 500 درهم وسحب نقطتين."
+    "قانون_1": "المادة 1: تسري أحكام هذا القانون على السير على الطرق العامة المفتوحة للسير الجبلي.",
+    "قانون_1": "المادة 1: تسري أحكام هذا القانون على السير على الطرق العامة المفتوحة للسير الجبلي.",
+    "قانون_1": "المادة 1: تهدف القواعد إلى تنظيم السير وضمان سلامة المرتفقين.",
+    "قانون_2": "المادة 2: لا يجوز لأي شخص أن يسوق مركبة بمحرك دون أن يكون حاصلاً على رخصة سياقة.",
+    "قانون_2": "المادة 2: لا يجوز لأي شخص أن يسوق مركبة بمحرك دون أن يكون حاصلاً على رخصة سياقة.",
+    "قانون_2": "المادة 2: يمنع سياقة أي مركبة بمحرك دون رخصة سياقة صالحة.",
+    "مخالفة": "الغرامات تتراوح بين 300 و 700 درهم حسب نوع الدرجة (1، 2، 3).",
+    "مخالفة_السرعة": "تجاوز السرعة بأقل من 20 كلم/س: غرامة تصالحية قدرها 300 درهم.",
+    "مخالفة_السرعة": "تجاوز السرعة بأقل من 20 كلم/س: غرامة تصالحية قدرها 300 درهم.",
+    "هاتف": "استعمال الهاتف يدوياً أثناء السياقة غرامته 500 درهم وسحب نقطتين."
+    // 1. تشغيل الكاميرا (الخلفية للأجهزة المحمولة)
+    // 2. نظام الرد الصوتي (Output)
+    // 3. نظام التعرف على الكلام (Input)
+    // 4. المحرك المنطقي العصبوني
+    // إضافة نص المستخدم للمصفوفة
+    // التجارة والخدمات (Smart Deals)
+    // عرض النتيجة وتمرير الشاشة للأسفل
+    // قوانين السير (NARSA)
+    // محاكاة البحث العالمي والربط بين الروابط
+    // معلومات عامة وخدمات
+    // منطق البحث الذكي في NARSA
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </style>
+    <button onclick="omniExecute()" id="btn-send">إرسال</button>
+    <button onclick="quickAccess('deals')" id="btn-deals">Smart Deals</button>
+    <button onclick="quickAccess('narsa')" id="btn-narsa">قانون السير</button>
+    <button onclick="timoExecute()" style="background-color: #00ff41; color: black; font-weight: bold;">إرسال</button>
+    <div class="control-hub">
+    <div class="data-card">
+    <div class="data-card">
+    <div class="ocr-target"></div>
+    <div class="scan-bar"></div>
+    <div class="trans-overlay" id="trans-box">
+    <div id="log-stream">
+    <input type="text" id="omni-search" placeholder="ابحث عن أي شيء (قانون، تسوق، أخبار)...">
+    <input type="text" id="user-input" placeholder="اسأل تيمو عن قوانين NARSA...">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <span><i class="fas fa-bolt"></i> BATT: 92%</span>
+    <span><i class="fas fa-microchip"></i> TIMO_CORE: ACTIVE</span>
+    <span><i class="fas fa-shield-alt"></i> SOVEREIGNTY: ON</span>
+    <style>
+    <title>TIMO AI SUPREME | UNIFIED NEURAL ENGINE</title>
+    <video id="video-feed" autoplay playsinline></video>
+    const input = document.getElementById('omni-search').value;
+    const input = document.getElementById('user-input');
+    const input = document.getElementById('user-input'); // حقل الإدخال
+    const inputField = document.getElementById('input-cmd');
+    const inputField = document.querySelector('input'); // حقل الإدخال في مصفوفة الحوار
+    const micBtn = document.getElementById('mic-btn');
+    const output = document.getElementById('output');
+    const output = document.getElementById('output');
+    const output = document.getElementById('output');
+    const output = document.getElementById('output'); // تأكد أن هذا هو معرف Matrix الحوار
+    const output = document.getElementById('output'); // تأكد أن هذا هو معرف Matrix الحوار
+    const output = document.getElementById('output'); // شاشة العرض
+    const output = document.getElementById('output'); // صندوق مصفوفة الحوار
+    const output = document.getElementById('output'); // صندوق مصفوفة الحوار
+    const outputBox = document.getElementById('output'); // صندوق المخرجات (Matrix)
+    const query = input.value.toLowerCase();
+    const query = input.value;
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    const val = inputField.value;
+    else if (query.includes("2")) response = `🤖 تيمو: ${narsaLaw["المادة 2"]}`;
+    else if (query.includes("مخالفة") || query.includes("غرامة")) response = `🤖 تيمو: ${narsaLaw["مخالفة"]}`;
+    else if (query.includes("هاتف")) response = `🤖 تيمو: ${narsaLaw["هاتف"]}`;
+    for (let key in timoDB) {
+    function handleLogic() {
+    function speak(text) {
+    function toggleSpeech() {
+    if (!found) {
+    if (!query) return;
+    if (!query) return;
+    if (e.key === 'Enter') timoExecute();
+    if (query.includes("1")) response = `🤖 تيمو: ${narsaLaw["المادة 1"]}`;
+    if (query.includes("المادة 1")) response = `🤖 تيمو: ${narsaDB.قانون_1}`;
+    if (query.includes("المادة 1")) response = `🤖 تيمو: ${narsaDB.قانون_1}`;
+    if (query.includes("رخصة") || query.includes("المادة 2")) response = `🤖 تيمو: ${narsaDB.قانون_2}`;
+    if (query.includes("رخصة") || query.includes("المادة 2")) response = `🤖 تيمو: ${narsaDB.قانون_2}`;
+    if (query.includes("هاتف")) response = `🤖 تيمو: ${narsaDB.الهاتف}`;
+    if (query.includes("هاتف")) response = `🤖 تيمو: ${narsaDB.الهاتف}`;
+    if (val.includes("المادة 1")) {
+    if(!input) return;
+    if(userInput.includes("المادة 1")) result = `🤖 تيمو: ${narsaData.قانون_1}`;
+    if(userInput.includes("رخصة")) result = `🤖 تيمو: ${narsaData.قانون_2}`;
+    input.value = "";
+    input.value = ""; // تفريغ الحقل
+    inputField.value = ""; // تفريغ الحقل بعد الإرسال
+    let found = false;
+    let response = "🤖 تيمو: جاري البحث في روابط NARSA الرسمية... لم أجد نصاً مطابقاً تماماً.";
+    let response = "🤖 تيمو: عذراً، لم أجد هذا النص في قاعدة بيانات NARSA حالياً.";
+    let response = "🤖 تيمو: عذراً، لم أجد هذا النص في قاعدة بيانات NARSA حالياً.";
+    let result = "🤖 تيمو: ابحث في قاعدة بيانات NARSA...";
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+    output.innerHTML += `<div class="timo-line">${response}</div>`;
+    output.innerHTML += `<div class="timo-line">${response}</div>`;
+    output.innerHTML += `<div class="timo-response">🤖 تيمو: ${knowledgeBase[type]}</div>`;
+    output.innerHTML += `<div class="user-query">👤: ${input}</div>`;
+    output.innerHTML += `<div style="color:#00ff41; margin-top:10px;">📋 ${lawNumber}: ${drivingLaws[lawNumber]}</div>`;
+    output.innerHTML += `<div style="color:#fff; margin:10px 0;">🔍 بحث إنساني: ${query}</div>`;
+    output.innerHTML += `<div style="color:white; margin:5px 0;">👤: ${query}</div>`;
+    output.innerHTML += `<div>${result}</div>`;
+    output.scrollTop = output.scrollHeight;
+    output.scrollTop = output.scrollHeight;
+    output.scrollTop = output.scrollHeight;
+    output.scrollTop = output.scrollHeight;
+    output.scrollTop = output.scrollHeight;
+    outputBox.scrollTop = outputBox.scrollHeight;
+    recognition.continuous = false;
+    recognition.lang = 'ar-MA'; // اللهجة المغربية
+    recognition.onerror = () => micBtn.classList.remove('listening-active');
+    recognition.onresult = (e) => {
+    setTimeout(() => {
+    setTimeout(() => {
+    }
+    }
+    }
+    }
+    }
+    }
+    } else if (val.includes("المادة 2")) {
+    }, 500);
+    }, 500);
+    };
+// أضف هذا الجزء قبل وسم </script> مباشرة
+// الوظيفة التي تتحكم في عمل الأزرار
+// تفعيل زر Enter للوحة المفاتيح
+// قاعدة بيانات NARSA الحقيقية
+// قاعدة بيانات NARSA الحقيقية
+// قاعدة بيانات NARSA الحقيقية التي تم تجهيزها
+// محرك البحث الشامل
+// مصفوفة البيانات الشاملة (The Knowledge Matrix)
+// مصفوفة بيانات NARSA الأصلية
+// وظيفة الأزرار السريعة
+// وظيفة المعالجة الذكية لـ TIMO
+// وظيفة المعالجة الذكية لـ TIMO
+<!DOCTYPE html>
+</body>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</head>
+</html>
+</script
+</script>
+</script>
+</script>
+</script>
+</script>
+<body>
+<div class="control-panel">
+<div class="data-grid">
+<div class="input-group">
+<div class="neural-chat">
+<div class="status-header">
+<div class="vision-matrix">
+<head>
+<html lang="ar" dir="rtl">
+<script>
+<script>
+<script>
+<script>
+<script>
+<script>
+const drivingLaws = {
+const drivingLaws = {
+const knowledgeBase = {
+const narsaDB = {
+const narsaDB = {
+const narsaData = {
+const narsaLaw = {
+const timoDB = {
+document.getElementById('user-input').addEventListener('keypress', function (e) {
+function handleMatrixInput(userInput) {
+function humanSearch() {
+function omniExecute() {
+function processResponse() {
+function quickAccess(type) {
+function showLaw(lawNumber) {
+function timoExecute() {
+function timoSearch(query) {
+function timoSearch(query) {
+}
+}
+}
+}
+}
+}
+}
+}
+}
+});
+};
+};
+};
+};
+};
+};
+};
+};
