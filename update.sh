@@ -1,15 +1,16 @@
 #!/bin/bash
 # tremux
-echo "🚀 Benalal AI: جاري دمج وتحديث النظام الموحد..."
+echo "🚀 Benalal AI: جاري تشغيل نظام اليقظة الصوتية..."
 
-# محاولة تشغيل الرادار (سيتم تخطي الخطأ إذا استمرت مشكلة المكتبات)
-python3 core/social_api/hybrid_radar.py || echo "⚠️ تنبيه: الرادار يحتاج لتثبيت lxml_html_clean"
+# تشغيل الرادار
+python3 core/social_api/hybrid_radar.py
 
-# العمليات الأساسية لـ Git
+# تشغيل التنبيه الصوتي
+python3 core/social_api/voice_alerts.py
+
+# عمليات المزامنة مع GitHub باستخدام SSH
 git add .
-git commit -m "تحديث سيادي المجلدات والملفات الموحدة"
+git commit -m "تحديث سيادي: تفعيل نظام التنبيهات الصوتية"
+git push origin master
 
-# محاولة الرفع للفرع المتاح
-git push origin master || git push origin main
-
-echo "✅ تم التوحيد النهائي يا قائد منير!"
+echo "✅ تم التحديث والنطق بنجاح يا قائد منير!"
