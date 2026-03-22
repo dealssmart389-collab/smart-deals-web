@@ -3,74 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Media Hub</title>
+    <title>BenalalAI - Gallery OS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; }
         body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 60px; }
         .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
-        .logo { color: var(--fb-blue); font-family: sans-serif; font-size: 26px; font-weight: bold; letter-spacing: -1px; }
+        .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; letter-spacing: -1px; }
         .container { max-width: 580px; margin: auto; padding: 10px; }
-        .feed-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 15px; padding: 12px; border: 1px solid #3e4042; }
-        /* Media Upload Styling */
-        .upload-options { display: flex; border-top: 1px solid #3e4042; margin-top: 10px; padding-top: 10px; }
-        .option { flex: 1; text-align: center; color: #b0b3b8; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .option i.fa-video { color: #f02849; }
-        .option i.fa-images { color: #45bd62; }
-        #preview-container { margin-top: 10px; display: none; }
-        #preview-container img { width: 100%; border-radius: 8px; border: 1px solid var(--neon); }
-        #timo-console { background: #000; border-radius: 8px; padding: 15px; font-family: monospace; font-size: 13px; color: var(--neon); height: 120px; overflow-y: auto; margin: 10px 0; border: 1px solid #3e4042; }
+        /* Gallery System (FB Style) */
+        .gallery-card { background: var(--fb-card); border-radius: 8px; border: 1px solid #3e4042; margin-top: 15px; overflow: hidden; }
+        .gallery-header { padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #3e4042; }
+        .image-grid img { width: 100%; height: 200px; object-fit: cover; cursor: pointer; transition: 0.3s; }
+        .image-grid img:hover { opacity: 0.8; }
+        /* Fullscreen Preview */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 2px solid var(--neon); }
+        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; }
+        .fb-actions { display: flex; justify-content: space-around; padding: 10px; border-top: 1px solid #3e4042; }
+        .fb-btn { color: #b0b3b8; font-size: 14px; cursor: pointer; }
+        .fb-btn i { margin-left: 5px; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">BenalalAI</div>
-        <div style="color: #b0b3b8;"><i class="fas fa-bars"></i></div>
+        <div style="color: #b0b3b8;"><i class="fas fa-plus-circle"></i></div>
     </nav>
     <div class="container">
-        <div class="feed-card">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                <div style="width:40px; height:40px; background:var(--neon); border-radius:50%; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;">M</div>
-                <input type="text" placeholder="بماذا تفكر يا منير؟" style="background:#3a3b3c; border:none; border-radius:20px; padding:10px 15px; color:white; flex:1; outline:none;">
-            </div>
-            <div id="preview-container">
-                <img id="image-preview" src="#" alt="Preview">
-                <p id="file-name" style="font-size: 10px; color: var(--neon);"></p>
-            </div>
-            <div class="upload-options">
-                <div class="option" onclick="document.getElementById('video-upload').click()">
-                    <i class="fas fa-video"></i> فيديو مباشر
-                    <input type="file" id="video-upload" accept="video/*" style="display:none;" onchange="handleFile(this, 'video')">
-                </div>
-                <div class="option" onclick="document.getElementById('image-upload').click()">
-                    <i class="fas fa-images"></i> صور/فيديو من الهاتف
-                    <input type="file" id="image-upload" accept="image/*,video/*" style="display:none;" onchange="handleFile(this, 'media')">
-                </div>
+        <div style="background: var(--fb-card); padding: 15px; border-radius: 8px; border: 1px solid #3e4042;">
+            <div style="display:flex; gap:10px;">
+                <div style="width:40px; height:40px; background:var(--neon); border-radius:50%;"></div>
+                <input type="text" placeholder="أضف صورا لمعرض بن علال..." style="background:#3a3b3c; border:none; border-radius:20px; padding:10px; color:white; flex:1;">
             </div>
         </div>
-        <div class="feed-card">
-            <strong><i class="fas fa-robot"></i> تيمو (BenalalAI OS)</strong>
-            <div id="timo-console">
-                > نظام الرفع جاهز.. بانتظار الملفات.<br>
-                > سيتم مزامنة أي صورة ترفعها مع مستودع GitHub تلقائياً.
+        <div class="gallery-card">
+            <div class="gallery-header">
+                <strong><i class="fas fa-images" style="color: #45bd62;"></i> معرض الوسائط السيادي</strong>
+                <span style="font-size: 12px; color: #b0b3b8;">تم التحديث الآن</span>
+            </div>
+            <div class="image-grid" id="main-gallery">
+                <img src="https://via.placeholder.com/300/1877f2/ffffff?text=Smart+Deals" onclick="openLightBox(this.src)">
+                <img src="https://via.placeholder.com/300/00ff41/000000?text=Driving+AI" onclick="openLightBox(this.src)">
+                <img src="https://via.placeholder.com/300/333333/ffffff?text=Termux+Core" onclick="openLightBox(this.src)">
+                <img src="https://via.placeholder.com/300/111111/00ff41?text=BenalalAI+Vault" onclick="openLightBox(this.src)">
+            </div>
+            <div class="fb-actions">
+                <div class="fb-btn"><i class="far fa-thumbs-up"></i> أعجبني</div>
+                <div class="fb-btn"><i class="far fa-comment"></i> تعليق</div>
+                <div class="fb-btn"><i class="fas fa-share"></i> مشاركة</div>
             </div>
         </div>
     </div>
+    <div id="lightbox">
+        <span class="close-btn" onclick="closeLightBox()">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
     <script>
-        function handleFile(input, type) {
-            const consoleBox = document.getElementById('timo-console');
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                const file = input.files[0];
-                reader.onload = function(e) {
-                    document.getElementById('preview-container').style.display = 'block';
-                    document.getElementById('image-preview').src = e.target.result;
-                    document.getElementById('file-name').innerText = "تم اختيار: " + file.name;
-                    consoleBox.innerHTML += "<br>> <span style='color:white;'>[UPLOAD]:</span> جاري تحضير " + file.name + "...";
-                    consoleBox.scrollTop = consoleBox.scrollHeight;
-                }
-                reader.readAsDataURL(file);
-            }
+        function openLightBox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightBox() {
+            document.getElementById('lightbox').style.display = 'none';
         }
     </script>
 </body>
