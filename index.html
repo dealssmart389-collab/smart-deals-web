@@ -3,65 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - BenalalAI Original</title>
+    <title>BenalalAI - BenalalAI Core OS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --fb-hover: #3a3b3c; --neon: #00ff41; }
         body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 56px; overflow-x: hidden; }
-        /* Navbar فيسبوك الأصلية */
+        /* Navbar فيسبوك طبق الأصل */
         .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
         .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; letter-spacing: -1px; }
-        /* القائمة الجانبية (Menu) - طبق الأصل */
+        /* منطقة المحتوى (Feed) */
+        .container { max-width: 500px; margin: auto; padding: 10px; }
+        /* منطقة القصص (سيتم دمجها هنا مستقبلاً) */
+        .story-section { margin-bottom: 15px; }
+        /* نظام البطاقات طبق الأصل */
+        .post-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 15px; border: 1px solid #3e4042; padding: 12px; }
+        .post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .avatar { width: 40px; height: 40px; background: var(--neon); border-radius: 50%; border: 1px solid #3e4042; }
+        /* القائمة الجانبية (Menu) */
         .sidebar { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--fb-bg); z-index: 2000; transition: 0.3s ease; padding: 15px; box-sizing: border-box; }
         .sidebar.active { right: 0; }
-        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        /* محرك البحث داخل القائمة */
-        .search-container { background: var(--fb-hover); border-radius: 20px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .search-container input { background: none; border: none; color: white; outline: none; width: 100%; }
-        /* البطاقات والاختصارات */
-        .container { max-width: 500px; margin: auto; padding: 8px; }
-        .shortcut-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .shortcut-item { background: var(--fb-card); padding: 15px; border-radius: 8px; border: 1px solid #3e4042; text-align: center; }
-        /* نظام المنشورات */
-        .post-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 12px; border: 1px solid #3e4042; }
-        .post-header { padding: 12px; display: flex; align-items: center; gap: 10px; }
-        .avatar { width: 40px; height: 40px; background: var(--neon); border-radius: 50%; }
         .fb-icon { color: #b0b3b8; font-size: 22px; cursor: pointer; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">BenalalAI</div>
-        <div style="display: flex; gap: 20px; align-items: center;">
+        <div style="display: flex; gap: 20px; color: #b0b3b8;">
             <i class="fas fa-search fb-icon"></i>
             <i class="fas fa-bars fb-icon" onclick="toggleMenu()"></i>
         </div>
     </nav>
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
             <h2 style="margin:0;">القائمة</h2>
             <i class="fas fa-cog fb-icon" onclick="toggleMenu()"></i>
         </div>
-        <div class="search-container">
+        <div style="background: var(--fb-hover); border-radius: 20px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; margin-top: 15px;">
             <i class="fas fa-search" style="color:#b0b3b8;"></i>
-            <input type="text" placeholder="بحث في BenalalAI...">
+            <input type="text" placeholder="بحث في BenalalAI..." style="background:none; border:none; color:white; outline:none; width: 100%;">
         </div>
-        <div style="background: var(--fb-card); padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
-            <div class="avatar"></div>
-            <strong>منير بن علال (القائد)</strong>
-        </div>
-        <div class="shortcut-grid">
-            <div class="shortcut-item"><i class="fas fa-robot" style="color:var(--fb-blue);"></i><br>Timo AI</div>
-            <div class="shortcut-item"><i class="fas fa-chart-line" style="color:#fb8c00;"></i><br>Smart Deals</div>
+        <div style="margin-top: 20px;">
+            <div style="background: var(--fb-card); padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                <div class="avatar"></div>
+                <strong>منير بن علال (القائد)</strong>
+            </div>
         </div>
     </div>
     <div class="container">
+        <div class="story-section" id="stories"></div>
         <div class="post-card">
             <div class="post-header">
                 <div class="avatar"></div>
-                <div><strong>منير بن علال</strong><br><small>نشط الآن • <i class="fas fa-globe-americas"></i></small></div>
+                <input type="text" placeholder="بماذا تفكر يا منير؟" style="background:var(--fb-hover); border:none; border-radius:20px; padding:10px; color:white; flex:1;">
             </div>
-            <div style="padding: 0 12px 12px;">نظام BenalalAI المستقر. التصميم طبق الأصل ولن يتغير.</div>
+        </div>
+        <div class="post-card">
+            <div class="post-header">
+                <div class="avatar"></div>
+                <div><strong>تيمو (TIMO AI)</strong><br><small>نشط الآن • <i class="fas fa-globe-americas"></i></small></div>
+            </div>
+            <p>نظام بن علال السيادي متصل. الواجهة "طبق الأصل" من فيسبوك، وهي الآن القاعدة الأبدية للمشروع.</p>
         </div>
     </div>
     <script>
