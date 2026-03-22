@@ -2,149 +2,31 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benalal AI 2026 | TIMO SUPREME</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>Benalal AI 2026 | مصفوفة التوحيد العالمية</title>
     <style>
-        :root { --neon: #00ff41; --dark: #050505; --border: rgba(0, 255, 65, 0.2); }
-        body { background: var(--dark); color: white; font-family: 'Cairo', sans-serif; margin: 0; padding: 10px; overflow-x: hidden; }
-        
-        .status-header { display: flex; justify-content: space-between; padding: 10px; font-family: 'Orbitron'; font-size: 10px; color: var(--neon); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.8); }
-
-        .vision-matrix { position: relative; width: 100%; height: 210px; background: #000; border: 1px solid var(--neon); border-radius: 20px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); }
-        #video-feed { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-        .scan-line { position: absolute; width: 100%; height: 2px; background: var(--neon); top: 0; animation: scan 4s infinite linear; box-shadow: 0 0 10px var(--neon); z-index: 2; }
-
-        .neural-chat { background: #000; border: 1px solid #222; border-radius: 20px; height: 400px; display: flex; flex-direction: column; overflow: hidden; margin-bottom: 15px; border-right: 4px solid var(--neon); }
-        #log-screen { flex: 1; padding: 15px; overflow-y: auto; font-family: 'Consolas', monospace; font-size: 14px; line-height: 1.6; }
-        .timo-msg { color: var(--neon); margin-bottom: 15px; padding-right: 10px; border-right: 2px solid var(--neon); animation: slideIn 0.3s; }
-        .user-msg { color: #888; margin-bottom: 15px; text-align: left; padding-left: 10px; }
-
-        .control-hub { display: flex; gap: 8px; background: #111; padding: 10px; border-radius: 15px; border: 1px solid #333; }
-        input { flex: 1; background: transparent; border: none; color: white; padding: 10px; outline: none; font-family: 'Cairo'; font-size: 16px; }
-        button { background: var(--neon); border: none; padding: 12px 20px; border-radius: 10px; color: black; font-weight: bold; cursor: pointer; }
-        .btn-mic { background: #222; color: white; }
-
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        body { background: #000; color: #00ff41; font-family: monospace; padding: 20px; }
+        .box { border: 1px solid #00ff41; padding: 15px; margin-bottom: 20px; box-shadow: 0 0 15px #00ff41; }
+        .pulse { animation: pulse-animation 2s infinite; }
+        @keyframes pulse-animation { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
-
-<div class="status-header">
-    <span><i class="fas fa-microchip"></i> BENALAL_AI: ACTIVE</span>
-    <span><i class="fas fa-satellite"></i> TIMO_SENTINEL: ON</span>
-    <span><i class="fas fa-shield-alt"></i> 2026</span>
-</div>
-
-<div class="vision-matrix">
-    <div class="scan-line"></div>
-    <video id="video-feed" autoplay playsinline></video>
-</div>
-
-<div class="neural-chat">
-    <div id="log-screen">
-        <div class="timo-msg">> تم تفعيل مصفوفة Benalal AI الموحدة...</div>
-        <div class="timo-msg">> حالة النظام: ذكاء سيادي مستجيب.</div>
+    <div class="box">
+        <h1>🤖 نظام تيمو الموحد (TIMO OMNI)</h1>
+        <p>الحالة: <span class="pulse">متصل بالرادارات العالمية والمحلية</span></p>
     </div>
-</div>
+    
+    <div class="box">
+        <h3>📡 رادارات التواصل (تحديث حي):</h3>
+        <ul>
+            <li>تيك توك: @tvbenalal [نشط]</li>
+            <li>إنستغرام: hamza846478 [نشط]</li>
+        </ul>
+    </div>
 
-<div class="control-hub">
-    <button id="mic-btn" class="btn-mic" onclick="toggleSpeech()"><i class="fas fa-microphone"></i></button>
-    <input type="text" id="user-input" placeholder="تحدث مع تيمو (مرحبا، قانون، عروض)...">
-    <button onclick="executeTimoAction()"><i class="fas fa-paper-plane"></i></button>
-</div>
-
-<script>
-    // 1. مصفوفة المعرفة والذكاء الاجتماعي (تم دمج الترحيب)
-    const timoOmniData = {
-        "مرحبا": "أهلاً بك يا سيد منير! معك تيمو، نظام الذكاء الاصطناعي لـ Benalal AI. كيف يمكنني خدمتك اليوم؟",
-        "السلام": "وعليكم السلام ورحمة الله! نظام Benalal AI في وضع الاستعداد الكامل للعمل.",
-        "شكون": "أنا تيمو (TIMO)، المحرك الذكي لمنظومة Benalal AI 2026، مبرمج لمساعدتك في القوانين والتقنية والأرباح.",
-        "قانون": "المادة 1 و 2 من مدونة السير: تهدف لتنظيم الطريق وضمان سلامة الجميع وإلزامية الرخصة.",
-        "غرامة": "تتراوح غرامات NARSA بين 300 و 700 درهم حسب نوع المخالفة ودرجتها.",
-        "هاتف": "استعمال الهاتف يدوياً غرامته 500 درهم وسحب نقطتين من رصيدك.",
-        "عروض": "تيمو يفحص الآن Smart Deals لجلب أقوى تخفيضات AliExpress و Jumia المغربية.",
-        "تيرموكس": "اتصال Termux مستقر. بوابة Sentinel مستعدة لتنفيذ أوامرك البرمجية."
-    };
-
-    const logScreen = document.getElementById('log-screen');
-    const inputField = document.getElementById('user-input');
-
-    // 2. تشغيل الكاميرا
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-        .then(s => document.getElementById('video-feed').srcObject = s)
-        .catch(() => console.log("Camera Offline"));
-
-    // 3. المحرك المنطقي المطور
-    function executeTimoAction() {
-        const query = inputField.value.trim();
-        if (!query) return;
-
-        addLog(`👤 أنت: ${query}`, "user-msg");
-
-        let response = "🤖 تيمو: جاري التحليل.. لم أجد تطابقاً محلياً، سأبحث لك في الروابط العالمية.";
-        let found = false;
-
-        // البحث الذكي في المصفوفة الموحدة
-        for (let key in timoOmniData) {
-            if (query.includes(key)) {
-                response = `🤖 تيمو: ${timoOmniData[key]}`;
-                found = true;
-                break;
-            }
-        }
-
-        setTimeout(() => {
-            addLog(response, "timo-msg");
-            
-            // إذا لم يجد المعلومة محلياً، يفتح جوجل
-            if (!found && query.length > 2) {
-                setTimeout(() => {
-                    window.open(`https://www.google.com/search?q=${encodeURIComponent(query + " المغرب")}`, '_blank');
-                }, 800);
-            }
-            
-            // إرسال تنبيه للسيرفر (Sentinel)
-            reportToSentinel("طلب مستخدم", query);
-        }, 400);
-
-        inputField.value = "";
-    }
-
-    function addLog(text, className) {
-        const div = document.createElement('div');
-        div.className = className;
-        div.innerText = text;
-        logScreen.appendChild(div);
-        logScreen.scrollTop = logScreen.scrollHeight;
-        if (className === "timo-msg") speak(text);
-    }
-
-    // 4. نظام المراقبة (Sentinel Connector)
-    function reportToSentinel(event, details) {
-        fetch('http://127.0.0.1:5000/report', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ event: event, details: details })
-        }).catch(() => {});
-    }
-
-    // 5. الصوت (Audio Logic)
-    function speak(text) {
-        window.speechSynthesis.cancel();
-        const msg = new SpeechSynthesisUtterance(text.replace("🤖 تيمو:", ""));
-        msg.lang = 'ar-SA';
-        window.speechSynthesis.speak(msg);
-    }
-
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'ar-MA';
-    function toggleSpeech() { recognition.start(); }
-    recognition.onresult = (e) => { inputField.value = e.results[0][0].transcript; executeTimoAction(); };
-
-    inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') executeTimoAction(); });
-</script>
+    <div class="box">
+        <h3>🌐 التوجهات العالمية:</h3>
+        <p>جاري مزامنة معايير الأمم المتحدة للتطبيقات الذكية...</p>
+    </div>
 </body>
 </html>

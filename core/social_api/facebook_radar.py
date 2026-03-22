@@ -1,31 +1,21 @@
-from facebook_scraper import get_posts
-import json
+import requests
 
-def get_latest_fb_deal(page_id):
-    """
-    رادار فيسبوك لسحب آخر الصفقات المنشورة.
-    page_id: اسم الصفحة أو رقمها التعريفي.
-    """
+def get_latest_fb_deal():
+    # الصق التوكن الذي استخرجناه من صفحة المطورين هنا
+    token = "EA...ضع_التوكن_هنا"
+    # معرف الحساب أو الصفحة
+    page_id = "Aya.Hamza.Issmaeil" 
+    
+    url = f"https://graph.facebook.com/v19.0/{page_id}/posts?access_token={token}&limit=1"
+    
     try:
-        # ملاحظة: إذا كانت الصفحة عامة جداً قد لا تحتاج لكوكيز، 
-        # ولكن يفضل استخدامه لتجنب الحظر.
-        # نطلب آخر منشور واحد فقط (pages=1)
-        for post in get_posts(page_id, pages=1):
+        r = requests.get(url).json()
+        if 'data' in r and len(r['data']) > 0:
+            latest_post = r['data'][0]
             return {
-                "text": post.get('post_text', 'No text')[:100] + "...",
-                "url": post.get('post_url'),
-                "image": post.get('image')
+                "message": latest_post.get('message', 'New Update from Aya'),
+                "url": f"https://facebook.com/{latest_post['id']}"
             }
     except Exception as e:
-        # إذا حدث خطأ (مثل طلب تسجيل دخول)، سيعيد None
-        print(f"Facebook Radar Log: {e}")
+        print(f"Error: {e}")
         return None
-
-if __name__ == "__main__":
-    # تجربة سريعة للرادار
-    test_page = "اسم_صفحتك_هنا"
-    deal = get_latest_fb_deal(test_page)
-    if deal:
-        print(f"✅ Success! Found: {deal['url']}")
-    else:
-        print("❌ Radar could not reach Facebook.")
