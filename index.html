@@ -2,69 +2,98 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>BenalalAI - Admin Node</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenalalAI - Social OS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00ff41; --bg: #0a0a0a; --panel: #161616; }
-        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; }
-        .container { padding: 20px; max-width: 800px; margin: auto; }
-        /* شاشة الأدمن المخفية */
-        #admin-panel { display: none; background: var(--panel); border: 1px solid var(--neon); border-radius: 10px; padding: 20px; margin-top: 20px; box-shadow: 0 0 30px rgba(0,255,65,0.2); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-        th, td { border: 1px solid #333; padding: 10px; text-align: center; }
-        th { background: #222; color: var(--neon); }
-        .status-online { color: var(--neon); font-size: 12px; }
-        #timo-shell { background: black; color: var(--neon); padding: 15px; height: 150px; overflow-y: auto; border-radius: 5px; font-family: monospace; border: 1px solid #333; }
-        .secret-input { background: #222; border: 1px solid var(--neon); color: white; padding: 10px; border-radius: 5px; width: 100%; box-sizing: border-box; }
+        :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; }
+        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: 'Cairo', sans-serif; margin: 0; padding-top: 60px; overflow-x: hidden; }
+        /* Navbar - BenalalAI Replica */
+        .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
+        .logo { color: var(--fb-blue); font-family: 'Orbitron'; font-size: 26px; font-weight: bold; letter-spacing: -1px; text-transform: uppercase; }
+        .nav-icons i { font-size: 20px; color: #b0b3b8; margin: 0 12px; cursor: pointer; }
+        .nav-icons i.active { color: var(--fb-blue); }
+        .container { max-width: 580px; margin: auto; padding: 10px; }
+        /* Story Tray */
+        .story-tray { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .story-card { min-width: 100px; height: 170px; background: var(--fb-card); border-radius: 10px; position: relative; border: 1px solid #3e4042; flex-shrink: 0; overflow: hidden; background-size: cover; }
+        .story-card i { position: absolute; top: 10px; left: 10px; background: var(--fb-blue); border-radius: 50%; padding: 5px; font-size: 12px; color: white; }
+        .story-card span { position: absolute; bottom: 8px; right: 8px; font-size: 11px; font-weight: bold; }
+        /* Post Card - BenalalAI Replica */
+        .feed-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 15px; padding: 12px; border: 1px solid #3e4042; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .card-header { display: flex; align-items: center; margin-bottom: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--neon); margin-left: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; font-family: 'Orbitron'; }
+        /* TIMO Console (Matrix Style) */
+        #timo-console { background: #000; border-radius: 8px; padding: 15px; font-family: 'Courier New', monospace; font-size: 13px; color: var(--neon); height: 180px; overflow-y: auto; border: 1px solid #3e4042; margin-bottom: 10px; line-height: 1.5; }
+        .input-area { background: #3a3b3c; border-radius: 20px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; }
+        .input-area input { background: none; border: none; color: white; flex: 1; outline: none; font-size: 14px; }
+        .action-bar { display: flex; justify-content: space-around; padding-top: 10px; border-top: 1px solid #3e4042; margin-top: 10px; }
+        .action-btn { flex: 1; text-align: center; padding: 8px; color: #b0b3b8; cursor: pointer; font-size: 14px; border-radius: 5px; }
+        .action-btn:hover { background: #3a3b3c; }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">BenalalAI</div>
+        <div class="nav-icons" style="display: flex; gap: 10px;">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
     <div class="container">
-        <h2 style="color: var(--neon); text-align: center;">BENALAL AI <small class="status-online">● ACTIVE</small></h2>
-        <div id="timo-shell">> نظام بن علال بانتظار الشفرة...</div>
-        <br>
-        <input type="text" id="cmd-input" class="secret-input" placeholder="أدخل شفرة الوصول..." onkeypress="handleCmd(event)">
-        <div id="admin-panel">
-            <h3><i class="fas fa-user-shield"></i> لوحة الإدارة السيادية</h3>
-            <p>سجل الصفقات المؤكدة في benalal_vault.db:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>المعرف</th>
-                        <th>العميل</th>
-                        <th>النوع</th>
-                        <th>الحالة</th>
-                        <th>التوقيت</th>
-                    </tr>
-                </thead>
-                <tbody id="db-content">
-                    <tr>
-                        <td>1</td>
-                        <td>Mounir</td>
-                        <td>Smart Deals</td>
-                        <td style="color: var(--neon);">مؤكد ✅</td>
-                        <td>2026-03-22</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <button onclick="document.getElementById('admin-panel').style.display='none'" style="background:red; color:white; border:none; padding:5px 10px; cursor:pointer;">إغلاق اللوحة الآمنة</button>
+        <div class="story-tray">
+            <div class="story-card" style="background-image: url('https://via.placeholder.com/100x170/1877f2/ffffff?text=Smart+Deals');">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Smart Deals</span>
+            </div>
+            <div class="story-card" style="background-image: url('https://via.placeholder.com/100x170/00ff41/000000?text=Driving+AI');">
+                <i class="fas fa-car"></i>
+                <span>Driving AI</span>
+            </div>
+            <div class="story-card" style="background: #242526; display: flex; align-items: center; justify-content: center; border: 2px dashed #3e4042;">
+                <i class="fas fa-plus" style="position: static; font-size: 20px;"></i>
+                <span style="bottom: 20px; right: 25px;">مشروع جديد</span>
+            </div>
+        </div>
+        <div class="feed-card">
+            <div class="card-header">
+                <div class="avatar">T</div>
+                <div>
+                    <strong>تيمو (TIMO AI)</strong><br>
+                    <small style="color: #b0b3b8;">نشط الآن • <i class="fas fa-globe-africa"></i></small>
+                </div>
+            </div>
+            <div id="timo-console">
+                > تم تنفيذ الأوامر بنجاح يا قائد منير.<br>
+                > تم استبدال الشعار بـ BenalalAI Supreme ACTIVE.<br>
+                > الواجهة الآن في وضع السيادة الكاملة.<br>
+                > بانتظار أوامرك...
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="بماذا تفكر؟">
+                <i class="fas fa-paper-plane" style="color: var(--fb-blue); cursor: pointer;" onclick="sendToTimo()"></i>
+            </div>
+            <div class="action-bar">
+                <div class="action-btn"><i class="far fa-thumbs-up me-2"></i> أعجبني</div>
+                <div class="action-btn"><i class="far fa-comment me-2"></i> تعليق</div>
+                <div class="action-btn"><i class="fas fa-share me-2"></i> مشاركة</div>
+            </div>
         </div>
     </div>
     <script>
-        function handleCmd(e) {
-            if (e.key === 'Enter') {
-                const val = document.getElementById('cmd-input').value;
-                const shell = document.getElementById('timo-shell');
-                if (val === 'root-benalal-2026') {
-                    shell.innerHTML += "<br>> <span style='color:white;'>[AUTH]:</span> تم قبول الشفرة. فتح لوحة الإدارة...";
-                    document.getElementById('admin-panel').style.display = 'block';
-                } else {
-                    shell.innerHTML += "<br>> <span style='color:red;'>[ERROR]:</span> شفرة خاطئة. محاولة اختراق مرصودة.";
-                }
-                document.getElementById('cmd-input').value = '';
-                shell.scrollTop = shell.scrollHeight;
-            }
+        function sendToTimo() {
+            const input = document.getElementById('user-input');
+            const consoleBox = document.getElementById('timo-console');
+            const val = input.value.trim();
+            if(!val) return;
+            consoleBox.innerHTML += `<div style="color: #fff; margin-top:5px;">👤 ${val}</div>`;
+            setTimeout(() => {
+                consoleBox.innerHTML += `<div style="color: var(--neon); margin-bottom:10px;">🤖 تم استقبال الأمر.. جاري المزامنة مع شبكة BenalalAI.</div>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }, 500);
+            input.value = "";
         }
     </script>
 </body>
