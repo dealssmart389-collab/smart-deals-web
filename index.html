@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Sovereign Core</title>
+    <title>BenalalAI - Full Navigation Core</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --fb-hover: #3a3b3c; --neon: #00ff41; --notification-red: #f02849; }
-        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 56px; overflow-x: hidden; }
-        /* Navbar فيسبوك الأصلية الثابتة */
-        .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
+        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 105px; overflow-x: hidden; }
+        /* Navbar العلوية الثابتة */
+        .header-fixed { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--fb-card); }
+        .navbar-top { height: 56px; border-bottom: none; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; }
         .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; letter-spacing: -1px; }
-        /* أيقونات Navbar */
-        .nav-icons { display: flex; gap: 12px; align-items: center; }
-        .icon-wrapper { position: relative; cursor: pointer; color: #b0b3b8; font-size: 18px; background: var(--fb-hover); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .badge { position: absolute; top: -5px; right: -5px; background: var(--notification-red); color: white; font-size: 10px; font-weight: bold; border-radius: 50%; padding: 2px 5px; border: 2px solid var(--fb-card); }
-        /* منطقة القصص والمنشورات */
+        /* تبويبات التنقل (Tabs) طبق الأصل */
+        .nav-tabs { display: flex; height: 48px; border-bottom: 1px solid #3e4042; }
+        .tab { flex: 1; display: flex; align-items: center; justify-content: center; color: #b0b3b8; font-size: 20px; cursor: pointer; position: relative; }
+        .tab.active { color: var(--fb-blue); }
+        .tab.active::after { content: ''; position: absolute; bottom: 0; width: 100%; height: 3px; background: var(--fb-blue); }
+        /* أيقونات Navbar الجانبية */
+        .nav-icons { display: flex; gap: 10px; align-items: center; }
+        .icon-circle { background: var(--fb-hover); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--fb-text); cursor: pointer; }
+        /* المحتوى */
         .container { max-width: 500px; margin: auto; padding: 8px; }
         .stories-container { display: flex; gap: 8px; padding: 10px; overflow-x: auto; scrollbar-width: none; background: var(--fb-bg); margin-bottom: 10px; }
-        .story-card { min-width: 100px; height: 170px; background: var(--fb-card); border-radius: 10px; position: relative; border: 1px solid #3e4042; flex-shrink: 0; overflow: hidden; }
-        /* نظام البطاقات */
+        .story-card { min-width: 100px; height: 170px; background: var(--fb-card); border-radius: 10px; border: 1px solid #3e4042; flex-shrink: 0; }
         .post-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 12px; border: 1px solid #3e4042; padding: 12px; }
         .avatar { width: 40px; height: 40px; background: var(--neon); border-radius: 50%; border: 1px solid #3e4042; }
         /* القائمة الجانبية (Sidebar) */
@@ -28,29 +32,35 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">BenalalAI</div>
-        <div class="nav-icons">
-            <div class="icon-wrapper"><i class="fas fa-search"></i></div>
-            <div class="icon-wrapper"><i class="fab fa-BenalalAI-messenger"></i><span class="badge">2</span></div>
-            <div class="icon-wrapper" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <div class="header-fixed">
+        <nav class="navbar-top">
+            <div class="logo">BenalalAI</div>
+            <div class="nav-icons">
+                <div class="icon-circle"><i class="fas fa-search"></i></div>
+                <div class="icon-circle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+        <div class="nav-tabs">
+            <div class="tab active"><i class="fas fa-home"></i></div>
+            <div class="tab"><i class="fas fa-tv"></i></div>
+            <div class="tab"><i class="fas fa-store"></i></div>
+            <div class="tab"><i class="fas fa-bell"></i></div>
         </div>
-    </nav>
+    </div>
     <div class="sidebar" id="sidebar">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="margin:0;">القائمة</h2>
-            <i class="fas fa-times" style="font-size: 24px; color: #b0b3b8;" onclick="toggleMenu()"></i>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2>القائمة</h2>
+            <i class="fas fa-times" style="font-size: 24px;" onclick="toggleMenu()"></i>
         </div>
-        <div style="background: var(--fb-card); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 12px; margin-top: 20px;">
+        <div style="background: var(--fb-card); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
             <div class="avatar"></div>
             <strong>منير بن علال (القائد)</strong>
         </div>
     </div>
     <div class="container">
         <div class="stories-container">
-            <div class="story-card" style="background: #3a3b3c; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                <i class="fas fa-plus" style="color: var(--fb-blue); font-size: 24px;"></i>
-                <span style="font-size: 11px; margin-top: 5px;">إضافة قصة</span>
+            <div class="story-card" style="background: #3a3b3c; display:flex; align-items:center; justify-content:center;">
+                <i class="fas fa-plus-circle" style="color: var(--fb-blue); font-size: 30px;"></i>
             </div>
             <div class="story-card" style="background: url('https://via.placeholder.com/100x170/1877f2/ffffff?text=Smart+Deals') center/cover;"></div>
             <div class="story-card" style="background: url('https://via.placeholder.com/100x170/00ff41/000000?text=Timo+AI') center/cover;"></div>
@@ -66,7 +76,7 @@
                 <div class="avatar"></div>
                 <div><strong>تيمو (TIMO AI)</strong><br><small>الآن • <i class="fas fa-globe-americas"></i></small></div>
             </div>
-            <p>تم دمج أيقونة الرسائل بنجاح يا قائد. الأساس ثابت، ونحن نتقدم خطوة بخطوة.</p>
+            <p>تم دمج تبويبات التنقل الأصلية بنجاح. الواجهة الآن مكتملة الأركان.</p>
         </div>
     </div>
     <script>
