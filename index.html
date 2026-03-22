@@ -2,60 +2,36 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - المركز السيادي</title>
+    <title>BenalalAI - OS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --main-color: #00ff41; --panel-bg: #1c1c1e; --text: #ffffff; }
-        body { background: #000; color: var(--text); font-family: 'Cairo', sans-serif; margin: 0; padding-top: 60px; }
-        /* BenalalAI Identity Header */
-        .header { background: var(--panel-bg); height: 60px; border-bottom: 2px solid var(--main-color); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
-        .brand { font-family: 'Orbitron'; color: var(--main-color); font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
+        :root { --neon: #00ff41; --bg: #0a0a0a; }
+        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; padding-top: 60px; }
+        .header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid var(--neon); position: fixed; top:0; width:100%; display: flex; justify-content: space-between; font-weight: bold; }
         .container { max-width: 500px; margin: auto; padding: 15px; }
-        /* Social Interface Cards */
-        .card { background: var(--panel-bg); border-radius: 12px; margin-bottom: 20px; padding: 15px; border: 1px solid #333; }
-        .card-header { display: flex; align-items: center; margin-bottom: 15px; }
-        .avatar { width: 45px; height: 45px; border-radius: 50%; background: var(--main-color); margin-left: 12px; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold; font-family: 'Orbitron'; }
-        /* Terminal Output Style */
-        #timo-console { background: #000; border-radius: 8px; padding: 12px; font-family: monospace; font-size: 13px; color: var(--main-color); height: 150px; overflow-y: auto; border: 1px solid #444; margin-bottom: 15px; line-height: 1.5; }
-        .input-bar { background: #2c2c2e; border-radius: 25px; padding: 10px 20px; display: flex; align-items: center; gap: 10px; }
-        .input-bar input { background: none; border: none; color: #fff; flex: 1; outline: none; font-size: 14px; }
+        .confirm-card { background: #1a1a1a; border: 1px solid var(--neon); border-radius: 10px; padding: 15px; margin-top: 20px; }
+        .btn-check { background: var(--neon); color: black; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        #console { background: black; color: var(--neon); padding: 10px; height: 120px; overflow-y: auto; font-family: monospace; border-radius: 5px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="brand">BenalalAI</div>
-        <div style="display: flex; gap: 20px; color: var(--main-color);"><i class="fas fa-microchip"></i><i class="fas fa-shield-alt"></i></div>
-    </header>
+    <div class="header">
+        <span>BENALAL AI</span>
+        <i class="fas fa-microchip"></i>
+    </div>
     <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <div class="avatar">T</div>
-                <div><strong>تيمو (TIMO CORE)</strong><br><small style="color: var(--main-color);">نظام بن علال السيادي متصل</small></div>
-            </div>
-            <div id="timo-console">
-                > تم استبدال الهوية بنجاح: BenalalAI ACTIVE.<br>
-                > الروبوت يعمل الآن على ترتيب السطور وتصحيح SyntaxError.<br>
-                > بانتظار أوامرك يا قائد منير...
-            </div>
-            <div class="input-bar">
-                <input type="text" id="timo-input" placeholder="اكتب أمراً برمجياً أو اسأل عن صفقات...">
-                <i class="fas fa-bolt" style="color: var(--main-color); cursor: pointer;" onclick="executeTimo()"></i>
-            </div>
+        <div id="console">> تم تفعيل نظام التأكيد (eGrow Strategy)...<br>> بانتظار معالجة الصفقات الجديدة.</div>
+        <div class="confirm-card">
+            <h4><i class="fab fa-whatsapp"></i> محاكي تأكيد الطلبات</h4>
+            <p style="font-size: 0.9em; color: #aaa;">استراتيجية تقليل الإلغاءات مفعلة الآن.</p>
+            <button class="btn-check" onclick="runStrategy()">تشغيل الروبوت</button>
         </div>
     </div>
     <script>
-        function executeTimo() {
-            const input = document.getElementById('timo-input');
-            const consoleBox = document.getElementById('timo-console');
-            if(!input.value.trim()) return;
-            consoleBox.innerHTML += `<div style="color: #fff; margin-top:5px;">👤 منير: ${input.value}</div>`;
-            setTimeout(() => {
-                consoleBox.innerHTML += `<div style="color: var(--main-color);">🤖 تيمو: تم استلام الأمر.. جاري المزامنة مع سرفر BenalalAI...</div>`;
-                consoleBox.scrollTop = consoleBox.scrollHeight;
-            }, 500);
-            input.value = "";
+        function runStrategy() {
+            const c = document.getElementById('console');
+            c.innerHTML += "<br>> جاري إرسال رسالة التأكيد التلقائية...";
+            setTimeout(() => { c.innerHTML += "<br>> ✅ تم التأكيد: العميل وافق على الطلب."; c.scrollTop = c.scrollHeight; }, 1000);
         }
     </script>
 </body>
