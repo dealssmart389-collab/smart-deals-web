@@ -5,6 +5,97 @@ cat <<EOF > index.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benalal AI - Facebook Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', Arial, sans-serif; }
+        .fb-nav { background-color: #ffffff; border-bottom: 1px solid #ddd; padding: 5px 15px; }
+        .nav-icon { font-size: 24px; color: #65676b; padding: 10px 20px; cursor: pointer; }
+        .nav-icon.active { color: #1877f2; border-bottom: 3px solid #1877f2; }
+        .card-fb { background: white; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); margin-bottom: 15px; border: none; }
+        .ai-input-box { background: #f0f2f5; border-radius: 20px; border: none; padding: 10px 15px; width: 100%; }
+        .btn-fb { background-color: #1877f2; color: white; font-weight: bold; border-radius: 6px; }
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; border-radius: 8px; overflow: hidden; }
+        .settings-item { padding: 10px; border-bottom: 1px solid #eee; display: flex; align-items: center; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <nav class="fb-nav sticky-top d-flex justify-content-between align-items-center">
+        <h4 style="color: #1877f2; font-weight: bold;">Benalal AI</h4>
+        <div class="d-flex">
+            <i class="fas fa-home nav-icon active"></i>
+            <i class="fas fa-cog nav-icon"></i>
+            <i class="fas fa-user-plus nav-icon"></i>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <div class="card card-fb p-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <div style="width: 40px; height: 40px; background: #00a400; border-radius: 50%;"></div>
+                        <div class="ms-3 me-3 flex-grow-1">
+                            <input type="text" class="ai-input-box" placeholder="اكتب سؤالك لتيمو هنا...">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+                        <button class="btn btn-light btn-sm w-100 text-muted"><i class="fas fa-robot me-2"></i>اسأل الذكاء</button>
+                    </div>
+                </div>
+
+                <div class="card card-fb">
+                    <div class="p-3 d-flex align-items-center">
+                        <div style="width: 40px; height: 40px; background: #1877f2; border-radius: 50%;"></div>
+                        <div class="ms-3 me-3 text-end">
+                            <div style="font-weight: bold;">رادار الصفقات الذكية</div>
+                            <small class="text-muted">منذ ٥ دقائق • <i class="fas fa-globe-africa"></i></small>
+                        </div>
+                    </div>
+                    <div class="p-3 pt-0 text-end">تم رصد المنتجات التالية بأسعار مذهلة:</div>
+                    <div class="img-grid px-2">
+                        <div style="height: 150px; background: #ddd;"></div> <div style="height: 150px; background: #ccc;"></div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around p-2">
+                        <button class="btn btn-light btn-sm w-100">👍 أعجبني</button>
+                        <button class="btn btn-light btn-sm w-100">💬 تعليق</button>
+                    </div>
+                </div>
+
+                <div class="card card-fb p-3">
+                    <h6 class="fw-bold mb-3 text-end">الإعدادات والحساب</h6>
+                    <div class="settings-item">
+                        <i class="fas fa-key me-3 text-muted"></i>
+                        <span class="ms-2">إدارة مفاتيح SSH</span>
+                    </div>
+                    <div class="settings-item">
+                        <i class="fas fa-bell me-3 text-muted"></i>
+                        <span class="ms-2">تنبيهات تليجرام</span>
+                    </div>
+                    <div class="settings-item mt-3">
+                        <button class="btn btn-fb w-100">إنشاء حساب / اشتراك جديد</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+EOF
+# tremux
+cat <<EOF > index.html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benalal AI - Social Feed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
