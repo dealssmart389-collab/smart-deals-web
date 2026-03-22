@@ -3,65 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Full Control</title>
+    <title>BenalalAI - Sovereign Control</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; }
+        :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; --error: #f02849; }
         body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 60px; }
         .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
-        .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; }
+        .logo { color: var(--fb-blue); font-size: 22px; font-weight: bold; }
+        /* مؤشر الحالة */
+        .status-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: bold; padding: 4px 8px; border-radius: 12px; background: var(--fb-hover); }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #555; }
+        .dot.online { background: var(--neon); box-shadow: 0 0 8px var(--neon); }
+        .dot.offline { background: var(--error); box-shadow: 0 0 8px var(--error); }
         .container { max-width: 500px; margin: auto; padding: 10px; }
-        /* شريط الأدوات العلوي */
-        .toolbar { display: flex; gap: 8px; margin-bottom: 15px; }
-        .update-btn { flex: 1; background: var(--neon); color: black; border: none; border-radius: 6px; padding: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        /* شاشة تيمو الأصلية */
-        .terminal-box { background: black; border-radius: 8px; padding: 15px; font-family: monospace; color: var(--neon); height: 250px; overflow-y: auto; border: 1px solid #333; margin-bottom: 10px; font-size: 13px; line-height: 1.6; }
-        .input-area { display: flex; gap: 10px; background: var(--fb-card); padding: 10px; border-radius: 25px; border: 1px solid #3e4042; align-items: center; }
+        .toolbar { display: flex; gap: 8px; margin-bottom: 12px; }
+        .btn { flex: 1; background: var(--fb-hover); color: white; border: 1px solid #3e4042; border-radius: 6px; padding: 10px; cursor: pointer; font-size: 13px; font-weight: bold; }
+        .btn-update { background: var(--fb-blue); border: none; }
+        .terminal-box { background: black; border-radius: 8px; padding: 15px; font-family: monospace; color: var(--neon); height: 280px; overflow-y: auto; border: 1px solid #333; margin-bottom: 12px; font-size: 13px; }
+        .input-area { display: flex; gap: 10px; background: var(--fb-card); padding: 10px; border-radius: 25px; border: 1px solid #3e4042; }
         input { flex: 1; background: none; border: none; color: white; outline: none; }
-        .send-btn { color: var(--fb-blue); cursor: pointer; font-size: 20px; }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <i class="fas fa-bars" style="font-size: 20px;"></i>
         <div class="logo">BenalalAI</div>
-        <i class="fas fa-search" style="font-size: 20px;"></i>
+        <div class="status-badge" id="statusBox">
+            <div class="dot" id="statusDot"></div>
+            <span id="statusText">جاري الفحص...</span>
+        </div>
+        <i class="fas fa-search"></i>
     </nav>
     <div class="container">
         <div class="toolbar">
-            <button class="update-btn" onclick="runCommand('git pull && ./update.sh')">
-                <i class="fas fa-sync-alt"></i> تحديث النظام (Git Pull)
+            <button class="btn btn-update" onclick="runCommand('git pull && ./update.sh')">
+                <i class="fas fa-sync-alt"></i> تحديث السيادة
+            </button>
+            <button class="btn" onclick="checkStatus()">
+                <i class="fas fa-wifi"></i> فحص الاتصال
             </button>
         </div>
         <div class="terminal-box" id="term">
-            > نظام بن علال متصل بالخادم المحلي...<br>
-            > جاهز لتنفيذ الأوامر الحقيقية.<br>
-            > بانتظار أوامرك يا قائد...
+            > مرحباً يا قائد منير...<br>
+            > نظام تيمو جاهز لتلقي الأوامر الفعالة.
         </div>
         <div class="input-area">
-            <input type="text" id="cmdInput" placeholder="أدخل أمراً للتنفيذ (مثلاً: python script.py)...">
-            <i class="fas fa-paper-plane send-btn" onclick="runCommand(document.getElementById('cmdInput').value)"></i>
+            <input type="text" id="cmdInput" placeholder="أدخل أمراً حقيقياً...">
+            <i class="fas fa-paper-plane" style="color:var(--fb-blue); cursor:pointer;" onclick="runCommand(document.getElementById('cmdInput').value)"></i>
         </div>
     </div>
     <script>
+        async function checkStatus() {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            try {
+                const res = await fetch('http://localhost:5000/exec', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({command: 'echo 1'})
+                });
+                if(res.ok) {
+                    dot.className = 'dot online';
+                    text.innerText = 'متصل بالسيادة';
+                    text.style.color = 'var(--neon)';
+                }
+            } catch {
+                dot.className = 'dot offline';
+                text.innerText = 'غير متصل';
+                text.style.color = 'var(--error)';
+            }
+        }
         async function runCommand(cmd) {
             if(!cmd) return;
             const term = document.getElementById('term');
             term.innerHTML += `<br><span style="color:white;">$ ${cmd}</span>`;
             try {
-                const response = await fetch('http://localhost:5000/exec', {
+                const res = await fetch('http://localhost:5000/exec', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({command: cmd})
                 });
-                const data = await response.json();
-                term.innerHTML += `<br><pre style="color:cyan; white-space: pre-wrap;">${data.output}</pre>`;
-            } catch (e) {
-                term.innerHTML += `<br><span style="color:red;">خطأ: الخادم غير مشغل!</span>`;
+                const data = await res.json();
+                term.innerHTML += `<br><pre style="color:cyan;">${data.output}</pre>`;
+            } catch {
+                term.innerHTML += `<br><span style="color:var(--error);">خطأ: فشل الاتصال بالخادم.</span>`;
             }
             term.scrollTop = term.scrollHeight;
             document.getElementById('cmdInput').value = "";
+            checkStatus();
         }
+        // فحص الحالة تلقائياً كل 5 ثوانٍ
+        setInterval(checkStatus, 5000);
+        checkStatus();
     </script>
 </body>
 </html>
