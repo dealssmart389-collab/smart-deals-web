@@ -3,63 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMO AI SUPREME 2026</title>
+    <title>Benalal AI | TIMO SUPREME</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00ff41; --bg: #050505; --glass: rgba(0, 255, 65, 0.05); }
-        body { background: var(--bg); color: white; font-family: 'Cairo', sans-serif; margin: 0; overflow-x: hidden; }
+        :root { --fb-blue: #1877f2; --neon: #00ff41; --bg: #050505; }
+        body { background: var(--bg); color: white; font-family: 'Cairo', sans-serif; margin: 0; padding-top: 60px; overflow-x: hidden; }
         canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
-        .container { padding: 15px; max-width: 1200px; margin: auto; }
-        .glass-panel { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(0,255,65,0.2); border-radius: 20px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(0,255,65,0.1); }
         
-        /* شاشة عرض الماتريكس (Output) */
-        #output { background: #000; height: 250px; overflow-y: auto; padding: 15px; font-family: monospace; border-bottom: 2px solid var(--neon); border-radius: 10px; font-size: 13px; line-height: 1.6; }
-        
-        .ai-input-group { display: flex; gap: 10px; margin-top: 15px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 50px; border: 1px solid var(--neon); }
-        .ai-input { flex: 1; background: none; border: none; color: white; padding: 5px 15px; outline: none; }
-        .btn-bolt { background: var(--neon); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; color: black; font-size: 1.2rem; transition: 0.3s; }
-        .btn-bolt:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--neon); }
+        /* Navbar - Facebook Style */
+        .fb-nav { background: #242526; height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
+        .fb-logo { color: var(--fb-blue); font-family: 'Orbitron'; font-size: 24px; font-weight: bold; }
+        .nav-icons i { font-size: 20px; color: #b0b3b8; margin: 0 10px; cursor: pointer; }
+        .nav-icons i.active { color: var(--fb-blue); }
 
-        .price-tag { font-family: 'Orbitron'; color: var(--neon); font-size: 1.2em; }
-        .card { background: rgba(255,255,255,0.02); border: 1px solid rgba(0,255,65,0.1); border-radius: 15px; padding: 15px; text-align: center; }
+        .container { max-width: 600px; margin: auto; padding: 10px; }
+
+        /* Post - Facebook Style */
+        .card-post { background: #242526; border-radius: 8px; margin-bottom: 15px; padding: 12px; border: 1px solid #3e4042; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .post-header { display: flex; align-items: center; margin-bottom: 10px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--neon); margin-left: 10px; display: flex; align-items: center; justify-content: center; color: black; }
+        
+        /* AI Console (The Matrix) */
+        #output { background: #000; height: 200px; overflow-y: auto; padding: 10px; font-family: monospace; border: 1px solid var(--neon); border-radius: 8px; font-size: 12px; color: var(--neon); line-height: 1.5; margin-bottom: 10px; }
+        
+        .ai-input-box { background: #3a3b3c; border-radius: 20px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; }
+        .ai-input-box input { background: none; border: none; color: white; flex: 1; outline: none; }
+        
+        .btn-pay { background: var(--fb-blue); color: white; border: none; padding: 8px; border-radius: 5px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .price-tag { color: var(--neon); font-family: 'Orbitron'; float: left; }
     </style>
 </head>
 <body>
     <canvas id="matrix-bg"></canvas>
-    <div class="container">
-        <header class="glass-panel d-flex justify-content-between align-items-center">
-            <h2 style="font-family: 'Orbitron'; color: var(--neon); margin:0;">BENALAL AI <span style="font-size: 0.5em;">2026</span></h2>
-            <small><i class="fas fa-microchip"></i> TIMO_CORE: ACTIVE</small>
-        </header>
 
-        <div class="glass-panel">
-            <div id="output">
-                <div style="color: var(--neon);">[SYSTEM]: تم دمج مصفوفة المعرفة الشاملة بنجاح...</div>
-                <div style="color: var(--neon);">[SYSTEM]: محرك تيمو جاهز للبحث في NARSA و Smart Deals.</div>
+    <nav class="fb-nav">
+        <div class="fb-logo">BENALAL AI</div>
+        <div class="nav-icons">
+            <i class="fas fa-home active"></i>
+            <i class="fas fa-robot"></i>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-cog"></i>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card-post">
+            <div class="post-header">
+                <div class="avatar"><i class="fas fa-brain"></i></div>
+                <div><strong>تيمو (TIMO AI)</strong><br><small style="color: #b0b3b8;">نشط الآن • متصل بالسيرفر</small></div>
             </div>
-            <div class="ai-input-group">
-                <input type="text" id="user-input" class="ai-input" placeholder="اسأل عن قانون، غرامة، أو صفقة...">
-                <button onclick="executeTimoAction()" class="btn-bolt"><i class="fas fa-bolt"></i></button>
+            <div id="output">
+                > نظام بن علال السيادي جاهز...<br>
+                > تم دمج مصفوفة NARSA و Smart Deals.<br>
+                > بانتظار أوامرك يا قائد منير.
+            </div>
+            <div class="ai-input-box">
+                <i class="fas fa-microphone" style="color: var(--neon); cursor: pointer;" onclick="startVoice()"></i>
+                <input type="text" id="user-input" placeholder="بماذا تفكر؟ (اسأل عن قانون أو صفقة)">
+                <button onclick="executeAction()" style="background: none; border: none; color: var(--fb-blue);"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div class="card">
-                <i class="fas fa-car-side fa-2x" style="color: var(--neon);"></i>
-                <h6>Driving AI</h6>
-                <span class="price-tag">199 DH</span>
+        <div class="card-post">
+            <div class="post-header">
+                <div class="avatar" style="background: var(--fb-blue);"><i class="fas fa-car-side" style="color: white;"></i></div>
+                <div><strong>رادار الصفقات</strong><br><small style="color: #b0b3b8;">منذ ٥ دقائق • <i class="fas fa-globe-africa"></i></small></div>
             </div>
-            <div class="card">
-                <i class="fas fa-shopping-bag fa-2x" style="color: #00a8ff;"></i>
-                <h6>Smart Deals</h6>
-                <span class="price-tag">299 DH</span>
+            <p>تم تحديث باقة Driving AI 2026. المادة 1 و 2 متوفرة الآن للاختبار.</p>
+            <div style="height: 150px; background: #3e4042; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--neon);">
+                <i class="fas fa-file-invoice-dollar fa-3x" style="color: var(--neon);"></i>
+            </div>
+            <span class="price-tag">199.00 DH</span>
+            <button class="btn-pay" onclick="pay('DrivingAI')">شراء الآن</button>
+        </div>
+
+        <div class="card-post">
+            <h4 style="margin-top:0;"><i class="fas fa-shield-alt"></i> إعدادات الحصن</h4>
+            <div style="border-top: 1px solid #3e4042; padding-top: 10px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span>حماية Bandit (SHA256)</span>
+                    <i class="fas fa-toggle-on" style="color: var(--neon);"></i>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <span>سيرفر تيرموكس (Port 5000)</span>
+                    <i class="fas fa-check-circle" style="color: var(--fb-blue);"></i>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. Matrix Background Logic
+        // Matrix BG Effect
         const canvas = document.getElementById('matrix-bg');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -69,49 +104,53 @@
             ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "#0F0"; ctx.font = "15px monospace";
             drops.forEach((y, i) => {
-                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                ctx.fillText(text, i * 20, y * 20);
+                ctx.fillText(matrixChars[Math.floor(Math.random() * matrixChars.length)], i * 20, y * 20);
                 if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             });
         }
         setInterval(drawMatrix, 50);
 
-        // 2. TIMO Omni-Logic (The code you provided)
-        const timoOmniData = {
-            "قانون": "المادة 1 و 2 من مدونة السير: تنظم حقوق استعمال الطريق وضرورة رخصة السياقة.",
-            "غرامة": "تتراوح الغرامات بين 300 و 700 درهم حسب نوع المخالفة في قانون السير المغربي.",
-            "عروض": "تيمو يبحث الآن في Smart Deals لجلب أفضل التخفيضات من Jumia و AliExpress.",
-            "مساعدة": "أنا تيمو، محركك الذكي للبحث في القوانين، الأسواق، والتقنية."
+        // TIMO Logic
+        const timoData = {
+            "قانون": "المادة 1 و 2 من مدونة السير: تنظم حقوق الطريق وضرورة الرخصة.",
+            "غرامة": "الغرامات في المغرب تتراوح بين 300 و 700 درهم حسب نوع الدرجة.",
+            "تيمو": "نعم يا بطل! أنا تيمو محركك الذكي، جاهز لتنفيذ سكريبتات Termux."
         };
 
-        function executeTimoAction() {
-            const inputField = document.getElementById('user-input');
-            const displayMatrix = document.getElementById('output');
-            const query = inputField.value.trim();
-            if (!query) return;
+        function executeAction() {
+            const input = document.getElementById('user-input');
+            const output = document.getElementById('output');
+            const query = input.value.trim();
+            if(!query) return;
 
-            displayMatrix.innerHTML += `<div style="color: white; margin-top: 10px;">👤 منير: ${query}</div>`;
-            let response = "🤖 تيمو: جاري البحث في الروابط العالمية والمحلية...";
+            output.innerHTML += `<div style="color: white; margin-top:5px;">👤 أنت: ${query}</div>`;
+            let res = "🤖 تيمو: جاري تحليل الطلب وربطه بنتائج NARSA...";
 
-            Object.keys(timoOmniData).forEach(key => {
-                if (query.includes(key)) { response = "🤖 تيمو: " + timoOmniData[key]; }
-            });
+            for(let key in timoData) { if(query.includes(key)) res = "🤖 تيمو: " + timoData[key]; }
 
             setTimeout(() => {
-                displayMatrix.innerHTML += `<div style="color: #00ff41; margin-bottom: 10px; border-right: 2px solid var(--neon); padding-right: 8px;">${response}</div>`;
-                displayMatrix.scrollTop = displayMatrix.scrollHeight;
-                if (response.includes("جاري البحث")) {
-                    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
-                }
-            }, 500);
-            inputField.value = "";
+                output.innerHTML += `<div style="color: var(--neon); margin-bottom:10px;">${res}</div>`;
+                output.scrollTop = output.scrollHeight;
+                if(res.includes("جاري تحليل")) window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            }, 600);
+            input.value = "";
         }
 
-        // تفعيل زر Enter
-        document.getElementById('user-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') executeTimoAction();
-        });
+        function pay(item) {
+            TimoSpeak("جاري توجيهك لبوابة الدفع السيادية لـ " + item);
+            fetch('http://127.0.0.1:5000/pay'); // الربط مع Flask
+        }
+
+        function TimoSpeak(text) {
+            const output = document.getElementById('output');
+            output.innerHTML += `<div style="color: var(--neon);">🤖 تيمو: ${text}</div>`;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function startVoice() {
+            TimoSpeak("تيمو يستمع إليك الآن... (بانتظار الإشارة الصوتية)");
+        }
     </script>
 </body>
 </html>
