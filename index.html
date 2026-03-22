@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Full Menu</title>
+    <title>BenalalAI - Professional Menu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; }
+        :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; }
         body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; overflow-x: hidden; }
-        /* Navbar */
         .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
         .logo { color: var(--fb-blue); font-size: 22px; font-weight: bold; }
-        /* القائمة الجانبية (The Sidebar) */
-        .sidebar { position: fixed; top: 0; right: -100%; width: 85%; height: 100%; background: var(--fb-bg); z-index: 2000; transition: 0.3s; padding: 20px; box-sizing: border-box; border-left: 1px solid #3e4042; }
-        .sidebar.active { right: 0; }
-        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        /* قائمة الاختصارات طبق الأصل */
-        .menu-item { background: var(--fb-card); padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; align-items: center; gap: 15px; cursor: pointer; border: 1px solid #3e4042; }
-        .menu-item i { font-size: 20px; width: 30px; text-align: center; }
-        .shortcuts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .shortcut-card { background: var(--fb-card); padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #3e4042; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; }
+        /* القائمة الجانبية المحسنة */
+        .sidebar { position: fixed; top: 0; right: -100%; width: 85%; height: 100%; background: var(--fb-bg); z-index: 2000; transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1); padding: 15px; box-sizing: border-box; }
+        .sidebar.active { right: 0; box-shadow: -5px 0 15px rgba(0,0,0,0.5); }
+        /* خانة البحث السيادية */
+        .search-box { background: #3a3b3c; border-radius: 20px; padding: 8px 15px; display: flex; align-items: center; margin-bottom: 20px; gap: 10px; }
+        .search-box input { background: none; border: none; color: white; width: 100%; outline: none; font-size: 14px; }
+        .menu-section-title { color: #b0b3b8; font-size: 14px; font-weight: bold; margin: 15px 0 10px 5px; }
+        .menu-item { background: var(--fb-card); padding: 12px; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer; border: 1px solid #3e4042; transition: 0.2s; }
+        .menu-item:active { background: #3a3b3c; }
+        .icon-circle { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; backdrop-filter: blur(3px); }
         .overlay.active { display: block; }
     </style>
 </head>
@@ -33,33 +33,38 @@
     </nav>
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h2>القائمة</h2>
-            <i class="fas fa-cog" style="font-size: 20px;"></i>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h2 style="margin:0;">القائمة</h2>
+            <i class="fas fa-cog" style="color:#b0b3b8;"></i>
+        </div>
+        <div class="search-box">
+            <i class="fas fa-search" style="color:#b0b3b8;"></i>
+            <input type="text" placeholder="بحث في BenalalAI...">
         </div>
         <div class="menu-item">
-            <div style="width:36px; height:36px; background:#00ff41; border-radius:50%;"></div>
-            <strong>منير بن علال</strong>
+            <div class="icon-circle" style="background: var(--neon); color: black;"><i class="fas fa-user-shield"></i></div>
+            <strong>منير بن علال (القائد)</strong>
         </div>
-        <h3 style="font-size: 16px; color: #b0b3b8; margin-top: 20px;">اختصاراتك السيادية</h3>
-        <div class="shortcuts-grid">
-            <div class="shortcut-card">
-                <i class="fas fa-shopping-cart" style="color: #fb8c00;"></i><br>
-                <span>Smart Deals</span>
+        <div class="menu-section-title">المشاريع المفضلة</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="menu-item" style="flex-direction: column; text-align: center; padding: 20px 10px;">
+                <i class="fas fa-chart-line" style="color: #fb8c00; font-size: 24px;"></i>
+                <span style="font-size: 12px; margin-top: 5px;">Smart Deals</span>
             </div>
-            <div class="shortcut-card">
-                <i class="fas fa-car" style="color: var(--fb-blue);"></i><br>
-                <span>Driving AI</span>
+            <div class="menu-item" style="flex-direction: column; text-align: center; padding: 20px 10px;">
+                <i class="fas fa-robot" style="color: var(--fb-blue); font-size: 24px;"></i>
+                <span style="font-size: 12px; margin-top: 5px;">Timo AI</span>
             </div>
         </div>
-        <div style="margin-top: 20px;">
-            <div class="menu-item"><i class="fas fa-users" style="color: #2e7d32;"></i> المجموعات</div>
-            <div class="menu-item"><i class="fas fa-video" style="color: #f44336;"></i> Reels</div>
-            <div class="menu-item"><i class="fas fa-bookmark" style="color: #9c27b0;"></i> العناصر المحفوظة</div>
-        </div>
+        <div class="menu-section-title">الإعدادات والخصوصية</div>
+        <div class="menu-item"><i class="fas fa-terminal"></i> إدارة الملفات (Termux)</div>
+        <div class="menu-item"><i class="fas fa-code-branch"></i> مستودع GitHub</div>
+        <div class="menu-item" style="color: #f44336;"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</div>
     </div>
-    <div style="padding: 80px 20px; text-align: center;">
-        <p>اضغط على الثلاث شرطات في الأعلى لتجربة "قانون فيسبوك" الجديد.</p>
+    <div style="padding: 100px 20px; text-align: center; color: #b0b3b8;">
+        <i class="fas fa-check-circle" style="font-size: 50px; color: var(--neon); margin-bottom: 15px;"></i>
+        <h3>النظام جاهز يا قائد!</h3>
+        <p>القائمة الجانبية مفعّلة الآن مع نظام البحث.</p>
     </div>
     <script>
         function toggleMenu() {
