@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --fb-hover: #3a3b3c; --neon: #00ff41; }
-        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 105px; }
+        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 105px; transition: 0.3s; }
         .header-fixed { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--fb-card); border-bottom: 1px solid #3e4042; }
         .navbar-top { height: 56px; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; }
         .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; }
@@ -17,14 +17,13 @@
         .tab.active::after { content: ''; position: absolute; bottom: 0; width: 100%; height: 3px; background: var(--fb-blue); }
         .page-section { display: none; padding: 12px; max-width: 500px; margin: auto; }
         .page-section.active { display: block; }
-        /* صندوق النشر المطور */
-        .publish-card { background: var(--fb-card); border-radius: 8px; padding: 12px; margin-bottom: 15px; border: 1px solid #3e4042; }
-        .input-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
-        .avatar { width: 40px; height: 40px; background: var(--neon); border-radius: 50%; }
-        .main-input { flex: 1; background: var(--fb-hover); border: none; border-radius: 20px; padding: 10px 15px; color: white; outline: none; cursor: pointer; }
-        .post-btn { width: 100%; background: var(--fb-blue); color: white; border: none; border-radius: 6px; padding: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .post-btn:active { transform: scale(0.98); opacity: 0.8; }
-        .icon-circle { background: var(--fb-hover); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .card { background: var(--fb-card); border-radius: 8px; padding: 15px; margin-bottom: 15px; border: 1px solid #3e4042; }
+        /* تصميم المدخلات في الإعدادات */
+        .setting-input { width: 100%; background: var(--fb-hover); border: 1px solid #3e4042; border-radius: 6px; padding: 10px; color: white; margin-top: 8px; margin-bottom: 15px; outline: none; box-sizing: border-box; }
+        .save-btn { background: var(--neon); color: black; border: none; border-radius: 6px; padding: 10px 20px; font-weight: bold; cursor: pointer; width: 100%; }
+        .sidebar { position: fixed; top: 0; right: -100%; width: 85%; height: 100%; background: var(--fb-bg); z-index: 2000; transition: 0.3s; padding: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.5); }
+        .sidebar.active { right: 0; }
+        .menu-item { padding: 12px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #3e4042; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -32,53 +31,87 @@
         <nav class="navbar-top">
             <div class="logo">BenalalAI</div>
             <div style="display: flex; gap: 10px;">
-                <div class="icon-circle"><i class="fas fa-search"></i></div>
-                <div class="icon-circle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+                <div style="background: var(--fb-hover); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             </div>
         </nav>
         <div class="nav-tabs">
             <div class="tab active" onclick="showSection('home', this)"><i class="fas fa-home"></i></div>
             <div class="tab" onclick="showSection('watch', this)"><i class="fas fa-tv"></i></div>
             <div class="tab" onclick="showSection('market', this)"><i class="fas fa-store"></i></div>
-            <div class="tab" onclick="showSection('notif', this)"><i class="fas fa-bell"></i></div>
+            <div class="tab" onclick="showSection('settings', this)"><i class="fas fa-cog"></i></div>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3>القائمة</h3>
+            <i class="fas fa-times" onclick="toggleMenu()"></i>
+        </div>
+        <div class="menu-item" onclick="showSection('settings', null); toggleMenu();">
+            <i class="fas fa-user-shield" style="color: var(--neon);"></i>
+            <span>إعدادات السيادة</span>
+        </div>
+        <div class="menu-item" onclick="location.reload();">
+            <i class="fas fa-sync"></i>
+            <span>تحديث النظام</span>
         </div>
     </div>
     <div id="home" class="page-section active">
-        <div class="publish-card">
-            <div class="input-row">
-                <div class="avatar"></div>
-                <input type="text" id="postContent" class="main-input" placeholder="بماذا تفكر يا قائد منير؟">
+        <div class="card">
+            <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                <div style="width: 40px; height: 40px; background: var(--neon); border-radius: 50%;"></div>
+                <input type="text" id="postContent" style="flex:1; background: var(--fb-hover); border:none; border-radius:20px; padding:10px; color:white;" placeholder="بماذا تفكر يا قائد منير؟">
             </div>
-            <button class="post-btn" onclick="sendToTelegram()">نشر السيادة</button>
+            <button onclick="sendToTelegram()" style="width:100%; background:var(--fb-blue); color:white; border:none; padding:8px; border-radius:6px; font-weight:bold;">نشر السيادة</button>
         </div>
-        <div style="background: var(--fb-card); padding: 15px; border-radius: 8px; border: 1px solid #3e4042;">
-            <p style="color: var(--neon); font-family: monospace;">> نظام بن علال v2.0 متصل...</p>
+        <div class="card" style="border: 1px solid var(--neon);">
+            <p style="color: var(--neon); font-family: monospace; margin:0;">> نظام بن علال v2.0 متصل...</p>
         </div>
     </div>
-    <div id="watch" class="page-section"><h3>Watch Section</h3></div>
-    <div id="market" class="page-section"><h3>Marketplace</h3></div>
-    <div id="notif" class="page-section"><h3>Notifications</h3></div>
+    <div id="settings" class="page-section">
+        <h3>إعدادات الربط</h3>
+        <div class="card">
+            <label>Telegram Bot Token:</label>
+            <input type="password" id="botToken" class="setting-input" placeholder="أدخل التوكن هنا...">
+            <label>Chat ID:</label>
+            <input type="text" id="chatId" class="setting-input" placeholder="أدخل معرف الشات...">
+            <button class="save-btn" onclick="saveSettings()">حفظ الإعدادات</button>
+        </div>
+    </div>
+    <div id="watch" class="page-section"><div class="card">قسم الفيديوهات نشط</div></div>
+    <div id="market" class="page-section"><div class="card">متجر Smart Deals نشط</div></div>
     <script>
+        // تحميل الإعدادات عند فتح الصفحة
+        window.onload = () => {
+            document.getElementById('botToken').value = localStorage.getItem('tgToken') || '';
+            document.getElementById('chatId').value = localStorage.getItem('tgChatId') || '';
+        };
         function showSection(id, el) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
+            if(el) {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                el.classList.add('active');
+            }
+        }
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
+        function saveSettings() {
+            localStorage.setItem('tgToken', document.getElementById('botToken').value);
+            localStorage.setItem('tgChatId', document.getElementById('chatId').value);
+            alert("تم حفظ إعدادات السيادة بنجاح!");
+            showSection('home', document.querySelector('.fa-home').parentElement);
         }
         async function sendToTelegram() {
             const text = document.getElementById('postContent').value;
-            if(!text) return alert("اكتب شيئاً أولاً يا قائد!");
-            // ملاحظة للقائد: استبدل التوكن والـ ID ببياناتك الخاصة
-            const token = "YOUR_BOT_TOKEN";
-            const chatId = "YOUR_CHAT_ID";
-            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+            const token = localStorage.getItem('tgToken');
+            const chatId = localStorage.getItem('tgChatId');
+            if(!text) return alert("اكتب شيئاً!");
+            if(!token || !chatId) return alert("يرجى ضبط الإعدادات أولاً!");
             try {
+                const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
                 await fetch(url);
-                alert("تم الإرسال بنجاح إلى التلجرام!");
+                alert("تم الإرسال بنجاح!");
                 document.getElementById('postContent').value = "";
-            } catch(e) {
-                alert("فشل الإرسال، تحقق من الاتصال.");
-            }
+            } catch(e) { alert("فشل الإرسال."); }
         }
     </script>
 </body>
