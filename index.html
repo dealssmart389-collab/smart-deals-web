@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Interactive Core</title>
+    <title>BenalalAI - Sovereign Control</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --fb-hover: #3a3b3c; --neon: #00ff41; }
-        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 105px; overflow-x: hidden; }
-        .header-fixed { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--fb-card); }
+        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 105px; }
+        .header-fixed { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--fb-card); border-bottom: 1px solid #3e4042; }
         .navbar-top { height: 56px; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; }
         .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; }
-        .nav-tabs { display: flex; height: 48px; border-bottom: 1px solid #3e4042; }
+        .nav-tabs { display: flex; height: 48px; }
         .tab { flex: 1; display: flex; align-items: center; justify-content: center; color: #b0b3b8; font-size: 20px; cursor: pointer; position: relative; }
         .tab.active { color: var(--fb-blue); }
         .tab.active::after { content: ''; position: absolute; bottom: 0; width: 100%; height: 3px; background: var(--fb-blue); }
-        /* الأقسام - مخفية افتراضياً */
-        .page-section { display: none; padding: 10px; max-width: 500px; margin: auto; }
+        .page-section { display: none; padding: 12px; max-width: 500px; margin: auto; }
         .page-section.active { display: block; }
-        /* تصميمات البطاقات الموحدة */
-        .card { background: var(--fb-card); border-radius: 8px; margin-bottom: 12px; border: 1px solid #3e4042; padding: 12px; }
-        .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .market-item { background: var(--fb-card); border-radius: 8px; overflow: hidden; border: 1px solid #3e4042; }
+        /* صندوق النشر المطور */
+        .publish-card { background: var(--fb-card); border-radius: 8px; padding: 12px; margin-bottom: 15px; border: 1px solid #3e4042; }
+        .input-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .avatar { width: 40px; height: 40px; background: var(--neon); border-radius: 50%; }
+        .main-input { flex: 1; background: var(--fb-hover); border: none; border-radius: 20px; padding: 10px 15px; color: white; outline: none; cursor: pointer; }
+        .post-btn { width: 100%; background: var(--fb-blue); color: white; border: none; border-radius: 6px; padding: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .post-btn:active { transform: scale(0.98); opacity: 0.8; }
         .icon-circle { background: var(--fb-hover); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .sidebar { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--fb-bg); z-index: 2000; transition: 0.3s; padding: 20px; }
-        .sidebar.active { right: 0; }
     </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
         <nav class="navbar-top">
             <div class="logo">BenalalAI</div>
             <div style="display: flex; gap: 10px;">
-                <div class="icon-circle" onclick="alert('نظام البحث قيد التحميل...')"><i class="fas fa-search"></i></div>
+                <div class="icon-circle"><i class="fas fa-search"></i></div>
                 <div class="icon-circle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             </div>
         </nav>
@@ -43,56 +43,42 @@
             <div class="tab" onclick="showSection('notif', this)"><i class="fas fa-bell"></i></div>
         </div>
     </div>
-    <div class="sidebar" id="sidebar">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-            <h2 style="margin:0;">القائمة</h2>
-            <i class="fas fa-times" style="font-size: 24px;" onclick="toggleMenu()"></i>
-        </div>
-        <div class="card" style="display: flex; align-items: center; gap: 12px;">
-            <div style="width:40px; height:40px; background:var(--neon); border-radius:50%;"></div>
-            <strong>منير بن علال (القائد)</strong>
-        </div>
-    </div>
     <div id="home" class="page-section active">
-        <div class="card">
-            <p>مرحباً يا قائد، أنت في الصفحة الرئيسية الآن.</p>
-        </div>
-    </div>
-    <div id="watch" class="page-section">
-        <h3 style="margin-top:0;">Watch</h3>
-        <div class="card" style="height: 200px; background: #000; display:flex; align-items:center; justify-content:center;">
-            <i class="fas fa-play" style="font-size: 40px;"></i>
-        </div>
-    </div>
-    <div id="market" class="page-section">
-        <h3 style="margin-top:0;">Marketplace</h3>
-        <div class="market-grid">
-            <div class="market-item">
-                <div style="height:150px; background:#3a3b3c;"></div>
-                <div style="padding:8px;"><strong>150 MAD</strong><br><small>Smart Deals</small></div>
+        <div class="publish-card">
+            <div class="input-row">
+                <div class="avatar"></div>
+                <input type="text" id="postContent" class="main-input" placeholder="بماذا تفكر يا قائد منير؟">
             </div>
-            <div class="market-item">
-                <div style="height:150px; background:#3a3b3c;"></div>
-                <div style="padding:8px;"><strong>مجاني</strong><br><small>Timo AI</small></div>
-            </div>
+            <button class="post-btn" onclick="sendToTelegram()">نشر السيادة</button>
+        </div>
+        <div style="background: var(--fb-card); padding: 15px; border-radius: 8px; border: 1px solid #3e4042;">
+            <p style="color: var(--neon); font-family: monospace;">> نظام بن علال v2.0 متصل...</p>
         </div>
     </div>
-    <div id="notif" class="page-section">
-        <h3 style="margin-top:0;">Notifications</h3>
-        <div class="card">لا توجد إشعارات جديدة من Termux حالياً.</div>
-    </div>
+    <div id="watch" class="page-section"><h3>Watch Section</h3></div>
+    <div id="market" class="page-section"><h3>Marketplace</h3></div>
+    <div id="notif" class="page-section"><h3>Notifications</h3></div>
     <script>
-        function showSection(sectionId, element) {
-            // إخفاء كل الأقسام
+        function showSection(id, el) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            // إظهار القسم المطلوب
-            document.getElementById(sectionId).classList.add('active');
-            // تحديث حالة التبويب النشط
+            document.getElementById(id).classList.add('active');
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
+            el.classList.add('active');
         }
-        function toggleMenu() { 
-            document.getElementById('sidebar').classList.toggle('active'); 
+        async function sendToTelegram() {
+            const text = document.getElementById('postContent').value;
+            if(!text) return alert("اكتب شيئاً أولاً يا قائد!");
+            // ملاحظة للقائد: استبدل التوكن والـ ID ببياناتك الخاصة
+            const token = "YOUR_BOT_TOKEN";
+            const chatId = "YOUR_CHAT_ID";
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+            try {
+                await fetch(url);
+                alert("تم الإرسال بنجاح إلى التلجرام!");
+                document.getElementById('postContent').value = "";
+            } catch(e) {
+                alert("فشل الإرسال، تحقق من الاتصال.");
+            }
         }
     </script>
 </body>
