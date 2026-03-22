@@ -1,0 +1,29 @@
+// استبدل وظيفة executeTimoAction بهذا المنطق الذكي
+async function executeTimoAction() {
+    const query = inputField.value.trim();
+    if (!query) return;
+
+    addLog(`👤 أنت: ${query}`, "user-msg");
+
+    // 1. فحص المصفوفة المحلية أولاً للسرعة (الترحيب)
+    if (timoOmniData[query]) {
+        addLog(`🤖 تيمو: ${timoOmniData[query]}`, "timo-msg");
+    } else {
+        // 2. إذا لم يجدها، يسأل "العقل الكبير" عبر السيرفر
+        addLog("🤖 تيمو: جاري التفكير بذكاء العمق...", "timo-msg");
+        
+        try {
+            const response = await fetch('http://127.0.0.1:5000/ask_timo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query })
+            });
+            const data = await response.json();
+            addLog(`🤖 تيمو: ${data.answer}`, "timo-msg");
+        } catch (err) {
+            addLog("🤖 تيمو: السيرفر المحلي غير متصل. سأبحث في جوجل.", "timo-msg");
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+        }
+    }
+    inputField.value = "";
+}
