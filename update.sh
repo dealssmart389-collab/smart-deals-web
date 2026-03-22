@@ -2,16 +2,14 @@
 # tremux
 echo "🚀 Benalal AI: جاري دمج وتحديث النظام الموحد..."
 
-# تشغيل الرادار لتحديث البيانات
-python3 core/social_api/hybrid_radar.py
+# محاولة تشغيل الرادار (سيتم تخطي الخطأ إذا استمرت مشكلة المكتبات)
+python3 core/social_api/hybrid_radar.py || echo "⚠️ تنبيه: الرادار يحتاج لتثبيت lxml_html_clean"
 
-# إضافة جميع الملفات الجديدة (بما في ذلك README والواجهة)
+# العمليات الأساسية لـ Git
 git add .
+git commit -m "تحديث سيادي المجلدات والملفات الموحدة"
 
-# تسجيل التغيير بهوية المشروع
-git commit -m "تحديث سيادي: دمج الرادارات الموحدة وتحديث واجهة Dashboard"
+# محاولة الرفع للفرع المتاح
+git push origin master || git push origin main
 
-# الرفع النهائي
-git push origin master
-
-echo "✅ تم التوحيد بنجاح يا قائد منير! تفقد الرابط الآن."
+echo "✅ تم التوحيد النهائي يا قائد منير!"
