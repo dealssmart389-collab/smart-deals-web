@@ -3,70 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Gallery OS</title>
+    <title>BenalalAI - Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; }
         body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 60px; }
+        /* Navbar طبق الأصل */
         .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
-        .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; letter-spacing: -1px; }
-        .container { max-width: 580px; margin: auto; padding: 10px; }
-        /* Gallery System (FB Style) */
-        .gallery-card { background: var(--fb-card); border-radius: 8px; border: 1px solid #3e4042; margin-top: 15px; overflow: hidden; }
-        .gallery-header { padding: 12px; display: flex; justify-content: space-between; align-items: center; }
-        .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #3e4042; }
+        .logo { color: var(--fb-blue); font-size: 24px; font-weight: bold; text-decoration: none; }
+        .container { max-width: 500px; margin: auto; padding: 10px; }
+        /* نظام معرض الصور (BenalalAI Grid Style) */
+        .gallery-post { background: var(--fb-card); border-radius: 8px; margin-bottom: 15px; border: 1px solid #3e4042; }
+        .post-header { padding: 12px; display: flex; align-items: center; gap: 10px; }
+        .avatar-circle { width: 40px; height: 40px; background: var(--neon); border-radius: 50%; }
+        .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; padding: 2px; }
         .image-grid img { width: 100%; height: 200px; object-fit: cover; cursor: pointer; transition: 0.3s; }
-        .image-grid img:hover { opacity: 0.8; }
-        /* Fullscreen Preview */
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
-        #lightbox img { max-width: 90%; max-height: 80%; border: 2px solid var(--neon); }
-        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; }
-        .fb-actions { display: flex; justify-content: space-around; padding: 10px; border-top: 1px solid #3e4042; }
-        .fb-btn { color: #b0b3b8; font-size: 14px; cursor: pointer; }
-        .fb-btn i { margin-left: 5px; }
+        .image-grid img:first-child { grid-column: span 2; height: 300px; } /* الصورة الأولى كبيرة دائماً */
+        .post-actions { display: flex; justify-content: space-around; padding: 10px; border-top: 1px solid #3e4042; }
+        .action-item { color: #b0b3b8; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        /* شاشة العرض الكاملة (Lightbox) */
+        #viewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 2000; justify-content: center; align-items: center; }
+        #viewer img { max-width: 100%; max-height: 100%; }
+        .close-viewer { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">BenalalAI</div>
-        <div style="color: #b0b3b8;"><i class="fas fa-plus-circle"></i></div>
+        <div style="color: #b0b3b8;"><i class="fas fa-search"></i> <i class="fas fa-bars" style="margin-right:15px;"></i></div>
     </nav>
     <div class="container">
-        <div style="background: var(--fb-card); padding: 15px; border-radius: 8px; border: 1px solid #3e4042;">
-            <div style="display:flex; gap:10px;">
-                <div style="width:40px; height:40px; background:var(--neon); border-radius:50%;"></div>
-                <input type="text" placeholder="أضف صورا لمعرض بن علال..." style="background:#3a3b3c; border:none; border-radius:20px; padding:10px; color:white; flex:1;">
+        <div class="gallery-post">
+            <div class="post-header">
+                <div class="avatar-circle"></div>
+                <div><strong>منير بن علال</strong><br><small style="color:#b0b3b8;">الآن • <i class="fas fa-globe-americas"></i></small></div>
             </div>
-        </div>
-        <div class="gallery-card">
-            <div class="gallery-header">
-                <strong><i class="fas fa-images" style="color: #45bd62;"></i> معرض الوسائط السيادي</strong>
-                <span style="font-size: 12px; color: #b0b3b8;">تم التحديث الآن</span>
+            <p style="padding: 0 12px; margin-bottom: 10px;">أحدث مشاريع بن علال لعام 2026 🚀</p>
+            <div class="image-grid">
+                <img src="https://via.placeholder.com/600x400/1877f2/ffffff?text=Smart+Deals+Pro" onclick="showImg(this.src)">
+                <img src="https://via.placeholder.com/400x400/00ff41/000000?text=Driving+AI" onclick="showImg(this.src)">
+                <img src="https://via.placeholder.com/400x400/333333/ffffff?text=Termux+Master" onclick="showImg(this.src)">
             </div>
-            <div class="image-grid" id="main-gallery">
-                <img src="https://via.placeholder.com/300/1877f2/ffffff?text=Smart+Deals" onclick="openLightBox(this.src)">
-                <img src="https://via.placeholder.com/300/00ff41/000000?text=Driving+AI" onclick="openLightBox(this.src)">
-                <img src="https://via.placeholder.com/300/333333/ffffff?text=Termux+Core" onclick="openLightBox(this.src)">
-                <img src="https://via.placeholder.com/300/111111/00ff41?text=BenalalAI+Vault" onclick="openLightBox(this.src)">
-            </div>
-            <div class="fb-actions">
-                <div class="fb-btn"><i class="far fa-thumbs-up"></i> أعجبني</div>
-                <div class="fb-btn"><i class="far fa-comment"></i> تعليق</div>
-                <div class="fb-btn"><i class="fas fa-share"></i> مشاركة</div>
+            <div class="post-actions">
+                <div class="action-item"><i class="far fa-thumbs-up"></i> أعجبني</div>
+                <div class="action-item"><i class="far fa-comment"></i> تعليق</div>
+                <div class="action-item"><i class="fas fa-share"></i> مشاركة</div>
             </div>
         </div>
     </div>
-    <div id="lightbox">
-        <span class="close-btn" onclick="closeLightBox()">&times;</span>
-        <img id="lightbox-img" src="">
+    <div id="viewer" onclick="this.style.display='none'">
+        <span class="close-viewer">&times;</span>
+        <img id="viewer-img" src="">
     </div>
     <script>
-        function openLightBox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
-        function closeLightBox() {
-            document.getElementById('lightbox').style.display = 'none';
+        function showImg(src) {
+            document.getElementById('viewer-img').src = src;
+            document.getElementById('viewer').style.display = 'flex';
         }
     </script>
 </body>
