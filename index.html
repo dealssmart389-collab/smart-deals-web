@@ -2,75 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMO AI SUPREME | الذكاء المطلق</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Benalal AI 2026 | لوحة التحكم</title>
     <style>
-        :root { --neon: #00ff41; --bg: #010101; --panel: #0d0d0d; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; text-align: center; }
-        
-        .header { border: 1px solid var(--neon); border-radius: 15px; padding: 20px; margin-bottom: 20px; background: linear-gradient(145deg, #050505, #0a0a0a); }
-        .header h1 { color: var(--neon); margin: 0; font-size: 24px; letter-spacing: 2px; }
-        .header p { font-size: 12px; opacity: 0.8; }
-
-        .vision-container { position: relative; width: 100%; height: 250px; background: #000; border: 2px solid var(--neon); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
-        #video-feed { width: 100%; height: 100%; object-fit: cover; }
-        .live-tag { position: absolute; top: 10px; right: 10px; background: red; padding: 2px 8px; border-radius: 5px; font-size: 10px; font-weight: bold; animation: blink 1s infinite; }
-
-        .chat-box { background: var(--panel); border: 1px solid #222; border-radius: 20px; padding: 15px; height: 300px; display: flex; flex-direction: column; }
-        #output { flex: 1; overflow-y: auto; text-align: right; font-family: monospace; color: var(--neon); font-size: 13px; padding: 10px; }
-        
-        .input-group { display: flex; gap: 10px; margin-top: 15px; }
-        input { flex: 1; background: #1a1a1a; border: 1px solid #333; color: white; padding: 12px; border-radius: 12px; outline: none; }
-        button { background: var(--neon); border: none; padding: 10px 20px; border-radius: 12px; font-weight: bold; cursor: pointer; }
-
-        @keyframes blink { 50% { opacity: 0; } }
+        body { background: #0a0a0a; color: #00ff41; font-family: 'Courier New', monospace; text-align: center; }
+        .radar-box { border: 2px solid #00ff41; padding: 20px; margin: 20px auto; width: 80%; box-shadow: 0 0 15px #00ff41; }
+        .status-online { color: #fff; background: #28a745; padding: 5px; }
     </style>
 </head>
 <body>
-
-<div class="header">
-    <h1>TIMO AI SUPREME</h1>
-    <p>الذكاء المطلق | لغة العلم والسرعة</p>
-</div>
-
-<div class="vision-container">
-    <div class="live-tag">REC LIVE</div>
-    <video id="video-feed" autoplay playsinline></video>
-</div>
-
-<div class="chat-box">
-    <div id="output">
-        > تم حقن الروح العصبونية بنجاح . . .<br>
-        > نظام تيمو جاهز للتحليل البصري . . .
+    <h1>🛡️ نظام بنلال للذكاء الاصطناعي السيادي</h1>
+    <div class="radar-box">
+        <h3>📡 حالة الرادارات الحالية:</h3>
+        <p>تيك توك (@tvbenalal): <span class="status-online">نشط</span></p>
+        <p>إنستغرام (hamza846478): <span class="status-online">نشط</span></p>
+        <p>فيسبوك (Aya Hamza): <span class="status-online">مرتبط عبر Cookies</span></p>
     </div>
-    <div class="input-group">
-        <input type="text" id="user-in" placeholder="اسأل تيمو عن أي شيء...">
-        <button onclick="process()">إرسال</button>
+    <div class="radar-box">
+        <h3>🔗 الروابط السريعة:</h3>
+        <a href="https://github.com/dealssmart389-collab/smart-deals-web" style="color:cyan">خزنة GitHub</a>
     </div>
-</div>
-
-<script>
-    // تفعيل الكاميرا
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-        .then(s => document.getElementById('video-feed').srcObject = s);
-
-    function process() {
-        const input = document.getElementById('user-in');
-        const output = document.getElementById('output');
-        if(!input.value) return;
-
-        output.innerHTML += `<div style="color:white; margin:5px 0;">👤: ${input.value}</div>`;
-        
-        // محاكاة رد تيمو
-        setTimeout(() => {
-            output.innerHTML += `<div>🤖: جاري المعالجة... تم الربط مع DrivingAI بنجاح.</div>`;
-            output.scrollTop = output.scrollHeight;
-        }, 500);
-        
-        input.value = "";
-    }
-</script>
-
 </body>
 </html>

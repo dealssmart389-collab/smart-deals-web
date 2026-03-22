@@ -1,14 +1,17 @@
 #!/bin/bash
-# بروتوكول التحديث العصبوني - تيمو 2100
-echo "🚀 جاري تشغيل بروتوكول الرفع الدولي..."
+# tremux
+echo "🚀 Benalal AI: جاري دمج وتحديث النظام الموحد..."
 
-# إضافة التغييرات
-git add index.html gatekeeper.py
+# تشغيل الرادار لتحديث البيانات
+python3 core/social_api/hybrid_radar.py
 
-# تسجيل التحديث برسالة سيادية
-git commit -m "Timo AI: International DrivingAI Integration & Neural Bridge"
+# إضافة جميع الملفات الجديدة (بما في ذلك README والواجهة)
+git add .
 
-# الرفع إلى Github
-git push origin main
+# تسجيل التغيير بهوية المشروع
+git commit -m "تحديث سيادي: دمج الرادارات الموحدة وتحديث واجهة Dashboard"
 
-echo "✅ تم الرفع بنجاح! الرابط نشط الآن."
+# الرفع النهائي
+git push origin master
+
+echo "✅ تم التوحيد بنجاح يا قائد منير! تفقد الرابط الآن."
