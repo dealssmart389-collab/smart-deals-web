@@ -2,24 +2,34 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Benalal AI 2026 | لوحة التحكم</title>
+    <title>Benalal AI 2026 | لوحة التحكم السيادية</title>
     <style>
-        body { background: #0a0a0a; color: #00ff41; font-family: 'Courier New', monospace; text-align: center; }
-        .radar-box { border: 2px solid #00ff41; padding: 20px; margin: 20px auto; width: 80%; box-shadow: 0 0 15px #00ff41; }
-        .status-online { color: #fff; background: #28a745; padding: 5px; }
+        body { background-color: #050505; color: #00ff41; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { border: 1px solid #00ff41; padding: 20px; border-radius: 15px; width: 90%; margin: auto; box-shadow: 0 0 20px #00ff41; }
+        .status { display: inline-block; width: 12px; height: 12px; background: #00ff41; border-radius: 50%; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        header { margin-bottom: 30px; border-bottom: 2px solid #222; padding-bottom: 10px; }
     </style>
 </head>
 <body>
-    <h1>🛡️ نظام بنلال للذكاء الاصطناعي السيادي</h1>
-    <div class="radar-box">
-        <h3>📡 حالة الرادارات الحالية:</h3>
-        <p>تيك توك (@tvbenalal): <span class="status-online">نشط</span></p>
-        <p>إنستغرام (hamza846478): <span class="status-online">نشط</span></p>
-        <p>فيسبوك (Aya Hamza): <span class="status-online">مرتبط عبر Cookies</span></p>
+    <div class="container">
+        <header>
+            <h1>🛡️ بنلال للذكاء الاصطناعي 2026</h1>
+            <p>النظام البيئي الرقمي السيادي - مطور بواسطة منير بن علال 🇲🇦</p>
+        </header>
+        
+        <div class="card">
+            <h3>📡 حالة الرادارات الحية:</h3>
+            <p><span class="status"></span> رادار تيك توك: <b>Online</b></p>
+            <p><span class="status"></span> رادار إنستغرام: <b>Monitoring</b></p>
+            <p><span class="status"></span> رادار فيسبوك: <b>Synced (Cookies)</b></p>
+        </div>
+
+        <div class="card">
+            <h3>🤖 محرك القرار:</h3>
+            <p>آخر فحص آلي: <span id="time">جاري المزامنة...</span></p>
+        </div>
     </div>
-    <div class="radar-box">
-        <h3>🔗 الروابط السريعة:</h3>
-        <a href="https://github.com/dealssmart389-collab/smart-deals-web" style="color:cyan">خزنة GitHub</a>
-    </div>
+    <script>document.getElementById('time').innerText = new Date().toLocaleString('ar-MA');</script>
 </body>
 </html>
