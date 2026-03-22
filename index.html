@@ -3,97 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenalalAI - Social OS</title>
+    <title>BenalalAI - Media Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --fb-blue: #1877f2; --fb-bg: #18191a; --fb-card: #242526; --fb-text: #e4e6eb; --neon: #00ff41; }
-        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: 'Cairo', sans-serif; margin: 0; padding-top: 60px; overflow-x: hidden; }
-        /* Navbar - BenalalAI Replica */
+        body { background-color: var(--fb-bg); color: var(--fb-text); font-family: sans-serif; margin: 0; padding-top: 60px; }
         .navbar { background: var(--fb-card); height: 56px; border-bottom: 1px solid #3e4042; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box; }
-        .logo { color: var(--fb-blue); font-family: 'Orbitron'; font-size: 26px; font-weight: bold; letter-spacing: -1px; text-transform: uppercase; }
-        .nav-icons i { font-size: 20px; color: #b0b3b8; margin: 0 12px; cursor: pointer; }
-        .nav-icons i.active { color: var(--fb-blue); }
+        .logo { color: var(--fb-blue); font-family: sans-serif; font-size: 26px; font-weight: bold; letter-spacing: -1px; }
         .container { max-width: 580px; margin: auto; padding: 10px; }
-        /* Story Tray */
-        .story-tray { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
-        .story-card { min-width: 100px; height: 170px; background: var(--fb-card); border-radius: 10px; position: relative; border: 1px solid #3e4042; flex-shrink: 0; overflow: hidden; background-size: cover; }
-        .story-card i { position: absolute; top: 10px; left: 10px; background: var(--fb-blue); border-radius: 50%; padding: 5px; font-size: 12px; color: white; }
-        .story-card span { position: absolute; bottom: 8px; right: 8px; font-size: 11px; font-weight: bold; }
-        /* Post Card - BenalalAI Replica */
-        .feed-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 15px; padding: 12px; border: 1px solid #3e4042; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
-        .card-header { display: flex; align-items: center; margin-bottom: 12px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--neon); margin-left: 10px; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; font-family: 'Orbitron'; }
-        /* TIMO Console (Matrix Style) */
-        #timo-console { background: #000; border-radius: 8px; padding: 15px; font-family: 'Courier New', monospace; font-size: 13px; color: var(--neon); height: 180px; overflow-y: auto; border: 1px solid #3e4042; margin-bottom: 10px; line-height: 1.5; }
-        .input-area { background: #3a3b3c; border-radius: 20px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; }
-        .input-area input { background: none; border: none; color: white; flex: 1; outline: none; font-size: 14px; }
-        .action-bar { display: flex; justify-content: space-around; padding-top: 10px; border-top: 1px solid #3e4042; margin-top: 10px; }
-        .action-btn { flex: 1; text-align: center; padding: 8px; color: #b0b3b8; cursor: pointer; font-size: 14px; border-radius: 5px; }
-        .action-btn:hover { background: #3a3b3c; }
+        .feed-card { background: var(--fb-card); border-radius: 8px; margin-bottom: 15px; padding: 12px; border: 1px solid #3e4042; }
+        /* Media Upload Styling */
+        .upload-options { display: flex; border-top: 1px solid #3e4042; margin-top: 10px; padding-top: 10px; }
+        .option { flex: 1; text-align: center; color: #b0b3b8; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .option i.fa-video { color: #f02849; }
+        .option i.fa-images { color: #45bd62; }
+        #preview-container { margin-top: 10px; display: none; }
+        #preview-container img { width: 100%; border-radius: 8px; border: 1px solid var(--neon); }
+        #timo-console { background: #000; border-radius: 8px; padding: 15px; font-family: monospace; font-size: 13px; color: var(--neon); height: 120px; overflow-y: auto; margin: 10px 0; border: 1px solid #3e4042; }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">BenalalAI</div>
-        <div class="nav-icons" style="display: flex; gap: 10px;">
-            <i class="fas fa-search"></i>
-            <i class="fas fa-bell"></i>
-            <i class="fas fa-bars"></i>
-        </div>
+        <div style="color: #b0b3b8;"><i class="fas fa-bars"></i></div>
     </nav>
     <div class="container">
-        <div class="story-tray">
-            <div class="story-card" style="background-image: url('https://via.placeholder.com/100x170/1877f2/ffffff?text=Smart+Deals');">
-                <i class="fas fa-shopping-cart"></i>
-                <span>Smart Deals</span>
+        <div class="feed-card">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                <div style="width:40px; height:40px; background:var(--neon); border-radius:50%; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;">M</div>
+                <input type="text" placeholder="بماذا تفكر يا منير؟" style="background:#3a3b3c; border:none; border-radius:20px; padding:10px 15px; color:white; flex:1; outline:none;">
             </div>
-            <div class="story-card" style="background-image: url('https://via.placeholder.com/100x170/00ff41/000000?text=Driving+AI');">
-                <i class="fas fa-car"></i>
-                <span>Driving AI</span>
+            <div id="preview-container">
+                <img id="image-preview" src="#" alt="Preview">
+                <p id="file-name" style="font-size: 10px; color: var(--neon);"></p>
             </div>
-            <div class="story-card" style="background: #242526; display: flex; align-items: center; justify-content: center; border: 2px dashed #3e4042;">
-                <i class="fas fa-plus" style="position: static; font-size: 20px;"></i>
-                <span style="bottom: 20px; right: 25px;">مشروع جديد</span>
+            <div class="upload-options">
+                <div class="option" onclick="document.getElementById('video-upload').click()">
+                    <i class="fas fa-video"></i> فيديو مباشر
+                    <input type="file" id="video-upload" accept="video/*" style="display:none;" onchange="handleFile(this, 'video')">
+                </div>
+                <div class="option" onclick="document.getElementById('image-upload').click()">
+                    <i class="fas fa-images"></i> صور/فيديو من الهاتف
+                    <input type="file" id="image-upload" accept="image/*,video/*" style="display:none;" onchange="handleFile(this, 'media')">
+                </div>
             </div>
         </div>
         <div class="feed-card">
-            <div class="card-header">
-                <div class="avatar">T</div>
-                <div>
-                    <strong>تيمو (TIMO AI)</strong><br>
-                    <small style="color: #b0b3b8;">نشط الآن • <i class="fas fa-globe-africa"></i></small>
-                </div>
-            </div>
+            <strong><i class="fas fa-robot"></i> تيمو (BenalalAI OS)</strong>
             <div id="timo-console">
-                > تم تنفيذ الأوامر بنجاح يا قائد منير.<br>
-                > تم استبدال الشعار بـ BenalalAI Supreme ACTIVE.<br>
-                > الواجهة الآن في وضع السيادة الكاملة.<br>
-                > بانتظار أوامرك...
-            </div>
-            <div class="input-area">
-                <input type="text" id="user-input" placeholder="بماذا تفكر؟">
-                <i class="fas fa-paper-plane" style="color: var(--fb-blue); cursor: pointer;" onclick="sendToTimo()"></i>
-            </div>
-            <div class="action-bar">
-                <div class="action-btn"><i class="far fa-thumbs-up me-2"></i> أعجبني</div>
-                <div class="action-btn"><i class="far fa-comment me-2"></i> تعليق</div>
-                <div class="action-btn"><i class="fas fa-share me-2"></i> مشاركة</div>
+                > نظام الرفع جاهز.. بانتظار الملفات.<br>
+                > سيتم مزامنة أي صورة ترفعها مع مستودع GitHub تلقائياً.
             </div>
         </div>
     </div>
     <script>
-        function sendToTimo() {
-            const input = document.getElementById('user-input');
+        function handleFile(input, type) {
             const consoleBox = document.getElementById('timo-console');
-            const val = input.value.trim();
-            if(!val) return;
-            consoleBox.innerHTML += `<div style="color: #fff; margin-top:5px;">👤 ${val}</div>`;
-            setTimeout(() => {
-                consoleBox.innerHTML += `<div style="color: var(--neon); margin-bottom:10px;">🤖 تم استقبال الأمر.. جاري المزامنة مع شبكة BenalalAI.</div>`;
-                consoleBox.scrollTop = consoleBox.scrollHeight;
-            }, 500);
-            input.value = "";
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                const file = input.files[0];
+                reader.onload = function(e) {
+                    document.getElementById('preview-container').style.display = 'block';
+                    document.getElementById('image-preview').src = e.target.result;
+                    document.getElementById('file-name').innerText = "تم اختيار: " + file.name;
+                    consoleBox.innerHTML += "<br>> <span style='color:white;'>[UPLOAD]:</span> جاري تحضير " + file.name + "...";
+                    consoleBox.scrollTop = consoleBox.scrollHeight;
+                }
+                reader.readAsDataURL(file);
+            }
         }
     </script>
 </body>
