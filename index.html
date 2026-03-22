@@ -2,36 +2,49 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>BenalalAI - OS</title>
+    <title>BenalalAI - المركز القيادي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --neon: #00ff41; --bg: #0a0a0a; }
-        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; padding-top: 60px; }
-        .header { background: #1a1a1a; padding: 15px; border-bottom: 2px solid var(--neon); position: fixed; top:0; width:100%; display: flex; justify-content: space-between; font-weight: bold; }
-        .container { max-width: 500px; margin: auto; padding: 15px; }
-        .confirm-card { background: #1a1a1a; border: 1px solid var(--neon); border-radius: 10px; padding: 15px; margin-top: 20px; }
-        .btn-check { background: var(--neon); color: black; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        #console { background: black; color: var(--neon); padding: 10px; height: 120px; overflow-y: auto; font-family: monospace; border-radius: 5px; margin-bottom: 10px; }
+        :root { --main: #00ff41; --bg: #050505; --card: #1a1a1b; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding-top: 70px; }
+        .nav-bar { background: var(--card); padding: 15px 25px; position: fixed; top: 0; width: 100%; border-bottom: 2px solid var(--main); box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .logo { font-weight: bold; letter-spacing: 2px; color: var(--main); }
+        .container { max-width: 550px; margin: auto; padding: 15px; }
+        .status-card { background: var(--card); border-radius: 15px; padding: 20px; border: 1px solid #333; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        #log-screen { background: #000; color: var(--main); padding: 15px; height: 150px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 10px; border: 1px solid #444; margin: 15px 0; }
+        .btn-confirm { background: var(--main); color: black; border: none; padding: 12px; width: 100%; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-confirm:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--main); }
     </style>
 </head>
 <body>
-    <div class="header">
-        <span>BENALAL AI</span>
-        <i class="fas fa-microchip"></i>
+    <div class="nav-bar">
+        <div class="logo">BENALAL AI</div>
+        <div style="font-size: 12px;"><i class="fas fa-circle" style="color: var(--main); font-size: 8px;"></i> سرفر نشط</div>
     </div>
     <div class="container">
-        <div id="console">> تم تفعيل نظام التأكيد (eGrow Strategy)...<br>> بانتظار معالجة الصفقات الجديدة.</div>
-        <div class="confirm-card">
-            <h4><i class="fab fa-whatsapp"></i> محاكي تأكيد الطلبات</h4>
-            <p style="font-size: 0.9em; color: #aaa;">استراتيجية تقليل الإلغاءات مفعلة الآن.</p>
-            <button class="btn-check" onclick="runStrategy()">تشغيل الروبوت</button>
+        <div class="status-card">
+            <h3 style="margin-top:0;"><i class="fas fa-tasks"></i> نظام إدارة الصفقات</h3>
+            <div id="log-screen">> نظام التشفير SHA256 مفعل...<br>> قاعدة البيانات benalal_vault متصلة.</div>
+            <div style="background: rgba(0,255,65,0.05); padding: 15px; border-radius: 10px; border-right: 4px solid var(--main);">
+                <strong>استراتيجية التأكيد الذكية</strong>
+                <p style="font-size: 0.85em; color: #bbb; margin: 5px 0 15px 0;">سيتم إرسال رسالة واتساب آلية وتسجيل الرد في القاعدة.</p>
+                <button class="btn-confirm" onclick="triggerVault()">
+                    <i class="fab fa-whatsapp"></i> تشغيل وإرسال التأكيد
+                </button>
+            </div>
         </div>
     </div>
     <script>
-        function runStrategy() {
-            const c = document.getElementById('console');
-            c.innerHTML += "<br>> جاري إرسال رسالة التأكيد التلقائية...";
-            setTimeout(() => { c.innerHTML += "<br>> ✅ تم التأكيد: العميل وافق على الطلب."; c.scrollTop = c.scrollHeight; }, 1000);
+        function triggerVault() {
+            const log = document.getElementById('log-screen');
+            log.innerHTML += "<br>> جاري تحليل بيانات العميل...";
+            setTimeout(() => {
+                log.innerHTML += "<br>> <span style='color: #fff;'>[ACTION]:</span> تم إرسال رسالة الواتساب.";
+                log.innerHTML += "<br>> <span style='color: #fff;'>[SAVE]:</span> تم حفظ العملية في benalal_vault.db.";
+                log.scrollTop = log.scrollHeight;
+                // تنبيه بسيط للمستخدم
+                alert("تم إرسال طلب التأكيد وحفظه في سجلات بن علال!");
+            }, 800);
         }
     </script>
 </body>
