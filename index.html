@@ -2,49 +2,69 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>BenalalAI - المركز القيادي</title>
+    <title>BenalalAI - Admin Node</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --main: #00ff41; --bg: #050505; --card: #1a1a1b; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding-top: 70px; }
-        .nav-bar { background: var(--card); padding: 15px 25px; position: fixed; top: 0; width: 100%; border-bottom: 2px solid var(--main); box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
-        .logo { font-weight: bold; letter-spacing: 2px; color: var(--main); }
-        .container { max-width: 550px; margin: auto; padding: 15px; }
-        .status-card { background: var(--card); border-radius: 15px; padding: 20px; border: 1px solid #333; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        #log-screen { background: #000; color: var(--main); padding: 15px; height: 150px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 10px; border: 1px solid #444; margin: 15px 0; }
-        .btn-confirm { background: var(--main); color: black; border: none; padding: 12px; width: 100%; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-confirm:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--main); }
+        :root { --neon: #00ff41; --bg: #0a0a0a; --panel: #161616; }
+        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; }
+        .container { padding: 20px; max-width: 800px; margin: auto; }
+        /* شاشة الأدمن المخفية */
+        #admin-panel { display: none; background: var(--panel); border: 1px solid var(--neon); border-radius: 10px; padding: 20px; margin-top: 20px; box-shadow: 0 0 30px rgba(0,255,65,0.2); }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+        th, td { border: 1px solid #333; padding: 10px; text-align: center; }
+        th { background: #222; color: var(--neon); }
+        .status-online { color: var(--neon); font-size: 12px; }
+        #timo-shell { background: black; color: var(--neon); padding: 15px; height: 150px; overflow-y: auto; border-radius: 5px; font-family: monospace; border: 1px solid #333; }
+        .secret-input { background: #222; border: 1px solid var(--neon); color: white; padding: 10px; border-radius: 5px; width: 100%; box-sizing: border-box; }
     </style>
 </head>
 <body>
-    <div class="nav-bar">
-        <div class="logo">BENALAL AI</div>
-        <div style="font-size: 12px;"><i class="fas fa-circle" style="color: var(--main); font-size: 8px;"></i> سرفر نشط</div>
-    </div>
     <div class="container">
-        <div class="status-card">
-            <h3 style="margin-top:0;"><i class="fas fa-tasks"></i> نظام إدارة الصفقات</h3>
-            <div id="log-screen">> نظام التشفير SHA256 مفعل...<br>> قاعدة البيانات benalal_vault متصلة.</div>
-            <div style="background: rgba(0,255,65,0.05); padding: 15px; border-radius: 10px; border-right: 4px solid var(--main);">
-                <strong>استراتيجية التأكيد الذكية</strong>
-                <p style="font-size: 0.85em; color: #bbb; margin: 5px 0 15px 0;">سيتم إرسال رسالة واتساب آلية وتسجيل الرد في القاعدة.</p>
-                <button class="btn-confirm" onclick="triggerVault()">
-                    <i class="fab fa-whatsapp"></i> تشغيل وإرسال التأكيد
-                </button>
-            </div>
+        <h2 style="color: var(--neon); text-align: center;">BENALAL AI <small class="status-online">● ACTIVE</small></h2>
+        <div id="timo-shell">> نظام بن علال بانتظار الشفرة...</div>
+        <br>
+        <input type="text" id="cmd-input" class="secret-input" placeholder="أدخل شفرة الوصول..." onkeypress="handleCmd(event)">
+        <div id="admin-panel">
+            <h3><i class="fas fa-user-shield"></i> لوحة الإدارة السيادية</h3>
+            <p>سجل الصفقات المؤكدة في benalal_vault.db:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>المعرف</th>
+                        <th>العميل</th>
+                        <th>النوع</th>
+                        <th>الحالة</th>
+                        <th>التوقيت</th>
+                    </tr>
+                </thead>
+                <tbody id="db-content">
+                    <tr>
+                        <td>1</td>
+                        <td>Mounir</td>
+                        <td>Smart Deals</td>
+                        <td style="color: var(--neon);">مؤكد ✅</td>
+                        <td>2026-03-22</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button onclick="document.getElementById('admin-panel').style.display='none'" style="background:red; color:white; border:none; padding:5px 10px; cursor:pointer;">إغلاق اللوحة الآمنة</button>
         </div>
     </div>
     <script>
-        function triggerVault() {
-            const log = document.getElementById('log-screen');
-            log.innerHTML += "<br>> جاري تحليل بيانات العميل...";
-            setTimeout(() => {
-                log.innerHTML += "<br>> <span style='color: #fff;'>[ACTION]:</span> تم إرسال رسالة الواتساب.";
-                log.innerHTML += "<br>> <span style='color: #fff;'>[SAVE]:</span> تم حفظ العملية في benalal_vault.db.";
-                log.scrollTop = log.scrollHeight;
-                // تنبيه بسيط للمستخدم
-                alert("تم إرسال طلب التأكيد وحفظه في سجلات بن علال!");
-            }, 800);
+        function handleCmd(e) {
+            if (e.key === 'Enter') {
+                const val = document.getElementById('cmd-input').value;
+                const shell = document.getElementById('timo-shell');
+                if (val === 'root-benalal-2026') {
+                    shell.innerHTML += "<br>> <span style='color:white;'>[AUTH]:</span> تم قبول الشفرة. فتح لوحة الإدارة...";
+                    document.getElementById('admin-panel').style.display = 'block';
+                } else {
+                    shell.innerHTML += "<br>> <span style='color:red;'>[ERROR]:</span> شفرة خاطئة. محاولة اختراق مرصودة.";
+                }
+                document.getElementById('cmd-input').value = '';
+                shell.scrollTop = shell.scrollHeight;
+            }
         }
     </script>
 </body>

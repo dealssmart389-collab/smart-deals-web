@@ -1,10 +1,8 @@
 import sqlite3
-import os
 
 def init_db():
     conn = sqlite3.connect('benalal_vault.db')
     cursor = conn.cursor()
-    # إنشاء جدول الطلبات المؤكدة
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS confirmations (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,7 +14,15 @@ def init_db():
     ''')
     conn.commit()
     conn.close()
-    print("✅ BenalalAI: Database 'benalal_vault.db' is Ready.")
+
+def get_all_confirmations():
+    conn = sqlite3.connect('benalal_vault.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM confirmations ORDER BY timestamp DESC')
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
 
 if __name__ == "__main__":
     init_db()
+    print("✅ Database System: Active")
